@@ -1,0 +1,14 @@
+@import '_variables';
+
+.Home {
+  background-color: white;
+  .container-fluid{
+    padding: 0 2px;
+  }
+  .iframe-site{
+    width: 100%;
+    height: 779px;    
+    border: solid 1px #d5d5e0;    
+  }
+}
+
