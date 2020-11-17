@@ -1,7 +1,144 @@
 @import '_variables';
 
 .Header{    
-    height: 55px;
-    border: solid 1px #d5d5e0;
-    background-color: #ffffff;;
-}
+    border: solid 1px $border-color;
+    background-color: #ffffff;
+        > .row{
+          >  .col-md-3{
+             
+            }
+        }
+        .header-left__controls{
+            display: flex;
+            align-items: center;
+            border-right: solid 1px #d5d5e0;
+            border-left: solid 1px #d5d5e0;
+            .header__back-circle{
+                width: 20%;
+                background-color: #155ebc;
+                display: flex;
+                align-items: center;   
+                justify-content: center;
+                padding: 17px 11px;
+                span{
+                    width: 47px;
+                    height: 47px;
+                    border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    -moz-border-radius: 50%;
+                    -ms-border-radius: 50%;
+                    -o-border-radius: 50%;
+                    background-color: #1954a3;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+            }
+            }
+            .header__page{
+                width: 80%;
+                border-right: 1px solid #d5d5e0;
+                button{
+                    width: 100%;
+                    height: 100%;
+                    padding: 30px 0;
+                    border-radius: 0;
+                    margin: 0;
+                    background: none;
+                    color: #4c4c51;
+                    font-size: 14px;
+                    border: none;
+                    text-align: left;
+                    padding-left: 30px;
+                    &:after{
+                        display: none;
+                    }
+                    &:focus{
+                        box-shadow: none;
+                        border: none;
+                    }
+                    &:active{
+                        background-color: unset;
+                        color: #4c4c51;
+                        box-shadow: none;
+                    }
+                    svg{
+                        position: absolute;
+                        right: 31px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 15px;
+                    }
+                }
+            }
+            .header__style__shapre{
+                width: 47px;
+                display: flex; 
+                align-items: center;
+                justify-content: center; 
+                position: relative;
+                margin-left: 9px;
+                transform: translateY(-7px);
+                span{
+                    width: 23px; 
+                    height: 23px;
+                    opacity: 0.6; 
+                    border-radius: 50%;
+                    position: absolute;  
+                    &:nth-child(1){
+                        background-color: #e30909;
+                        top: 0px;
+                        left: -1px;
+                    }
+                    &:nth-child(2){ 
+                        background-color: #fdd301;
+                        top: 0px; 
+                        transform: translateX(10%);
+                    }
+                    &:nth-child(3){ 
+                        background-color: #0000d3;
+                        left: -1px;
+                        transform: translateX(35%);
+                    }
+                }
+            }
+            .header__style{ 
+                width: 20%; 
+                display: flex;
+                align-items: center; 
+                justify-content: center;
+                padding: 10px;
+            }
+        }
+   
+    .Header__controls{
+        display: flex;
+        justify-content: flex-end;
+        padding: 12px 0;
+        padding-right: 30px;
+
+        button{
+            text-transform: capitalize;
+            border: none;
+            margin-left: 15px;
+            padding: 7px 17px;
+            outline: none;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 14px;
+            &.Header__controls__save{
+                background-color: #36cf92;
+            }
+            &.Header__controls__publish{
+                background-color: #03a9f4; 
+            }  
+            .publish , .save{
+                margin-right: 5px;
+                font-size: 13px;
+            } 
+            .save{
+                margin-right: 0;
+            }
+        }
+    }  
+}   

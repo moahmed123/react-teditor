@@ -7,3 +7,21 @@ html, body {
   font-size: 1em;  
   overflow-x: hidden;
 }
+
+// custom scrollbar 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #155ebc; 
+  border-radius: 10px;
+}
