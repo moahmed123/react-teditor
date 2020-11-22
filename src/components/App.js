@@ -5,41 +5,48 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import '../css/App.css'
 
-import Home from './Home'
+import Home from './Pages/Home';
+import HeaderPG from './Pages/HeaderPG';
+import FooterPG from './Pages/FooterPG';
+import SectionPG from './Pages/SectionPG';
 // import Page from './Page'
 // import About from './About'
 import Footer from './Test/Footer'
 
 class App extends Component {
-  render() {
-    const appClass = classNames('App', {})
+    render() {
+        const appClass = classNames('App', {})
 
-    return (
-      <main>
-        <Route render={({ location }) => (
-          <TransitionGroup className={appClass}>
-            <CSSTransition
-              key={location.key}
-              classNames={this.props.transitions ? 'fade' : ''}
-              timeout={this.props.transitions ? 350 : 0}
-            >
-              <Switch location={location}>
-                <Route exact path="/" component={Home} />
-                {/* <Route exact path="/page" component={Page} />
+        return (
+            <main>
+                <Route render={({ location }) => (
+                    <TransitionGroup className={appClass}>
+                        <CSSTransition
+                            key={location.key}
+                            classNames={this.props.transitions ? 'fade' : ''}
+                            timeout={this.props.transitions ? 350 : 0}
+                        >
+                            <Switch location={location}>
+                                <Route exact path="/" component={Home} />
+                                <Route exact path="/header" component={HeaderPG} />
+                                <Route exact path="/footer" component={FooterPG} />
+                                <Route exact path="/section" component={SectionPG} />
+
+                                {/* <Route exact path="/page" component={Page} />
                 <Route exact path="/about" component={About} /> */}
-              </Switch>
-            </CSSTransition>
-          </TransitionGroup>
-        )}
-        />
-        {/* <Footer /> */}
-      </main>
-    )
-  }
+                            </Switch>
+                        </CSSTransition>
+                    </TransitionGroup>
+                )}
+                />
+                {/* <Footer /> */}
+            </main>
+        )
+    }
 }
 
 const mapStateToProps = state => ({
-  transitions: state.app.transitions,
+    transitions: state.app.transitions,
 })
 
 export default connect(mapStateToProps)(App)

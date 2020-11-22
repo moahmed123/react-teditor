@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import classNames from 'classnames'
+import classNames from 'classnames';
+import { Dropdown} from 'react-bootstrap';
 import { FaCheck ,FaRocket ,FaAngleDown} from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
@@ -18,24 +19,28 @@ class Header extends Component {
                 {/* <Link to="/">back</Link> */}
                 <div className="row align-items-center">
                     <div className="col-md-3 p-0">
-                        <div className="header-left__controls">
+                        <div className="header-left__controls">                          
                             <div className="header__back-circle">
-                                <span>
-                                    <FaLongArrowAltLeft />
-                                    {/* <img src="../../assets/images/arrow-left.png" /> */}
-                                </span>
-                            </div>
+                                <Link to='/'>
+                                    <span>
+                                        <FaLongArrowAltLeft />                                    
+                                    </span>
+                                </Link>
+                            </div>                            
                             <div className="header__page">
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Home page
-                                    <FaAngleDown />
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                            Home page
+                                            <FaAngleDown />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>                                    
                                 </div>
                             </div>
                             <div className="header__style">
