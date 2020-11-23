@@ -21,7 +21,7 @@ class Header extends Component {
                             <Form>
                             <Form.Check 
                                 type="switch"
-                                id="custom-switch"
+                                id="custom-switch-1"
                                 label=""
                             />
                             </Form>
@@ -34,7 +34,7 @@ class Header extends Component {
                             <Form>
                             <Form.Check 
                                 type="switch"
-                                id="custom-switch"
+                                id="custom-switch-2"
                                 label=""
                             />
                             </Form>
@@ -47,7 +47,7 @@ class Header extends Component {
                             <Form>
                             <Form.Check 
                                 type="switch"
-                                id="custom-switch"
+                                id="custom-switch-3"
                                 label=""
                             />
                             </Form>

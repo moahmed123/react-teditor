@@ -1,10 +1,76 @@
+@import 'variables';
 .Home {
     .Home__sidebar {
         .Home__sidebar__header {
             //generic class for sidebar section
             .generic-sidebar__section{
+                &.section--page{
+                    background-color: #fff;
+                    .sidebar__header__section {
+                        .dropdown-toggle{
+                            width: 100%;
+                            text-align: left;
+                            padding: 15px;
+                            background-color: unset;
+                            color: black;
+                            border: none;
+                            border-bottom: solid 1px #d5d5e0;
+                            border-radius: 0;
+                            outline: none;
+                            &:focus{
+                                box-shadow: none;
+                            }
+                             
+                        }
+                        .dropdown-menu.show{
+                            width: 100%;
+                        }
+                        h2{
+                            padding: 10px;
+                        }
+                    }
+                    .accordion{
+                        .card-header{
+                            background-color: unset;
+                            padding: 10px;
+                            button{
+                                display: block;
+                                width: 100%;
+                                text-align: left;
+                            }
+                        }
+                    }
+                }
             .sidebar__header__section {
-                .label {
+                .label { 
+                    &.generic--section{
+                    font-size: 14px; 
+                    font-weight: bold;
+                    display: block;
+                    color: $main-color;
+                    position: relative;
+                    margin-bottom: 15px;
+                    border: none;
+                    border-bottom: solid 1px #d5d5e0;
+                    .generic--section__form{
+                        border: 0; 
+                        padding: 15px;
+                        width: 100%;
+                        outline: none;
+                    
+                        ~ .focus-border
+                        {
+                            position: absolute; 
+                            bottom: 0; 
+                            left: 50%;  
+                            width: 0; 
+                            height: 2px; 
+                            background-color: #3399FF; 
+                            transition: 0.4s;
+                        }
+                    }
+                    .generic--section__form:focus ~ .focus-border{width: 100%; transition: 0.4s; left: 0;}
+                }
                     a{
                         display: flex;
                         justify-content: space-between;
