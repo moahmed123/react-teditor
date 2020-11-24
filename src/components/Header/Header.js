@@ -6,7 +6,7 @@ import { Dropdown} from 'react-bootstrap';
 import { FaCheck ,FaRocket ,FaAngleDown} from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
-import '../../css/Header.css'
+// import '../../css/Header.css'
 
 class Header extends Component {
     render() {
