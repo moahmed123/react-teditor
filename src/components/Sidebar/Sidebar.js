@@ -4,11 +4,34 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { FaTrashAlt, FaPlus } from "react-icons/fa";
 
+import DragDrop from './Drag_Drop/DragDrop'
 //LocalImage
 import ArrowLeft from '../../assets/images/arrow-left.png';
 
+import { app } from '../../actions'
+
 
 class Sidebar extends Component {
+    componentDidMount(){
+        // this.dispatch.firstData()
+        this.props.dispatch(app.firstData());        
+    }
+    _getData(){
+        if(this.props.PageResions){
+            return (
+                <div>
+                    <h3>Pages</h3>
+                    <h6>{this.props.PageResions[0].CodeName}</h6>
+                    <h6>{this.props.PageResions[1].CodeName}</h6>                                        
+                    {/* <h5>{this.props.dataFA.data.Pages[0].CodeName}</h5>
+                    <h5>{this.props.dataFA.data.Pages[1].CodeName}</h5>
+                    <h5>{this.props.dataFA.data.Pages[2].CodeName}</h5>                     */}
+                </div>
+            )
+        }else{
+            return <h6> Loading data</h6>
+        }
+    }
     render() {
         return (            
             <>
@@ -38,7 +61,11 @@ class Sidebar extends Component {
                     </div>
                 </div>
                 <div className="sidebar__header__section">
-                    <h2>Pages section</h2>
+                    <h2>Pages section</h2>  
+                    <div>
+                        {this._getData()}
+                    </div>
+                    {/* <DragDrop/>                   */}
                     <div className="label">
                         <a href="#">
                             <img src="../../assets/images/arrow-left.png" />
@@ -88,6 +115,8 @@ class Sidebar extends Component {
 
 const mapStateToProps = state => ({
     initialized: state.app.initialized,
+    dataFA: state.app.dataFirst,
+    PageResions : state.slidebar.regions
 })
 
 export default connect(mapStateToProps)(Sidebar)

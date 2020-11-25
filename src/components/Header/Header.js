@@ -5,18 +5,54 @@ import classNames from 'classnames';
 import { Dropdown} from 'react-bootstrap';
 import { FaCheck ,FaRocket ,FaAngleDown} from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
-
+import {app} from './../../actions'
 import '../../css/Header.css'
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        // create a ref to store the textInput DOM element
+        this.dropdown = React.createRef();
+        // this._PagesData = this._PagesData.bind(this);
+      }
+    componentDidMount(){
+        this.props.dispatch(app.getDropdownPages()); // Dispatch Data For Pages;              
+    }
+    _PagesData(){
+        if(!this.props.Pages){
+            return <div>Loading ..... </div>
+        }else{             
+            return this.props.Pages.map( (Pages_DT, key) => {
+                return(       
+                    // Onclick Fun : Send Regions Data Related This Page              
+                    <Dropdown.Item 
+                        className = { key == 0? 'active': null } // To Active First Page 
+                        key={key} 
+                        onClick = {
+                            (event) => {
+                                this.props.dispatch(app.reloadRegionsOfPages(Pages_DT.Regions)); 
+                                this.dropdown.current.innerHTML = Pages_DT.Name ; // Replace Name By Active Pages
+                                // To Remove All Active Form Dropdown  
+                                for( let i = 0; i <event.target.parentElement.children.length; i++ ){
+                                    event.target.parentElement.children[i].classList.remove("active")
+                                }
+                                // Active Event Click
+                                event.target.classList.add('active');                               
+                            }}>
+
+                        { Pages_DT.Name }
+                    </Dropdown.Item>                    
+                )          
+            })         
+        }
+    }
     render() {
         const headerClass = classNames('Header', {
             visible: this.props.initialized,
         })
 
         return (
-            <header className={headerClass}> 
-                {/* <Link to="/">back</Link> */}
+            <header className={headerClass}>                 
                 <div className="row align-items-center">
                     <div className="col-md-3 p-0">
                         <div className="header-left__controls">                          
@@ -28,17 +64,14 @@ class Header extends Component {
                                 </Link>
                             </div>                            
                             <div className="header__page">
-                                <div class="dropdown">
+                                <div className="dropdown">
                                     <Dropdown>
-                                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                            Home page
+                                        <Dropdown.Toggle variant="success" id='dropdown_pages'>
+                                            <span ref={this.dropdown} >Home page</span>
                                             <FaAngleDown />
                                         </Dropdown.Toggle>
-
                                         <Dropdown.Menu>
-                                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                            {this._PagesData()}                                        
                                         </Dropdown.Menu>
                                     </Dropdown>                                    
                                 </div>
@@ -66,7 +99,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-    initialized: state.app.initialized,
+    Pages: state.getPagesDropDown.pagesData, // All Page For Template Editor
 })
 
 export default connect(mapStateToProps)(Header)

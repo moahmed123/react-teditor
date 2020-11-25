@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Button, FormGroup, FormControl, ControlLabel,Dropdown,Accordion,Card } from "react-bootstrap";
-import '../../../css/Header-section.css';
+// import '../../../css/Header-section.css';
 
 class Section extends Component {
     render() {
@@ -13,7 +13,7 @@ class Section extends Component {
                 <h2>small title</h2>
                 <div className="label generic--section">
                     <input className="generic--section__form" type="text" />
-                    <span class="focus-border"></span>
+                    <span className="focus-border"></span>
                 </div>
                 <h2>product type</h2>
                 <Dropdown>
@@ -31,7 +31,7 @@ class Section extends Component {
 
                 <div className="label generic--section">
                 <textarea className="generic--section__form"></textarea>
-                    <span class="focus-border"></span>
+                    <span className="focus-border"></span>
                 </div>
 
                 <Accordion defaultActiveKey="0">

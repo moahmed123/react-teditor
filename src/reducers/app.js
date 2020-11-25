@@ -25,6 +25,11 @@ export default (state = initialState, action) => {
             ...state,
             dataFirst: action.Alldata,
         }
+        // case constants.DROPDOWN_PAGES:
+        //     return {
+        //         ...state,                
+        //         pagesData: action.pagesData
+        //     }  
         default:
             return state
     }

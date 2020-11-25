@@ -7,5 +7,8 @@ export default keyMirror({
   INCREMENT_COUNTER: null,
   TOGGLE_TRANSITIONS: null,
   LOAD_DATA: null,
-  DATAFIRST: null
+  // Constants Data 
+  DATAFIRST: null, 
+  DROPDOWN_PAGES: null,
+  REGIONSOFPAGE: null
 })
