@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Container} from 'react-bootstrap';
 import { FaTrashAlt , FaPlus} from "react-icons/fa";
 
-import '../../css/Home.css';
+// import '../../css/Home.css';
 
 // Component
 import Header from '../Header/Header';

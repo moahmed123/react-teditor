@@ -5,23 +5,29 @@ import classNames from 'classnames';
 import { Dropdown} from 'react-bootstrap';
 import { FaCheck ,FaRocket ,FaAngleDown} from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
+
 import {app} from './../../actions'
 import '../../css/Header.css'
+
+
+// import '../../css/Header.css'
+
 
 class Header extends Component {
     constructor(props) {
         super(props);
-        // create a ref to store the textInput DOM element
+        // create a ref to store the dropdown DOM element
         this.dropdown = React.createRef();
         // this._PagesData = this._PagesData.bind(this);
       }
     componentDidMount(){
-        this.props.dispatch(app.getDropdownPages()); // Dispatch Data For Pages;              
+        this.props.dispatch(app.getDropdownPages()); // Dispatch Data For Pages;                
     }
     _PagesData(){
         if(!this.props.Pages){
             return <div>Loading ..... </div>
-        }else{             
+        }else{                         
+            document.getElementById("name_page").innerHTML = this.props.Pages[0].Name; // Add First Name Page. 
             return this.props.Pages.map( (Pages_DT, key) => {
                 return(       
                     // Onclick Fun : Send Regions Data Related This Page              
@@ -29,8 +35,8 @@ class Header extends Component {
                         className = { key == 0? 'active': null } // To Active First Page 
                         key={key} 
                         onClick = {
-                            (event) => {
-                                this.props.dispatch(app.reloadRegionsOfPages(Pages_DT.Regions)); 
+                            (event) => {                                
+                                this.props.dispatch(app.reloadRegionsOfPages(Pages_DT)); 
                                 this.dropdown.current.innerHTML = Pages_DT.Name ; // Replace Name By Active Pages
                                 // To Remove All Active Form Dropdown  
                                 for( let i = 0; i <event.target.parentElement.children.length; i++ ){
@@ -67,7 +73,7 @@ class Header extends Component {
                                 <div className="dropdown">
                                     <Dropdown>
                                         <Dropdown.Toggle variant="success" id='dropdown_pages'>
-                                            <span ref={this.dropdown} >Home page</span>
+                                            <span ref={this.dropdown} id='name_page'> home page</span>
                                             <FaAngleDown />
                                         </Dropdown.Toggle>
                                         <Dropdown.Menu>

@@ -49,7 +49,7 @@ export const getDropdownPages = () => (dispatch) => {
             const pagesData = Alldata.data.Pages.slice(1); // All Page Data Only To Send it 
             console.log(pagesData);
             // First Page for render
-            dispatch(reloadRegionsOfPages(pagesData[0].Regions));
+            dispatch(reloadRegionsOfPages(pagesData[0]));
             
             dispatch({ type: constants.DROPDOWN_PAGES, pagesData });
         })

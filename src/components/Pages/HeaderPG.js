@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Container} from 'react-bootstrap';
-import { FaTrashAlt , FaPlus} from "react-icons/fa";
+// import { FaTrashAlt , FaPlus} from "react-icons/fa";
 
-import '../../css/Home.css';
 
 // Component
 import Header from '../Header/Header';
 import HeaderData from '../Sidebar/Header/Header';
 // import Controls from './Test/Controls'
 //Image Local
-import ArrowLeft from '../../assets/images/arrow-left.png';
+// import ArrowLeft from '../../assets/images/arrow-left.png';
 
 
 class HeaderPG extends Component {
