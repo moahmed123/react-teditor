@@ -10,5 +10,7 @@ export default keyMirror({
   // Constants Data 
   DATAFIRST: null, 
   DROPDOWN_PAGES: null,
-  REGIONSOFPAGE: null
+  REGIONSOFPAGE: null,  
+  HEADER_USER_SECTIONS: null,
+  FOOTER_USER_SECTIONS: null
 })

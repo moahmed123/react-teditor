@@ -10,7 +10,18 @@ export default (state = initialState, action) => {
             return {
                 ...state,                
                 regions: action.regions
-            }                     
+            } 
+            
+        case constants.HEADER_USER_SECTIONS:
+        return {
+            ...state,                
+            UserSections: action.UserSections
+        } 
+        case constants.FOOTER_USER_SECTIONS:
+        return {
+            ...state,                
+            FooterUserSections: action.UserSections
+        } 
         default:
             return state
     }

@@ -2,7 +2,9 @@
 import { push } from 'react-router-redux'
 import axios from 'axios'
 import constants from './constants';
-import API from './Api_paths'
+import API from './Api_paths';
+import {headerUserSections} from './sidebar/header_data';
+import {FooterUserSections} from './sidebar/footer_data';
 
 export const initApp = () => (dispatch, getState) => {
     dispatch({ type: constants.INIT_APP })
@@ -40,7 +42,7 @@ export const firstData = () => (dispatch) => {
         });
 }
 
-// Get Page App For Dropdown
+// Get Page App For Dropdown return when load page 
 export const getDropdownPages = () => (dispatch) => {
     const urlAllData = API.getTemplateStructureV2;
     return axios.get(urlAllData)
@@ -50,8 +52,22 @@ export const getDropdownPages = () => (dispatch) => {
             console.log(pagesData);
             // First Page for render
             dispatch(reloadRegionsOfPages(pagesData[0]));
+            console.log(pagesData[0].Regions)
+            // Action For Sildbar Header To Get Data 
+            for(let i =0; i< pagesData[0].Regions.length; i++){
+                // Send Header Data For Slidbar 
+                if(pagesData[0].Regions[i].CodeName == 'header'){
+                    dispatch(headerUserSections(pagesData[0].Regions[i])) 
+                }
+                // Send Footer Data For Slidbar 
+                if(pagesData[0].Regions[i].CodeName == 'footer'){
+                    dispatch(FooterUserSections(pagesData[0].Regions[i])) 
+                }
+            }            
             
             dispatch({ type: constants.DROPDOWN_PAGES, pagesData });
+            // Header Data For Json 
+            // dispatch({ type: constants.HEADER_USER_SECTIONS, pagesData });
         })
         .catch((error) => {
             console.log(error.message);
