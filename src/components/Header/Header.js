@@ -95,11 +95,13 @@ class Header extends Component {
                                 </div>
                             </div>
                             <div className="header__style">
-                                <div className="header__style__shapre">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
+                                <Link to='/setting'>
+                                    <div className="header__style__shapre">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
