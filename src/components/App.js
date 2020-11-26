@@ -8,6 +8,7 @@ import Home from './Pages/Home';
 import HeaderPG from './Pages/HeaderPG';
 import FooterPG from './Pages/FooterPG';
 import SectionPG from './Pages/SectionPG';
+import SettingStylePG from './Pages/SettingStylePG'
 
 // LTR Direction
 import '../css/main-ltr.css'; 
@@ -31,7 +32,8 @@ class App extends Component {
                                 <Route exact path="/" component={Home} />
                                 <Route exact path="/header" component={HeaderPG} />
                                 <Route exact path="/footer" component={FooterPG} />
-                                <Route exact path="/section" component={SectionPG} />
+                                <Route exact path="/section/:id?/:pathParam2" component={SectionPG} />
+                                <Route exact path="/setting" component={SettingStylePG} />
 
                                 {/* <Route exact path="/page" component={Page} />
                 <Route exact path="/about" component={About} /> */}

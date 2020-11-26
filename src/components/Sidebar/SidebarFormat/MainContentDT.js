@@ -13,7 +13,7 @@ class MainContentDT extends Component {
             return this.props.MainContenData.UserSections.map((Sections, key)=>{
                 return (
                     <div className="label" key={key}>
-                        <Link to="/section">
+                        <Link to = {`/section/${Sections.id}`} >
                                     <img className="label__icon" src={Promoted} />
                                 <span> 
                                     {Sections.DescName}
