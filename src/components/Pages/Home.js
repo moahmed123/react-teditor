@@ -20,13 +20,13 @@ class Home extends Component {
 
         return (
             <section className={homeClass}>
-                <Container fluid>  
-                    <div className="row">
+                <Container fluid className="no-gutters p-0">  
+                    <div className="row no-gutters">
                         <div className="col-md-12">
                             <Header /> 
                         </div>
                     </div>
-                    <div className='row'>                    
+                    <div className='row no-gutters'>                    
                         <div className='col-md-3 p-0'> 
                             <div className="Home__sidebar">
                                 <div className="Home__sidebar__header">
@@ -34,11 +34,13 @@ class Home extends Component {
                                 </div>                          
                             </div>                          
                         </div>
-                        <div className='col-md-9'>                            
+                        <div className='col-md-9'>   
+                        <div className="main-frame">
                             <iframe src='http://qaz123.expandcart.com/' className='iframe-site'></iframe>
+                        </div> 
                         </div>
                     </div>
-                </Container>
+                </Container> 
             </section>            
         )
     }

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { FaTrashAlt, FaPlus } from "react-icons/fa";
 
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-// import '../../../css/Header-section.css';
+
 
 
 
@@ -14,7 +14,7 @@ class Header extends Component {
         return (
             <div className="generic-sidebar__section"> 
                 <div className="sidebar__header__section">
-                    <h2>Header</h2>
+                    <h2>Header </h2>
                     <div className="label">
                         <a href="#">
                             <span>slide show</span> 

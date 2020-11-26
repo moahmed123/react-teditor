@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../../../assets/svg/footer.svg';
 
 class FooterDT extends Component {
     render() {
@@ -7,9 +8,9 @@ class FooterDT extends Component {
             <div className="sidebar__header__section">
                 <div className="label">
                     <Link to="/Footer">
-                        <img src="../../assets/images/arrow-left.png" />
+                        <img className="label__icon" src={Footer} />
                         <span>{this.props.FooterData.Name}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10.513" height="10.513" viewBox="0 0 10.513 10.513">
+                        <svg className="label--delete" xmlns="http://www.w3.org/2000/svg" width="10.513" height="10.513" viewBox="0 0 10.513 10.513">
                             <g>
                                 <path d="M320.934 3.9L317.74.706a.308.308 0 0 1 0-.436.924.924 0 0 1 1.307 0l2.323 2.323a.924.924 0 0 1 0 1.307.308.308 0 0 1-.436 0z" transform="translate(-311.127)" />
                                 <g>

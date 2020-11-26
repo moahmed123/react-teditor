@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames';
 import { Dropdown} from 'react-bootstrap';
-import { FaCheck ,FaRocket ,FaAngleDown} from "react-icons/fa";
+import { FaCheck ,FaRocket ,FaAngleDown , FaBars} from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
-import {app} from './../../actions'
-import '../../css/Header.css'
-
+import {app} from './../../actions';
+import Shuttl from '../../assets/svg/shuttle.svg';
+import Reset from '../../assets/svg/reset.svg';
+import ShuttlBlue from '../../assets/svg/shuttle-blue.svg';
 
 // import '../../css/Header.css'
 
@@ -21,7 +22,18 @@ class Header extends Component {
         // this._PagesData = this._PagesData.bind(this);
       }
     componentDidMount(){
-        this.props.dispatch(app.getDropdownPages()); // Dispatch Data For Pages;                
+        this.props.dispatch(app.getDropdownPages()); // Dispatch Data For Pages;    
+        //open menu in mobile
+        var menu ,sideBar, body;
+         menu = document.querySelector('.burger-menu');
+         sideBar = document.querySelector('.Home__sidebar');
+         function toggleSideBar (){
+            menu.addEventListener('click' , function (){
+                sideBar.classList.toggle('home-sidebar--active');
+            });
+         }
+         toggleSideBar();
+
     }
     _PagesData(){
         if(!this.props.Pages){
@@ -91,12 +103,25 @@ class Header extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-9">
-                <div className="Header__controls">
-                    <button className="Header__controls__save"><FaCheck className="save" /> Save </button>
-                    <button className="Header__controls__publish"> <FaRocket className="publish" />Publish</button>
-                </div>
+                    {/* navbar for mobile */}
+                    <div className="col-6 d-xs">
+                        <span className="burger-menu" >
+                            <FaBars />
+                        </span>
                     </div>
+                    {/* end navbar for mobile */}
+                    <div className="col-md-9 col-6">
+                        <div className="Header__controls">
+                        <button className="Header__controls__save d-block">EN</button>
+                        <button className="Header__controls__save">Reset </button>
+                        <img className="Header__controls__reset" src={Reset} />
+                        <button className="Header__controls__publish"> 
+                        <img className="controls-publish--lg" src={Shuttl} /> 
+                        Publish</button>
+                        <img className="controls-publish--xs" src={ShuttlBlue} /> 
+                    </div>
+                    </div>
+                
                 </div>
          
             </header> 

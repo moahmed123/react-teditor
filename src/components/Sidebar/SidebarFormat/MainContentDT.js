@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FaTrashAlt, FaPlus } from "react-icons/fa";
-
+import Trash from '../../../assets/svg/trash.svg';
+import Promoted from '../../../assets/svg/promoted-product.svg';
 
 class MainContentDT extends Component {
     componentDidMount(){
@@ -13,7 +14,11 @@ class MainContentDT extends Component {
                 return (
                     <div className="label" key={key}>
                         <Link to="/section">
-                            <span>{Sections.DescName}</span> <FaTrashAlt />
+                                    <img className="label__icon" src={Promoted} />
+                                <span> 
+                                    {Sections.DescName}
+                                </span> 
+                            <img className="label--delete" src={Trash} />
                         </Link>
                     </div>
                 )

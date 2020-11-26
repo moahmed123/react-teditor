@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="25" viewBox="0 0 46 25">
+  <g id="main_banner" data-name="main banner" transform="translate(-109 -2374)">
+    <g id="Rectangle_227" data-name="Rectangle 227" transform="translate(109 2374)" fill="#fff" stroke="#a2a6b7" stroke-width="0.5">
+      <rect width="46" height="25" stroke="none"/>
+      <rect x="0.25" y="0.25" width="45.5" height="24.5" fill="none"/>
+    </g>
+    <g id="Group_149" data-name="Group 149" transform="translate(53.135 2331.543)" opacity="0.37">
+      <path id="Path_75" data-name="Path 75" d="M114.312,176H96.47c-.259,0-.47.152-.47.339v8.822c0,.187.21.339.47.339h17.843c.259,0,.47-.152.47-.339v-8.822C114.782,176.152,114.572,176,114.312,176ZM97,184.822l3.693-3.2,1.515,1.314.006.005,2.172,1.883Zm16.84,0h-8.232l-2.442-2.117,4.687-4.448,5.987,5.682Zm0-2-5.613-5.328a.59.59,0,0,0-.748,0l-4.93,4.679-1.5-1.3a.594.594,0,0,0-.722,0l-3.4,2.945v-7.139h16.9Z" transform="translate(-17.935 -125.544)" fill="#a2a6b7"/>
+      <path id="Path_76" data-name="Path 76" d="M145.356,218.713A1.356,1.356,0,1,0,144,217.357,1.356,1.356,0,0,0,145.356,218.713Zm0-2.035a.678.678,0,1,1-.678.678A.678.678,0,0,1,145.356,216.678Z" transform="translate(-62.074 -164.108)" fill="#a2a6b7"/>
+    </g>
+    <rect id="Rectangle_228" data-name="Rectangle 228" width="14" height="3" transform="translate(112 2382)" fill="#a2a6b7"/>
+    <rect id="Rectangle_255" data-name="Rectangle 255" width="10" height="3" transform="translate(112 2387)" fill="#a2a6b7"/>
+  </g>
+</svg>

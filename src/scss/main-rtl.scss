@@ -1,2 +1,13 @@
+
+//Fonts for RLT
+@font-face {
+    font-family: 'Cairo';
+    src: url('../assets/Fonts/AR-fonts/Cairo/Cairo.eot'); /* IE9 Compat Modes */
+    src: url('../assets/Fonts/AR-fonts/Cairo/Cairo.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/Fonts/AR-fonts/Cairo/Cairo.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/Fonts/AR-fonts/Cairo/Cairo.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../assets/Fonts/AR-fonts/Cairo/Cairo.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../assets/Fonts/AR-fonts/Cairo/Cairo.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
 @import 'Directions/rtl-direction';
 @import 'main';

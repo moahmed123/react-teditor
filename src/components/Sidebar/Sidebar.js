@@ -11,7 +11,7 @@ import FooterDT from './SidebarFormat/FooterDT';
 import MainContentDT from './SidebarFormat/MainContentDT';
 
 //LocalImage
-// import ArrowLeft from '../../assets/images/arrow-left.png';
+import Settings from '../../assets/svg/settings.svg';
 import { FaPlus } from "react-icons/fa";
 
 import { app } from '../../actions';
@@ -26,7 +26,7 @@ class Sidebar extends Component {
     }
     _PageName(){
         if(this.props.PageResions){
-            return <h2>{this.props.PageResions.Name}</h2>
+            return <h2>{this.props.PageResions.Name} <img src={Settings} /></h2>
         }
     }
     _getData(){

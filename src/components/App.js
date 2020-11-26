@@ -3,17 +3,14 @@ import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
-// import '../css/App.css'
 
 import Home from './Pages/Home';
 import HeaderPG from './Pages/HeaderPG';
 import FooterPG from './Pages/FooterPG';
 import SectionPG from './Pages/SectionPG';
-// import Page from './Page'
-// import About from './About'
-// import Footer from './Test/Footer'
+
 // LTR Direction
-import '../css/main-ltr.css';
+import '../css/main-ltr.css'; 
 // RTL Direction
 // import '../css/main-rtl.css';
 

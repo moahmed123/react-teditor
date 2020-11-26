@@ -1,13 +1,25 @@
 //Fonts for LTR
 @font-face {
     font-family: 'Montserrat';
-    src: url('../assets/Fonts/Montserrat.eot'); /* IE9 Compat Modes */
-    src: url('../assets/Fonts/Montserrat.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../assets/Fonts/Montserrat.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../assets/Fonts/Montserrat.woff') format('woff'), /* Pretty Modern Browsers */
-    url('../assets/Fonts/Montserrat.ttf') format('truetype'), /* Safari, Android, iOS */
-    url('../assets/Fonts/Montserrat.svg#svgFontName') format('svg'); /* Legacy iOS */
+    src: url('../assets/Fonts/EN-fonts/Montserrat/Montserrat.eot'); /* IE9 Compat Modes */
+    src: url('../assets/Fonts/EN-fonts/Montserrat/Montserrat.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/Fonts/EN-fonts/Montserrat/Montserrat.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/Fonts/EN-fonts/Montserrat/Montserrat.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../assets/Fonts/EN-fonts/Montserrat/Montserrat.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../assets/Fonts/EN-fonts/Montserrat/Montserrat.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+//Fonts for LTR
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../assets/Fonts/EN-fonts/HelveticaNeue/HelveticaNeue.eot'); /* IE9 Compat Modes */
+    src: url('../assets/Fonts/EN-fonts/HelveticaNeue/HelveticaNeue.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/Fonts/EN-fonts/HelveticaNeue/HelveticaNeue.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/Fonts/EN-fonts/HelveticaNeue/HelveticaNeue.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../assets/Fonts/EN-fonts/HelveticaNeue/HelveticaNeue.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../assets/Fonts/EN-fonts/HelveticaNeue/HelveticaNeue.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 
+//LTR direction
 @import 'Directions/ltr-direction';
+//Main scss
 @import 'main';

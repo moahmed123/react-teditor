@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10.513" height="10.513" viewBox="0 0 10.513 10.513">
+  <g id="pushpin" transform="translate(0 0)">
+    <path id="Path_35" data-name="Path 35" d="M320.934,3.9,317.74.706a.308.308,0,0,1,0-.436.924.924,0,0,1,1.307,0l2.323,2.323a.924.924,0,0,1,0,1.307A.308.308,0,0,1,320.934,3.9Z" transform="translate(-311.127 0)"/>
+    <g id="Group_65" data-name="Group 65" transform="translate(0 1.65)">
+      <g id="Group_63" data-name="Group 63" transform="translate(0 4.543)">
+        <path id="Path_36" data-name="Path 36" d="M.894,304.038a3.43,3.43,0,0,0-.882,1.521.308.308,0,0,0,.378.378,3.431,3.431,0,0,0,1.521-.882l2.41-2.41L3.3,301.628Z" transform="translate(0 -301.628)"/>
+      </g>
+      <path id="Path_37" data-name="Path 37" d="M105.395,127.115a2.827,2.827,0,0,0-1.5.786l-.357.357a.308.308,0,0,0,0,.436l4.065,4.065a.308.308,0,0,0,.436,0l.357-.357a2.842,2.842,0,0,0,.774-2.578l-2.7-2.7a2.83,2.83,0,0,0-1.077-.012Z" transform="translate(-101.322 -126.11)"/>
+      <g id="Group_64" data-name="Group 64" transform="translate(5.843 0)">
+        <path id="Path_38" data-name="Path 38" d="M0,0H1.189V3.08H0Z" transform="translate(0 0.841) rotate(-45)"/>
+      </g>
+    </g>
+  </g>
+</svg>
