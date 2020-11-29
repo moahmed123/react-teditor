@@ -1,0 +1,275 @@
+// extend color ans family
+%main-label{
+    font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+    color: $main-color;  
+    text-transform: capitalize;
+    font-weight: bold;
+    @if $start == 'left'{
+        font-family: 'HelveticaNeue';
+    } @else{
+        font-family: 'Cairo';
+    }  
+}
+.Home {
+    .Home__sidebar{
+        &.setting--sidebar{
+            width: 25%;
+            box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+            background-color: #ffffff; 
+            .Home__sidebar__header{
+                font-weight: bold;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 50px;
+          
+                .setting--sidebar__controls{
+                    display: flex;
+                    > div{
+                        border-radius: 50%;
+                        -webkit-border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        -ms-border-radius: 50%;
+                        -o-border-radius: 50%; 
+                        width: 32px;
+                        height: 32px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: solid 1px;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                        &.delete{
+                            margin-#{$end}: 10px;
+                            border-color: #d6d6e1;
+                        }
+                        &.check{
+                            border-color: #0eac13;
+                        }
+                        img{
+                            width: 13px;
+                        }
+                    }
+                }
+            }
+            .setting--sidebar__header{
+               @extend %main-label;
+            }
+            .setting--sidebar__color{
+                margin-bottom: 40px;
+                .sidebar__color__main{
+                    border: solid 1px #d5d5e0;
+                    padding: 15px;
+                    .color__main__caption{ 
+                        @extend %main-label;
+                        font-size:calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                        margin-bottom: 20px;
+                    }
+                    .color__main__content{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        .main__content__circle{
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 50%;
+                            -webkit-border-radius: 50%;
+                            -moz-border-radius: 50%;
+                            -ms-border-radius: 50%;
+                            -o-border-radius: 50%;
+                            margin-#{$end}:15px;    
+                        }
+                        .main__content__info{
+                            @extend %main-label;
+                            width: 88%;
+                            p{
+                                font-size:calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                                padding-bottom: 5px;
+                                border-bottom: solid 1px #d5d5e0;
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                } 
+            }
+            .setting--sidebar__fonts{
+                .sidebar__fonts__main{
+                    .fonts__main__caption{
+                        @extend %main-label;
+                        font-size:calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                        margin-bottom: 20px;
+                    }
+                    .fonts__main__info{
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                    }
+                    .main__info__font{
+                        display: flex;
+                        flex-direction: column;
+                        width: 30.333%;
+                        justify-content: center;
+                        align-items: center;
+                        border: solid 1px #d5d5e0;
+                        padding: 15px;
+                        margin-bottom: 15px;
+
+                        p , span{
+                            @extend %main-label;
+                            text-align: center;
+                        }
+                        p{
+                            font-size:calc(15px + (15 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                            font-weight: 500;
+                            margin-bottom: 0;
+                        }
+                        span{
+                            font-size:calc(9px + (9 - 6) * ((100vw - 1024px) / (1920 - 1024)));
+                            color: #4c4c51ba;
+                        }
+                    }
+                }
+            }
+        }
+    } 
+}  
+@include smallLaptop{
+    .Home {
+        .Home__sidebar{
+            &.setting--sidebar{
+                width: 30%;
+                .Home__sidebar__header{
+                    margin-bottom: 20px;
+                    .setting--sidebar__controls {
+                        > div{
+                            width: 25px;
+                            height: 25px;
+                            img{
+                                width: 11px;
+                            }
+                            &.delete{
+                                margin-#{$end}: 5px;
+                            }
+                        }
+                    }
+                }
+                .setting--sidebar__color{
+                    margin-bottom: 20px;
+                    .sidebar__color__main {
+                        .color__main__caption{
+                            margin-bottom: 10px;
+                        }
+                        .color__main__content {
+                            .main__content__circle{
+                                margin-#{$end}: 5px;
+                            }
+                            .main__content__info{
+                                width: 80%;
+                            }
+                        }
+                    }
+                }
+                .setting--sidebar__fonts {
+                    .sidebar__fonts__main {
+                        .fonts__main__caption{
+                            margin-bottom: 10px;
+                        }
+                        .main__info__font{
+                            padding: 5px;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@include mediumLaptop{
+    .Home {
+        .Home__sidebar{
+            &.setting--sidebar{
+                width: 30%;
+                .Home__sidebar__header{
+                    margin-bottom: 20px;
+                    .setting--sidebar__controls {
+                        > div{
+                            width: 25px;
+                            height: 25px;
+                            img{
+                                width: 11px;
+                            }
+                            &.delete{
+                                margin-#{$end}: 5px;
+                            }
+                        }
+                    }
+                }
+                .setting--sidebar__color{
+                    margin-bottom: 20px;
+                    .sidebar__color__main {
+                        .color__main__caption{
+                            margin-bottom: 10px;
+                        }
+                        .color__main__content {
+                            .main__content__circle{
+                                margin-#{$end}: 5px;
+                            }
+                            .main__content__info{
+                                width: 80%;
+                            }
+                        }
+                    }
+                }
+                .setting--sidebar__fonts {
+                    .sidebar__fonts__main {
+                        .fonts__main__caption{
+                            margin-bottom: 10px;
+                        }
+                        .main__info__font{
+                            padding: 5px;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@include portraitTablet{
+    %main-label{
+        font-size: calc(17px + (17 - 15) * ((100vw - 320px) / (768 - 320)));
+    }
+    .Home {
+        .Home__sidebar{
+            &.setting--sidebar{
+                width: 100%; 
+                .setting--sidebar__fonts {
+                    .sidebar__fonts__main {
+                        .fonts__main__caption{
+                            font-size: calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                        }
+                        .main__info__font {
+                            span{
+                                font-size: calc(9px + (9 - 6) * ((100vw - 320px) / (768 - 320)));
+                            }
+                        }
+                    }
+                }
+                .setting--sidebar__color {
+                    .sidebar__color__main {
+                        .color__main__content {
+                        .main__content__info{
+                            width: 88%;
+                        }
+                        .main__content__circle{
+                            margin-#{$end}: 10px;
+                        }
+                     }
+                    }
+                }
+            }
+        }
+    }
+}

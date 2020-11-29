@@ -20,8 +20,8 @@ class SectionPG extends Component {
 
         return (
             <section className={homeClass}>
-                <Container fluid>  
-                    <div className="row">
+                <Container fluid className="no-gutters p-0">  
+                    <div className="row no-gutters">
                         <div className="col-md-12">
                             <Header /> 
                         </div>
