@@ -9,54 +9,42 @@ import { Switch } from 'react-switch-input';
 class Footer extends Component {
     //document.getElementById('custom-switch').checked = true
     _handleChangeSwitch(e){  
-        document.getElementById(`${e.target.name}`).checked = false
-        console.log(e.target.checked)
+        // document.getElementById(`${e.target.name}`).checked = false
+        // console.log(e.target.checked)
+        console.log('action', e.target.id, e.target.checked )
     }
     __FooterData(){
         if(this.props.FooterData){
             return this.props.FooterData.UserSections.map((data, key)=>{
                 return(
                     <div className="label" key={key}>
-                        <Link to="#">
-                            <span>{data.DescName}</span>
-                        </Link>
-                        {/* {
-                            data.State == "enabled"?                               
-                                <input type='checkbox' name={`switch_id_${key}`} checked id={`switch_id_${key}`} onChange={this._handleChangeSwitch}/>
-                            :                                
-                                    <input type='checkbox' name={`switch_id_${key}`} id={`switch_id_${key}`} onChange={this._handleChangeSwitch}/>
-                        }  */}
-                        {/* {
-                            data.State == "enabled"?                               
-                                <Switch checked = {true} name={`switch_id_${key}`} onChange={this._handleChangeSwitch}/>
-                            :                                
-                                <Switch checked = {false} name={`switch_id_${key}`} onChange={this._handleChangeSwitch}/>
-                        }   */}
+                        <a href="#">
+                            <span>{data.DescName}</span>                     
                         {
                             data.State == 'enabled' ? 
                                 <Form>
                                     <Form.Check 
-                                        type="switch"
-                                        checked = "checked"
+                                        type="switch"                                        
                                         id={`switch_id_${key}`}
-                                        name={`switch_id_${key}`}
+                                        checked="checked"                   
+                                        // name={`switch_id_${key}`}
                                         label=""
                                         onChange={this._handleChangeSwitch}
                                     />
                                 </Form>
                             : 
                                 <Form>
-                                    <Form 
-                                        type="switch"
-                                        checked = "disable"
+                                    <Form.Check 
+                                        type="switch"                                        
                                         id={`switch_id_${key}`}
-                                        name={`switch_id_${key}`}
+                                        // name={`switch_id_${key}`}
                                         label=""
                                         onChange={this._handleChangeSwitch}
                                     />
                                 </Form>
                         }
-                    </div>
+                           </a>
+                    </div>                    
                 )
             })            
         }
