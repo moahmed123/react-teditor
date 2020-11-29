@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Container} from 'react-bootstrap';
 // import { FaTrashAlt , FaPlus} from "react-icons/fa";
@@ -8,12 +9,19 @@ import { Container} from 'react-bootstrap';
 // Component
 import Header from '../Header/Header';
 import HeaderData from '../Sidebar/Header/Header';
+// import { header_data } from '../../actions';
 // import Controls from './Test/Controls'
 //Image Local
 // import ArrowLeft from '../../assets/images/arrow-left.png';
 
-
-class HeaderPG extends Component {
+class HeaderPG extends Component {   
+    _headerData(){
+        if(this.props.UserSections){
+          return  <HeaderData HeaderData = {this.props.UserSections}/>;
+        }else{
+            return <div> Loading .... </div>
+        }
+    }
     render() {
         const homeClass = classNames('Home', {});
 
@@ -29,7 +37,7 @@ class HeaderPG extends Component {
                         <div className='col-md-3 p-0'>  
                             <div className="Home__sidebar">
                                 <div className="Home__sidebar__header">                         
-                                    <HeaderData/>          
+                                    {this._headerData()}
                                 </div>
                             </div>                          
                         </div>
@@ -43,4 +51,7 @@ class HeaderPG extends Component {
     }
 }
 
-export default HeaderPG
+const mapStateToProps = state => ({
+    UserSections : state.slidebar.UserSections
+})
+export default connect(mapStateToProps)(HeaderPG);

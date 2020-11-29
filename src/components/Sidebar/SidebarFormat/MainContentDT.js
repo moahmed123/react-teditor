@@ -4,6 +4,8 @@ import { FaTrashAlt, FaPlus } from "react-icons/fa";
 import Trash from '../../../assets/svg/trash.svg';
 import Promoted from '../../../assets/svg/promoted-product.svg';
 
+import KanbanDND from '../Drag_Drop/KanbanDND';
+
 class MainContentDT extends Component {
     componentDidMount(){
         console.log('main contant' , this.props.MainContenData)
@@ -35,7 +37,7 @@ class MainContentDT extends Component {
                         <h6 className='text-center not-found-sc'> No Section Found </h6>
                 }
                 
-               
+               <KanbanDND/>
                 {this._UserSections()}                
             </div>
         )

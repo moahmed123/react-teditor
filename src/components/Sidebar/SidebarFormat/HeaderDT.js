@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
 import Header from '../../../assets/svg/header.svg';
+// import { header_data } from '../../../actions';
 
-
-class HeaderDT extends Component {
-    render() {
+class HeaderDT extends Component {        
+    render() {                
         return (
             <div className="sidebar__header__section">                
                     <div className="label">
@@ -25,12 +26,10 @@ class HeaderDT extends Component {
                                     </g>
                                 </g>
                             </svg>
-
                         </Link>
                     </div>
                 </div>           
         )
     }
 }
-
 export default HeaderDT

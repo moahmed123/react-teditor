@@ -48,7 +48,7 @@ class Header extends Component {
                         key={key} 
                         onClick = {
                             (event) => {                                
-                                this.props.dispatch(app.reloadRegionsOfPages(Pages_DT)); 
+                                this.props.dispatch(app.reloadRegionsOfPages(Pages_DT));                                
                                 this.dropdown.current.innerHTML = Pages_DT.Name ; // Replace Name By Active Pages
                                 // To Remove All Active Form Dropdown  
                                 for( let i = 0; i <event.target.parentElement.children.length; i++ ){

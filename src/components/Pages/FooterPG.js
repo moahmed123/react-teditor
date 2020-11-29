@@ -3,17 +3,26 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Container} from 'react-bootstrap';
 import { FaTrashAlt , FaPlus} from "react-icons/fa";
+import { connect } from 'react-redux';
 
 // import '../../css/Home.css';
 
 // Component
 import Header from '../Header/Header';
 import FooterData from '../Sidebar/Footer/Footer';
+// import { header_data } from '../../actions';
 
 
 
 
 class FooterPG extends Component {
+    _FooterData(){
+        if(this.props.FooterUserSections){
+          return  <FooterData FooterData = {this.props.FooterUserSections}/>;
+        }else{
+            return <div> Loading .... </div>
+        }
+    }
     render() {
         const homeClass = classNames('Home', {});
 
@@ -29,7 +38,7 @@ class FooterPG extends Component {
                         <div className='col-md-3 p-0'>  
                             <div className="Home__sidebar">
                                 <div className="Home__sidebar__header">                         
-                                    <FooterData/>          
+                                    {this._FooterData()}    
                                 </div>
                             </div>                          
                         </div>
@@ -43,4 +52,8 @@ class FooterPG extends Component {
     }
 }
 
-export default FooterPG
+
+const mapStateToProps = state => ({
+    FooterUserSections : state.slidebar.FooterUserSections
+})
+export default connect(mapStateToProps)(FooterPG);

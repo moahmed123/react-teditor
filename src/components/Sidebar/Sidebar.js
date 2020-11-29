@@ -22,7 +22,7 @@ import { app } from '../../actions';
 class Sidebar extends Component {
     componentDidMount(){
         // this.dispatch.firstData()
-        this.props.dispatch(app.firstData());        
+        // this.props.dispatch(app.firstData());        
     }
     _PageName(){
         if(this.props.PageResions){
