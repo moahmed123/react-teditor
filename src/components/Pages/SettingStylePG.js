@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,useState } from 'react';
 // import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Container} from 'react-bootstrap';
@@ -8,13 +8,22 @@ import { Container} from 'react-bootstrap';
 // Component
 import Header from '../Header/Header';
 import HeaderData from '../Sidebar/Header/Header';
+import Modal from "react-bootstrap/Modal";
+import { Button } from 'react-bootstrap';
+
 // import Controls from './Test/Controls'
 //Image Local
 import check from '../../assets/svg/check-mark.svg';
 import deleteMark from '../../assets/svg/delete.svg';
 
-
 class SettingStylePG extends Component {
+ 
+            state = {
+                isOpen: false
+              };
+              openModal = () => this.setState({ isOpen: true });
+  closeModal = () => this.setState({ isOpen: false });
+
     render() {
         const homeClass = classNames('Home', {});
 
@@ -31,7 +40,7 @@ class SettingStylePG extends Component {
                             <div className="Home__sidebar setting--sidebar">
                                 <div className="Home__sidebar__header">                         
                                       <h4 className="setting--sidebar__header">  Main Theme </h4> 
-                                            
+    
                                     <div className="setting--sidebar__controls">
                                         <div className="delete">
                                             <img  src={deleteMark} />
@@ -89,6 +98,28 @@ class SettingStylePG extends Component {
                                         </div>
                                     </div> 
                                 </div>
+                         
+                    {/* back modal Button */}
+                    <>
+                        <div className="d-flex align-items-center justify-content-center">
+                        <Button variant="primary" onClick={this.openModal}>
+                            Launch demo modal
+                        </Button>
+                        </div>
+                        <Modal centered className="generic-alert" show={this.state.isOpen} onHide={this.closeModal} backdrop="static">
+                        <Modal.Header>
+                            <Modal.Title>You will missed your update</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</Modal.Body>
+                        <Modal.Footer>
+                      
+                            <Button variant="outline-secondary"  onClick={this.closeModal}>Cancel</Button>{' '}
+
+                            <Button variant="danger">Confirm</Button>
+
+                        </Modal.Footer>
+                        </Modal>
+                    </>
                             </div>                          
                         </div>
                         <div className='col-md-9'>  
@@ -98,8 +129,12 @@ class SettingStylePG extends Component {
                         </div>
                     </div>
                 </Container>
-            </section>            
+            </section>    
+            
+            
+            
         )
     }
+    
 }
 export default SettingStylePG
