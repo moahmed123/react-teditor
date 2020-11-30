@@ -5,7 +5,28 @@ import Trash from '../../../assets/svg/trash.svg';
 import Promoted from '../../../assets/svg/promoted-product.svg';
 
 import KanbanDND from '../Drag_Drop/KanbanDND';
-
+import Board from '@lourenci/react-kanban'
+import '@lourenci/react-kanban/dist/styles.css'
+const board = {
+    columns: [
+      {
+        id: 1,
+        title: '',
+        cards: [
+          {
+            id: 1,
+            title: 'Add card',
+            description: 'Add capability to add a card in a column'
+          },
+          {
+            id: 2,
+            title: 'Add card',
+            description: 'Add capability to add a card in a column'
+          },
+        ]
+      }
+    ]
+  }
 class MainContentDT extends Component {
     componentDidMount(){
         console.log('main contant' , this.props.MainContenData)
@@ -15,6 +36,9 @@ class MainContentDT extends Component {
             return this.props.MainContenData.UserSections.map((Sections, key)=>{
                 return (
                     <div className="label" key={key}>
+                    <Board initialBoard={board} />
+
+
                         <Link to = {`/section/${Sections.id}`} >
                                     <img className="label__icon" src={Promoted} />
                                 <span> 

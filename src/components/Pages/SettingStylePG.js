@@ -15,18 +15,43 @@ import { Button } from 'react-bootstrap';
 //Image Local
 import check from '../../assets/svg/check-mark.svg';
 import deleteMark from '../../assets/svg/delete.svg';
+import { ChromePicker ,AlphaPicker,BlockPicker ,CirclePicker   } from 'react-color';
 
 class SettingStylePG extends Component {
  
             state = {
-                isOpen: false
+                isOpen: false,
+                displayColorPicker: false,
+                background: null
               };
-              openModal = () => this.setState({ isOpen: true });
-  closeModal = () => this.setState({ isOpen: false });
-
+              handleClick = () => {
+                this.setState({ displayColorPicker: !this.state.displayColorPicker })
+                console.log('handleClick');
+              };
+            
+              handleClose = () => { 
+                this.setState({ displayColorPicker: false })
+                console.log('handleClose');
+              };
+            openModal = () => this.setState({ isOpen: true });
+            closeModal = () => this.setState({ isOpen: false });
+            handleChangeComplete = (color, event) => {
+                this.setState({ background: color.hex });
+                console.log('handleChangeComplete', color.hex)
+              };
     render() {
         const homeClass = classNames('Home', {});
-
+        const popover = {
+            position: 'absolute',
+            zIndex: '2',
+          }
+          const cover = {
+            position: 'fixed',
+            top: '0px',
+            right: '0px',
+            bottom: '0px',
+            left: '0px',
+          }
         return (
             <section className={homeClass}>
                 <Container fluid className="no-gutters p-0">  
@@ -55,9 +80,25 @@ class SettingStylePG extends Component {
                                     <div className="sidebar__color__main">
                                         <h5 className="color__main__caption">main color</h5>
                                         <div className="color__main__content">
-                                            <div className="main__content__circle" style={{background: '#093784'}}></div>
+                                           <div>
+
+                              
+                                                <div onClick={ this.handleClick } className="main__content__circle" style={{background: '#093784'}}></div> 
+                                                {
+                                                    this.state.displayColorPicker ? 
+                                                        <div style={ popover }>
+                                                            <div style={ cover } onClick={ this.handleClose }/>
+                                                             <ChromePicker onChangeComplete={ this.handleChangeComplete } />
+                                                             {/* <SketchPicker onChangeComplete={ this.handleChangeComplete } /> */}
+                                                        </div>
+                                                    
+                                                    :
+                                                        null
+                                                }
+                                            </div>
+                                          
                                             <div className="main__content__info">
-                                                <p>#4c4c51</p>
+                                            <p>{this.state.background}</p>
                                             </div>
                                         </div>
  
