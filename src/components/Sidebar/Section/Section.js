@@ -9,13 +9,8 @@ class Section extends Component {
     constructor(props) {
         super(props);
     }
-    componentDidMount(){
-        // let { parameter1, parameter2 } = useParams();
-        // // const { parameter1, parameter2 } = this.props.match.params;
-        // console.log(parameter1, parameter2 ) 
-        
-        // console.log(window.location.pathname)       
-        this.props.dispatch(GetSCFLD.getSectionFields())   
+    componentDidMount(){    
+        this.props.dispatch(GetSCFLD.getSectionFields());
     }
    
     render() {
@@ -69,9 +64,9 @@ class Section extends Component {
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
-                </div>
-                <Link to='section'> section </Link>
+
             </div>
+        </div>
 
         )
     }
