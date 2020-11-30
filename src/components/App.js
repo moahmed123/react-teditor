@@ -31,13 +31,15 @@ class App extends Component {
                             <Switch location={location}>
                                 <Route exact path="/" component={Home} />
                                 <Route exact path="/header" component={HeaderPG} />
-                                <Route exact path="/footer" component={FooterPG} />
-                                <Route exact path="/section/:id?/:pathParam2" component={SectionPG} />
+                                <Route exact path="/footer" component={FooterPG} />                                
+                                {/* <Route exact path="/section/:id" component={SectionPG} /> */}
+                                <Route exact path="/section/:id?/:section" component={SectionPG} />
                                 <Route exact path="/setting" component={SettingStylePG} />
 
                                 {/* <Route exact path="/page" component={Page} />
                 <Route exact path="/about" component={About} /> */}
                             </Switch>
+                            
                         </CSSTransition>
                     </TransitionGroup>
                 )}

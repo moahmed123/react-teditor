@@ -1,4 +1,5 @@
 const ApiPaths = {
-    getTemplateStructureV2:'http://qaz123.expandcart.com/admin/teditor/teditor/getTemplateStructureV2'   
+    getTemplateStructureV2:'http://qaz123.expandcart.com/admin/teditor/teditor/getTemplateStructureV2',
+    getSectionFieldsV2:"http://qaz123.expandcart.com/admin/teditor/teditor/getSectionFieldsV2"
 };
 export default ApiPaths;
