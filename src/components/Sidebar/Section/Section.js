@@ -56,6 +56,7 @@ class Section extends Component {
                         </Accordion.Collapse>
                     </Card>
                     </Accordion>
+          
             </div>
             <Link to ='section'> section </Link>
         </div> 
