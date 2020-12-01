@@ -33,7 +33,25 @@ class TypeCheckbox extends Component {
     _changeCheckboxVal = (e) => {        
         let newCheckboxVal = {"key": e.target.id,"value": e.target.value,};
         // let newCheckboxVal= ['name']
-        this.props.dispatch(SaveSCFLD.collectionAllChanged(newCheckboxVal))
+        if(this.props.newFields){
+            // console.log(this.props.newFields)
+            // let x = [];
+            // x.push(this.props.newFields);
+            // x.push(newCheckboxVal);
+            // const obj3 = { ...this.props.newFields, ...newCheckboxVal };
+            // console.log(obj3)
+            // let x = this.props.newFields.concat(newCheckboxVal)
+            // let x = {old: this.props.newFields, new : newCheckboxVal}
+            // this.props.dispatch(SaveSCFLD.newValFields(x));
+            // console.log(this.props.newFields)
+            // this.props.dispatch(SaveSCFLD.newValFields(x));
+            let actionSaved = this.props.newFields;
+            this.props.dispatch(SaveSCFLD.newValFields(newCheckboxVal,actionSaved));
+        }else{
+            // this.props.dispatch(SaveSCFLD.newValFields(newCheckboxVal));
+            // console.log("this.props.newFields")
+        }
+        // this.props.dispatch(SaveSCFLD.newValFields(newCheckboxVal))
     }
     render() {
         return (
@@ -52,5 +70,7 @@ class TypeCheckbox extends Component {
         )
     }
 }
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+    newFields: state.newValFields.newFields
+})
 export default connect(mapStateToProps)(TypeCheckbox)

@@ -9,12 +9,19 @@ import deleteMark from '../../../assets/svg/delete.svg';
 import arFlag from '../../../assets/images/soady flag.png';
 import trash from '../../../assets/svg/trash.svg';
 import { FaBars } from "react-icons/fa";
+import Select from 'react-select';
 
 // Sections Fields 
 import TypeText from './Fields/TypeText';
 import TypeCheckbox from './Fields/TypeCheckbox';
+import SelectLookup from './Fields/SelectLookup';
+
+//action Btn Included {save, Cancel}
+import SaveBtn from './SaveBtn';
+
 
 class Section extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -43,11 +50,19 @@ class Section extends Component {
                 // View For Type Checkbox
                 else if (Fields.Type == "checkbox"){
                     return <TypeCheckbox key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
+                // View For Type sselect Lookup
+                }else if(Fields.Type == "sselect-lookup"){
+                    return <SelectLookup key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
                 }
             })
         }        
     }
     render() {
+        const colourOptions = [
+            { value: 'chocolate', label: 'Chocolate1' },
+            { value: 'strawberry', label: 'Strawberry1' },
+            { value: 'vanilla', label: 'Vanilla1' }
+          ]
         if(!this.props.sectionFieldsDT){
             return <div>Loading ...</div>
         }
@@ -60,9 +75,10 @@ class Section extends Component {
                         <div className="delete">
                             <img src={deleteMark} />
                         </div>
-                        <div className="check">
+                        {/* <Button className="check" onclick={()=> console.log('save')}>
                             <img src={check} />
-                        </div>
+                        </Button> */}
+                        <SaveBtn/>
                     </div>
                 </div>
                 <div className="section--page__flags">
@@ -193,7 +209,16 @@ class Section extends Component {
                     </Card>
 
                 </Accordion>
+                <Select
+                    defaultValue={[colourOptions[0]]}
+                    isMulti
+                    name="colors"
+                    options={colourOptions}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                />
             </>                
+
 
         )
     }

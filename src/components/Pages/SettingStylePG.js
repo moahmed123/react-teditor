@@ -15,30 +15,33 @@ import { Button } from 'react-bootstrap';
 //Image Local
 import check from '../../assets/svg/check-mark.svg';
 import deleteMark from '../../assets/svg/delete.svg';
-import { ChromePicker ,AlphaPicker,BlockPicker ,CirclePicker   } from 'react-color';
+import { ChromePicker ,AlphaPicker,BlockPicker ,CirclePicker,SketchPicker} from 'react-color';
 
 class SettingStylePG extends Component {
  
             state = {
                 isOpen: false,
                 displayColorPicker: false,
-                background: null
+                background: null,
+                color: null
               };
               handleClick = () => {
                 this.setState({ displayColorPicker: !this.state.displayColorPicker })
-                console.log('handleClick');
+                document.querySelector('body').classList.add('hidden');
+                document.querySelector('.Home__sidebar').classList.add('hidden');
               };
-            
               handleClose = () => { 
                 this.setState({ displayColorPicker: false })
-                console.log('handleClose');
+                document.querySelector('body').classList.remove('hidden');
+                document.querySelector('.Home__sidebar').classList.remove('hidden');
               };
             openModal = () => this.setState({ isOpen: true });
             closeModal = () => this.setState({ isOpen: false });
-            handleChangeComplete = (color, event) => {
-                this.setState({ background: color.hex });
-                console.log('handleChangeComplete', color.hex)
-              };
+     
+              handleChangeColor = (color) =>{
+                  document.getElementById('color-info').innerHTML = color.hex;
+                  document.getElementById('circle-color').style.background = color.hex;
+              }
     render() {
         const homeClass = classNames('Home', {});
         const popover = {
@@ -83,12 +86,12 @@ class SettingStylePG extends Component {
                                            <div>
 
                               
-                                                <div onClick={ this.handleClick } className="main__content__circle" style={{background: '#093784'}}></div> 
+                                                <div id="circle-color" onClick={ this.handleClick } className="main__content__circle" style={{background: '#093784'}}></div> 
                                                 {
                                                     this.state.displayColorPicker ? 
                                                         <div style={ popover }>
                                                             <div style={ cover } onClick={ this.handleClose }/>
-                                                             <ChromePicker onChangeComplete={ this.handleChangeComplete } />
+                                                             <SketchPicker onChange={this.handleChangeColor}  />
                                                              {/* <SketchPicker onChangeComplete={ this.handleChangeComplete } /> */}
                                                         </div>
                                                     
@@ -98,7 +101,7 @@ class SettingStylePG extends Component {
                                             </div>
                                           
                                             <div className="main__content__info">
-                                            <p>{this.state.background}</p>
+                                                <p id="color-info"></p>
                                             </div>
                                         </div>
  

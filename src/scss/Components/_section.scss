@@ -313,6 +313,36 @@
                     }
                 }
             }
+            .css-yk16xz-control , .select__placeholder, .select__menu{
+                padding-#{$end}: 12px;
+                border-color: rgba(0,0,0,.125);
+                text-align: $start;
+                font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                font-weight: bold;
+                color: $main-color;
+                    @if $start == 'left'{
+                        font-family: 'Montserrat';
+                    } @else{
+                        font-family: 'Cairo';
+                    }
+            }
+            .select__menu{
+                font-size: calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                padding-right: 0;
+            }
+            .css-tlfecz-indicatorContainer{
+                color: $main-color;
+            }
+            .css-1pahdxg-control{
+                border-color: rgba(0,0,0,.125) ;
+                box-shadow: none;
+                border-radius: none;
+                -webkit-border-radius: none;
+                -moz-border-radius: none;
+                -ms-border-radius: none;
+                -o-border-radius: none;
+
+            }
         }
     } 
 }
