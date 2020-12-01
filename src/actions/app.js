@@ -5,7 +5,8 @@ import constants from './constants';
 import API from './Api_paths';
 import {headerUserSections} from './sidebar/header_data';
 import {FooterUserSections} from './sidebar/footer_data';
-
+require("react/package.json"); // react is a peer dependency. 
+var reactColor = require("react-color")
 export const initApp = () => (dispatch, getState) => {
     dispatch({ type: constants.INIT_APP })
 }

@@ -79,7 +79,10 @@
                             -moz-border-radius: 50%;
                             -ms-border-radius: 50%;
                             -o-border-radius: 50%;
-                            margin-#{$end}:15px;    
+                            margin-#{$end}:15px; 
+                            &:hover{
+                                cursor: pointer;
+                            }   
                         }
                         .main__content__info{
                             @extend %main-label;
