@@ -9,6 +9,14 @@ import deleteMark from '../../../assets/svg/delete.svg';
 import arFlag from '../../../assets/images/soady flag.png';
 import trash from '../../../assets/svg/trash.svg';
 import { FaBars } from "react-icons/fa";
+import Select from 'react-select';
+
+const colourOptions = [
+    { value: 'chocolate', label: 'Chocolate1' },
+    { value: 'strawberry', label: 'Strawberry1' },
+    { value: 'vanilla', label: 'Vanilla1' }
+  ]
+  
 
 class Section extends Component {
     constructor(props) {
@@ -178,7 +186,14 @@ class Section extends Component {
                     </Card>
 
                 </Accordion>
-
+                <Select
+                    defaultValue={[colourOptions[0]]}
+                    isMulti
+                    name="colors"
+                    options={colourOptions}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                />
             </div>
         </div>
 
