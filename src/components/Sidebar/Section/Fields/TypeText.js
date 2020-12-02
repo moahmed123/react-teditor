@@ -32,32 +32,29 @@ class TypeText extends Component {
     }
     _changeTextVal = (e) => {        
         
-        let newTextVal = {"key": e.target.id,"value": e.target.value,};
-        // console.log(newTextVal)
-        // let newTextVal = ["nameTwo"]
+        let newTextVal = {"key": e.target.id,"value": e.target.value,};        
         
-        if(this.props.newFields){
-            // console.log(this.props.newFields)
-            // let x = [];
-            // x.push(this.props.newFields);
-            // x.push(newTextVal);
-            // console.log(x)
-            // this.props.dispatch(SaveSCFLD.newValFields(x));
-            // console.log(this.props.newFields, newTextVal)
-            // const obj3 = { ...this.props.newFields, ...newTextVal };
-            /*
-                this.props.newFields []
-                newTextVal {}
-            */
-            // let x = this.props.newFields.concat(newTextVal)
-            // let x = {actionSaved: this.props.newFields, newAction:newTextVal}
-            let actionSaved = this.props.newFields;
-            this.props.dispatch(SaveSCFLD.newValFields(newTextVal,actionSaved));
-            console.log(this.props.newFields)
+        if(this.props.newFields){                        
+            let x = this.props.newFields; // first input 
+            let s = -1;
+            x.map((d, key)=>{
+                if(d.key == newTextVal.key){
+                    d.value =  newTextVal.value;                    
+                    this.props.dispatch(SaveSCFLD.newValFields(x))
+                    // break;
+                }else{
+                    s = 0;
+                }
+            })
+            if(s >= 0 ){
+                x.push(newTextVal);
+                this.props.dispatch(SaveSCFLD.newValFields(x)); 
+            }         
         }else{
-            let x2 = {}
-            this.props.dispatch(SaveSCFLD.newValFields(newTextVal));
-            // console.log("this.props.newFields")
+            let x2 = []
+            let lg = x2.push(newTextVal);
+
+            this.props.dispatch(SaveSCFLD.newValFields(x2));            
         }
     }
     render() {

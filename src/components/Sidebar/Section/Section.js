@@ -11,36 +11,26 @@ import trash from '../../../assets/svg/trash.svg';
 import { FaBars } from "react-icons/fa";
 import Select from 'react-select';
 import {render} from 'react-dom';
-import {SortableContainer, SortableElement } from 'react-sortable-hoc';
-
-import { arrayMove } from 'react-sortable-hoc';
+import {arrayMove, SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 // Sections Fields 
 import TypeText from './Fields/TypeText';
 import TypeCheckbox from './Fields/TypeCheckbox';
 import SelectLookup from './Fields/SelectLookup';
 import TagsCategory from './Fields/TagsCategory';
-
+// Main Collection 
+import MainCollection from './Collection/MainCollection'
 //action Btn Included {save, Cancel}
 import SaveBtn from './SaveBtn';
 
 
-class Section extends Component {
-   
-    // state = {
-    //     items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
-    //   };
-      
-  onSortEnd = ({oldIndex, newIndex}) => {
-    this.setState(({items}) => ({
-      items: arrayMove(items, oldIndex, newIndex),
-    }));
-  };
+class Section extends Component {             
+ 
     constructor(props) {
         super(props);
         this.state = {
             codeLang : 'en',
-            items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+            items: [1,2],
         }
     }
     componentDidMount(){    
@@ -48,12 +38,15 @@ class Section extends Component {
         this.props.dispatch(GetSCFLD.getSectionFields());
         // this.setState({
         //     codeLang: 'ar'
-        // })
+        // })                  
     }
-   
+    onSortEnd = ({oldIndex, newIndex}) => {
+        this.setState(({items}) => ({
+          items: arrayMove(items, oldIndex, newIndex),
+        }));
+      };
     _getSectionFields = () => {
-        let sectionCollection = this.props.sectionFieldsDT.data.section.Collections,
-            sectionFields     = this.props.sectionFieldsDT.data.section.Fields; 
+        let sectionFields   = this.props.sectionFieldsDT.data.section.Fields; 
 
             // console.log(sectionCollection.length, sectionFields.length)
         if(sectionFields.length > 0){
@@ -67,31 +60,43 @@ class Section extends Component {
                     return <TypeCheckbox key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
                 // View For Type sselect Lookup
                 }else if(Fields.Type == "sselect-lookup"){
-                    // return <SelectLookup key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
+                    return <SelectLookup key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
                     return null ;
                 }else if(Fields.Type == "tags-category"){
-                    return <TagsCategory key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
+                    return <TagsCategory key={key} codelang = {this.state.codeLang} FieldTagsData = {Fields}/>
                 }
             })
-        }        
+        }  
+        // if(sectionCollection.length > 0){
+        //     return sectionCollection.map((colFields, key) => { 
+        //         return <MainCollection key={key} codelang = {this.state.codeLang} collectionData = {colFields}/>
+        //     })
+        // }      
     }
+    _getCollection = () => {        
+        let sectionCollection = this.props.sectionFieldsDT.data.section.Collections;        
+        if(sectionCollection.length > 0){                                                  
+            return <MainCollection codelang = {this.state.codeLang} collectionData = {sectionCollection}/>            
+        }      
+    }
+    
     render() {
         const SortableItem = SortableElement(({value}) => <li> <span>pla</span>{value}</li>);
         const SortableList = SortableContainer(({items}) => {
             return (
               <ul>
-                {items.map((value, index) => (
-                  <SortableItem key={`item-${value}`} index={index} value={value} />
-                ))}
+                    {items.map((value, index) => (
+                    <SortableItem key={`item-${value}`} index={index} value={value} />
+                    ))}
               </ul>
             );
           });
-        // const {items} = this.state;
-       
+            
         if(!this.props.sectionFieldsDT){
             return <div>Loading ...</div>
-        }
+        }        
         return (
+
             <>                
                 <div className="Home__sidebar__header">
                     <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} <span>home page</span></h4>
@@ -119,8 +124,8 @@ class Section extends Component {
                         <span className="active">fr</span>
                     </div>
                 </div>
-                {this._getSectionFields()}                
-
+                {this._getSectionFields()}                             
+                {this._getCollection()}
                 <Accordion defaultActiveKey="0">
                     <h4 className="setting--sidebar__header"> Logos </h4>
                     <Card>
@@ -158,83 +163,10 @@ class Section extends Component {
 
                             </Card.Body>
                         </Accordion.Collapse>
-                    </Card>
-                    <Card>
-                        <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                                <span>Logo 2</span>
-                                <div className="controls">
-                                    <img src={trash} />
-                                    <FaBars />
-                                </div>
-                            </Accordion.Toggle>
-                        </Card.Header>
-                        <Accordion.Collapse eventKey="1">
-                            <Card.Body>
-
-                                <div className="setting--sidebar__color">
-                                    <div className="sidebar__color__main">
-                                        <div className="color__main__content">
-                                            <input className="upload-image" id="image" type="file" />
-                                            <label className="upload-image__label" htmlFor="image">
-                                                <div className="upload-image__label__icon">
-                                                    <p>Browse</p>
-                                                </div>
-                                                <span>delete</span>
-                                            </label>
-                                            <div className="label generic--section">
-                                                <input className="generic--section__form" placeholder="www.example.com/lorem-ipsum" type="text" />
-                                                <span className="focus-border"></span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                            </Card.Body>
-                        </Accordion.Collapse>
-                    </Card>
-                    <Card>
-                        <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                                <span>Logo 3</span>
-                                <div className="controls">
-                                    <img src={trash} />
-                                    <FaBars />
-                                </div>
-                            </Accordion.Toggle>
-                        </Card.Header>
-                        <Accordion.Collapse eventKey="2">
-                            <Card.Body>
-
-                                <div className="setting--sidebar__color">
-                                    <div className="sidebar__color__main">
-                                        <div className="color__main__content">
-                                            <input className="upload-image" id="image" type="file" />
-                                            <label className="upload-image__label" htmlFor="image">
-                                                <div className="upload-image__label__icon">
-                                                    <p>Browse</p>
-                                                </div>
-                                                <span>delete</span>
-                                            </label>
-                                            <div className="label generic--section">
-                                                <input className="generic--section__form" placeholder="www.example.com/lorem-ipsum" type="text" />
-                                                <span className="focus-border"></span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                            </Card.Body>
-                        </Accordion.Collapse>
-                    </Card>
-
+                    </Card>                 
                 </Accordion>
                
-                <SortableList items={this.state.items} onSortEnd={this.onSortEnd} />
+                {/* <SortableList items={this.state.items} onSortEnd={this.onSortEnd} /> */}
             </>                
 
 

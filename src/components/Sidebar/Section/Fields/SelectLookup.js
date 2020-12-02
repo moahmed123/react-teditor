@@ -4,103 +4,140 @@ import { connect } from 'react-redux';
 import { Dropdown} from 'react-bootstrap';
 import { FaCheck ,FaRocket ,FaAngleDown , FaBars, FaCommentsDollar} from "react-icons/fa";
 
-class SelectLookup extends Component {
+class SelectLookup extends Component {    
     constructor(props){
         super(props);
         this.state = {
-            dataForDropdown: []
+            DropdownVal: '',
+            idFieldEn : '',
+            idFieldAr : '',
+            idFieldFr : '',
         }
-
-    }
+    }    
     componentDidMount(){
-        // this.props.dispatch(GetLOUpKy.getLookupKey(this.props.FieldData.LookUpKey))
-        // console.log(" lll"+this.props.FieldData.LookUpKey)
+        this._setlangDefaultVal();
     }
-    // async componentDidMount() {
-    //   await this.props.dispatch(GetLOUpKy.getLookupKey(this.props.FieldData.LookUpKey))        
-    // }
+
     _setlangDefaultVal = () => {    
-        // if(this.props.LookupKeyVal){            
-            // this.setState({dataForDropdown:this.state.dataForDropdown.push(this.props.LookupKeyVal) })
-
-            // let LookUpKeyVal = this.props.LookupKeyVal.data.Lookup;        
-            // console.log("DataSate"+this.state.dataForDropdown)
-            if (this.props.codelang == 'en') {
-                return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-                    if (langInputVal.Lang == 'en') {
-                        return <span className='name_page' key={key}>{langInputVal.Value} </span>;
-                    }
-                    // if (langInputVal.Lang == 'en') {
-                    //     console.log('true...')
-                    //   return LookUpKeyVal.map((dataLookupKey, key)=>{     
-                    //     console.log( dataLookupKey.Value) 
-                    //     console.log( langInputVal.Value) 
-                    //         if(dataLookupKey.Value == langInputVal.Value){
-
-                    //             return <span className='name_page' key={key}>{dataLookupKey.Name} </span>;
-                    //         }
-                    //     })                                
-                    // }
-                })
-            } 
-            // else if (this.props.codelang == 'ar') {
-            //     return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-            //         if (langInputVal.Lang == 'ar') {
-            //           return LookUpKeyVal.map((LookupKey, key)=>{
-            //                 if(LookupKey.Value == langInputVal.Value){
-            //                     return <span className='name_page' key={key}>{LookupKey.Name} </span>;
-            //                 }
-            //             })                                
-            //         }
-            //     })
-            // } else if (this.props.codelang == 'fr') {
-            //     return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-            //         if (langInputVal.Lang == 'fr') {
-            //           return LookUpKeyVal.map((LookupKey, key)=>{
-            //                 if(LookupKey.Value == langInputVal.Value){
-            //                     return <span className='name_page' key={key}>{LookupKey.Name} </span>;
-            //                 }
-            //             })                                
-            //         }
-            //     })
-            // } else {
-            //     return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-            //         if (langInputVal.Lang == 'en') {
-            //           return LookUpKeyVal.map((LookupKey, key)=>{
-            //                 if(LookupKey.Value == langInputVal.Value){
-            //                     return <span className='name_page' key={key}>{LookupKey.Name} </span>;
-            //                 }
-            //             })                                
-            //         }
-            //     })
-            // }
-        // }
+        if(this.props.codelang == 'en'){
+            return this.props.FieldData.FieldVals.map((langInputVal, key) => {
+                if(langInputVal.Lang == 'en'){                    
+                    let valSelected = langInputVal.Value;  
+                    this.setState({idFieldEn: langInputVal.id});                                      
+                    return this.props.FieldData.LookUpVals.map((data, key)=>{
+                        if(valSelected == data.Value){
+                            // return <span> {data.Name}</span>
+                            console.log('name of val selected ' +  data.Name)
+                            this.setState({DropdownVal: data.Name});
+                        }
+                    })
+                }
+            })
+        } else if (this.props.codelang == 'ar'){
+            return this.props.FieldData.FieldVals.map((langInputVal, key) => {
+                if(langInputVal.Lang == 'ar'){                    
+                    let valSelected = langInputVal.Value;    
+                    this.setState({idFieldAr: langInputVal.id});
+                    return this.props.FieldData.LookUpVals.map((data, key)=>{
+                        if(valSelected == data.Value){
+                            return <span> {data.Name}</span>
+                        }
+                    })
+                }
+            })
+        } else if (this.props.codelang == 'fr'){
+            return this.props.FieldData.FieldVals.map((langInputVal, key) => {
+                if(langInputVal.Lang == 'fr'){
+                    this.setState({idFieldFr: langInputVal.id});                    
+                    let valSelected = langInputVal.Value;                                                
+                    return this.props.FieldData.LookUpVals.map((data, key)=>{
+                        if(valSelected == data.Value){
+                            return <span> {data.Name}</span>
+                        }
+                    })
+                }
+            })
+        }else{
+            return this.props.FieldData.FieldVals.map((langInputVal, key) => {
+                if(langInputVal.Lang == 'en'){                    
+                    let valSelected = langInputVal.Value;                                                
+                    return this.props.FieldData.LookUpVals.map((data, key)=>{
+                        if(valSelected == data.Value){
+                            return <span> {data.Name}</span>
+                        }
+                    })
+                }
+            })
+        }
+    }
+    // _lookUpKeyVals= () =>{
+    //     return this.props.FieldData.LookUpVals.map((dataLookUP, key)=>{
+    //         return <Dropdown.Item key={key} eventKey="1" onClick = {this._changeCheckboxVal} value = {dataLookUP.Name}>{dataLookUP.Name}</Dropdown.Item>            
+    //     })
+    // }
+    _lookUpKeyVals= () =>{
+        return this.props.FieldData.LookUpVals.map((dataLookUP, key)=>{
+            // return <Dropdown.Item key={key} eventKey="1" onClick = {this._changeCheckboxVal} value = {dataLookUP.Name}>{dataLookUP.Name}</Dropdown.Item>                        
+            return <option key={key}  value={dataLookUP.Name} nametag = {dataLookUP.Value}>{dataLookUP.Name}</option>
+        })
     }
     _changeCheckboxVal = (e) => {        
-        // let newCheckboxVal = {"key": e.target.id,"value": e.target.value,};        
+        let idField;  
+        // Lang
+            if(this.props.codelang == 'en'){
+                idField = this.state.idFieldEn;
+            } else if(this.props.codelang == 'ar'){
+                idField = this.state.idFieldAr;
+            } else if(this.props.codelang == 'fr'){
+                idField = this.state.idFieldFr;
+            } 
+        // endLang
+        // To Change Selection Value 
+        this.setState({DropdownVal: e.target.value})
+        //Create Json To Use It At Save BTN: 
+        let index = e.target.selectedIndex,
+            optionElement = e.target.childNodes[index],
+            optionVal =  optionElement.getAttribute('nametag');
+        
+        let SelectLookupJS = {"key": idField,"value": optionVal,}; 
         if(this.props.newFields){
-            
+            let x = this.props.newFields; // first input 
+            let s = -1;
+            x.map((d, key)=>{
+                if(d.key == SelectLookupJS.key){
+                    d.value =  SelectLookupJS.value;                    
+                    this.props.dispatch(SaveSCFLD.newValFields(x))
+                    // break;
+                }else{
+                    s = 0;
+                }
+            })
+            if(s >= 0 ){
+                x.push(SelectLookupJS);
+                this.props.dispatch(SaveSCFLD.newValFields(x)); 
+            } 
         }else{
-            
+            let x2 = []
+            let lg = x2.push(SelectLookupJS);
+
+            this.props.dispatch(SaveSCFLD.newValFields(x2));
         }        
     }
-    render() {
+    render() {        
         return (
-
             <div className="setting--sidebar__color">   
                 <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>             
-                <Dropdown>
-                    <Dropdown.Toggle onClick = {()=> console.log('test')}>
-                            {this._setlangDefaultVal()}
-                            {/* {this.props.FieldData.Value} */}
-                        {/* <FaAngleDown /> */}
+                {/* <Dropdown>
+                    <Dropdown.Toggle>                           
+                        <span>{this.state.DropdownVal}</span>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item>action</Dropdown.Item>   
-                        <Dropdown.Item>action</Dropdown.Item>   
-                        <Dropdown.Item>action</Dropdown.Item>   
+                        {this._lookUpKeyVals()}   
                     </Dropdown.Menu>
-                </Dropdown>  
+                </Dropdown>   */}
+                <select value = {this.state.DropdownVal} onChange = {this._changeCheckboxVal}>
+                    {this._lookUpKeyVals()}  
+                </select>
             </div>
         )
     }

@@ -30,28 +30,32 @@ class TypeCheckbox extends Component {
             })
         }
     }
-    _changeCheckboxVal = (e) => {        
-        let newCheckboxVal = {"key": e.target.id,"value": e.target.value,};
-        // let newCheckboxVal= ['name']
+    _changeCheckboxVal = (e) => {     
+
+        let newCheckboxVal = {"key": e.target.id,"value": e.target.checked,}; 
+
         if(this.props.newFields){
-            // console.log(this.props.newFields)
-            // let x = [];
-            // x.push(this.props.newFields);
-            // x.push(newCheckboxVal);
-            // const obj3 = { ...this.props.newFields, ...newCheckboxVal };
-            // console.log(obj3)
-            // let x = this.props.newFields.concat(newCheckboxVal)
-            // let x = {old: this.props.newFields, new : newCheckboxVal}
-            // this.props.dispatch(SaveSCFLD.newValFields(x));
-            // console.log(this.props.newFields)
-            // this.props.dispatch(SaveSCFLD.newValFields(x));
-            let actionSaved = this.props.newFields;
-            this.props.dispatch(SaveSCFLD.newValFields(newCheckboxVal,actionSaved));
+            let x = this.props.newFields; // first input 
+            let s = -1;
+            x.map((d, key)=>{
+                if(d.key == newCheckboxVal.key){
+                    d.value =  newCheckboxVal.value;                    
+                    this.props.dispatch(SaveSCFLD.newValFields(x))
+                    // break;
+                }else{
+                    s = 0;
+                }
+            })
+            if(s >= 0 ){
+                x.push(newCheckboxVal);
+                this.props.dispatch(SaveSCFLD.newValFields(x)); 
+            } 
         }else{
-            // this.props.dispatch(SaveSCFLD.newValFields(newCheckboxVal));
-            // console.log("this.props.newFields")
-        }
-        // this.props.dispatch(SaveSCFLD.newValFields(newCheckboxVal))
+            let x2 = []
+            let lg = x2.push(newCheckboxVal);
+
+            this.props.dispatch(SaveSCFLD.newValFields(x2)); 
+        }        
     }
     render() {
         return (
