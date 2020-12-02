@@ -15,17 +15,6 @@ import {SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 import { arrayMove } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({value}) => <li> <span>pla</span>{value}</li>);
-const SortableList = SortableContainer(({items}) => {
-    return (
-      <ul>
-        {items.map((value, index) => (
-          <SortableItem key={`item-${value}`} index={index} value={value} />
-        ))}
-      </ul>
-    );
-  });
-
 // Sections Fields 
 import TypeText from './Fields/TypeText';
 import TypeCheckbox from './Fields/TypeCheckbox';
@@ -37,9 +26,10 @@ import SaveBtn from './SaveBtn';
 
 
 class Section extends Component {
-    state = {
-        items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
-      };
+   
+    // state = {
+    //     items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+    //   };
       
   onSortEnd = ({oldIndex, newIndex}) => {
     this.setState(({items}) => ({
@@ -49,7 +39,8 @@ class Section extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            codeLang : 'en'
+            codeLang : 'en',
+            items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
         }
     }
     componentDidMount(){    
@@ -85,19 +76,23 @@ class Section extends Component {
         }        
     }
     render() {
-        const {items} = this.state;
-
-        const colourOptions = [
-            { value: 'chocolate', label: 'Chocolate1' },
-            { value: 'strawberry', label: 'Strawberry1' },
-            { value: 'vanilla', label: 'Vanilla1' }
-          ]
+        const SortableItem = SortableElement(({value}) => <li> <span>pla</span>{value}</li>);
+        const SortableList = SortableContainer(({items}) => {
+            return (
+              <ul>
+                {items.map((value, index) => (
+                  <SortableItem key={`item-${value}`} index={index} value={value} />
+                ))}
+              </ul>
+            );
+          });
+        // const {items} = this.state;
+       
         if(!this.props.sectionFieldsDT){
             return <div>Loading ...</div>
         }
         return (
-            <>
-                
+            <>                
                 <div className="Home__sidebar__header">
                     <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} <span>home page</span></h4>
                     <div className="setting--sidebar__controls">
@@ -238,14 +233,7 @@ class Section extends Component {
                     </Card>
 
                 </Accordion>
-                <Select
-                    defaultValue={[colourOptions[0]]}
-                    isMulti
-                    name="colors"
-                    options={colourOptions}
-                    className="basic-multi-select"
-                    classNamePrefix="select"
-                />
+               
                 <SortableList items={this.state.items} onSortEnd={this.onSortEnd} />
             </>                
 
