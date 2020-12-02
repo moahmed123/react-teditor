@@ -10,10 +10,11 @@ export const newValFields = (newFields, OldSave) => (dispatch) => {
     
     
     console.log(newFields)
-    console.log(OldSave);
-    // if()
+    // console.log(OldSave);
+    // // if()
     let collected = {OldSave, newFields }
-    console.log('collection', collected)
+    // console.log('collection', collected)
+
     dispatch({ type: constants.NEW_VAL_FIELDS, newFields });
     dispatch({ type: constants.TO_SAVE_FIELDS, collected });
 }

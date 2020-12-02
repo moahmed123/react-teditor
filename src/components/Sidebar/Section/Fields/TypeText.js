@@ -56,7 +56,7 @@ class TypeText extends Component {
             console.log(this.props.newFields)
         }else{
             let x2 = {}
-            this.props.dispatch(SaveSCFLD.newValFields(newTextVal, x2));
+            this.props.dispatch(SaveSCFLD.newValFields(newTextVal));
             // console.log("this.props.newFields")
         }
     }

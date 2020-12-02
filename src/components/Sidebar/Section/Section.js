@@ -15,6 +15,7 @@ import Select from 'react-select';
 import TypeText from './Fields/TypeText';
 import TypeCheckbox from './Fields/TypeCheckbox';
 import SelectLookup from './Fields/SelectLookup';
+import TagsCategory from './Fields/TagsCategory';
 
 //action Btn Included {save, Cancel}
 import SaveBtn from './SaveBtn';
@@ -52,7 +53,10 @@ class Section extends Component {
                     return <TypeCheckbox key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
                 // View For Type sselect Lookup
                 }else if(Fields.Type == "sselect-lookup"){
-                    return <SelectLookup key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
+                    // return <SelectLookup key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
+                    return null ;
+                }else if(Fields.Type == "tags-category"){
+                    return <TagsCategory key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
                 }
             })
         }        

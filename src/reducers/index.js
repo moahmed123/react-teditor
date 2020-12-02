@@ -3,7 +3,8 @@ import getPagesDropDown from './getPagesDropDown';
 import slidebar from './slidebar';
 import sectionData from './sectionFields';
 import newValFields from './newValFields';
-import LookupKeyVal from './LookupKey'
+import LookupKeyVal from './LookupKey';
+import searchCategories from './searchCategories';
 // import { combineReducers } from 'redux';
 
 export default {
@@ -12,5 +13,6 @@ export default {
   slidebar,
   sectionData,
   newValFields,
-  LookupKeyVal
+  LookupKeyVal,
+  searchCategories
 }
