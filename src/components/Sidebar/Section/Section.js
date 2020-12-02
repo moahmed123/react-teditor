@@ -21,18 +21,19 @@ const SortableList = SortableContainer(({items}) => {
       <ul>
         {items.map((value, index) => (
           <SortableItem key={`item-${value}`} index={index} value={value} />
-          
         ))}
       </ul>
     );
   });
 
-const colourOptions = [
-    { value: 'chocolate', label: 'Chocolate1' },
-    { value: 'strawberry', label: 'Strawberry1' },
-    { value: 'vanilla', label: 'Vanilla1' }
-  ]
-  
+// Sections Fields 
+import TypeText from './Fields/TypeText';
+import TypeCheckbox from './Fields/TypeCheckbox';
+import SelectLookup from './Fields/SelectLookup';
+
+//action Btn Included {save, Cancel}
+import SaveBtn from './SaveBtn';
+
 
 class Section extends Component {
     state = {
@@ -46,27 +47,63 @@ class Section extends Component {
   };
     constructor(props) {
         super(props);
+        this.state = {
+            codeLang : 'en'
+        }
     }
     componentDidMount(){    
+        // Get Section By Id. 
         this.props.dispatch(GetSCFLD.getSectionFields());
+        // this.setState({
+        //     codeLang: 'ar'
+        // })
     }
    
+    _getSectionFields = () => {
+        let sectionCollection = this.props.sectionFieldsDT.data.section.Collections,
+            sectionFields     = this.props.sectionFieldsDT.data.section.Fields; 
+
+            // console.log(sectionCollection.length, sectionFields.length)
+        if(sectionFields.length > 0){
+            return sectionFields.map((Fields, key) => {  
+                // View For Type Text               
+                if (Fields.Type == "text"){
+                    return <TypeText key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
+                }
+                // View For Type Checkbox
+                else if (Fields.Type == "checkbox"){
+                    return <TypeCheckbox key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
+                // View For Type sselect Lookup
+                }else if(Fields.Type == "sselect-lookup"){
+                    return <SelectLookup key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
+                }
+            })
+        }        
+    }
     render() {
         const {items} = this.state;
 
+        const colourOptions = [
+            { value: 'chocolate', label: 'Chocolate1' },
+            { value: 'strawberry', label: 'Strawberry1' },
+            { value: 'vanilla', label: 'Vanilla1' }
+          ]
+        if(!this.props.sectionFieldsDT){
+            return <div>Loading ...</div>
+        }
         return (
-            <div className='col-md-3 p-0 position-static'>
-            <div className="Home__sidebar setting--sidebar section--page ">
+            <>
+                
                 <div className="Home__sidebar__header">
-                    <h4 className="setting--sidebar__header">  Main Theme <span>home page</span></h4>
-
+                    <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} <span>home page</span></h4>
                     <div className="setting--sidebar__controls">
                         <div className="delete">
                             <img src={deleteMark} />
                         </div>
-                        <div className="check">
+                        {/* <Button className="check" onclick={()=> console.log('save')}>
                             <img src={check} />
-                        </div>
+                        </Button> */}
+                        <SaveBtn/>
                     </div>
                 </div>
                 <div className="section--page__flags">
@@ -83,23 +120,7 @@ class Section extends Component {
                         <span className="active">fr</span>
                     </div>
                 </div>
-                <div className="setting--sidebar__color">
-                    <div className="sidebar__color__main">
-                        <div className="color__main__content">
-                            <label className="check-container">
-                                Display Section Title
-                                <input type="checkbox" />
-
-                                <span className="checkmark"></span>
-                            </label>
-                            <div className="label generic--section">
-                                <input className="generic--section__form" placeholder="lorem ipsum" type="text" />
-                                <span className="focus-border"></span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                {this._getSectionFields()}                
 
                 <Accordion defaultActiveKey="0">
                     <h4 className="setting--sidebar__header"> Logos </h4>
@@ -120,7 +141,7 @@ class Section extends Component {
                                     <div className="sidebar__color__main">
                                         <div className="color__main__content">
                                             <input className="upload-image" id="image" type="file" />
-                                            <label className="upload-image__label" for="image">
+                                            <label className="upload-image__label" htmlFor="image">
                                                 <div className="upload-image__label__icon">
                                                     <p>Browse</p>
                                                 </div>
@@ -156,7 +177,7 @@ class Section extends Component {
                                     <div className="sidebar__color__main">
                                         <div className="color__main__content">
                                             <input className="upload-image" id="image" type="file" />
-                                            <label className="upload-image__label" for="image">
+                                            <label className="upload-image__label" htmlFor="image">
                                                 <div className="upload-image__label__icon">
                                                     <p>Browse</p>
                                                 </div>
@@ -192,7 +213,7 @@ class Section extends Component {
                                     <div className="sidebar__color__main">
                                         <div className="color__main__content">
                                             <input className="upload-image" id="image" type="file" />
-                                            <label className="upload-image__label" for="image">
+                                            <label className="upload-image__label" htmlFor="image">
                                                 <div className="upload-image__label__icon">
                                                     <p>Browse</p>
                                                 </div>
@@ -221,9 +242,9 @@ class Section extends Component {
                     className="basic-multi-select"
                     classNamePrefix="select"
                 />
-               <SortableList items={this.state.items} onSortEnd={this.onSortEnd} />
-            </div>
-        </div>
+                <SortableList items={this.state.items} onSortEnd={this.onSortEnd} />
+            </>                
+
 
         )
     }
@@ -231,6 +252,7 @@ class Section extends Component {
 
 const mapStateToProps = state => ({
     initialized: state.app.initialized,
+    sectionFieldsDT : state.sectionData.sectionFields
 })
 
 export default connect(mapStateToProps)(Section)

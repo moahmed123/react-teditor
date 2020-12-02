@@ -12,5 +12,9 @@ export default keyMirror({
   DROPDOWN_PAGES: null,
   REGIONSOFPAGE: null,  
   HEADER_USER_SECTIONS: null,
-  FOOTER_USER_SECTIONS: null
+  FOOTER_USER_SECTIONS: null,
+  SECTION_FIELDS: null,
+  NEW_VAL_FIELDS: null,
+  TO_SAVE_FIELDS: null,
+  LOOK_UP_KEY: null
 })

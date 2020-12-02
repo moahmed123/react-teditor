@@ -25,7 +25,11 @@ class SectionPG extends Component {
                         </div>
                     </div>
                     <div className='row'>
-                        <SectionData/>
+                        <div className='col-md-3 p-0 position-static'>
+                            <div className="Home__sidebar setting--sidebar section--page ">
+                            <SectionData/>
+                            </div>
+                        </div>
                         <div className='col-md-9'>
                             <div className="main-frame">
                                 <iframe src='http://qaz123.expandcart.com/' className='iframe-site'></iframe>

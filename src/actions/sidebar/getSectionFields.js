@@ -10,7 +10,7 @@ export const getSectionFields = () => (dispatch) => {
     return axios.get(API.getSectionFieldsV2,{ params: {SectionId: sectionId}})
         .then((sectionFields) => {
             console.log(sectionFields);
-            // dispatch({ type: constants.DATAFIRST, Alldata });
+            dispatch({ type: constants.SECTION_FIELDS, sectionFields });
         })
         .catch((error) => {
             console.log(error.message);
