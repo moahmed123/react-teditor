@@ -18,6 +18,7 @@ import TypeText from './Fields/TypeText';
 import TypeCheckbox from './Fields/TypeCheckbox';
 import SelectLookup from './Fields/SelectLookup';
 import TagsCategory from './Fields/TagsCategory';
+import TagsProduct from './Fields/TagsProduct';
 // Main Collection 
 import MainCollection from './Collection/MainCollection'
 //action Btn Included {save, Cancel}
@@ -29,8 +30,7 @@ class Section extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            codeLang : 'en',
-            items: [1,2],
+            codeLang : 'en',            
         }
     }
     componentDidMount(){    
@@ -39,16 +39,9 @@ class Section extends Component {
         // this.setState({
         //     codeLang: 'ar'
         // })                  
-    }
-    onSortEnd = ({oldIndex, newIndex}) => {
-        this.setState(({items}) => ({
-          items: arrayMove(items, oldIndex, newIndex),
-        }));
-      };
+    }   
     _getSectionFields = () => {
-        let sectionFields   = this.props.sectionFieldsDT.data.section.Fields; 
-
-            // console.log(sectionCollection.length, sectionFields.length)
+        let sectionFields   = this.props.sectionFieldsDT.data.section.Fields;            
         if(sectionFields.length > 0){
             return sectionFields.map((Fields, key) => {  
                 // View For Type Text               
@@ -60,38 +53,27 @@ class Section extends Component {
                     return <TypeCheckbox key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
                 // View For Type sselect Lookup
                 }else if(Fields.Type == "sselect-lookup"){
-                    return <SelectLookup key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>
-                    return null ;
-                }else if(Fields.Type == "tags-category"){
+                    return <SelectLookup key={key} codelang = {this.state.codeLang} FieldData = {Fields}/>                    
+
+                }// View For Type tags-category
+                else if(Fields.Type == "tags-category"){
                     return <TagsCategory key={key} codelang = {this.state.codeLang} FieldTagsData = {Fields}/>
+                }// View For Type tags-category
+                else if(Fields.Type == "tags-product"){
+                    return <TagsProduct key={key} codelang = {this.state.codeLang} FieldTagsPro = {Fields}/>
                 }
             })
-        }  
-        // if(sectionCollection.length > 0){
-        //     return sectionCollection.map((colFields, key) => { 
-        //         return <MainCollection key={key} codelang = {this.state.codeLang} collectionData = {colFields}/>
-        //     })
-        // }      
+        }              
     }
     _getCollection = () => {        
-        let sectionCollection = this.props.sectionFieldsDT.data.section.Collections;        
+        let sectionCollection = this.props.sectionFieldsDT.data.section.Collections,
+            section = this.props.sectionFieldsDT.data.section;
         if(sectionCollection.length > 0){                                                  
-            return <MainCollection codelang = {this.state.codeLang} collectionData = {sectionCollection}/>            
+            return <MainCollection codelangCol = {this.state.codeLang} collectionData = {section}/>            
         }      
     }
     
-    render() {
-        const SortableItem = SortableElement(({value}) => <li> <span>pla</span>{value}</li>);
-        const SortableList = SortableContainer(({items}) => {
-            return (
-              <ul>
-                    {items.map((value, index) => (
-                    <SortableItem key={`item-${value}`} index={index} value={value} />
-                    ))}
-              </ul>
-            );
-          });
-            
+    render() {        
         if(!this.props.sectionFieldsDT){
             return <div>Loading ...</div>
         }        
@@ -126,11 +108,11 @@ class Section extends Component {
                 </div>
                 {this._getSectionFields()}                             
                 {this._getCollection()}
-                <Accordion defaultActiveKey="0">
+                {/* <Accordion defaultActiveKey="022">
                     <h4 className="setting--sidebar__header"> Logos </h4>
                     <Card>
                         <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                            <Accordion.Toggle as={Button} variant="link" eventKey="022">
                                 <span>Logo 1</span>
                                 <div className="controls">
                                     <img src={trash} />
@@ -138,9 +120,8 @@ class Section extends Component {
                                 </div>
                             </Accordion.Toggle>
                         </Card.Header>
-                        <Accordion.Collapse eventKey="0">
+                        <Accordion.Collapse eventKey="022">
                             <Card.Body>
-
                                 <div className="setting--sidebar__color">
                                     <div className="sidebar__color__main">
                                         <div className="color__main__content">
@@ -159,17 +140,11 @@ class Section extends Component {
 
                                     </div>
                                 </div>
-
-
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>                 
-                </Accordion>
-               
-                {/* <SortableList items={this.state.items} onSortEnd={this.onSortEnd} /> */}
+                </Accordion> */}                            
             </>                
-
-
         )
     }
 }

@@ -313,6 +313,16 @@
                     }
                 }
             }
+            // TODO
+            .Parent_Cart{
+                position: relative;
+                .Delete{
+                    position: absolute;
+                    top: 13px;
+                    right: 65px;
+                }
+            }
+            
             .css-yk16xz-control , .select__placeholder, .select__menu{
                 padding-#{$end}: 12px;
                 border-color: rgba(0,0,0,.125);

@@ -5,6 +5,8 @@ import sectionData from './sectionFields';
 import newValFields from './newValFields';
 import LookupKeyVal from './LookupKey';
 import searchCategories from './searchCategories';
+import searchProducts from './searchProducts';
+import searchLink from './searchLink';
 // import { combineReducers } from 'redux';
 
 export default {
@@ -14,5 +16,7 @@ export default {
   sectionData,
   newValFields,
   LookupKeyVal,
-  searchCategories
+  searchCategories,
+  searchProducts,
+  searchLink
 }

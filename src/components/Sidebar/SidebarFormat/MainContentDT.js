@@ -36,7 +36,7 @@ class MainContentDT extends Component {
             return this.props.MainContenData.UserSections.map((Sections, key)=>{
                 return (
                     <div className="label" key={key}>
-                    <Board initialBoard={board} />
+                    {/* <Board initialBoard={board} /> */}
 
 
                         <Link to = {`/section/${Sections.id}`} >
@@ -61,7 +61,7 @@ class MainContentDT extends Component {
                         <h6 className='text-center not-found-sc'> No Section Found </h6>
                 }
                 
-               <KanbanDND/>
+               {/* <KanbanDND/> */}
                 {this._UserSections()}                
             </div>
         )

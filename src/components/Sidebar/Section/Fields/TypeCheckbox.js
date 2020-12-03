@@ -4,35 +4,55 @@ import { connect } from 'react-redux'
 
 class TypeCheckbox extends Component {
     _setlangVal = () => {
+        
         if (this.props.codelang == 'en') {
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-                if (langInputVal.Lang == 'en') {
-                    return   <input type="checkbox" id={langInputVal.id} defaultChecked = {langInputVal.Value} key={key} onChange={this._changeCheckboxVal}/>;
+                if (langInputVal.Lang == 'en') {                    
+                    if(langInputVal.Value == 0 || langInputVal.Value == false){
+                        return   <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>;
+                    }else{
+                        return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
+                    }                    
                 }
             })
         } else if (this.props.codelang == 'ar') {
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if (langInputVal.Lang == 'ar') {
-                    return   <input type="checkbox" defaultChecked = {langInputVal.Value} key={key}/>;
+                    if(langInputVal.Value == 0 || langInputVal.Value == false){
+                        return   <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>;
+                    }else{
+                        return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
+                    }                    
                 }
             })
         } else if (this.props.codelang == 'fr') {
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if (langInputVal.Lang == 'fr') {
-                    return   <input type="checkbox" defaultChecked = {langInputVal.Value} key={key}/>;
+                    if(langInputVal.Value == 0 || langInputVal.Value == false){
+                        return   <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>;
+                    }else{
+                        return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
+                    }                    
                 }
             })
         } else {
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if (langInputVal.Lang == 'en') {
-                    return   <input type="checkbox" defaultChecked = {langInputVal.Value} key={key}/>;
+                    if(langInputVal.Value == 0 || langInputVal.Value == false){
+                        return   <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>;
+                    }else{
+                        return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
+                    }                    
                 }
             })
         }
     }
     _changeCheckboxVal = (e) => {     
-
-        let newCheckboxVal = {"key": e.target.id,"value": e.target.checked,}; 
+        let checkValTOJ; 
+        // To Make Value For Checked is Number: 
+        (e.target.checked)? checkValTOJ = 1 : checkValTOJ = 0;         
+        // Create Json Data To send 
+        let newCheckboxVal = {"key": e.target.id,"value": checkValTOJ,}; 
 
         if(this.props.newFields){
             let x = this.props.newFields; // first input 

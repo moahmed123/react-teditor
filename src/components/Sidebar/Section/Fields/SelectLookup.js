@@ -15,13 +15,13 @@ class SelectLookup extends Component {
         }
     }    
     componentDidMount(){
-        this._setlangDefaultVal();
+        this._setlangDefaultVal();        
     }
 
     _setlangDefaultVal = () => {    
         if(this.props.codelang == 'en'){
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-                if(langInputVal.Lang == 'en'){                    
+                if(langInputVal.Lang == 'en'){                                       
                     let valSelected = langInputVal.Value;  
                     this.setState({idFieldEn: langInputVal.id});                                      
                     return this.props.FieldData.LookUpVals.map((data, key)=>{

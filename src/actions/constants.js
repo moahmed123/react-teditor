@@ -17,5 +17,7 @@ export default keyMirror({
   NEW_VAL_FIELDS: null,
   TO_SAVE_FIELDS: null,
   LOOK_UP_KEY: null,
-  SEARCH_CATE: null
+  SEARCH_CATE: null,
+  SEARCH_PRO: null,
+  SEARCH_LINK: null
 })
