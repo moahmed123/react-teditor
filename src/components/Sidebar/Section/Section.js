@@ -109,20 +109,20 @@ class Section extends Component {
                     </div>
                 </div>
                 <div className="section--page__flags">
-                {
-                    (this.props.getlanguages)?
-                        this.props.getlanguages.data.Languages.map((langs, key)=>{
-                            return (
-                                <Button  key={key} onClick={ ()=> this.setState({codeLang:langs.code})}>
-                                    <img src={arFlag} width= {20}/>
-                                    {/* {langs.image} */}                               
-                                    {langs.name}                               
-                                </Button>
-                            )
-                        })                   
-                    :
-                     null
-                }
+                    {
+                        (this.props.getlanguages)?
+                            this.props.getlanguages.data.Languages.map((langs, key)=>{
+                                return (
+                                    <Button  key={key} onClick={ ()=> this.setState({codeLang:langs.code})}>
+                                        <img src={arFlag} width= {20}/>
+                                        {/* {langs.image} */}                               
+                                        {langs.name}                               
+                                    </Button>
+                                )
+                            })                   
+                        :
+                        null
+                    }
                 </div>
                 
                 {this._getSectionFields()}                             

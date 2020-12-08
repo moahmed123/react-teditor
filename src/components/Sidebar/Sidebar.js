@@ -39,15 +39,28 @@ class Sidebar extends Component {
         }
     }
     _addNewSections = () => {
-        this.setState({
-            showSectionsAvailable: true
-        })
+       // this.props.dispatch(app.RefreshData());
+        // this.setState({
+        //     showSectionsAvailable: true
+        // })
     }
     _getData(){
         if(this.props.PageResions){
             console.log(this.props.PageResions)
             let renderAddNewSection = -1; 
-            return this.props.PageResions.Regions.map((data, key)=>{                
+            let itemsForSection = 0;
+            return this.props.PageResions.Regions.map((data, key)=>{  
+                // if(data.CodeName == "MainContent" || data.CodeName == "maincontent"){                   
+                //      itemsForSection = data.UserSections.length;                   
+                // }else if (data.CodeName == "BottomContent" || data.CodeName == "bottomcontent"){
+                //     itemsForSection = data.UserSections.length;
+                // } else if (data.CodeName == "Sidebar"){
+                //     itemsForSection = data.UserSections.length;
+                // }    
+                if(data.CodeName != "header" && data.CodeName != "footer"){
+                    itemsForSection = data.UserSections.length;
+                    console.log(itemsForSection)
+                }          
                 return(                    
                     <div key={key}>                        
                         { 
@@ -56,9 +69,36 @@ class Sidebar extends Component {
                             :
                              null 
                         }
-                        { 
+                        
+                        {/* { 
                             data.CodeName != "header" && data.CodeName != "footer"? 
-                                <MainContentDT MainContenData = {data}/>
+                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
+                            :
+                             null 
+                        } */}                         
+                        { 
+                            data.CodeName == "leftcontent" || data.CodeName == "LeftContent"? 
+                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
+                            :
+                             null 
+                        }
+                        
+                        { 
+                            data.CodeName == "MainContent" || data.CodeName == "maincontent"? 
+                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
+                            :
+                             null 
+                        }
+                        
+                        { 
+                            data.CodeName == "Sidebar"? 
+                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
+                            :
+                             null 
+                        }
+                        { 
+                            data.CodeName == "BottomContent" || data.CodeName == "bottomcontent" || data.CodeName == "mainbottomcontent"? 
+                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
                             :
                              null 
                         }

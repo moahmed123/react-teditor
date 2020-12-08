@@ -313,17 +313,7 @@
                     }
                 }
             }
-            // TODO
-            .Parent_Cart{
-                position: relative;
-                .Delete{
-                    position: absolute;
-                    top: 13px;
-                    right: 65px;
-                    cursor: pointer;
-                }
-            }
-            
+                        
             .css-yk16xz-control , .select__placeholder, .select__menu{
                 padding-#{$end}: 12px;
                 border-color: rgba(0,0,0,.125);
@@ -353,6 +343,20 @@
                 -ms-border-radius: none;
                 -o-border-radius: none;
 
+            }
+        }
+        // TODO
+        .Parent_Cart{
+            position: relative;
+            .Delete,
+            .Delete_home{
+                position: absolute;
+                top: 13px;
+                right: 65px;
+                cursor: pointer;
+            }
+            .Delete_home{
+                right: 7px;
             }
         }
     } 
