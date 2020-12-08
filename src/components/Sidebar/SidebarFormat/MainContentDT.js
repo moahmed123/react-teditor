@@ -35,10 +35,7 @@ class MainContentDT extends Component {
         if(this.props.MainContenData){
             return this.props.MainContenData.UserSections.map((Sections, key)=>{
                 return (
-                    <div className="label" key={key}>
-                    {/* <Board initialBoard={board} /> */}
-
-
+                    <div className="label" key={key}>                    
                         <Link to = {`/section/${Sections.id}`} >
                                     <img className="label__icon" src={Promoted} />
                                 <span> 
@@ -60,8 +57,7 @@ class MainContentDT extends Component {
                     :
                         <h6 className='text-center not-found-sc'> No Section Found </h6>
                 }
-                
-               {/* <KanbanDND/> */}
+                               
                 {this._UserSections()}                
             </div>
         )

@@ -32,7 +32,7 @@ class SectionPG extends Component {
                             </div>
                         </div>
                         <div className='col-md-9'>                            
-                                <IframeProv/>                            
+                            <IframeProv/>                            
                         </div>
                     </div>
                 </Container>

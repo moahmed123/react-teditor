@@ -16,10 +16,19 @@ import { FaPlus } from "react-icons/fa";
 
 import { app } from '../../actions';
 
+//Sections Available
+import SectionAvailable from './Section/sectionsAvailable/sectionsAvailable'
+
 
 
 
 class Sidebar extends Component {
+    constructor(props){
+        super(props);
+        this.state = { 
+            showSectionsAvailable: false
+        }
+    }
     componentDidMount(){
         // this.dispatch.firstData()
         // this.props.dispatch(app.firstData());        
@@ -29,9 +38,15 @@ class Sidebar extends Component {
             return <h2>{this.props.PageResions.Name} <img src={Settings} /></h2>
         }
     }
+    _addNewSections = () => {
+        this.setState({
+            showSectionsAvailable: true
+        })
+    }
     _getData(){
         if(this.props.PageResions){
             console.log(this.props.PageResions)
+            let renderAddNewSection = -1; 
             return this.props.PageResions.Regions.map((data, key)=>{                
                 return(                    
                     <div key={key}>                        
@@ -47,9 +62,21 @@ class Sidebar extends Component {
                             :
                              null 
                         }
-
+                        {
+                            (data.CodeName == "footer" && renderAddNewSection == -1)?                                
+                                <div className="sidebar__header__section">
+                                    <button className="header__section--add" onClick = {this._addNewSections}><FaPlus /> Add New Section</button>
+                                </div>
+                            : 
+                                null
+                        } 
+                        
+                        { // To Not Render Add New Section Again 
+                            (data.CodeName == "footer" && renderAddNewSection == -1)? renderAddNewSection == 0 : null 
+                        } 
                         {
                             data.CodeName == "footer"?
+                                // renderAddNewSection == -1? <div>Add New Section</div>: null
                                 <FooterDT FooterData = {data}/>
                             :
                              null 
@@ -65,11 +92,14 @@ class Sidebar extends Component {
     render() {
         return (            
             <>
+                {
+                    this.state.showSectionsAvailable ? 
+                        <SectionAvailable/>
+                    : null
+                }
+                
                 <div className="sidebar__header__section"> {this._PageName()}</div>
-                <div> {this._getData()} </div>
-                <div className="sidebar__header__section">
-                    <button className="header__section--add"><FaPlus /> Add New Section</button>
-                </div>
+                <div> {this._getData()} </div>              
             </>
         )
     }
