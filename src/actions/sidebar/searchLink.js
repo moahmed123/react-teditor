@@ -14,3 +14,6 @@ export const searchLink = (searchVal) => (dispatch) => {
             console.log(error.message);
         });    
 }
+export const LinkInputVal = (valInputLink) => (dispatch) => {
+    dispatch({ type: constants.LINK_INPUT_VAlUE, valInputLink});
+} 

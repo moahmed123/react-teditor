@@ -10,6 +10,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,                
                 LinkData: action.LinkData
+            }  
+            case constants.LINK_INPUT_VAlUE:
+            return {
+                ...state,                
+                VInputLink: action.valInputLink
             }                             
         default:
             return state

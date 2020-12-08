@@ -9,6 +9,7 @@ import { Form, Button, FormGroup, FormControl, ControlLabel, Dropdown, Accordion
 // Component
 import Header from '../Header/Header';
 import SectionData from '../Sidebar/Section/Section';
+import IframeProv from '../Iframe/IframePrev'
 // import Controls from './Test/Controls'
 //Image Local
 
@@ -30,10 +31,8 @@ class SectionPG extends Component {
                             <SectionData/>
                             </div>
                         </div>
-                        <div className='col-md-9'>
-                            <div className="main-frame">
-                                <iframe src='http://qaz123.expandcart.com/' className='iframe-site'></iframe>
-                            </div>
+                        <div className='col-md-9'>                            
+                                <IframeProv/>                            
                         </div>
                     </div>
                 </Container>

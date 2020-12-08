@@ -6,7 +6,7 @@ import { Dropdown} from 'react-bootstrap';
 import { FaCheck ,FaRocket ,FaAngleDown , FaBars} from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
-import {app} from './../../actions';
+import {app, PUBLISH} from './../../actions';
 import Shuttl from '../../assets/svg/shuttle.svg';
 import Reset from '../../assets/svg/reset.svg';
 import ShuttlBlue from '../../assets/svg/shuttle-blue.svg';
@@ -117,9 +117,14 @@ class Header extends Component {
                         <button className="Header__controls__save d-block">EN</button>
                         <button className="Header__controls__save">Reset </button>
                         <img className="Header__controls__reset" src={Reset} />
-                        <button className="Header__controls__publish"> 
-                        <img className="controls-publish--lg" src={Shuttl} /> 
-                        Publish</button>
+
+                        <button className="Header__controls__publish" onClick = {()=>{
+                            // Publish All Changes For Fields                            
+                            this.props.dispatch(PUBLISH.publishFieldsVals());
+                        }}> 
+                            <img className="controls-publish--lg" src={Shuttl} /> 
+                            Publish
+                        </button>
                         <img className="controls-publish--xs" src={ShuttlBlue} /> 
                     </div>
                     </div>

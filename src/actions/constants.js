@@ -14,10 +14,13 @@ export default keyMirror({
   HEADER_USER_SECTIONS: null,
   FOOTER_USER_SECTIONS: null,
   SECTION_FIELDS: null,
+  UPDATE_SECTION_FIELDS: null,
   NEW_VAL_FIELDS: null,
   TO_SAVE_FIELDS: null,
   LOOK_UP_KEY: null,
   SEARCH_CATE: null,
   SEARCH_PRO: null,
-  SEARCH_LINK: null
+  SEARCH_LINK: null,
+  LINK_INPUT_VAlUE: null,
+  GET_LANGS: null
 })

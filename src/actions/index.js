@@ -5,6 +5,11 @@ import * as GetLOUpKy from './sidebar/getLookupKey';
 import * as SeaCate from './sidebar/searchCategories';
 import * as SeaPro from './sidebar/searchProducts';
 import * as SeaLink from './sidebar/searchLink';
+import * as ADCOLLE from './sidebar/addCollection';
+import * as REMCOLLE from './sidebar/removeCollection';
+import * as REODCOLLS from './sidebar/reorderCollections';
+import * as GETLANGS from './getLanguages';
+import * as PUBLISH from './publish';
 
 export {
   app,  
@@ -13,5 +18,10 @@ export {
   GetLOUpKy,
   SeaCate,
   SeaPro,
-  SeaLink
+  SeaLink,
+  ADCOLLE,
+  REMCOLLE,
+  REODCOLLS,
+  GETLANGS,
+  PUBLISH
 }

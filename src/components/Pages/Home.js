@@ -9,6 +9,7 @@ import { FaTrashAlt , FaPlus} from "react-icons/fa";
 // Component
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
+import IframePrev from '../Iframe/IframePrev'
 // import Controls from './Test/Controls'
 //Image Local
 import ArrowLeft from '../../assets/images/arrow-left.png';
@@ -35,9 +36,7 @@ class Home extends Component {
                             </div>                          
                         </div>
                         <div className='col-md-9'>   
-                        <div className="main-frame">
-                            <iframe src='http://qaz123.expandcart.com/' className='iframe-site'></iframe>
-                        </div> 
+                            <IframePrev/>
                         </div>
                     </div>
                 </Container> 

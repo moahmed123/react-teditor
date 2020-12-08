@@ -19,8 +19,10 @@ import TypeCheckbox from './Fields/TypeCheckbox';
 import SelectLookup from './Fields/SelectLookup';
 import TagsCategory from './Fields/TagsCategory';
 import TagsProduct from './Fields/TagsProduct';
+import LinkTag from './Fields/Link/Link';
+import ImageTag from './Fields/Image/ImageCom';
 // Main Collection 
-import MainCollection from './Collection/MainCollection'
+import MainCollection from './Collection/MainCollection';
 //action Btn Included {save, Cancel}
 import SaveBtn from './SaveBtn';
 
@@ -30,16 +32,15 @@ class Section extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            codeLang : 'en',            
+            codeLang : 'en'                  
         }
     }
     componentDidMount(){    
         // Get Section By Id. 
         this.props.dispatch(GetSCFLD.getSectionFields());
-        // this.setState({
-        //     codeLang: 'ar'
-        // })                  
-    }   
+        // active lang for fields               
+    }  
+     
     _getSectionFields = () => {
         let sectionFields   = this.props.sectionFieldsDT.data.section.Fields;            
         if(sectionFields.length > 0){
@@ -61,19 +62,34 @@ class Section extends Component {
                 }// View For Type tags-category
                 else if(Fields.Type == "tags-product"){
                     return <TagsProduct key={key} codelang = {this.state.codeLang} FieldTagsPro = {Fields}/>
+                }// View For Type Link
+                else if(Fields.Type == "link"){
+                    return <LinkTag key={key} codelang = {this.state.codeLang} FieldLink = {Fields}/>
+                }// View For Type Image
+                else if(Fields.Type == "image"){
+                    return <ImageTag key={key} codelang = {this.state.codeLang} FieldImage = {Fields}/>
                 }
             })
         }              
     }
-    _getCollection = () => {        
-        let sectionCollection = this.props.sectionFieldsDT.data.section.Collections,
-            section = this.props.sectionFieldsDT.data.section;
-        if(sectionCollection.length > 0){                                                  
-            return <MainCollection codelangCol = {this.state.codeLang} collectionData = {section}/>            
+    _getCollection = () => {                
+        let section_Collection = this.props.sectionFieldsDT.data.section,
+            section = this.props.sectionFieldsDT.data.section;               
+        if(section_Collection.IsCollection == 1){                                                  
+            return <MainCollection codelangCol = {this.state.codeLang} collectionData = {section} />            
         }      
     }
     
-    render() {        
+    render() {  
+        // if(this.props.updateSecFields)      {
+        //     // this.setState({updataCollection: true})
+        // }        
+        if(this.props.getlanguages){
+            console.log('creently langs ', this.props.getlanguages.data.ActiveLanguage.code)
+            // this.setState({
+            //     codeLang: this.props.getlanguages.data.ActiveLanguage.code
+            // })                  
+        }
         if(!this.props.sectionFieldsDT){
             return <div>Loading ...</div>
         }        
@@ -93,57 +109,24 @@ class Section extends Component {
                     </div>
                 </div>
                 <div className="section--page__flags">
-                    <div className="page__flags__country active">
-                        <img src={arFlag} />
-                        <span className="active">EN</span>
-                    </div>
-                    <div className="page__flags__country">
-                        <img src={arFlag} />
-                        <span className="active">عربي</span>
-                    </div>
-                    <div className="page__flags__country">
-                        <img src={arFlag} />
-                        <span className="active">fr</span>
-                    </div>
+                {
+                    (this.props.getlanguages)?
+                        this.props.getlanguages.data.Languages.map((langs, key)=>{
+                            return (
+                                <Button  key={key} onClick={ ()=> this.setState({codeLang:langs.code})}>
+                                    <img src={arFlag} width= {20}/>
+                                    {/* {langs.image} */}                               
+                                    {langs.name}                               
+                                </Button>
+                            )
+                        })                   
+                    :
+                     null
+                }
                 </div>
+                
                 {this._getSectionFields()}                             
-                {this._getCollection()}
-                {/* <Accordion defaultActiveKey="022">
-                    <h4 className="setting--sidebar__header"> Logos </h4>
-                    <Card>
-                        <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="022">
-                                <span>Logo 1</span>
-                                <div className="controls">
-                                    <img src={trash} />
-                                    <FaBars />
-                                </div>
-                            </Accordion.Toggle>
-                        </Card.Header>
-                        <Accordion.Collapse eventKey="022">
-                            <Card.Body>
-                                <div className="setting--sidebar__color">
-                                    <div className="sidebar__color__main">
-                                        <div className="color__main__content">
-                                            <input className="upload-image" id="image" type="file" />
-                                            <label className="upload-image__label" htmlFor="image">
-                                                <div className="upload-image__label__icon">
-                                                    <p>Browse</p>
-                                                </div>
-                                                <span>delete</span>
-                                            </label>
-                                            <div className="label generic--section">
-                                                <input className="generic--section__form" placeholder="www.example.com/lorem-ipsum" type="text" />
-                                                <span className="focus-border"></span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </Card.Body>
-                        </Accordion.Collapse>
-                    </Card>                 
-                </Accordion> */}                            
+                {this._getCollection()}                                           
             </>                
         )
     }
@@ -151,7 +134,9 @@ class Section extends Component {
 
 const mapStateToProps = state => ({
     initialized: state.app.initialized,
-    sectionFieldsDT : state.sectionData.sectionFields
+    sectionFieldsDT : state.sectionData.sectionFields,
+    // updateSecFields : state.sectionData.updateSecFields,
+    getlanguages: state.getlanguages.GetLangs
 })
 
 export default connect(mapStateToProps)(Section)

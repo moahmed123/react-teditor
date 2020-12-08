@@ -6,15 +6,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case constants.SECTION_FIELDS:
+        case constants.GET_LANGS:
             return {
                 ...state,                
-                sectionFields: action.sectionFields
-            }    
-        case constants.UPDATE_SECTION_FIELDS:
-            return {
-                ...state,                
-                updateSecFields: action.updataSecField
+                GetLangs: action.getLangs
             }                     
         default:
             return state

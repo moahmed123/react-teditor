@@ -7,6 +7,7 @@ import LookupKeyVal from './LookupKey';
 import searchCategories from './searchCategories';
 import searchProducts from './searchProducts';
 import searchLink from './searchLink';
+import getlanguages from './getlanguages';
 // import { combineReducers } from 'redux';
 
 export default {
@@ -18,5 +19,6 @@ export default {
   LookupKeyVal,
   searchCategories,
   searchProducts,
-  searchLink
+  searchLink,
+  getlanguages
 }
