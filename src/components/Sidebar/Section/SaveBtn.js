@@ -17,9 +17,9 @@ class SaveBtn extends Component {
     }
     render() {
         return (
-                <Button className="check" onClick={this._saveFieldsCahnges}>
+                <div className="check" onClick={this._saveFieldsCahnges}>
                     <img src={check} />
-                </Button>
+                </div>
         )
     }
 }

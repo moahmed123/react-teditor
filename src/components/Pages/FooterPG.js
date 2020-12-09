@@ -20,7 +20,7 @@ class FooterPG extends Component {
         if(this.props.FooterUserSections){
           return  <FooterData FooterData = {this.props.FooterUserSections}/>;
         }else{
-            return <div> Loading .... </div>
+            return <div> Loading 2 </div>
         }
     }
     render() {

@@ -19,7 +19,7 @@ class HeaderPG extends Component {
         if(this.props.UserSections){
           return  <HeaderData HeaderData = {this.props.UserSections}/>;
         }else{
-            return <div> Loading .... </div>
+            return <div> Loading 3 </div>
         }
     }
     render() {

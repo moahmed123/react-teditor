@@ -6,7 +6,9 @@ import { Form, Button, FormGroup, FormControl, ControlLabel, Dropdown, Accordion
 import { GetSCFLD } from '../../../actions';
 import check from '../../../assets/svg/check-mark.svg';
 import deleteMark from '../../../assets/svg/delete.svg';
-import arFlag from '../../../assets/images/soady flag.png';
+import arFlag from '../../../assets/svg/flag-of-saudi-arabia.svg';
+import enFlag from '../../../assets/svg/english-lang.svg';
+import Spinner from 'react-bootstrap/Spinner'
 import trash from '../../../assets/svg/trash.svg';
 import { FaBars } from "react-icons/fa";
 import Select from 'react-select';
@@ -91,7 +93,7 @@ class Section extends Component {
             // })                  
         }
         if(!this.props.sectionFieldsDT){
-            return <div>Loading ...</div>
+            return <div className="main-loader"> <Spinner animation="border" /></div>
         }        
         return (
 
@@ -112,12 +114,15 @@ class Section extends Component {
                 {
                     (this.props.getlanguages)?
                         this.props.getlanguages.data.Languages.map((langs, key)=>{
+                        console.log("langs,",langs)
                             return (
-                                <Button  key={key} onClick={ ()=> this.setState({codeLang:langs.code})}>
-                                    <img src={arFlag} width= {20}/>
-                                    {/* {langs.image} */}                               
+                                <div className="page__flags__country"  key={key} onClick={ ()=> this.setState({codeLang:langs.code})}>
+                                    {langs.code == 'en'? 
+                                    <img className="en-flag" src={enFlag} width= {20}/>
+                                    :
+                                    <img className="ar-flag" src={arFlag} width= {20}/> }                               
                                     {langs.name}                               
-                                </Button>
+                                </div>
                             )
                         })                   
                     :
