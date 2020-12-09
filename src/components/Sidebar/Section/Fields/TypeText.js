@@ -60,7 +60,7 @@ class TypeText extends Component {
     render() {
         return (
             <div className="setting--sidebar__color">
-                <div className="sidebar__color__main">
+                <div className="sidebar__color__main set--padding">
                     <div className="color__main__content">                           
                         <div className="label generic--section">
                             <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>

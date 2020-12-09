@@ -80,16 +80,20 @@ class Link extends Component {
     }
     render() {             
         return (
-            <div className="setting--sidebar__color">
-
-                <h4 className="setting--sidebar__header"> {this.props.FieldLink.Name} </h4>
+<div className="setting--sidebar__color">
+<div class="sidebar__color__main set--padding">
+    <div class="color__main__content">
+        <div class="label generic--section">
+             <h4 className="setting--sidebar__header"> {this.props.FieldLink.Name} </h4>
                 {
                     (this.props.defaultInputVal)?
-                        <input type='text' onChange={this._handleChange} defaultValue = {this.props.defaultInputVal} onFocus={this._onFocus} onBlur={this._onBlur} />
+                        <input className="generic--section__form" type='text' onChange={this._handleChange} defaultValue = {this.props.defaultInputVal} onFocus={this._onFocus} onBlur={this._onBlur} />
                     :
-                        <input type='text' onChange={this._handleChange} defaultValue = {this.state.defaultValue} onFocus={this._onFocus} onBlur={this._onBlur} />
-                }
-
+                        <input className="generic--section__form" type='text' onChange={this._handleChange} defaultValue = {this.state.defaultValue} onFocus={this._onFocus} onBlur={this._onBlur} />
+                    }
+                    <span class="focus-border"></span>
+                </div>
+            </div>
                 {
                     this.state.showData ?
                         <div className='box-data'>
@@ -99,6 +103,7 @@ class Link extends Component {
                         null
                 }
             </div>
+        </div>
         )
     }
 }

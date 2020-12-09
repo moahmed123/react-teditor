@@ -126,7 +126,7 @@ class Sidebar extends Component {
                 )            
             })
         }else{
-            return <h6> Loading...</h6>
+            return <h6> Loading 4</h6>
         }
     }
     render() {

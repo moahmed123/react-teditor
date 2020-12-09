@@ -161,7 +161,7 @@ class MainCollection extends Component {
         });
         const SortableList = SortableContainer(({ items }) => {
             return (
-                <ul className='col-md-12'>
+                <ul className='p-0'>
                     {items.map((value, index) => (                        
                         <SortableItem key={`item-${value}`} index = {index} value={value} />                                                    
                     ))}
@@ -171,13 +171,18 @@ class MainCollection extends Component {
         if(this.props.collectionData){
             return (
                 <div className='row'>                
-                    <h4 className="setting--sidebar__header"> {CollectionName} </h4> 
-                    <div className='col-md-12'>                 
+                    <h4 className="setting--sidebar__header col-md-12"> {CollectionName} </h4> 
+                    <div className='col-md-12 p-0'>                 
                         <Accordion defaultActiveKey="0">
                             <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1} />
                         </Accordion>
-                    </div>                    
-                    <button onClick = {this._addCollection}> {CollectionButtonName}</button>
+                    </div>  
+                    <div className="col-md-12">
+                        <button onClick = {this._addCollection} class="header__section--add col-md-12"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
+                            {CollectionButtonName}
+                         </button>
+                    </div>     
+                   
                 </div>
             )
         }

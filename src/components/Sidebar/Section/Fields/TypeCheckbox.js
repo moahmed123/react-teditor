@@ -80,8 +80,8 @@ class TypeCheckbox extends Component {
     render() {
         return (
 
-            <div className="setting--sidebar__color">
-                <div className="sidebar__color__main">
+            <div className="setting--sidebar__color mb-3">
+                <div className="sidebar__color__main  set--padding">
                     <div className="color__main__content">
                         <label className="check-container">                            
                             {this.props.FieldData.Name}

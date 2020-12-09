@@ -106,8 +106,8 @@ class ImageCom extends Component {
     render() {
         return (
             <div className="setting--sidebar__color">
-                <h4 className="setting--sidebar__header"> {this.props.FieldImage.Name} </h4>
-                <div className="sidebar__color__main">
+                <h4 className="setting--sidebar__header "> {this.props.FieldImage.Name} </h4>
+                <div className="sidebar__color__main ">
                         {this._renderDataImage()}
                 </div>
             </div>

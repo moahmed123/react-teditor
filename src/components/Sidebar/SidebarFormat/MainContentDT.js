@@ -103,7 +103,7 @@ class MainContentDT extends Component {
         });
         const SortableList = SortableContainer(({ items }) => {
             return (
-                <ul className='col-md-12'>
+                <ul className='p-0'>
                     {items.map((value, index) => (                        
                         <SortableItem key={`item-${value}`} index = {index} value={value} />                                                    
                     ))}

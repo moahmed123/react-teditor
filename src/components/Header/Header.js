@@ -10,7 +10,7 @@ import {app, PUBLISH} from './../../actions';
 import Shuttl from '../../assets/svg/shuttle.svg';
 import Reset from '../../assets/svg/reset.svg';
 import ShuttlBlue from '../../assets/svg/shuttle-blue.svg';
-
+import styleShape from '../../assets/svg/style-shape.svg';
 // import '../../css/Header.css'
 
 
@@ -37,7 +37,7 @@ class Header extends Component {
     }
     _PagesData(){
         if(!this.props.Pages){
-            return <div>Loading ..... </div>
+            return <div>Loading 1 </div>
         }else{                         
             document.getElementById("name_page").innerHTML = this.props.Pages[0].Name; // Add First Name Page. 
             return this.props.Pages.map( (Pages_DT, key) => {
@@ -96,11 +96,7 @@ class Header extends Component {
                             </div>
                             <div className="header__style">
                                 <Link to='/setting'>
-                                    <div className="header__style__shapre">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
+                                  <img src={styleShape} />
                                 </Link>
                             </div>
                         </div>

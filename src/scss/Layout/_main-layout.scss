@@ -321,6 +321,7 @@ html, body {
     width: 100%;
     z-index: 2;
   }
+ 
   //generic alert
   .generic-alert{
     .modal-title {
@@ -334,4 +335,66 @@ html, body {
 .react-kanban-column{
   background-color: red;
   padding: 0;
+}
+
+ //generic add button
+ .header__section--add{
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  border: dashed 2px #d5d5e0;
+  margin-top: 10px;
+  padding: 10px; 
+  color: #4c4c51;
+  font-weight: bold;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  @if $start == 'left'{
+    font-family: HelveticaNeue;
+  } @else{
+    font-family: 'Cairo';
+}        svg{
+    padding-#{$end}: 6px;
+  }
+}
+button:focus , select:focus{
+  outline: none;
+}
+//generic select
+.generic-select{
+  margin: 10px 0;
+  position: relative;
+  select{
+    border: 1px solid #d2cfe3 ;
+    width: 100%;
+    padding: 8px;
+    -webkit-appearance: none;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #4c4c51;
+  }
+  svg{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    #{$end}: 17px;
+    pointer-events: none;
+  }
+}
+
+.set--padding{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.main-loader{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spinner-border{
+  color: #03a9f4;
 }
