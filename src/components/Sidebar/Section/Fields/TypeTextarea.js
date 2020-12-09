@@ -2,30 +2,30 @@ import React, { Component } from 'react';
 import { SaveSCFLD } from '../../../../actions';
 import { connect } from 'react-redux'
 
-class TypeText extends Component {      
+class TypeTextarea extends Component {      
     _setlangVal = () => {
         if(this.props.codelang == 'en'){
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'en'){
-                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
+                    return <textarea className="generic--section__form" placeholder="" id={langInputVal.id} key={key} defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}></textarea>
                 }
             })
         } else if (this.props.codelang == 'ar'){
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'ar'){
-                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
+                    return <textarea className="generic--section__form" placeholder="" id={langInputVal.id} key={key} defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}></textarea>
                 }
             })
         } else if (this.props.codelang == 'fr'){
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'fr'){
-                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
+                    return <textarea className="generic--section__form" placeholder="" id={langInputVal.id} key={key} defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}></textarea>
                 }
             })
         }else{
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'en'){
-                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
+                    return <textarea className="generic--section__form" placeholder="" id={langInputVal.id} key={key} defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}></textarea>
                 }
             })
         }
@@ -76,4 +76,4 @@ class TypeText extends Component {
 const mapStateToProps = state => ({
     newFields: state.newValFields.newFields
 })
-export default connect(mapStateToProps)(TypeText)
+export default connect(mapStateToProps)(TypeTextarea)

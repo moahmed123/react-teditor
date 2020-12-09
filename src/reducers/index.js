@@ -8,6 +8,7 @@ import searchCategories from './searchCategories';
 import searchProducts from './searchProducts';
 import searchLink from './searchLink';
 import getlanguages from './getlanguages';
+import getTemplateSettings from './getTemplateSettings';
 // import { combineReducers } from 'redux';
 
 export default {
@@ -20,5 +21,6 @@ export default {
   searchCategories,
   searchProducts,
   searchLink,
-  getlanguages
+  getlanguages,
+  getTemplateSettings
 }

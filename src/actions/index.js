@@ -12,6 +12,7 @@ import * as GETLANGS from './getLanguages';
 import * as PUBLISH from './publish';
 import * as REMSEC from './sidebar/removeSection';
 import * as REODSEC from './sidebar/ReorderSections';
+import * as GETTMSET from './sidebar/getTemplateSettings';
 
 export {
   app,  
@@ -27,5 +28,6 @@ export {
   GETLANGS,
   PUBLISH,
   REMSEC,
-  REODSEC
+  REODSEC,
+  GETTMSET
 }

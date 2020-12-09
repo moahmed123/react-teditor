@@ -22,5 +22,6 @@ export default keyMirror({
   SEARCH_PRO: null,
   SEARCH_LINK: null,
   LINK_INPUT_VAlUE: null,
-  GET_LANGS: null
+  GET_LANGS: null,  
+  TEMPLATE_SETTING: null
 })

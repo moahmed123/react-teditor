@@ -1,4 +1,5 @@
 const ApiPaths = {
+    //API Links
     getTemplateStructureV2:'http://qaz123.expandcart.com/admin/teditor/teditorv2/getTemplateStructure',
     getSectionFieldsV2:"http://qaz123.expandcart.com/admin/teditor/teditorv2/getSectionFields",
     getLookupKey: "http://qaz123.expandcart.com/admin/teditor/teditor/getLookup",
@@ -13,6 +14,7 @@ const ApiPaths = {
     publish: "http://qaz123.expandcart.com/admin/teditor/teditor/Publish",
     removeSection: 'http://qaz123.expandcart.com/admin/teditor/teditorV2/RemoveSection',
     reorderSection: "http://qaz123.expandcart.com/admin/teditor/teditor/ReorderSections",
+    getTemplateSettings: "http://qaz123.expandcart.com/admin/teditor/teditorV2/getTemplateSettings",
     
     // Paths 
     IframeUrl: "/index.php?",

@@ -14,6 +14,7 @@ import TagsCategory from '../Fields/TagsCategory';
 import TagsProduct from '../Fields/TagsProduct';
 import LinkTag from '../Fields/Link/Link';
 import ImageTag from '../Fields/Image/ImageCom';
+import TypeTextarea from '../Fields/TypeTextarea';
 
 class SetionCollection extends Component {
     constructor(props) {
@@ -34,6 +35,10 @@ class SetionCollection extends Component {
                     // View For Type Text               
                     if (Fields.Type == "text"){
                         return <TypeText key={key} codelang = {lang} FieldData = {Fields}/>
+                    }
+                    // View For Type textarea
+                    else if (Fields.Type == "textarea"){
+                        return <TypeTextarea key={key} codelang = {lang} FieldData = {Fields}/>
                     }
                     // View For Type Checkbox
                     else if (Fields.Type == "checkbox"){
