@@ -357,7 +357,7 @@
                 cursor: pointer;
             }
             .Delete_home{
-                right: 7px;
+                #{$end}: 15px;
             }
         }
     } 

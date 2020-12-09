@@ -10,6 +10,8 @@ import * as REMCOLLE from './sidebar/removeCollection';
 import * as REODCOLLS from './sidebar/reorderCollections';
 import * as GETLANGS from './getLanguages';
 import * as PUBLISH from './publish';
+import * as REMSEC from './sidebar/removeSection';
+import * as REODSEC from './sidebar/ReorderSections';
 
 export {
   app,  
@@ -23,5 +25,7 @@ export {
   REMCOLLE,
   REODCOLLS,
   GETLANGS,
-  PUBLISH
+  PUBLISH,
+  REMSEC,
+  REODSEC
 }

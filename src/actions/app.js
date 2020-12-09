@@ -84,3 +84,9 @@ export const reloadRegionsOfPages = (regions) => (dispatch) => {
     console.log(regions);
     dispatch({ type: constants.REGIONSOFPAGE, regions });
 }
+
+export const RefreshData = () => (dispatch) => {  
+    const pagesData = null
+    dispatch({ type: constants.DROPDOWN_PAGES, pagesData });
+    dispatch(getDropdownPages())    
+}

@@ -11,6 +11,8 @@ const ApiPaths = {
     reorderCollections: 'http://qaz123.expandcart.com/admin/teditor/teditorv2/ReorderCollections',
     getLanguages: "http://qaz123.expandcart.com/admin/teditor/teditorv2/GetLanguages",
     IframeUrl: "/index.php?",
-    publish: "http://qaz123.expandcart.com/admin/teditor/teditor/Publish"
+    publish: "http://qaz123.expandcart.com/admin/teditor/teditor/Publish",
+    removeSection: 'http://qaz123.expandcart.com/admin/teditor/teditorV2/RemoveSection',
+    reorderSection: "http://qaz123.expandcart.com/admin/teditor/teditor/ReorderSections"
 };
 export default ApiPaths;
