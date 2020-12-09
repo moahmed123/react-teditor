@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 import Header from '../../../assets/svg/header.svg';
+import PathsApp from './../../../actions/Api_paths';
 // import { header_data } from '../../../actions';
 
 class HeaderDT extends Component {        
@@ -9,7 +10,7 @@ class HeaderDT extends Component {
         return (
             <div className="sidebar__header__section">                
                     <div className="label">
-                        <Link to="/header">
+                        <Link to={`${PathsApp.Paths}header`}>
                             <img className="label__icon" src={Header} />
                             <span>{this.props.headerData.Name}</span>
                             <svg className="label--delete" xmlns="http://www.w3.org/2000/svg" width="10.513" height="10.513" viewBox="0 0 10.513 10.513">

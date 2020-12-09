@@ -7,6 +7,7 @@ import Promoted from '../../../assets/svg/promoted-product.svg';
 import { arrayMove, SortableContainer, SortableElement } from 'react-sortable-hoc';
 import trash from '../../../assets/svg/trash.svg';
 import { REMSEC , REODSEC } from '../../../actions';
+import PathsApp from './../../../actions/Api_paths';
 import { connect } from 'react-redux';
 
 class MainContentDT extends Component {
@@ -78,7 +79,7 @@ class MainContentDT extends Component {
                     return (  
                         <div className='Parent_Cart' key={value}>
                             <div className="label" >                    
-                                <Link to = {`/section/${UserSections[value].id}`} >
+                                <Link to = {`${PathsApp.Paths}section/${UserSections[value].id}`} >
                                         <img className="label__icon" src={Promoted} />
                                         <span> 
                                             {UserSections[value].DescName}

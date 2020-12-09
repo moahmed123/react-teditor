@@ -9,10 +9,13 @@ const ApiPaths = {
     addCollection: "http://qaz123.expandcart.com/admin/teditor/teditorV2/AddCollection",
     removeCollection:"http://qaz123.expandcart.com/admin/teditor/teditorv2/RemoveCollection",
     reorderCollections: 'http://qaz123.expandcart.com/admin/teditor/teditorv2/ReorderCollections',
-    getLanguages: "http://qaz123.expandcart.com/admin/teditor/teditorv2/GetLanguages",
-    IframeUrl: "/index.php?",
+    getLanguages: "http://qaz123.expandcart.com/admin/teditor/teditorv2/GetLanguages",    
     publish: "http://qaz123.expandcart.com/admin/teditor/teditor/Publish",
     removeSection: 'http://qaz123.expandcart.com/admin/teditor/teditorV2/RemoveSection',
-    reorderSection: "http://qaz123.expandcart.com/admin/teditor/teditor/ReorderSections"
+    reorderSection: "http://qaz123.expandcart.com/admin/teditor/teditor/ReorderSections",
+    
+    // Paths 
+    IframeUrl: "/index.php?",
+    Paths: '/', // ex '/admin/teditor/teditor/'
 };
 export default ApiPaths;

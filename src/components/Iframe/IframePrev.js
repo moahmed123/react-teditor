@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import API from '../../actions/Api_paths'
+import API from '../../actions/Api_paths';
+import Iframe from 'react-iframe'
 
 //http://qaz123.expandcart.com/index.php?route=common/home&isdraft=1&draftlangcode=en&draftsectionid=613
 class IframePrev extends Component {
@@ -53,7 +54,11 @@ class IframePrev extends Component {
                             "draftlangcode=" +
                             carrentlyLang                       
                         } 
-                        className='iframe-site'></iframe>
+                        className='iframe-site' 
+                        // sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                        // referrerpolicy = "origin same-origin"
+                        // allow="fullscreen 'src'"
+                        ></iframe>
                 )
             }           
         }
@@ -64,8 +69,17 @@ class IframePrev extends Component {
         return (             
             <div className="main-frame">
                 {/* <iframe width = '100%' height = '600px'
-                 src='http://qaz123.expandcart.com/index.php?route=common/home&isdraft=1&draftlangcode=en&draftsectionid=596'></iframe> */}
-                {this._IframeData()}               
+                 src='http://qaz123.expandcart.com/index.php?route=common/home&isdraft=1&draftlangcode=en&draftsectionid=1311'></iframe> */}
+                {this._IframeData()}   
+                {/* <Iframe url="http://qaz123.expandcart.com/index.php?route=common/home&isdraft=1&draftlangcode=en&draftsectionid=1311"
+                    width="450px"
+                    height="450px"
+                    // id="myId"
+                    className="iframe-site"
+                    display="initial"
+                    allowFullScreen
+                    frameBorder
+                    position="relative"/>  */}
             </div>                                  
         )
     }
