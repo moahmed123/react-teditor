@@ -28,37 +28,37 @@ class Link extends Component {
         if (this.props.codelang == 'en') {
             if (this.props.FieldLink.FieldVals) {
                 return this.props.FieldLink.FieldVals.map((LinkData, key) => {
-                    if (LinkData.Lang == 'en') { 
+                    if (LinkData.Lang == 'en') {
                         this.setState({ LinkVal: LinkData, defaultValue: LinkData.Value })
                     }
                 })
             }
-        }else if (this.props.codelang == 'ar') {
+        } else if (this.props.codelang == 'ar') {
             if (this.props.FieldLink.FieldVals) {
                 return this.props.FieldLink.FieldVals.map((LinkData, key) => {
-                    if (LinkData.Lang == 'ar') { 
+                    if (LinkData.Lang == 'ar') {
                         this.setState({ LinkVal: LinkData, defaultValue: LinkData.Value })
                     }
                 })
             }
-        }else if (this.props.codelang == 'fr') {
+        } else if (this.props.codelang == 'fr') {
             if (this.props.FieldLink.FieldVals) {
                 return this.props.FieldLink.FieldVals.map((LinkData, key) => {
-                    if (LinkData.Lang == 'fr') { 
+                    if (LinkData.Lang == 'fr') {
                         this.setState({ LinkVal: LinkData, defaultValue: LinkData.Value })
                     }
                 })
             }
-        }else{
+        } else {
             if (this.props.FieldLink.FieldVals) {
                 return this.props.FieldLink.FieldVals.map((LinkData, key) => {
-                    if (LinkData.Lang == 'en') { 
+                    if (LinkData.Lang == 'en') {
                         this.setState({ LinkVal: LinkData, defaultValue: LinkData.Value })
                     }
                 })
             }
         }
-    }   
+    }
     _onFocus = () => {
         this.setState({ showData: true })
     }
@@ -78,32 +78,33 @@ class Link extends Component {
 
 
     }
-    render() {             
+    render() {
         return (
-<div className="setting--sidebar__color">
-<div class="sidebar__color__main set--padding">
-    <div class="color__main__content">
-        <div class="label generic--section">
-             <h4 className="setting--sidebar__header"> {this.props.FieldLink.Name} </h4>
-                {
-                    (this.props.defaultInputVal)?
-                        <input className="generic--section__form" type='text' onChange={this._handleChange} defaultValue = {this.props.defaultInputVal} onFocus={this._onFocus} onBlur={this._onBlur} />
-                    :
-                        <input className="generic--section__form" type='text' onChange={this._handleChange} defaultValue = {this.state.defaultValue} onFocus={this._onFocus} onBlur={this._onBlur} />
+
+            <div className="setting--sidebar__color">
+                <div className="sidebar__color__main set--padding">
+                    <div className="color__main__content">
+                        <div className="label generic--section">
+                            <h4 className="setting--sidebar__header"> {this.props.FieldLink.Name} </h4>
+                            {
+                                (this.props.defaultInputVal) ?
+                                    <input className="generic--section__form" type='text' onChange={this._handleChange} value={this.props.defaultInputVal} onFocus={this._onFocus} onBlur={this._onBlur} />
+                                    :
+                                    <input className="generic--section__form" type='text' onChange={this._handleChange} defaultValue={this.state.defaultValue} onFocus={this._onFocus} onBlur={this._onBlur} />
+                            }
+                            <span className="focus-border"></span>
+                        </div>
+                    </div>
+                    {
+                        this.state.showData ?
+                            <div className='box-data'>
+                                <LinkVal LinkValData={this.state.LinkVal} ObjectFieldId={this.state.LinkVal.id} />
+                            </div>
+                            :
+                            null
                     }
-                    <span class="focus-border"></span>
                 </div>
             </div>
-                {
-                    this.state.showData ?
-                        <div className='box-data'>
-                            <LinkVal LinkValData = {this.state.LinkVal} ObjectFieldId = {this.state.LinkVal.id}/>                            
-                        </div>
-                        :
-                        null
-                }
-            </div>
-        </div>
         )
     }
 }

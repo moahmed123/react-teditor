@@ -36,7 +36,7 @@ class sectionsAvailable extends Component {
                         </Button> */}
                         <SaveBtn/>
                     </div>
-                    <div class="sidebar__header__section">
+                    <div className="sidebar__header__section">
                         <div className="label">                    
                             <Link to = '#'>
                                         <img className="label__icon" src={Promoted} />

@@ -40,9 +40,9 @@ class Sidebar extends Component {
     }
     _addNewSections = () => {
        // this.props.dispatch(app.RefreshData());
-        // this.setState({
-        //     showSectionsAvailable: true
-        // })
+        this.setState({
+            showSectionsAvailable: true
+        })
     }
     _getData(){
         if(this.props.PageResions){
