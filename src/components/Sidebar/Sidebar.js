@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import classNames from 'classnames';
 
 
@@ -14,11 +14,12 @@ import MainContentDT from './SidebarFormat/MainContentDT';
 import Settings from '../../assets/svg/settings.svg';
 import { FaPlus } from "react-icons/fa";
 
-import { app } from '../../actions';
-
+import { app, ADDLAYOUT} from '../../actions';
+import LoaderSpinner from './Spinner/LoaderSpinner';
+import PathsApp from '../../actions/Api_paths';
 //Sections Available
-import SectionAvailable from './Section/sectionsAvailable/sectionsAvailable'
-
+import PagesAvailable from './PagesAvailable/PagesAvailable'
+import deleteMark from '../../assets/svg/delete.svg';
 
 
 
@@ -26,37 +27,35 @@ class Sidebar extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            showSectionsAvailable: false
+            showPagesAvailable: false
         }
-    }
-    componentDidMount(){
-        // this.dispatch.firstData()
-        // this.props.dispatch(app.firstData());        
-    }
+    }  
     _PageName(){
         if(this.props.PageResions){
-            return <h2>{this.props.PageResions.Name} <img src={Settings} /></h2>
+            return (
+                <h2>
+                    {this.props.PageResions.Name} 
+                    <span onClick = {()=> {
+                            this.props.closeRoutePage?
+                                this.props.dispatch(ADDLAYOUT.CloseAddLayout(!this.props.closeRoutePage))
+                            :
+                                this.props.dispatch(ADDLAYOUT.CloseAddLayout(true))                                                                                
+                        }}>
+                        <img src={this.props.closeRoutePage?  deleteMark : Settings} />
+                        
+                    </span>
+                </h2>
+            )
         }
     }
-    _addNewSections = () => {
-       // this.props.dispatch(app.RefreshData());
-        this.setState({
-            showSectionsAvailable: true
-        })
-    }
+    
     _getData(){
         if(this.props.PageResions){
             console.log(this.props.PageResions)
-            let renderAddNewSection = -1; 
-            let itemsForSection = 0;
+            let itemsForSection = 0,
+                regions_length = this.props.PageResions.Regions.length - 2; // Get index Before Footer 
             return this.props.PageResions.Regions.map((data, key)=>{  
-                // if(data.CodeName == "MainContent" || data.CodeName == "maincontent"){                   
-                //      itemsForSection = data.UserSections.length;                   
-                // }else if (data.CodeName == "BottomContent" || data.CodeName == "bottomcontent"){
-                //     itemsForSection = data.UserSections.length;
-                // } else if (data.CodeName == "Sidebar"){
-                //     itemsForSection = data.UserSections.length;
-                // }    
+                // send Length Data Of Section:
                 if(data.CodeName != "header" && data.CodeName != "footer"){
                     itemsForSection = data.UserSections.length;
                     console.log(itemsForSection)
@@ -68,78 +67,43 @@ class Sidebar extends Component {
                                 <HeaderDT headerData = {data}/>
                             :
                              null 
-                        }
-                        
-                        {/* { 
+                        }                        
+                        { 
                             data.CodeName != "header" && data.CodeName != "footer"? 
                                 <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
                             :
                              null 
-                        } */}                         
+                        }     
                         { 
-                            data.CodeName == "leftcontent" || data.CodeName == "LeftContent"? 
-                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
-                            :
-                             null 
-                        }
-                        
-                        { 
-                            data.CodeName == "MainContent" || data.CodeName == "maincontent"? 
-                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
-                            :
-                             null 
-                        }
-                        
-                        { 
-                            data.CodeName == "Sidebar"? 
-                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
-                            :
-                             null 
-                        }
-                        { 
-                            data.CodeName == "BottomContent" || data.CodeName == "bottomcontent" || data.CodeName == "mainbottomcontent"? 
-                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
-                            :
-                             null 
-                        }
-                        {
-                            (data.CodeName == "footer" && renderAddNewSection == -1)?                                
+                            (key == regions_length )?                                
                                 <div className="sidebar__header__section">
-                                    <button className="header__section--add" onClick = {this._addNewSections}><FaPlus /> Add New Section</button>
+                                    <Link className="header__section--add" to = {`${PathsApp.Paths}region/${this.props.PageResions.id}`} >
+                                        <span> <FaPlus /> Add New Section</span>                                                                                                               
+                                    </Link>                                
                                 </div>
                             : 
                                 null
-                        } 
-                        
-                        { // To Not Render Add New Section Again 
-                            (data.CodeName == "footer" && renderAddNewSection == -1)? renderAddNewSection == 0 : null 
-                        } 
+                        }                                                                 
                         {
-                            data.CodeName == "footer"?
-                                // renderAddNewSection == -1? <div>Add New Section</div>: null
+                            data.CodeName == "footer"?                                
                                 <FooterDT FooterData = {data}/>
                             :
-                             null 
+                                null 
                         }
                         
                     </div>
                 )            
             })
         }else{
-            return <h6> Loading 4</h6>
+            return <LoaderSpinner/>
         }
     }
-    render() {
+    render() {                
         return (            
-            <>
-                {
-                    this.state.showSectionsAvailable ? 
-                        <SectionAvailable/>
-                    : null
-                }
-                
+            <>                               
                 <div className="sidebar__header__section"> {this._PageName()}</div>
-                <div> {this._getData()} </div>              
+                  
+                { this.props.closeRoutePage ? <PagesAvailable/> : <div> {this._getData()} </div> }
             </>
         )
     }
@@ -148,7 +112,8 @@ class Sidebar extends Component {
 const mapStateToProps = state => ({
     initialized: state.app.initialized,
     dataFA: state.app.dataFirst,
-    PageResions : state.slidebar.regions
+    PageResions : state.slidebar.regions,
+    closeRoutePage : state.slidebar.closeRoutePage
 })
 
 export default connect(mapStateToProps)(Sidebar)

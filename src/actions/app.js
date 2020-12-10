@@ -52,7 +52,9 @@ export const getDropdownPages = () => (dispatch) => {
     dispatch(getLanguages());
     const urlAllData = API.getTemplateStructureV2;
     return axios.get(urlAllData)
-        .then((Alldata) => {            
+        .then((Alldata) => {     
+            console.log(Alldata.data) 
+            let Layouts = Alldata.data.Layouts;
             // Get Pages For Dorpdown
             const pagesData = Alldata.data.Pages.slice(1); // All Page Data Only To Send it 
             console.log(pagesData);
@@ -70,8 +72,10 @@ export const getDropdownPages = () => (dispatch) => {
                     dispatch(FooterUserSections(pagesData[0].Regions[i])) 
                 }
             }            
-            
+            //Sent TO getPagesDropDown
             dispatch({ type: constants.DROPDOWN_PAGES, pagesData });
+            // Send Layouts Data 
+            dispatch({ type: constants.LAYOUTS_PAGES, Layouts });
             // Header Data For Json 
             // dispatch({ type: constants.HEADER_USER_SECTIONS, pagesData });
         })

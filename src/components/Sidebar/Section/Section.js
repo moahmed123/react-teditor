@@ -28,6 +28,7 @@ import TypeTextarea from './Fields/TypeTextarea';
 import MainCollection from './Collection/MainCollection';
 //action Btn Included {save, Cancel}
 import SaveBtn from './SaveBtn';
+import BackBtn from './BackBtn';
 
 
 class Section extends Component {             
@@ -106,12 +107,7 @@ class Section extends Component {
                 <div className="Home__sidebar__header">
                     <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} <span>home page</span></h4>
                     <div className="setting--sidebar__controls">
-                        <div className="delete">
-                            <img src={deleteMark} />
-                        </div>
-                        {/* <Button className="check" onclick={()=> console.log('save')}>
-                            <img src={check} />
-                        </Button> */}
+                        <BackBtn/>                        
                         <SaveBtn/>
                     </div>
                 </div>

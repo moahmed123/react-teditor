@@ -22,6 +22,11 @@ export default (state = initialState, action) => {
             ...state,                
             FooterUserSections: action.UserSections
         } 
+        case constants.CLOSE_ADD_PAGE:
+        return {
+            ...state,                
+            closeRoutePage: action.closeAddPage
+        } 
         default:
             return state
     }

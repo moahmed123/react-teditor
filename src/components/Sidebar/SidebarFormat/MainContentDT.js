@@ -15,11 +15,19 @@ class MainContentDT extends Component {
         super(props);
         this.state = {
             items: [],
-            sectionId: []
+            sectionId: [],
+            collectData: []
         }
     }
     componentDidMount(){
-        console.log('main contant' , this.props.MainContenData);
+        // this.setState({ items: [] })
+        if(this.props.MainContenData){
+            this.state.collectData.push(this.props.MainContenData);
+            // console.log('main contant' , this.props.MainContenData.UserSections.CodeName);
+            console.log('main contant' , this.props.MainContenData);
+            console.log(this.state.collectData)            
+        }
+        
         console.log(this.props.SectionItems)
         this._FunCreateDropItems()
     }
@@ -36,24 +44,7 @@ class MainContentDT extends Component {
             SectionId.push(data.id)
         })
         this.setState({ items: itemCollection, sectionId: SectionId })   
-    }
-    _UserSections(){
-        if(this.props.MainContenData){
-            return this.props.MainContenData.UserSections.map((Sections, key)=>{
-                return (
-                    <div className="label" key={key}>                    
-                        <Link to = {`/section/${Sections.id}`} >
-                                    <img className="label__icon" src={Promoted} />
-                                <span> 
-                                    {Sections.DescName}
-                                </span> 
-                            <img className="label--delete" src={Trash} />
-                        </Link>
-                    </div>
-                )
-            })
-        }
-    }
+    }  
     onSortEnd = ({ oldIndex, newIndex }) => {
         this.setState(({ items }) => ({
             items: arrayMove(items, oldIndex, newIndex),
@@ -69,26 +60,26 @@ class MainContentDT extends Component {
             // REODSEC            
         }  
         this.props.dispatch(REODSEC.reorderSection(SECDrop));          
-    }; 
-    //[0,1]
+    };    
     render() {
         const SortableItem = SortableElement(({ value }) => {
-            if(this.props.MainContenData.UserSections){                
+            if(this.props.MainContenData.UserSections && this.state.collectData.length > 0 ){
                 // console.log("this.....",this.state.items)
-                const {UserSections} = this.props.MainContenData;                   
+                const {UserSections} = this.props.MainContenData; 
+                const collect_Data_state = this.state.collectData[0].UserSections;                  
                     return (  
                         <div className='Parent_Cart' key={value}>
                             <div className="label" >                    
-                                <Link to = {`${PathsApp.Paths}section/${UserSections[value].id}`} >
+                                <Link to = {`${PathsApp.Paths}section/${collect_Data_state[value].id}`} >
                                         <img className="label__icon" src={Promoted} />
                                         <span> 
-                                            {UserSections[value].DescName}
+                                            {collect_Data_state[value].DescName}
                                         </span>                             
                                 </Link>                                                           
                             </div>                                                                                 
                             <div className= 'Delete_home' 
                                 onClick = {(e)=> {
-                                    this.props.dispatch(REMSEC.removeSection(UserSections[value].id));                                   
+                                    this.props.dispatch(REMSEC.removeSection(collect_Data_state[value].id));                                   
                                     // TODO DYNAMIC CHECK REM IS OK 
                                     setTimeout(()=>{
                                         e.target.parentElement.parentElement.remove()
@@ -117,11 +108,13 @@ class MainContentDT extends Component {
                         <h2> {this.props.MainContenData.Name} </h2>
                     :
                         <h6 className='text-center not-found-sc'> No Section Found </h6>
-                }
-                               
-                {/* {this._UserSections()}  */}
-
-                <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1} />               
+                }                                               
+                {
+                this.state.items.length > 0 ?
+                    <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1} />
+                    :
+                    null
+                }                
             </div>
         )
     }

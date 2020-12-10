@@ -6,17 +6,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case constants.DROPDOWN_PAGES:
+        case constants.Add_New_Section:
             return {
                 ...state,                
-                pagesData: action.pagesData
-            }
-        case constants.LAYOUTS_PAGES:
-            return {
-                ...state,                
-                Layouts: action.Layouts
-            }
-            
+                Sections: action.AvailableSections
+            }                     
         default:
             return state
     }

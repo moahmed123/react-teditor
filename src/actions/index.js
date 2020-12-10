@@ -13,6 +13,10 @@ import * as PUBLISH from './publish';
 import * as REMSEC from './sidebar/removeSection';
 import * as REODSEC from './sidebar/ReorderSections';
 import * as GETTMSET from './sidebar/getTemplateSettings';
+import * as ADDNESEC from './sidebar/addNewSection';
+import * as INSERTSEC from './sidebar/insertSection';
+import * as ADDLAYOUT from './sidebar/addLayout';
+import * as UPDSECST from './sidebar/UpdateSectionState';
 
 export {
   app,  
@@ -29,5 +33,9 @@ export {
   PUBLISH,
   REMSEC,
   REODSEC,
-  GETTMSET
+  GETTMSET,
+  ADDNESEC,
+  INSERTSEC,
+  ADDLAYOUT,
+  UPDSECST
 }

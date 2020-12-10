@@ -13,10 +13,10 @@ import IframePrev from '../Iframe/IframePrev';
 // import Controls from './Test/Controls'
 //Image Local
 import ArrowLeft from '../../assets/images/arrow-left.png';
-// import SectionsAvailable from './../Sidebar/Section/sectionsAvailable/SectionsAvailable'
+import SectionsAvailable from './../Sidebar/Section/sectionsAvailable/SectionsAvailable'
 
 
-class Home extends Component {
+class AvailableSectionsPG extends Component {
     render() {
         const homeClass = classNames('Home', {});
 
@@ -31,9 +31,9 @@ class Home extends Component {
                     <div className='row no-gutters'>                                                                
                         <div className='col-md-3 p-0'>                             
                             <div className="Home__sidebar">
-                                <div className="Home__sidebar__header">
-                                    <Sidebar/>
-                                </div>                                        
+                                <div className="Home__sidebar__header">                                    
+                                    <SectionsAvailable/>
+                                </div>                                                          
                             </div>                          
                         </div>
                         <div className='col-md-9'>   
@@ -46,4 +46,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default AvailableSectionsPG

@@ -23,5 +23,10 @@ export default keyMirror({
   SEARCH_LINK: null,
   LINK_INPUT_VAlUE: null,
   GET_LANGS: null,  
-  TEMPLATE_SETTING: null
+  TEMPLATE_SETTING: null,
+  Add_New_Section: null,
+  INSERT_SECTION: null,
+  LAYOUTS_PAGES: null,
+  ADD_LAYOUT: null,
+  CLOSE_ADD_PAGE: null
 })

@@ -15,6 +15,10 @@ const ApiPaths = {
     removeSection: 'http://qaz123.expandcart.com/admin/teditor/teditorV2/RemoveSection',
     reorderSection: "http://qaz123.expandcart.com/admin/teditor/teditor/ReorderSections",
     getTemplateSettings: "http://qaz123.expandcart.com/admin/teditor/teditorV2/getTemplateSettings",
+    getPageAvailableSections: 'http://qaz123.expandcart.com/admin/teditor/teditorv2/getPageAvailableSections',
+    insertSection: "http://qaz123.expandcart.com/admin/teditor/teditor/insertSection",
+    addLayout: "http://qaz123.expandcart.com/admin/teditor/teditorV2/AddLayout",
+    UpdateSectionState: "http://qaz123.expandcart.com/admin/teditor/teditor/UpdateSectionState",
     
     // Paths 
     IframeUrl: "/index.php?",

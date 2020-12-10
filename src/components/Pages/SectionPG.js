@@ -9,7 +9,7 @@ import { Form, Button, FormGroup, FormControl, ControlLabel, Dropdown, Accordion
 // Component
 import Header from '../Header/Header';
 import SectionData from '../Sidebar/Section/Section';
-import IframeProv from '../Iframe/IframePrev'
+import IframeProv from '../Iframe/IframePrev';
 // import Controls from './Test/Controls'
 //Image Local
 
@@ -26,7 +26,8 @@ class SectionPG extends Component {
                         </div>
                     </div>
                     <div className='row'>
-                        <div className='col-md-3 p-0 position-static'>
+                        
+                        <div className='col-md-3 p-0 position-static'>                            
                             <div className="Home__sidebar setting--sidebar section--page ">
                             <SectionData/>
                             </div>

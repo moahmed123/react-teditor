@@ -7,8 +7,9 @@ export const getSectionFields = () => (dispatch) => {
     console.log();
     // Get Languages Fields
     // dispatch(getLanguages());
-
-    let sectionId = window.location.pathname.split('/')[2]; // /section/404/header
+    const length_Id = API.Paths.split('/').length; // Get Index Of Id 
+    // let sectionId = window.location.pathname.split('/')[2]; // /section/404/header
+    let sectionId = window.location.pathname.split('/')[length_Id]; // /section/404/header
     
     // axios.post(url, data, headers)
     return axios.get(API.getSectionFieldsV2,{ params: {SectionId: sectionId}})

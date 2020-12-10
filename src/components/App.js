@@ -8,7 +8,11 @@ import Home from './Pages/Home';
 import HeaderPG from './Pages/HeaderPG';
 import FooterPG from './Pages/FooterPG';
 import SectionPG from './Pages/SectionPG';
-import SettingStylePG from './Pages/SettingStylePG'
+import SettingStylePG from './Pages/SettingStylePG';
+import AvailableSectionsPG from './Pages/AvailableSectionsPG';
+
+//route
+import PathsApp from '../actions/Api_paths';
 
 // LTR Direction
 import '../css/main-ltr.css'; 
@@ -29,12 +33,13 @@ class App extends Component {
                             timeout={this.props.transitions ? 350 : 0}
                         >
                             <Switch location={location}>
-                                <Route exact path="/" component={Home} />
-                                <Route exact path="/header" component={HeaderPG} />
-                                <Route exact path="/footer" component={FooterPG} />                                
+                                <Route exact path = {`${PathsApp.Paths}`} component={Home} />
+                                <Route exact path = {`${PathsApp.Paths}header`} component={HeaderPG} />
+                                <Route exact path = {`${PathsApp.Paths}footer`} component={FooterPG} />                                
                                 {/* <Route exact path="/section/:id" component={SectionPG} /> */}
-                                <Route exact path="/section/:id?/:section" component={SectionPG} />
-                                <Route exact path="/setting" component={SettingStylePG} />
+                                <Route exact path = {`${PathsApp.Paths}section/:id?/:section`} component={SectionPG} />
+                                <Route exact path = {`${PathsApp.Paths}setting`} component={SettingStylePG} />
+                                <Route exact path = {`${PathsApp.Paths}region/:id?`} component={AvailableSectionsPG} />
 
                                 {/* <Route exact path="/page" component={Page} />
                 <Route exact path="/about" component={About} /> */}
