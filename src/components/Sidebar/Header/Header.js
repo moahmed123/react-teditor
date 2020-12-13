@@ -19,18 +19,19 @@ class Header extends Component {
         if(this.props.HeaderData){
             return this.props.HeaderData.UserSections.map((data, key)=>{
                 return(
-                    <div className="label" key={key}>
+                    <div className="label header--label" key={key}>
                         <Link to={`${PathsApp.Paths}section/${data.id}/header`}>
-                            <span>{data.DescName}</span>                                                                                                               
-                        </Link> 
-                        <Form>
+                            <span>{data.DescName}</span>   
+                            <Form>
                             <Form.Check
                                 type="switch"
                                 id={`switch_id_${data.id}`}
                                 defaultChecked={data.State == 'enabled' ? " checked " : null}
                                 onChange={this._handleChangeSwitch}
                             />
-                        </Form>                      
+                        </Form>                                                                                                               
+                        </Link> 
+                                         
                     </div>
                 )
             })            

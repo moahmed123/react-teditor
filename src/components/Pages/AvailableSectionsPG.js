@@ -13,7 +13,7 @@ import IframePrev from '../Iframe/IframePrev';
 // import Controls from './Test/Controls'
 //Image Local
 import ArrowLeft from '../../assets/images/arrow-left.png';
-import SectionsAvailable from './../Sidebar/Section/sectionsAvailable/SectionsAvailable'
+import SectionsAvailable from '../Sidebar/Section/sectionsAvailable/sectionsAvailable';
 
 
 class AvailableSectionsPG extends Component {
@@ -29,9 +29,9 @@ class AvailableSectionsPG extends Component {
                         </div>
                     </div>
                     <div className='row no-gutters'>                                                                
-                        <div className='col-md-3 p-0'>                             
-                            <div className="Home__sidebar">
-                                <div className="Home__sidebar__header">                                    
+                        <div className='col-md-3 p-0 position-static'>                             
+                            <div className="Home__sidebar setting--sidebar section--page">
+                                <div className="Home__sidebar__header flex-column">                                    
                                     <SectionsAvailable/>
                                 </div>                                                          
                             </div>                          

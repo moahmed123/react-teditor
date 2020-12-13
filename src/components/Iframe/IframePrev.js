@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import API from '../../actions/Api_paths';
-import Iframe from 'react-iframe'
+// import Iframe from 'react-iframe'
 
 //http://qaz123.expandcart.com/index.php?route=common/home&isdraft=1&draftlangcode=en&draftsectionid=613
 class IframePrev extends Component {
