@@ -21,13 +21,23 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
     }
     else {
         // To Get Format To Save Values 
+        console.log(">>>>>", savedFieldVals)
         for (let i = 0; i < savedFieldVals.length; i++) {
             let createVal = '"' + savedFieldVals[i].key + '": "' + savedFieldVals[i].value;
-            if (i == 0) { objCr = createVal + '",' }
-            if (i == savedFieldVals.length - 1) {
-                // Last Of 
-                objCr += createVal + '"';
-            }
+            // if (i == 0) { objCr = createVal + '",' }
+            // if (i == savedFieldVals.length - 1) {
+            //     // Last Of 
+            //     objCr += createVal + '"';
+            // }
+            if (i == 0) { 
+                objCr = createVal + '",' 
+            }else{
+                if (i == savedFieldVals.length - 1){
+                    objCr += createVal + '"';
+                }else{
+                    objCr += createVal + '",';
+                }            
+            } 
         }
     }
     let addToBra = "{" + objCr + "}";
@@ -43,7 +53,16 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
     }).then((success) => {
         console.log(success);
         // Update Section Data 
-        dispatch(getSectionFields())
+        // dispatch(getSectionFields())
+        // Chack Route Of Section. 
+        let lastOfRoute = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
+        // Reload Route Of Section Only.
+        if(lastOfRoute != 'setting'){
+            dispatch(getSectionFields())
+        }
+        // Refresh Iframe When Save.
+        let iframe = document.getElementsByClassName('iframe-site');
+        iframe[0].src = iframe[0].src; // Reload it. 
         // TODO: Show Field Save Is Done. 
     })
 }

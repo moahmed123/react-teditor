@@ -24,6 +24,7 @@ import TagsProduct from './Fields/TagsProduct';
 import LinkTag from './Fields/Link/Link';
 import ImageTag from './Fields/Image/ImageCom';
 import TypeTextarea from './Fields/TypeTextarea';
+import TagsBrand from './Fields/TagsBrand';
 // Main Collection 
 import MainCollection from './Collection/MainCollection';
 //action Btn Included {save, Cancel}
@@ -76,6 +77,10 @@ class Section extends Component {
                 }// View For Type Image
                 else if(Fields.Type == "image"){
                     return <ImageTag key={key} codelang = {this.state.codeLang} FieldImage = {Fields}/>
+                }
+                // View For Type Brand
+                else if(Fields.Type == "tags-brand"){
+                    return <TagsBrand key={key} codelang = {this.state.codeLang} FieldBrand = {Fields}/>
                 }
             })
         }              

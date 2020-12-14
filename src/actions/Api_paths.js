@@ -19,9 +19,11 @@ const ApiPaths = {
     insertSection: "http://qaz123.expandcart.com/admin/teditor/teditor/insertSection",
     addLayout: "http://qaz123.expandcart.com/admin/teditor/teditorV2/AddLayout",
     UpdateSectionState: "http://qaz123.expandcart.com/admin/teditor/teditor/UpdateSectionState",
-    
+    resetDraftVersion: "http://qaz123.expandcart.com/admin/teditor/teditorV2/ResetDraftVersion",
+    searchBrands: "http://qaz123.expandcart.com/admin/teditor/teditor/searchBrands",
     // Paths 
     IframeUrl: "/index.php?",
     Paths: '/', // ex '/admin/teditor/teditor/'
+    AdminPaths: '/', // back To Admin ex '/admin'
 };
 export default ApiPaths;

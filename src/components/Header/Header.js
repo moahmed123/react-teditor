@@ -6,11 +6,12 @@ import { Dropdown} from 'react-bootstrap';
 import { FaCheck ,FaRocket ,FaAngleDown , FaBars} from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
-import {app, PUBLISH} from './../../actions';
+import {app, PUBLISH, RESDRAFVER} from './../../actions';
 import Shuttl from '../../assets/svg/shuttle.svg';
 import Reset from '../../assets/svg/reset.svg';
 import ShuttlBlue from '../../assets/svg/shuttle-blue.svg';
 import styleShape from '../../assets/svg/style-shape.svg';
+import PathsApp from '../../actions/Api_paths'
 // import '../../css/Header.css'
 
 
@@ -75,7 +76,7 @@ class Header extends Component {
                     <div className="col-md-3 p-0">
                         <div className="header-left__controls">                          
                             <div className="header__back-circle">
-                                <Link to='/'>
+                                <Link to={`${PathsApp.AdminPaths}`}>
                                     <span>
                                         <FaLongArrowAltLeft />                                    
                                     </span>
@@ -110,19 +111,23 @@ class Header extends Component {
                     {/* end navbar for mobile */}
                     <div className="col-md-9 col-6">
                         <div className="Header__controls">
-                        <button className="Header__controls__save d-block">EN</button>
-                        <button className="Header__controls__save">Reset </button>
-                        <img className="Header__controls__reset" src={Reset} />
+                            <button className="Header__controls__save d-block">EN</button>
 
-                        <button className="Header__controls__publish" onClick = {()=>{
-                            // Publish All Changes For Fields                            
-                            this.props.dispatch(PUBLISH.publishFieldsVals());
-                        }}> 
-                            <img className="controls-publish--lg" src={Shuttl} /> 
-                            Publish
-                        </button>
-                        <img className="controls-publish--xs" src={ShuttlBlue} /> 
-                    </div>
+                            <button className="Header__controls__save" onClick = {()=>{
+                                // reset Dreft Version Changes For Fields :
+                                this.props.dispatch(RESDRAFVER.resetDraftVersion());
+                            }} > Reset </button>
+                            <img className="Header__controls__reset" src={Reset} />
+
+                            <button className="Header__controls__publish" onClick = {()=>{
+                                // Publish All Changes For Fields                            
+                                this.props.dispatch(PUBLISH.publishFieldsVals());
+                            }}> 
+                                <img className="controls-publish--lg" src={Shuttl} /> 
+                                Publish
+                            </button>
+                            <img className="controls-publish--xs" src={ShuttlBlue} /> 
+                        </div>
                     </div>
                 
                 </div>

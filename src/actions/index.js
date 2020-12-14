@@ -10,6 +10,7 @@ import * as REMCOLLE from './sidebar/removeCollection';
 import * as REODCOLLS from './sidebar/reorderCollections';
 import * as GETLANGS from './getLanguages';
 import * as PUBLISH from './publish';
+import * as RESDRAFVER from './resetDraftVersion';
 import * as REMSEC from './sidebar/removeSection';
 import * as REODSEC from './sidebar/ReorderSections';
 import * as GETTMSET from './sidebar/getTemplateSettings';
@@ -17,6 +18,7 @@ import * as ADDNESEC from './sidebar/addNewSection';
 import * as INSERTSEC from './sidebar/insertSection';
 import * as ADDLAYOUT from './sidebar/addLayout';
 import * as UPDSECST from './sidebar/UpdateSectionState';
+import * as SEARBRAND from './sidebar/searchBrands';
 
 export {
   app,  
@@ -37,5 +39,7 @@ export {
   ADDNESEC,
   INSERTSEC,
   ADDLAYOUT,
-  UPDSECST
+  UPDSECST,
+  RESDRAFVER,
+  SEARBRAND
 }

@@ -14,6 +14,7 @@ import LinkTag from '../../Section/Fields/Link/Link';
 import ImageTag from '../../Section/Fields/Image/ImageCom';
 import TagColorPicker from '../../Section/Fields/TagColorPicker';
 import TypeTextarea from '../../Section/Fields/TypeTextarea';
+import TagsBrand from '../../Section/Fields/TagsBrand'
 
 class SettingsComponent extends Component {   
     _getSectionFields = () => {
@@ -51,6 +52,10 @@ class SettingsComponent extends Component {
                     // View For Type Image
                     else if(Fields.Type == "colorpicker"){                        
                         return <TagColorPicker key={key} codelang = {this.props.langCode} FieldColorPicker = {Fields}/>
+                    }
+                     // View For Type Brand
+                     else if(Fields.Type == "tags-brand"){
+                        return <TagsBrand key={key} codelang = {this.props.langCode} FieldBrand = {Fields}/>
                     }
                 })
             })                
