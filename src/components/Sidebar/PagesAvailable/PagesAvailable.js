@@ -20,16 +20,20 @@ class PagesAvailable extends Component {
                      onClick = {()=> {
                          this.props.dispatch(ADDLAYOUT.addLayout( dataLayouts.name , dataLayouts.route))
                          }} >
-                        <img className="label__icon" src={Promoted} />
-                        <span> {dataLayouts.name}</span>                                             
+                             <a>
+                                <img className="label__icon" src={Promoted} />
+                                <span> {dataLayouts.name}</span>                                             
+                             </a>
                      </div>
                  )
             })
         }
     }
     render() {             
-        return (            
-            <div className='Parent_Cart'> {this._renderLayouts()} </div>
+        return (      
+            <div className="sidebar__header__section">
+                <div className='Parent_Cart'> {this._renderLayouts()} </div>
+            </div>      
         )
     }
 }

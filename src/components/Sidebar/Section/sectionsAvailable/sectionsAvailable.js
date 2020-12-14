@@ -5,8 +5,8 @@ import { Form, Button, FormGroup, FormControl, ControlLabel, Dropdown, Accordion
 // import '../../../css/Header-section.css';
 import { GetSCFLD, ADDNESEC, INSERTSEC} from '../../../../actions';
 
-import deleteMark from '../../../../assets/svg/delete.svg';
-
+import deleteMark from '../../../../assets/svg/left-arrow-long.svg';
+ 
 
 import SaveBtn from '../SaveBtn';
 import Trash from '../../../../assets/svg/trash.svg';
@@ -14,7 +14,7 @@ import Promoted from '../../../../assets/svg/promoted-product.svg';
 
 
 class SectionsAvailable extends Component {             
- 
+  
     constructor(props) {
         super(props);
         this.state = {}
@@ -30,10 +30,12 @@ class SectionsAvailable extends Component {
                         <div className="label" key={Key} onClick= {()=>{
                             this.props.dispatch(INSERTSEC.insertSection(AvailSec.id))
                         }}>
+                            <a>
                                 <img className="label__icon" src={Promoted} />
                                 <span> 
                                     {AvailSec.DescName}
                                 </span>                                                             
+                            </a>
                         </div>
                     )
                 })
@@ -43,13 +45,19 @@ class SectionsAvailable extends Component {
     render() {                       
         return (
             <>                
-                <div className="Home__sidebar__header">
-                    <h4 className="setting--sidebar__header"> sections Available <span> home page </span></h4>
+                <div className="Home__sidebar__header plato">
+                    <h4 className="setting--sidebar__header d-flex">
                     <div className="setting--sidebar__controls">
                         <div className="delete">
                             <img src={deleteMark} />
                         </div>                      
                     </div>
+                       <div>
+                            sections Available 
+                            <span> home page </span>
+                        </div> 
+                     </h4>
+                    
                     <div className="sidebar__header__section">
                         {this._renderAvailSec()}
                     </div>
