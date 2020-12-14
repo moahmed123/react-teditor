@@ -28,5 +28,6 @@ export default keyMirror({
   INSERT_SECTION: null,
   LAYOUTS_PAGES: null,
   ADD_LAYOUT: null,
-  CLOSE_ADD_PAGE: null
+  CLOSE_ADD_PAGE: null,  
+  SEARCH_BRANDS: null
 })

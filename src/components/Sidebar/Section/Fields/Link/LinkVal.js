@@ -8,8 +8,9 @@ class LinkVal extends Component {
         super(props);
         this.state = {
             // search_data: false
-        }
+        }        
     }
+  
     _listOfLinksData = () => {
         let Links_data = this.props.LinkValData.Links;
         if (Links_data) {
@@ -17,7 +18,7 @@ class LinkVal extends Component {
                 return data_links.items.map((item_data, key) => {
                     return (
                         <li key={key}>
-                             <button onClick={this._handleSelectData}>{item_data}</button>
+                             <button className = 'Link_list_comp' onClick={this._handleSelectData}>{item_data}</button>
                         </li>
                     )
                 })
@@ -25,9 +26,15 @@ class LinkVal extends Component {
         }
     }
     _handleSelectData = (e) => {   
-        let inputValue = e.target.textContent;     
-        this.props.dispatch(SeaLink.LinkInputVal(inputValue));
+        let inputValue = e.target.textContent;    
+        let inputV2 = [{key:this.props.ObjectFieldId, value: inputValue }] 
+        // this.props.dispatch(SeaLink.LinkInputVal(inputValue));     
         
+        //Test
+        let valIN = inputValue;
+        document.getElementById(`Link_${this.props.ObjectFieldId}`).value =  valIN;
+        this.props.dispatch(SeaLink.LinkInputVal("click"));   
+        //End Test             
         let LinkSaveJS = {"key": this.props.ObjectFieldId,"value": inputValue}; 
                         
         if(this.props.newFields){                        
@@ -58,13 +65,13 @@ class LinkVal extends Component {
             // console.log(this.props.GetLinkData)            
             return (
                 <div>
-                    <ul>
+                    <ul>                        
                         {
                            this.props.GetLinkData.map((data_links, key) => {                                
                                 return   data_links.items.map((item_data, key) => {                                    
                                     return (
                                         <li key={key} >
-                                            <button onClick={this._handleSelectData}>{item_data}</button>
+                                            <button className = 'Link_list_comp' onClick={this._handleSelectData}>{item_data}</button>
                                         </li>
                                     )
                                 })
@@ -78,6 +85,7 @@ class LinkVal extends Component {
             return (
                 <div>
                     <ul>
+                        {/* <input className='input_val' type='hidden'/> */}
                         {this._listOfLinksData()}
                     </ul>
                 </div>

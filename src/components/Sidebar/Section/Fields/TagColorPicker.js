@@ -11,6 +11,7 @@ class TagColorPicker extends Component {
             displayColorPicker: false,
             background: null,
             color: null,
+            IdColorPicker: null
             // fieldIdEn: null,
             // fieldIdAr: null,
             // fieldIdFr: null            
@@ -34,27 +35,26 @@ class TagColorPicker extends Component {
         const popover = {position: 'absolute',zIndex: '2'}
         const cover = {position: 'fixed',top: '0px',right: '0px',bottom: '0px',left: '0px'}
 
-        if(this.props.codelang == 'en'){
-            return this.props.FieldColorPicker.FieldVals.map((langInputVal, key) => {
+        if(this.props.codelang == 'en'){                        
+            return this.props.FieldColorPicker.FieldVals.map((langInputVal, key) => {                               
                 if(langInputVal.Lang == 'en'){                                        
                     return (
                         <div className="color__main__content" key={key}>
                             <div>
-                                <div id="circle-color" onClick={this.handleClick} className="main__content__circle" style={{ background: langInputVal.Value }}></div>
-                                <input type='hidden' value= {langInputVal.id} id='field_Id_Lang'/>
+                                <div onClick={this.handleClick} className="main__content__circle" style={{ background: langInputVal.Value }}></div>
+                                <input type='hidden' value= {langInputVal.id} className='Field_Box_id'/>
                                 {
                                     this.state.displayColorPicker ?
                                         <div style={popover}>
                                             <div style={cover} onClick={this.handleClose} />
-                                            <SketchPicker onChange={this._changeColorVal}/>                                                
-                                        </div>
-        
+                                            <SketchPicker onChange={this._changeColorVal} value={langInputVal.id}/>                                                
+                                        </div>        
                                     :
                                     null
                                 }
                             </div>
                             <div className="main__content__info">
-                                <p id="color-info">{langInputVal.Value}</p>
+                                <p className = "color-info">{langInputVal.Value}</p>
                             </div>
                         </div>
                     )
@@ -80,18 +80,15 @@ class TagColorPicker extends Component {
                 }
             })
         }
-    }
-    // handleChangeColor = (color) => {
-    //     console.log(document.getElementById('field_Id_Lang').value)
-    //     document.getElementById('color-info').innerHTML = color.hex;
-    //     document.getElementById('circle-color').style.background = color.hex;
-        
-    // } 
-    _changeColorVal = (color) => {                
-        document.getElementById('color-info').innerHTML = color.hex;
-        document.getElementById('circle-color').style.background = color.hex;
-        // Get Id Value 
-        const IdByLang = document.getElementById('field_Id_Lang').value; 
+    }     
+    _changeColorVal = (color, event) => {  
+                                   
+        // Change Color For this Class Name color-info. 
+        event.target.closest(".color__main__content").lastChild.children[0].innerHTML = color.hex;
+        // Change Backgroud For this Class Name main__content__circle. 
+        event.target.closest(".color__main__content").firstChild.children[0].style.background = color.hex; 
+        // Get Id Value         
+        const IdByLang = event.target.closest(".sketch-picker").parentElement.previousSibling.value; // Id Get From Input Hidden 
 
         let newTextVal = {"key": IdByLang,"value": color.hex,};
         if(this.props.newFields){                        

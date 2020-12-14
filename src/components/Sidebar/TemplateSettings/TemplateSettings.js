@@ -19,6 +19,7 @@ import { SketchPicker } from 'react-color';
 import LoaderSpinner from './../Spinner/LoaderSpinner';
 import SettingsComponent from './SettingsComponent/SettingsComponent';
 import SaveBtn from '../Section/SaveBtn';
+import BackBtn from '../Section/BackBtn';
 
 class TemplateSettings extends Component {
     constructor(props) {
@@ -86,9 +87,7 @@ class TemplateSettings extends Component {
                     <div className="Home__sidebar__header">
                         <h4 className="setting--sidebar__header">  Main Theme </h4>
                         <div className="setting--sidebar__controls">
-                            <div className="delete">
-                                <img src={deleteMark} />
-                            </div>
+                            <BackBtn/>
                             <SaveBtn/>
                         </div>
                     </div>

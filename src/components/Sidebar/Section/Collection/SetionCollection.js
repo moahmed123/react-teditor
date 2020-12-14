@@ -15,6 +15,7 @@ import TagsProduct from '../Fields/TagsProduct';
 import LinkTag from '../Fields/Link/Link';
 import ImageTag from '../Fields/Image/ImageCom';
 import TypeTextarea from '../Fields/TypeTextarea';
+import TagsBrand from '../Fields/TagsBrand'
 
 class SetionCollection extends Component {
     constructor(props) {
@@ -59,6 +60,10 @@ class SetionCollection extends Component {
                     }// View For Type Image
                     else if(Fields.Type == "image"){
                         return <ImageTag key={key} codelang = {lang} FieldImage = {Fields}/>
+                    }
+                    // View For Type Brand
+                    else if(Fields.Type == "tags-brand"){
+                        return <TagsBrand key={key} codelang = {lang} FieldBrand = {Fields}/>
                     }
                 })
              }  
