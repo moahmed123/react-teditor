@@ -402,3 +402,16 @@ button:focus , select:focus{
 .spinner-border{
   color: #03a9f4;
 }
+.header--label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a{
+      width: 100%;
+    }
+    .custom-switch{
+      &:hover{
+        cursor: pointer;
+      }
+    }
+}

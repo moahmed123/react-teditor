@@ -22,15 +22,16 @@ class Header extends Component {
                     <div className="label header--label" key={key}>
                         <Link to={`${PathsApp.Paths}section/${data.id}/header`}>
                             <span>{data.DescName}</span>   
-                            <Form>
+                                                                                                                                      
+                        </Link> 
+                        <Form>
                             <Form.Check
                                 type="switch"
                                 id={`switch_id_${data.id}`}
                                 defaultChecked={data.State == 'enabled' ? " checked " : null}
                                 onChange={this._handleChangeSwitch}
                             />
-                        </Form>                                                                                                               
-                        </Link> 
+                        </Form>
                                          
                     </div>
                 )
