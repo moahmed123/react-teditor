@@ -21,16 +21,16 @@ class Header extends Component {
                 return(
                     <div className="label header--label" key={key} >
                         <Link to={`${PathsApp.Paths}section/${data.id}/header`}>
-                            <span>{data.DescName}</span>   
-                            <Form>
-                                <Form.Check
-                                    type="switch"
-                                    id={`switch_id_${data.id}`}
-                                    defaultChecked={data.State == 'enabled' ? " checked " : null}
-                                    onChange={this._handleChangeSwitch}
-                                />
-                            </Form>                                                                                                               
-                        </Link>                                          
+                            <span>{data.DescName}</span>                                                                                                                                      
+                        </Link> 
+                        <Form>
+                            <Form.Check
+                                type="switch"
+                                id={`switch_id_${data.id}`}
+                                defaultChecked={data.State == 'enabled' ? " checked " : null}
+                                onChange={this._handleChangeSwitch}
+                            />
+                        </Form>                                         
                     </div>
                 )
             })            
