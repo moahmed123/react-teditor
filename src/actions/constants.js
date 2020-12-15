@@ -29,5 +29,6 @@ export default keyMirror({
   LAYOUTS_PAGES: null,
   ADD_LAYOUT: null,
   CLOSE_ADD_PAGE: null,  
-  SEARCH_BRANDS: null
+  SEARCH_BRANDS: null,
+  SET_LANG: null
 })

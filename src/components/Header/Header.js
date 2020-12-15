@@ -6,7 +6,7 @@ import { Dropdown} from 'react-bootstrap';
 import { FaCheck ,FaRocket ,FaAngleDown , FaBars} from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
-import {app, PUBLISH, RESDRAFVER} from './../../actions';
+import {app, PUBLISH, RESDRAFVER, SETLANG} from './../../actions';
 import Shuttl from '../../assets/svg/shuttle.svg';
 import Reset from '../../assets/svg/reset.svg';
 import ShuttlBlue from '../../assets/svg/shuttle-blue.svg';
@@ -66,8 +66,9 @@ class Header extends Component {
         }
     }
     render() {
+        let ActiveLanguage ;
         if (this.props.getlanguages) {            
-            let ActiveLanguage = this.props.getlanguages.data.ActiveLanguage.code;
+            ActiveLanguage = this.props.getlanguages.data.ActiveLanguage.code;
             localization.setLanguage(ActiveLanguage);
         }        
         const headerClass = classNames('Header', {
@@ -114,7 +115,15 @@ class Header extends Component {
                     {/* end navbar for mobile */}
                     <div className="col-md-9 col-6">
                         <div className="Header__controls">
-                            <button className="Header__controls__save d-block">{localization.Lang}</button>
+                            <button className="Header__controls__save d-block" onClick = {()=>{
+                                // set Language:                                
+                                ActiveLanguage == "en" ? 
+                                    this.props.dispatch(SETLANG.setLanguage('ar')) 
+                                : 
+                                    this.props.dispatch(SETLANG.setLanguage('en'))
+                            }}>
+                                {localization.Lang}
+                            </button>
 
                             <button className="Header__controls__save" onClick = {()=>{
                                 // reset Dreft Version Changes For Fields :

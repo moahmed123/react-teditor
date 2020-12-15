@@ -19,6 +19,7 @@ import * as INSERTSEC from './sidebar/insertSection';
 import * as ADDLAYOUT from './sidebar/addLayout';
 import * as UPDSECST from './sidebar/UpdateSectionState';
 import * as SEARBRAND from './sidebar/searchBrands';
+import * as SETLANG from './setLanguage';
 
 export {
   app,  
@@ -41,5 +42,6 @@ export {
   ADDLAYOUT,
   UPDSECST,
   RESDRAFVER,
-  SEARBRAND
+  SEARBRAND,
+  SETLANG
 }
