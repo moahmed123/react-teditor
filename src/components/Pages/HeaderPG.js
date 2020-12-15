@@ -9,6 +9,7 @@ import { Container} from 'react-bootstrap';
 // Component
 import Header from '../Header/Header';
 import HeaderData from '../Sidebar/Header/Header';
+import LoaderSpinner from '../Sidebar/Spinner/LoaderSpinner';
 // import { header_data } from '../../actions';
 // import Controls from './Test/Controls'
 //Image Local
@@ -19,7 +20,7 @@ class HeaderPG extends Component {
         if(this.props.UserSections){
           return  <HeaderData HeaderData = {this.props.UserSections}/>;
         }else{
-            return <div> Loading 3 </div>
+            return <LoaderSpinner/>
         }
     }
     render() {

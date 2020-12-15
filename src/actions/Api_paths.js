@@ -25,5 +25,8 @@ const ApiPaths = {
     IframeUrl: "/index.php?",
     Paths: '/', // ex '/admin/teditor/teditor/'
     AdminPaths: '/', // back To Admin ex '/admin'
+    srcClearImage : '/ecdata/stores/QAZ123/image/cache/no_image-235x235.jpg',
+    saveImageData : '/ecdata/stores/QAZ123/image/',
+    URlMediaManager: '/'
 };
 export default ApiPaths;

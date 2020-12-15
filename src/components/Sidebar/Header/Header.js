@@ -10,7 +10,7 @@ class Header extends Component {
         super(props);   
         this._handleChangeSwitch = this._handleChangeSwitch.bind(this);     
     }
-    _handleChangeSwitch(e){  
+    _handleChangeSwitch(e){      
         let SectionId = e.target.id.replace('switch_id_', ''),
             State = e.target.checked ? 'enabled' : "disabled";
         this.props.dispatch(UPDSECST.UpdateSectionState(SectionId, State))        
@@ -19,19 +19,18 @@ class Header extends Component {
         if(this.props.HeaderData){
             return this.props.HeaderData.UserSections.map((data, key)=>{
                 return(
-                    <div className="label header--label" key={key}>
+                    <div className="label header--label" key={key} >
                         <Link to={`${PathsApp.Paths}section/${data.id}/header`}>
                             <span>{data.DescName}</span>   
                             <Form>
-                            <Form.Check
-                                type="switch"
-                                id={`switch_id_${data.id}`}
-                                defaultChecked={data.State == 'enabled' ? " checked " : null}
-                                onChange={this._handleChangeSwitch}
-                            />
-                        </Form>                                                                                                               
-                        </Link> 
-                                         
+                                <Form.Check
+                                    type="switch"
+                                    id={`switch_id_${data.id}`}
+                                    defaultChecked={data.State == 'enabled' ? " checked " : null}
+                                    onChange={this._handleChangeSwitch}
+                                />
+                            </Form>                                                                                                               
+                        </Link>                                          
                     </div>
                 )
             })            

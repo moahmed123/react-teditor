@@ -20,6 +20,7 @@ import LoaderSpinner from './../Spinner/LoaderSpinner';
 import SettingsComponent from './SettingsComponent/SettingsComponent';
 import SaveBtn from '../Section/SaveBtn';
 import BackBtn from '../Section/BackBtn';
+import localization from '../../../localization/localization';
 
 class TemplateSettings extends Component {
     constructor(props) {
@@ -85,7 +86,7 @@ class TemplateSettings extends Component {
             <div className='col-md-3 p-0 position-static'>
                 <div className="Home__sidebar setting--sidebar">
                     <div className="Home__sidebar__header">
-                        <h4 className="setting--sidebar__header">  Main Theme </h4>
+                        <h4 className="setting--sidebar__header">  {localization.MainTheme} </h4>
                         <div className="setting--sidebar__controls">
                             <BackBtn/>
                             <SaveBtn/>

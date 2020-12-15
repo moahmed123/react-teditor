@@ -9,7 +9,7 @@ class BackBtn extends Component {
     render() {
         return (
             <div className="delete" onClick={this._BackHistory}>
-                <img src={deleteMark} />
+                <img src={this.props.backImg ? this.props.backImg : deleteMark} />
             </div>
         )
     }

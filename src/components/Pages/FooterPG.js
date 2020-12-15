@@ -10,17 +10,15 @@ import { connect } from 'react-redux';
 // Component
 import Header from '../Header/Header';
 import FooterData from '../Sidebar/Footer/Footer';
+import LoaderSpinner from '../Sidebar/Spinner/LoaderSpinner';
 // import { header_data } from '../../actions';
-
-
-
 
 class FooterPG extends Component {
     _FooterData(){
         if(this.props.FooterUserSections){
           return  <FooterData FooterData = {this.props.FooterUserSections}/>;
         }else{
-            return <div> Loading 2 </div>
+            return  <LoaderSpinner/>
         }
     }
     render() {

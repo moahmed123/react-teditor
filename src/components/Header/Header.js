@@ -12,7 +12,7 @@ import Reset from '../../assets/svg/reset.svg';
 import ShuttlBlue from '../../assets/svg/shuttle-blue.svg';
 import styleShape from '../../assets/svg/style-shape.svg';
 import PathsApp from '../../actions/Api_paths'
-// import '../../css/Header.css'
+import localization from '../../localization/localization';
 
 
 class Header extends Component {
@@ -66,10 +66,13 @@ class Header extends Component {
         }
     }
     render() {
+        if (this.props.getlanguages) {            
+            let ActiveLanguage = this.props.getlanguages.data.ActiveLanguage.code;
+            localization.setLanguage(ActiveLanguage);
+        }        
         const headerClass = classNames('Header', {
             visible: this.props.initialized,
         })
-
         return (
             <header className={headerClass}>                 
                 <div className="row align-items-center">
@@ -86,7 +89,7 @@ class Header extends Component {
                                 <div className="dropdown">
                                     <Dropdown>
                                         <Dropdown.Toggle variant="success" id='dropdown_pages'>
-                                            <span ref={this.dropdown} id='name_page'> home page</span>
+                                            <span ref={this.dropdown} id='name_page'> {localization.HomePage}</span>
                                             <FaAngleDown />
                                         </Dropdown.Toggle>
                                         <Dropdown.Menu>
@@ -111,12 +114,12 @@ class Header extends Component {
                     {/* end navbar for mobile */}
                     <div className="col-md-9 col-6">
                         <div className="Header__controls">
-                            <button className="Header__controls__save d-block">EN</button>
+                            <button className="Header__controls__save d-block">{localization.Lang}</button>
 
                             <button className="Header__controls__save" onClick = {()=>{
                                 // reset Dreft Version Changes For Fields :
                                 this.props.dispatch(RESDRAFVER.resetDraftVersion());
-                            }} > Reset </button>
+                            }} > {localization.Reset} </button>
                             <img className="Header__controls__reset" src={Reset} />
 
                             <button className="Header__controls__publish" onClick = {()=>{
@@ -124,7 +127,7 @@ class Header extends Component {
                                 this.props.dispatch(PUBLISH.publishFieldsVals());
                             }}> 
                                 <img className="controls-publish--lg" src={Shuttl} /> 
-                                Publish
+                                {localization.Publish}
                             </button>
                             <img className="controls-publish--xs" src={ShuttlBlue} /> 
                         </div>
@@ -139,6 +142,7 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
     Pages: state.getPagesDropDown.pagesData, // All Page For Template Editor
+    getlanguages: state.getlanguages.GetLangs
 })
 
 export default connect(mapStateToProps)(Header)

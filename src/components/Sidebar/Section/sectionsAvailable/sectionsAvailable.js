@@ -10,8 +10,9 @@ import deleteMark from '../../../../assets/svg/left-arrow-long.svg';
 
 import SaveBtn from '../SaveBtn';
 import Trash from '../../../../assets/svg/trash.svg';
+import BackBtn from '../BackBtn';
 import Promoted from '../../../../assets/svg/promoted-product.svg';
-
+import localization from '../../../../localization/localization';
 
 class SectionsAvailable extends Component {             
   
@@ -47,14 +48,12 @@ class SectionsAvailable extends Component {
             <>                
                 <div className="Home__sidebar__header plato">
                     <h4 className="setting--sidebar__header d-flex">
-                    <div className="setting--sidebar__controls">
-                        <div className="delete">
-                            <img src={deleteMark} />
-                        </div>                      
+                    <div className="setting--sidebar__controls">                         
+                        <BackBtn backImg = {deleteMark}/>
                     </div>
                        <div>
-                            sections Available 
-                            <span> home page </span>
+                            {localization.SectionsAvailable}
+                            <span> {localization.HomePage} </span>
                         </div> 
                      </h4>
                     

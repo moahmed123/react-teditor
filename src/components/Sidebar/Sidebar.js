@@ -20,6 +20,7 @@ import PathsApp from '../../actions/Api_paths';
 //Sections Available
 import PagesAvailable from './PagesAvailable/PagesAvailable'
 import deleteMark from '../../assets/svg/delete.svg';
+import localization from '../../localization/localization';
 
 
 
@@ -78,7 +79,7 @@ class Sidebar extends Component {
                             (key == regions_length )?                                
                                 <div className="sidebar__header__section">
                                     <Link className="header__section--add" to = {`${PathsApp.Paths}region/${this.props.PageResions.id}`} >
-                                        <span> <FaPlus /> Add New Section</span>                                                                                                               
+                                        <span> <FaPlus /> {localization.AddNewSection}</span>
                                     </Link>                                
                                 </div>
                             : 

@@ -64,19 +64,76 @@ class TagColorPicker extends Component {
         } else if (this.props.codelang == 'ar'){
             return this.props.FieldColorPicker.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'ar'){
-                    return <input className="generic--section__form" placeholder="" key={key} type="text" defaultValue = {langInputVal.Value}/>
+                    return (
+                        <div className="color__main__content" key={key}>
+                            <div>
+                                <div onClick={this.handleClick} className="main__content__circle" style={{ background: langInputVal.Value }}></div>
+                                <input type='hidden' value= {langInputVal.id} className='Field_Box_id'/>
+                                {
+                                    this.state.displayColorPicker ?
+                                        <div style={popover}>
+                                            <div style={cover} onClick={this.handleClose} />
+                                            <SketchPicker onChange={this._changeColorVal} value={langInputVal.id}/>                                                
+                                        </div>        
+                                    :
+                                    null
+                                }
+                            </div>
+                            <div className="main__content__info">
+                                <p className = "color-info">{langInputVal.Value}</p>
+                            </div>
+                        </div>
+                    )
                 }
             })
         } else if (this.props.codelang == 'fr'){
             return this.props.FieldColorPicker.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'fr'){
-                    return <input className="generic--section__form" placeholder="" key={key} type="text" defaultValue = {langInputVal.Value}/>
+                    return (
+                        <div className="color__main__content" key={key}>
+                            <div>
+                                <div onClick={this.handleClick} className="main__content__circle" style={{ background: langInputVal.Value }}></div>
+                                <input type='hidden' value= {langInputVal.id} className='Field_Box_id'/>
+                                {
+                                    this.state.displayColorPicker ?
+                                        <div style={popover}>
+                                            <div style={cover} onClick={this.handleClose} />
+                                            <SketchPicker onChange={this._changeColorVal} value={langInputVal.id}/>                                                
+                                        </div>        
+                                    :
+                                    null
+                                }
+                            </div>
+                            <div className="main__content__info">
+                                <p className = "color-info">{langInputVal.Value}</p>
+                            </div>
+                        </div>
+                    )
                 }
             })
         }else{
             return this.props.FieldColorPicker.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'en'){
-                    return <input className="generic--section__form" placeholder="" key={key} type="text" defaultValue = {langInputVal.Value}/>
+                    return (
+                        <div className="color__main__content" key={key}>
+                            <div>
+                                <div onClick={this.handleClick} className="main__content__circle" style={{ background: langInputVal.Value }}></div>
+                                <input type='hidden' value= {langInputVal.id} className='Field_Box_id'/>
+                                {
+                                    this.state.displayColorPicker ?
+                                        <div style={popover}>
+                                            <div style={cover} onClick={this.handleClose} />
+                                            <SketchPicker onChange={this._changeColorVal} value={langInputVal.id}/>                                                
+                                        </div>        
+                                    :
+                                    null
+                                }
+                            </div>
+                            <div className="main__content__info">
+                                <p className = "color-info">{langInputVal.Value}</p>
+                            </div>
+                        </div>
+                    )
                 }
             })
         }

@@ -130,7 +130,7 @@ class MainCollection extends Component {
         const SortableItem = SortableElement(({ value }) => {
             return (  
                 <div className='Parent_Cart'>
-                     <Card onClick={()=>{console.log(value)}}>
+                     <Card>
                         <Card.Header>
                             <Accordion.Toggle as={Button} variant="link" eventKey={`col_${value}`}>
                                 <span>{CollectionItemName} {value + 1}</span>                                
