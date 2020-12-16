@@ -21,7 +21,7 @@ const ApiPaths = {
     UpdateSectionState: "http://qaz123.expandcart.com/admin/teditor/teditor/UpdateSectionState",
     resetDraftVersion: "http://qaz123.expandcart.com/admin/teditor/teditorV2/ResetDraftVersion",
     searchBrands: "http://qaz123.expandcart.com/admin/teditor/teditor/searchBrands",
-    setLanguage: "http://qaz123.expandcart.com/admin/teditor/teditorV2/selectLanguage",
+    setLanguage: "http://qaz123.expandcart.com/admin/common/installation/language",
     // Paths 
     IframeUrl: "/index.php?",
     Paths: '/', // ex '/admin/teditor/teditor/'

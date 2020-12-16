@@ -14,7 +14,6 @@ import styleShape from '../../assets/svg/style-shape.svg';
 import PathsApp from '../../actions/Api_paths'
 import localization from '../../localization/localization';
 
-
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +21,7 @@ class Header extends Component {
         this.dropdown = React.createRef();
         // this._PagesData = this._PagesData.bind(this);
       }
-    componentDidMount(){
+    componentDidMount(){                           
         this.props.dispatch(app.getDropdownPages()); // Dispatch Data For Pages;    
         //open menu in mobile
         var menu ,sideBar, body;
