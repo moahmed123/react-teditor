@@ -25,7 +25,7 @@
 //     setLanguage: "/admin/common/installation/language",
 //     // Paths 
 //     IframeUrl: "/index.php?",
-//     Paths: '/admin/teditor/teditorV2/', // ex '/admin/teditor/teditor/'
+//     Paths: '/admin/teditor/teditorV2#/', // ex '/admin/teditor/teditor/'
 //     AdminPaths: '/admin/teditor/teditorV2#', // back To Admin ex '/admin'
 //     srcClearImage : '/ecdata/stores/QAZ123/image/cache/no_image-235x235.jpg',
 //     saveImageData : '/ecdata/stores/QAZ123/image/',
@@ -62,7 +62,7 @@ const ApiPaths = {
     // Paths 
     IframeUrl: "/index.php?",
     Paths: '/', // ex '/admin/teditor/teditor/'
-    AdminPaths: '/', // back To Admin ex '/admin'
+    AdminPaths: '', // back To Admin ex '/admin'
     srcClearImage : '/ecdata/stores/QAZ123/image/cache/no_image-235x235.jpg',
     saveImageData : '/ecdata/stores/QAZ123/image/',
     URlMediaManager: '/',
