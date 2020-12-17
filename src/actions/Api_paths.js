@@ -1,4 +1,4 @@
-// At Live App Version Use:
+// // At Live App Version Use:
 // const ApiPaths = {
 //     //API Links
 //     getTemplateStructureV2:'/admin/teditor/teditorV2/getTemplateStructure',
@@ -25,8 +25,8 @@
 //     setLanguage: "/admin/common/installation/language",
 //     // Paths 
 //     IframeUrl: "/index.php?",
-//     Paths: '/admin/teditor/teditorV2#/', // ex '/admin/teditor/teditor/'
-//     AdminPaths: '/admin/teditor/teditorV2#', // back To Admin ex '/admin'
+//     Paths: '/admin/teditor/teditorV2/', // ex '/admin/teditor/teditor/'
+//     AdminPaths: '/admin/teditor/teditorV2', // back To Admin ex '/admin'
 //     srcClearImage : '/ecdata/stores/QAZ123/image/cache/no_image-235x235.jpg',
 //     saveImageData : '/ecdata/stores/QAZ123/image/',
 //     URlMediaManager: '/',

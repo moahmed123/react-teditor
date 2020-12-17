@@ -48,14 +48,10 @@ class IframePrev extends Component {
                             "route=" +
                             routeForIframe +
                             "&isdraft=1" +
-                            "draftlangcode=" +
+                            "&draftlangcode=" +
                             carrentlyLang                       
                         } 
-                        className='iframe-site' 
-                        // sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                        // referrerpolicy = "origin same-origin"
-                        // allow="fullscreen 'src'"
-                        ></iframe>
+                        className='iframe-site'></iframe>
                 )
             }           
         }

@@ -8,8 +8,7 @@ export const insertSection = (sourceSectionId) => (dispatch) => {
     let  createVal = '"sourceSectionId" : "' +
                      sourceSectionId + '",'  +
                      '"sourceType" : "available",' +
-                     '"destType" : "draft",' +                     
-                     '"destSortOrder" : "11"',
+                     '"destType" : "draft"',
         addToBra = "{" + createVal + "}",
         objCrParse = JSON.parse(addToBra);
         

@@ -23,7 +23,7 @@ export const addCollection = (sectionId) => (dispatch) => {
     }).then((success) => {
         console.log(success);
         // Update Section Data
-        let NotLoading = true 
+        let NotLoading = false; 
         dispatch(getSectionFields(NotLoading));
         dispatch(refreshIframe())
         // TODO: Show Field Save Is Done. 
