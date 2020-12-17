@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { Container} from 'react-bootstrap';
+import { Container, Toast} from 'react-bootstrap';
 // import { FaTrashAlt , FaPlus} from "react-icons/fa";
 
 
@@ -10,6 +10,7 @@ import { Container} from 'react-bootstrap';
 import Header from '../Header/Header';
 import HeaderData from '../Sidebar/Header/Header';
 import LoaderSpinner from '../Sidebar/Spinner/LoaderSpinner';
+import IframePrev from '../Iframe/IframePrev';
 // import { header_data } from '../../actions';
 // import Controls from './Test/Controls'
 //Image Local
@@ -28,7 +29,7 @@ class HeaderPG extends Component {
 
         return (
             <section className={homeClass}>
-                <Container fluid className="no-gutters p-0">  
+                <Container fluid className="no-gutters p-0">                      
                     <div className="row no-gutters">
                         <div className="col-md-12">
                             <Header /> 
@@ -43,7 +44,7 @@ class HeaderPG extends Component {
                             </div>                          
                         </div>
                         <div className='col-md-9'>                            
-                            <iframe src='http://qaz123.expandcart.com/' className='iframe-site'></iframe>
+                            <IframePrev/>  
                         </div>
                     </div>
                 </Container>

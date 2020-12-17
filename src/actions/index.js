@@ -20,6 +20,7 @@ import * as ADDLAYOUT from './sidebar/addLayout';
 import * as UPDSECST from './sidebar/UpdateSectionState';
 import * as SEARBRAND from './sidebar/searchBrands';
 import * as SETLANG from './setLanguage';
+import * as NOTIFICATION from './notification/notification';
 
 export {
   app,  
@@ -43,5 +44,6 @@ export {
   UPDSECST,
   RESDRAFVER,
   SEARBRAND,
-  SETLANG
+  SETLANG,
+  NOTIFICATION
 }

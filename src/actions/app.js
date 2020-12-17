@@ -56,7 +56,7 @@ export const getDropdownPages = () => (dispatch) => {
             console.log(Alldata.data) 
             let Layouts = Alldata.data.Layouts;
             // Get Pages For Dorpdown
-            const pagesData = Alldata.data.Pages.slice(1); // All Page Data Only To Send it 
+            const pagesData = Alldata.data.Pages; // All Page Data Only To Send it 
             console.log(pagesData);
             // First Page for render
             dispatch(reloadRegionsOfPages(pagesData[0]));

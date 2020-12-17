@@ -12,12 +12,13 @@ export const setLanguage = (Lang) => (dispatch) => {
         url: API.setLanguage,
         data: qs.stringify(objCreatedParse),
         headers: {
+            
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
     }).then((success) => {
         console.log(success);
-        window.location.href = API.Paths
-    }).catch((error) => {
+        window.location.href = API.Paths;
+        }).catch((error) => {
         console.log(error.message);
     });
 }   

@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import Header from '../Header/Header';
 import FooterData from '../Sidebar/Footer/Footer';
 import LoaderSpinner from '../Sidebar/Spinner/LoaderSpinner';
+import IframePrev from '../Iframe/IframePrev';
 // import { header_data } from '../../actions';
 
 class FooterPG extends Component {
@@ -41,7 +42,7 @@ class FooterPG extends Component {
                             </div>                          
                         </div>
                         <div className='col-md-9'>                            
-                            <iframe src='http://qaz123.expandcart.com/' className='iframe-site'></iframe>
+                            <IframePrev/>  
                         </div>
                     </div>
                 </Container>

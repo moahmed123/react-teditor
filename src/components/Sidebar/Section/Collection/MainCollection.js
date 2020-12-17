@@ -13,6 +13,7 @@ import SelectLookup from '../Fields/SelectLookup';
 import TagsCategory from '../Fields/TagsCategory';
 import TagsProduct from '../Fields/TagsProduct';
 import Link from '../Fields/Link/Link';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 import SetionCollection from './SetionCollection'
@@ -28,7 +29,9 @@ class MainCollection extends Component {
             updataCollection: false,
             eventlengthCol: null,
             // sortCollection: false,
-            collectionId: []
+            collectionId: [],
+            loading: false,
+            addLoading: false
         }
         this._addCollection = this._addCollection.bind(this);
 
@@ -70,7 +73,7 @@ class MainCollection extends Component {
         console.log(collDrop)
     };   
     _addCollection = () => {
-        this.setState({addCol: true})
+        this.setState({addCol: true, addLoading: true})
         const sectionId = this.props.collectionData.id; // Setion Id TO USe It FOr Add Some Of Collection
         //Send Section Id:
         this.props.dispatch(ADCOLLE.addCollection(sectionId));    
@@ -78,7 +81,7 @@ class MainCollection extends Component {
            this._checkAddOrRemoave()
         }, 800)            
     }   
-    _checkAddOrRemoave(){
+    _checkAddOrRemoave(e){
         const {Collections} = this.props.collectionData; 
         // check when delete and add collection 
         if(this.state.addCol){
@@ -95,17 +98,19 @@ class MainCollection extends Component {
                         addCol: false, 
                         lengthColl: Collections.length,
                         items: this.state.items ,
+                        addLoading: false
                     })
                 }else if (this.state.lengthColl >  Collections.length){
                     // console.log(this.state.lengthColl, "  " , Collections.length, Collections)
                     // console.log(this.state.items) 
-                    // console.log(Collections.length) 
+                    // console.log(Collections.length)                      
                     this.state.items.pop();
                     this.setState({                     
                         addCol: false, 
                         lengthColl: Collections.length,
                         items: this.state.items ,
-                    })
+                        loading: false
+                    });
                 }
             }else{
                 //Delected All Collection 
@@ -144,18 +149,22 @@ class MainCollection extends Component {
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>                 
-                    <div className= 'Delete' onClick={()=>{
-                         this.setState({addCol: true});
-                         console.log(Collections[value].id)
-                         this.props.dispatch(REMCOLLE.removeCollection(Collections[value].id));
-                         
-                         setTimeout(()=>{
-                            // this.props.dispatch(GetSCFLD.getSectionFields());
+                    <div className= 'Delete' onClick={()=>{                                              
+                        this.setState({addCol: true, loading: true});
+                        console.log(Collections[value].id)
+                        this.props.dispatch(REMCOLLE.removeCollection(Collections[value].id));
+                       
+                         setTimeout(()=>{                          
                             this._checkAddOrRemoave()
                          }, 800) 
                     }}> 
                         <img src={trash} />
                     </div>
+                    <div className= 'Delete hidden_Element'>
+                        <Spinner animation="border" size="sm" />
+                        {/* <Spinner animation="grow" variant="light" /> */}
+                    </div>
+                    
                 </div>              
             );
         });
@@ -176,7 +185,22 @@ class MainCollection extends Component {
                         <Accordion defaultActiveKey="0">
                             <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1} />
                         </Accordion>
+                        {
+                            this.state.loading ? 
+                                <div className= 'loading_collection'>
+                                    <Spinner animation="border" />                            
+                                </div>
+                            :
+                            null
+                        }
+                        
                     </div>  
+                    {
+                        this.state.addLoading? 
+                            <div className='Add_Loader'> <Spinner animation="grow"  size="sm"/> </div>
+                        :
+                            null
+                    }
                     <div className="col-md-12">
                         <button onClick = {this._addCollection} className="header__section--add col-md-12"><svg stroke="currentColor" fill="currentColor" strokwidth="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
                             {CollectionButtonName}

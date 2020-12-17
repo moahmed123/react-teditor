@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SaveSCFLD } from '../../../actions';
+import { SaveSCFLD, NOTIFICATION} from '../../../actions';
 import { Button} from "react-bootstrap";
 import { connect } from 'react-redux';
 import check from '../../../assets/svg/check-mark.svg';
@@ -12,7 +12,14 @@ class SaveBtn extends Component {
             let savedFieldsVals = this.props.newFieldsChanges;     
             this.props.dispatch(SaveSCFLD.savedFieldsVals(savedFieldsVals));            
         }else{
-            console.log('Please Change For Fields Value ')            
+            console.log('Please Change For Fields Value ')   
+            let notification_result = {
+                status: 'warning', // danger
+                title: null,
+                Message : "Please Change Any Fields Value",
+                delay : 2000            
+            }
+            this.props.dispatch(NOTIFICATION.notification(notification_result));
         }          
     }
     render() {

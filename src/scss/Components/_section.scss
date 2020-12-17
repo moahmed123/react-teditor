@@ -358,9 +358,41 @@
             }
             .Delete_home{
                 #{$end}: 15px;
+                #{$start}: unset;
             }
         }
+        .hidden_Element{
+            display: none;
+        }
+        .show_Element{
+            display: inline-block;
+        }
+        .loading_collection{
+            position: absolute;
+            top: 0;text-align: center;
+            align-items: center;justify-content: center;
+            display: flex;width: 100%;height: 100%;
+            background: #2196f31f;
+        }
+        .Add_Loader{
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
     } 
+    .container_notification{
+        position: absolute;
+        z-index: 9999;
+        width: 100%;
+        .toast{
+            margin: 26px auto;
+        }
+        .alert {            
+            width: 40%;
+            margin: 20px auto;
+        }
+    }
 }
 .Home__sidebar__header {
     &.flex-column{

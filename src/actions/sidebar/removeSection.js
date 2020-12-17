@@ -1,7 +1,8 @@
 import axios from 'axios'
 import API from '../Api_paths';
 import qs from 'qs';
-import {RefreshData} from './../app'
+import {RefreshData} from './../app';
+import { refreshIframe } from '../Iframe/refreshIframe';
 
 // Add a New Collection. 
 export const removeSection = (sectionId) => (dispatch) => {
@@ -21,14 +22,12 @@ export const removeSection = (sectionId) => (dispatch) => {
         }
     }).then((success) => {
         console.log(success);
+        // Fun To Refresh Iframe When Save.       
+        dispatch(refreshIframe())
         // if(success.data.status == "OK"){
         //     // Update Home Data 
         //     dispatch(RefreshData());
         // }
-        // Update Section Data 
-        // dispatch(getSectionFields())
-        // dispatch(getDropdownPages())
-        // TODO: Show Field Save Is Done. 
     }).catch((error) => {
         console.log(error.message);
         console.log(error); 

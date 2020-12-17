@@ -1,36 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import API from '../../actions/Api_paths';
-// import Iframe from 'react-iframe'
 
-//http://qaz123.expandcart.com/index.php?route=common/home&isdraft=1&draftlangcode=en&draftsectionid=613
 class IframePrev extends Component {
     _IframeData = () => {
         if(this.props.PageResions && this.props.getlanguages){
             console.log(this.props.PageResions.Route, this.props.getlanguages.data.ActiveLanguage.code , API.IframeUrl)
+            const length_Id = API.Paths.split('/').length;            
             let routeForIframe = this.props.PageResions.Route,
+
                 carrentlyLang  = this.props.getlanguages.data.ActiveLanguage.code,
                 urlIndex     = API.IframeUrl,
-                sectionId = window.location.pathname.split('/')[2], // /section/404/header
+                
+                sectionId = window.location.pathname.split('/')[length_Id], // /section/404/header
                 // OriginLocal  = window.location.origin; // As Life Production 
-                OriginLocal  = "http://qaz123.expandcart.com"; // As demo Production 
+                OriginLocal  = ""; // As demo Production                 
+                if (window.location.hostname == 'localhost') {
+                    OriginLocal = "http://qaz123.expandcart.com";
+                }
                 // ( sectionId ) ? "&draftsectionid" + sectionId : null
                                     console.log(sectionId)
             if(routeForIframe == ''){ routeForIframe = "common/home";}
-            if(sectionId != undefined){
-                console.log( OriginLocal + 
-                    urlIndex + 
-                    "route=" +
-                    routeForIframe +
-                    "&isdraft=" + 1 +
-                    "&draftlangcode=" +
-                    carrentlyLang + 
-                    "&draftsectionid=" + 
-                    sectionId )
+            if(sectionId != undefined){               
                 return (
                     <iframe 
                         src = {
                             OriginLocal + 
+                            API.IframeLink + 
                             urlIndex + 
                             "route=" +
                             routeForIframe +
@@ -47,6 +43,7 @@ class IframePrev extends Component {
                     <iframe 
                         src = {
                             OriginLocal + 
+                            API.IframeLink + 
                             urlIndex + 
                             "route=" +
                             routeForIframe +

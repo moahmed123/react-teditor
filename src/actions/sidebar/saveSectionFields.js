@@ -2,7 +2,9 @@ import axios from 'axios'
 import constants from '../constants';
 import API from '../Api_paths';
 import qs from 'qs';
-import {getSectionFields} from './getSectionFields'
+import { getSectionFields } from './getSectionFields';
+import { refreshIframe } from '../Iframe/refreshIframe';
+import { notification } from '../notification/notification';
 
 // Collected New Value For Fields 
 export const newValFields = (newFields) => (dispatch) => {
@@ -58,11 +60,19 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
         let lastOfRoute = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
         // Reload Route Of Section Only.
         if(lastOfRoute != 'setting'){
-            dispatch(getSectionFields())
+            // dispatch(getSectionFields()) // Update Section Fields 
         }
-        // Refresh Iframe When Save.
-        let iframe = document.getElementsByClassName('iframe-site');
-        iframe[0].src = iframe[0].src; // Reload it. 
+        // Fun To Refresh Iframe When Save.       
+        dispatch(refreshIframe()) 
+        
         // TODO: Show Field Save Is Done. 
+        // Notification Data 
+        let notification_result = {
+            status: 'success', // danger
+            title: 'Save Fields',
+            Message : "The Changes Fields Saved Successfully",
+            delay : 3000            
+        }
+        dispatch(notification(notification_result));
     })
 }

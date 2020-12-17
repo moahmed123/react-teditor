@@ -1,7 +1,8 @@
 import axios from 'axios'
 import API from '../Api_paths';
 import qs from 'qs';
-import {getSectionFields} from './getSectionFields'
+import {getSectionFields} from './getSectionFields';
+import { refreshIframe } from '../Iframe/refreshIframe';
 
 // Add a New Collection. 
 export const addCollection = (sectionId) => (dispatch) => {
@@ -21,8 +22,10 @@ export const addCollection = (sectionId) => (dispatch) => {
         }
     }).then((success) => {
         console.log(success);
-        // Update Section Data 
-        dispatch(getSectionFields())
+        // Update Section Data
+        let NotLoading = true 
+        dispatch(getSectionFields(NotLoading));
+        dispatch(refreshIframe())
         // TODO: Show Field Save Is Done. 
     }).catch((error) => {
         console.log(error.message);

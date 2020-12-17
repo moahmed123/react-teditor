@@ -3,9 +3,14 @@ import constants from '../constants';
 import API from '../Api_paths';
 import {getLanguages} from '../getLanguages'
 
-export const getSectionFields = () => (dispatch) => {   
-    console.log();
-    // Get Languages Fields
+export const getSectionFields = (NotLoading) => (dispatch) => {   
+    
+    if(NotLoading != true){
+        let sectionFields = null 
+        dispatch({ type: constants.SECTION_FIELDS, sectionFields });
+    }
+    // To Refresh Section Field: 
+    
     // dispatch(getLanguages());
     const length_Id = API.Paths.split('/').length; // Get Index Of Id 
     // let sectionId = window.location.pathname.split('/')[2]; // /section/404/header

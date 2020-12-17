@@ -2,7 +2,8 @@ import axios from 'axios'
 import constants from '../constants';
 import API from '../Api_paths';
 import qs from 'qs';
-import {getSectionFields} from './getSectionFields'
+import {getSectionFields} from './getSectionFields';
+import { refreshIframe } from '../Iframe/refreshIframe';
 
 
 export const reorderCollections = (reorderColls) => (dispatch) => {
@@ -46,7 +47,9 @@ export const reorderCollections = (reorderColls) => (dispatch) => {
     }).then((success) => {
         console.log(success);
         // Update Section Data 
-        dispatch(getSectionFields())
+        // dispatch(getSectionFields())
+        // Fun To Refresh Iframe When Save.       
+        dispatch(refreshIframe())
         // TODO: Show Field Save Is Done. 
     })
 }

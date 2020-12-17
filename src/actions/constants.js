@@ -30,5 +30,6 @@ export default keyMirror({
   ADD_LAYOUT: null,
   CLOSE_ADD_PAGE: null,  
   SEARCH_BRANDS: null,
-  SET_LANG: null
+  SET_LANG: null,
+  NOTIFICATION: null
 })
