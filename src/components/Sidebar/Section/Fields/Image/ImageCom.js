@@ -16,7 +16,7 @@ class ImageCom extends Component {
         }
         this.clear_image = this.clear_image.bind(this);
     }
-    componentDidMount() {
+    componentDidMount() {        
         // Chick Close Model 
         $('body').on('click', '.md-close.close', function () {
             $('body').removeClass('modal-open');
@@ -40,15 +40,21 @@ class ImageCom extends Component {
                         ValueJson = currentImage[i].value,
                         idThumbImage = currentImage[i].id.replace("_image", ''),
                         jsonFormatImgVal = { "key": keyJson, "value": ValueJson };
-                    _TS._sendSavedData(jsonFormatImgVal);
+                        _TS._sendSavedData(jsonFormatImgVal);
 
                     let srcImage = document.getElementById(`${idThumbImage}_thumb_img`);
+                    // let srcImageCurr = document.getElementById(`${idThumbImage}_thumb`).src;
+                    // console.log(srcImageCurr)
+                    // srcImage.src = srcImageCurr;
+                    
                     setTimeout(() => {
+                        let StoreCode = localStorage.getItem('storeCode');                                                
                         // Change Src Image  
                         window.location.hostname == 'localhost' ?
-                            srcImage.src = "http://qaz123.expandcart.com" + Paths.saveImageData + ValueJson
+                            srcImage.src = "http://qaz123.expandcart.com" + Paths.ecdata + StoreCode + Paths.saveImageData + ValueJson
                             :
-                            srcImage.src = Paths.saveImageData + ValueJson;
+                            srcImage.src = Paths.ecdata + StoreCode + Paths.saveImageData + ValueJson;
+                        // srcImage.src = srcImageCurr;
                         /**
                         * when choose is Done: 
                         *  -- Close Modal 
@@ -78,7 +84,12 @@ class ImageCom extends Component {
                                         src={DI_mage.ImageThumb}
                                         width="100%"
                                         id={`${DI_mage.ObjectFieldId}_thumb_img`}
-                                    />                                   
+                                    /> 
+                                    {/* <img                                       
+                                        className='hidden'
+                                        width="100%"
+                                        id={`${DI_mage.ObjectFieldId}_thumb`}
+                                    />                                    */}
                                     <input
                                         type="hidden"
                                         className='current_value_image'
@@ -222,6 +233,15 @@ class ImageCom extends Component {
             objectFieldtImageId = `${e.target.getAttribute("objectfieldid")}_image`,
             objectFieldthumbId = `${e.target.getAttribute("objectfieldid")}_thumb`;
 
+            let srcImageCurr = document.getElementById(`${objectFieldthumbId}_img`).src,            
+                storeCode = srcImageCurr.split('/')[5];
+                // Save Store Code 
+                localStorage.setItem('storeCode', storeCode);
+
+                
+        
+            console.log('---->',storeCode, ' ', localStorage.getItem('storeCode'))
+
         console.log("imageId", imageId, "thumbId", thumbId, "  >> ", objectFieldtImageId, "   ", objectFieldthumbId);
         $('#modal-image').remove();
         let MediaManager = '';
@@ -256,11 +276,17 @@ class ImageCom extends Component {
             let imageClearValId = e.target.getAttribute("imageclearvalid");
             // Change Src Image 
             let srcImageClear = document.getElementById(imageClearValId);
+
+            let srcImageCurr = srcImageClear.src,            
+                storeCode = srcImageCurr.split('/')[5];
+                // Save Store Code 
+                localStorage.setItem('storeCode', storeCode);
+            let StoreCode = localStorage.getItem('storeCode'); 
             //remove Data        
             window.location.hostname == 'localhost' ?
-                srcImageClear.src = "http://qaz123.expandcart.com" + Paths.srcClearImage
+                srcImageClear.src = "http://qaz123.expandcart.com" + Paths.ecdata + StoreCode + Paths.srcClearImage
                 :
-                srcImageClear.src = Paths.srcClearImage
+                srcImageClear.src = + Paths.ecdata + StoreCode + Paths.srcClearImage
         }, 100)
     }
     _sendSavedData = (jsonFormat) => {

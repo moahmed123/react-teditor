@@ -27,8 +27,11 @@
 //     IframeUrl: "/index.php?",
 //     Paths: '/admin/teditor/teditorV2/', // ex '/admin/teditor/teditor/'
 //     AdminPaths: '/admin/teditor/teditorV2', // back To Admin ex '/admin'
-//     srcClearImage : '/ecdata/stores/QAZ123/image/cache/no_image-235x235.jpg',
-//     saveImageData : '/ecdata/stores/QAZ123/image/',
+    
+//     ecdata : "/ecdata/stores/",
+//     srcClearImage : '/image/cache/no_image-235x235.jpg',
+//     saveImageData : '/image/', 
+
 //     URlMediaManager: '/',
 //     IframeLink: ''
 // };
@@ -63,8 +66,9 @@ const ApiPaths = {
     IframeUrl: "/index.php?",
     Paths: '/', // ex '/admin/teditor/teditor/'
     AdminPaths: '', // back To Admin ex '/admin'
-    srcClearImage : '/ecdata/stores/QAZ123/image/cache/no_image-235x235.jpg',
-    saveImageData : '/ecdata/stores/QAZ123/image/',
+    ecdata : "/ecdata/stores/",
+    srcClearImage : '/image/cache/no_image-235x235.jpg',
+    saveImageData : '/image/',
     URlMediaManager: '/',
     IframeLink: ''
 };
