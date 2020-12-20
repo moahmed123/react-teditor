@@ -28,13 +28,36 @@ html, body {
     box-shadow: none;
   }
   //d-xs show only in mobile from (0 to 768px)
-
+.Select__Img {
+ background-color: #03a9f4;
+ color: #fff;
+ &:hover,&:focus {
+  text-decoration: none;
+  color: #fff;
+}
+}
+.Clear__Img {
+  background-color: #999;
+  color: #fff;
+  &:hover,&:focus {
+    text-decoration: none;
+    color: #fff;
+  }
+}
   .d-xs{
     display: none;  
   }
   //hidden class
   body{  
     overflow: hidden; 
+  }
+  .modal-header .close {
+    @if $start == 'left'{
+      float: left;
+      margin-left: 0;
+    } @else{
+      float: right;
+      margin-right: 0;
   }
   //generic classes
   .generic-alert{
@@ -52,6 +75,9 @@ html, body {
     .modal-content{
       border-radius: 0;
       padding: 20px;
+    }
+
+   
     }
     .modal-header , .modal-body{
       padding-#{$start}: 0;
@@ -94,20 +120,23 @@ html, body {
       display: flex;
     }
   }
+  .modal-backdrop {
+    opacity: 0.7;
+  }
   // custom scrollbar 
   /* width */
-  ::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     width: 10px; 
   }
   
   /* Track */
-  ::-webkit-scrollbar-track {
+  *::-webkit-scrollbar-track {
     box-shadow: inset 0 0 3px grey; 
     border-radius: 10px;
   }
    
   /* Handle */
-  ::-webkit-scrollbar-thumb {
+  *::-webkit-scrollbar-thumb {
     background: #155ebc; 
     border-radius: 10px;
   }
@@ -117,7 +146,7 @@ html, body {
   background-color: white;
 .main-frame{
   border: solid 1px #d5d5e0;  
-  margin: 20px 40px; 
+  margin: 7px 5px; 
 }
   .iframe-site{
     width: 100%;
@@ -133,7 +162,7 @@ html, body {
     background: #f8f7ff; 
     padding: 18px;
     border: solid 1px #d5d5e0;
-    height: 100%;
+    height: calc(100vh - 12px);
     overflow-y: auto;
     z-index: 2;
     .Home__sidebar__header{ 
@@ -177,6 +206,7 @@ html, body {
           display: flex;
           padding-#{$start}: 70px; 
           justify-content: flex-start;
+          cursor: pointer;
           &:hover{   
             text-decoration: none;
           }
