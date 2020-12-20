@@ -12,10 +12,11 @@ export const getSectionFields = (NotLoading) => (dispatch) => {
     // To Refresh Section Field: 
     
     // dispatch(getLanguages());
-    const length_Id = API.Paths.split('/').length; // Get Index Of Id 
+    // const length_Id = API.Paths.split('/').length; // Get Index Of Id 
     // let sectionId = window.location.pathname.split('/')[2]; // /section/404/header
-    let sectionId = window.location.pathname.split('/')[length_Id]; // /section/404/header
+    // let sectionId = window.location.pathname.split('/')[length_Id + 1]; // /section/404/header
     
+    let sectionId = window.location.hash.split('/')[2]
     // axios.post(url, data, headers)
     return axios.get(API.getSectionFieldsV2,{ params: {SectionId: sectionId}})
         .then((sectionFields) => {
