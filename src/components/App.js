@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, HashRouter, Router } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import {GETLANGS} from '../actions'
@@ -24,6 +24,10 @@ class App extends Component {
         this.props.dispatch(GETLANGS.getLanguages())                        
     }
     render() {
+        // let Router = window.ReactRouter;
+        // let RouteHandler = Router.RouteHandler;        
+        // let DefaultRoute = Router.DefaultRoute;
+        let hashHistory = Router.hashHistory;
         if (this.props.getlanguages) {            
             let ActiveLanguage = this.props.getlanguages.data.ActiveLanguage.code;
         if (ActiveLanguage == "ar"){
@@ -41,34 +45,31 @@ class App extends Component {
        console.log("this.props.getlanguages", this.props.getlanguages)
         }  
         const appClass = classNames('App', {})
-        if (this.props.getlanguages){        
+        if (this.props.getlanguages){                
             return (
                 <main>
-                    <Route render={({ location }) => (
+                    {/* history={hashHistory} */}
+                    <HashRouter>
+                    <Route history={hashHistory} render={({ location }) => (
                         <TransitionGroup className={appClass}>
                             <CSSTransition
                                 key={location.key}
                                 classNames={this.props.transitions ? 'fade' : ''}
                                 timeout={this.props.transitions ? 350 : 0}
-                            >
+                            >                                
                                 <Switch location={location}>
                                     <Route exact path = {`${PathsApp.Paths}`} component={Home} />
                                     <Route exact path = {`${PathsApp.Paths}header`} component={HeaderPG} />
                                     <Route exact path = {`${PathsApp.Paths}footer`} component={FooterPG} />                                
-                                    {/* <Route exact path="/section/:id" component={SectionPG} /> */}
                                     <Route exact path = {`${PathsApp.Paths}section/:id?/:section`} component={SectionPG} />
                                     <Route exact path = {`${PathsApp.Paths}setting`} component={SettingStylePG} />
                                     <Route exact path = {`${PathsApp.Paths}region/:id?`} component={AvailableSectionsPG} />
-
-                                    {/* <Route exact path="/page" component={Page} />
-                    <Route exact path="/about" component={About} /> */}
-                                </Switch>
-                                
+                                </Switch>                                
                             </CSSTransition>
                         </TransitionGroup>
                     )}
-                    />
-                    {/* <Footer /> */}
+                    />   
+                    </HashRouter>                 
                 </main>
             )
         }else{

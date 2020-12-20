@@ -26,7 +26,7 @@
 //     // Paths 
 //     IframeUrl: "/index.php?",
 //     Paths: '/admin/teditor/teditorV2/', // ex '/admin/teditor/teditor/'
-//     AdminPaths: '/admin/teditor/teditorV2', // back To Admin ex '/admin'
+//     AdminPaths: '/admin/', // back To Admin ex '/admin'
     
 //     ecdata : "/ecdata/stores/",
 //     srcClearImage : '/image/cache/no_image-235x235.jpg',

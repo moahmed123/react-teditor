@@ -23,6 +23,6 @@ export const insertSection = (sourceSectionId) => (dispatch) => {
     }).then((sectionId) => {        
         console.log(sectionId.data.insertedSectionId); 
         // Redirection To Section Added
-        window.location.href = API.Paths + 'section/' + sectionId.data.insertedSectionId        
+        window.location.href = API.Paths + '#/section/' + sectionId.data.insertedSectionId   //#/section/4244/     
     })            
 }
