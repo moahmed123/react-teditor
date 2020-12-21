@@ -113,8 +113,14 @@ class Header extends Component {
                                     */
                                    let User_Save_Fields = localStorage.getItem('User_Save_Fields');
                                    if(User_Save_Fields == "true"){
-                                        //show Popups
-                                        this.openModal();
+                                        //show Popups                                        
+                                        let lengthPath = window.location.pathname.split('/').length; 
+                                        let pathName = window.location.pathname.split('/')[lengthPath - 1];
+                                        if(pathName == 'header' || pathName == 'footer'){
+                                            window.history.back();
+                                        }else{
+                                            this.openModal();
+                                        }
                                    }else{ 
                                        console.log('hide Popups');
                                         // back For History:         
