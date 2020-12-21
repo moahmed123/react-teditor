@@ -2,6 +2,7 @@ import axios from 'axios';
 import API from './Api_paths';
 import { getSectionFields } from './sidebar/getSectionFields';
 import { notification } from './notification/notification';
+import localization from '../localization/localization'
 
 //Publish 
 export const publishFieldsVals = () => (dispatch) => {       
@@ -21,7 +22,7 @@ export const publishFieldsVals = () => (dispatch) => {
         let notification_result = {
             status: 'success', // danger
             title: '',
-            Message : " publish Data Is Successfully",
+            Message : localization.PublishMessage,
             delay : null            
         }
         dispatch(notification(notification_result));

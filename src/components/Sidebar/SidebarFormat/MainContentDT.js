@@ -6,7 +6,7 @@ import Promoted from '../../../assets/svg/promoted-product.svg';
 //sort Section 
 import { arrayMove, SortableContainer, SortableElement } from 'react-sortable-hoc';
 import trash from '../../../assets/svg/trash.svg';
-import { REMSEC , REODSEC } from '../../../actions';
+import { REMSEC , REODSEC, GetSCFLD } from '../../../actions';
 import PathsApp from './../../../actions/Api_paths';
 import { connect } from 'react-redux';
 
@@ -70,7 +70,9 @@ class MainContentDT extends Component {
                     return (  
                         <div className='Parent_Cart' key={value}>
                             <div className="label" >                    
-                                <Link to = {`${PathsApp.Paths}section/${collect_Data_state[value].id}`} >
+                                <Link to = {`${PathsApp.Paths}section/${collect_Data_state[value].id}`} onClick={()=>{
+                                    this.props.dispatch(GetSCFLD.getSectionFields(null, collect_Data_state[value].id))
+                                }}>
                                         <img className="label__icon" src={Promoted} />
                                         <span> 
                                             {collect_Data_state[value].DescName}

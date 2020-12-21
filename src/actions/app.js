@@ -5,7 +5,8 @@ import constants from './constants';
 import API from './Api_paths';
 import {headerUserSections} from './sidebar/header_data';
 import {FooterUserSections} from './sidebar/footer_data';
-import {getLanguages} from './getLanguages'
+import {getLanguages} from './getLanguages';
+import { getTemplateSettings } from './sidebar/getTemplateSettings'
 
 require("react/package.json"); // react is a peer dependency. 
 
@@ -78,6 +79,9 @@ export const getDropdownPages = () => (dispatch) => {
             dispatch({ type: constants.LAYOUTS_PAGES, Layouts });
             // Header Data For Json 
             // dispatch({ type: constants.HEADER_USER_SECTIONS, pagesData });
+
+            // Get Style Theme To Cahe it for Brawser 
+            dispatch(this.getTemplateSettings());
         })
         .catch((error) => {
             console.log(error.message);

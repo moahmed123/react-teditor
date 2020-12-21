@@ -113,8 +113,14 @@ class Header extends Component {
                                     */
                                    let User_Save_Fields = localStorage.getItem('User_Save_Fields');
                                    if(User_Save_Fields == "true"){
-                                        //show Popups
-                                        this.openModal();
+                                        //show Popups                                        
+                                        let lengthPath = window.location.pathname.split('/').length; 
+                                        let pathName = window.location.pathname.split('/')[lengthPath - 1];
+                                        if(pathName == 'header' || pathName == 'footer'){
+                                            window.history.back();
+                                        }else{
+                                            this.openModal();
+                                        }
                                    }else{ 
                                        console.log('hide Popups');
                                         // back For History:         
@@ -145,7 +151,7 @@ class Header extends Component {
                                 </div>
                             </div>
                             <div className="header__style">
-                                <Link to={`${PathsApp.AdminPaths}/setting`}>
+                                <Link to={`${PathsApp.Paths}setting`}>
                                     <img src={styleShape} />
                                 </Link>
                             </div>
@@ -198,13 +204,13 @@ class Header extends Component {
                 </div>                
                 <Modal centered className="generic-alert" show={this.state.isOpen} onHide={this.closeModal} backdrop="static">
                     <Modal.Header>
-                        <Modal.Title>You will missed your update</Modal.Title>
+                            <Modal.Title>{localization.MessagePopup}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</Modal.Body>
+                            <Modal.Body>{localization.PargPopup}</Modal.Body>
                     <Modal.Footer>
-                        <Button variant="outline-secondary" onClick={this.closeModal}>Cancel</Button>                                
+                        <Button variant="outline-secondary" onClick={this.closeModal}>{localization.Cancel}</Button>                                
                         <Link to = {`/admin`}>
-                            <Button variant="danger">Confirm</Button>
+                            <Button variant="danger">{localization.Confirm}</Button>
                         </Link>
                     </Modal.Footer>
                 </Modal>
