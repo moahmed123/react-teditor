@@ -128,30 +128,7 @@ class TemplateSettings extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div> */}
-
-                    {/* back modal Button */}
-                    {/* <>
-                        <div className="d-flex align-items-center justify-content-center">
-                            <Button variant="primary" onClick={this.openModal}>
-                                Launch demo modal
-                                </Button>
-                        </div>
-                        <Modal centered className="generic-alert" show={this.state.isOpen} onHide={this.closeModal} backdrop="static">
-                            <Modal.Header>
-                                <Modal.Title>You will missed your update</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</Modal.Body>
-                            <Modal.Footer>
-
-                                <Button variant="outline-secondary" onClick={this.closeModal}>Cancel</Button>{' '}
-
-                                <Button variant="danger">Confirm</Button>
-
-                            </Modal.Footer>
-                        </Modal>
-                    </> */}
-                    {/* back modal Button */}
+                    </div> */}                
                 </div>
             </div>
         )

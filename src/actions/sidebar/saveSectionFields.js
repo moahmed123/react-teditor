@@ -5,6 +5,7 @@ import qs from 'qs';
 import { getSectionFields } from './getSectionFields';
 import { refreshIframe } from '../Iframe/refreshIframe';
 import { notification } from '../notification/notification';
+import localization from '../../localization/localization'
 
 // Collected New Value For Fields 
 export const newValFields = (newFields) => (dispatch) => {
@@ -69,8 +70,8 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
         // Notification Data 
         let notification_result = {
             status: 'success', // danger
-            title: 'Save Fields',
-            Message : "The Changes Fields Saved Successfully",
+            title: localization.SaveMessageTitle,
+            Message : localization.SaveMessage,
             delay : 3000            
         }
         dispatch(notification(notification_result));
