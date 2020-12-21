@@ -87,7 +87,8 @@ class MainCollection extends Component {
         if(this.state.addCol){
             // this.setState({eventlengthCol: Collections.length })  
             if(this.props.collectionData.length != 0){
-                if(this.state.lengthColl < Collections.length){    
+                if(this.state.lengthColl < Collections.length){ 
+                    console.log(" ----- Add Collection ----- ", this.state.items);  
                     // console.log(this.state.lengthColl, "  " , Collections.length)
                     // console.log(this.state.items)                          
                     let numberPush = Collections.length - 1;             
@@ -103,8 +104,11 @@ class MainCollection extends Component {
                 }else if (this.state.lengthColl >  Collections.length){
                     // console.log(this.state.lengthColl, "  " , Collections.length, Collections)
                     // console.log(this.state.items) 
-                    // console.log(Collections.length)                      
+                    // console.log(Collections.length)  
+                    // Deleted Collection 
+                    console.log("Deleted Collection", this.state.items);
                     this.state.items.pop();
+                    console.log("Deleted Collection ===> ", this.state.items);
                     this.setState({                     
                         addCol: false, 
                         lengthColl: Collections.length,
