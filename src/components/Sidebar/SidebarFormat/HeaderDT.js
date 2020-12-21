@@ -10,7 +10,7 @@ class HeaderDT extends Component {
         return (
             <div className="sidebar__header__section">                
                     <div className="label">
-                        <Link to={`${PathsApp.Paths}header`}>
+                        <Link to={`${PathsApp.Paths}header`}>                        
                             <img className="label__icon" src={Header} />
                             <span>{this.props.headerData.Name}</span>
                             <svg className="label--delete" xmlns="http://www.w3.org/2000/svg" width="10.513" height="10.513" viewBox="0 0 10.513 10.513">

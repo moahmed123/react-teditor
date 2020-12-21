@@ -10,8 +10,11 @@ const translationStrings = new LocalizedStrings({
         Reset: 'Reset',
         Publish:"Publish",
         SectionsAvailable: 'sections Available',
-        MainTheme: 'Main Theme'
-
+        MainTheme: 'Main Theme',
+        MessagePopup: "You will missed your update",
+        PargPopup : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+        Cancel: 'Cancel',
+        Confirm: "Confirm"
     },
     ar: {
         Browse: "تصفح",
@@ -22,7 +25,11 @@ const translationStrings = new LocalizedStrings({
         Reset: 'إعادة تعيين',
         Publish:'نشر',
         SectionsAvailable: 'الأقسام المتاحة',
-        MainTheme: 'الثيمات الرئيسية'
+        MainTheme: 'الثيمات الرئيسية',
+        MessagePopup: "سوف تفوت التحديث الخاص بك",
+        PargPopup : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+        Cancel: "إلغاء",
+        Confirm:"تأكيد"
     }
 });
 export default translationStrings;

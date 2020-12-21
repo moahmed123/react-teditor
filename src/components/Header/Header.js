@@ -145,7 +145,7 @@ class Header extends Component {
                                 </div>
                             </div>
                             <div className="header__style">
-                                <Link to={`${PathsApp.AdminPaths}/setting`}>
+                                <Link to={`${PathsApp.Paths}setting`}>
                                     <img src={styleShape} />
                                 </Link>
                             </div>
@@ -198,13 +198,13 @@ class Header extends Component {
                 </div>                
                 <Modal centered className="generic-alert" show={this.state.isOpen} onHide={this.closeModal} backdrop="static">
                     <Modal.Header>
-                        <Modal.Title>You will missed your update</Modal.Title>
+                            <Modal.Title>{localization.MessagePopup}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</Modal.Body>
+                            <Modal.Body>{localization.PargPopup}</Modal.Body>
                     <Modal.Footer>
-                        <Button variant="outline-secondary" onClick={this.closeModal}>Cancel</Button>                                
+                        <Button variant="outline-secondary" onClick={this.closeModal}>{localization.Cancel}</Button>                                
                         <Link to = {`/admin`}>
-                            <Button variant="danger">Confirm</Button>
+                            <Button variant="danger">{localization.Confirm}</Button>
                         </Link>
                     </Modal.Footer>
                 </Modal>
