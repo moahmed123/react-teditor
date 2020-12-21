@@ -79,7 +79,7 @@ class ImageCom extends Component {
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                                <div>
+                                <div class="main__img__content">
                                     <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"
@@ -99,11 +99,11 @@ class ImageCom extends Component {
                                     />
                                 </div>
                                 <input className="upload-image" id="image" type="file" />
-                                <button name="logo_browse" type="button" className="btn btn-link"
+                                <button name="logo_browse" type="button" className="btn btn-link Select__Img"
                                     value={DI_mage.id} onClick={this.image_upload} objectfieldid={DI_mage.ObjectFieldId}>
                                     {localization.Browse}
                                 </button>
-                                <button type="button" className="btn btn-link"
+                                <button type="button" className="btn btn-link Clear__Img"
                                     value={DI_mage.id}
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>                                    
@@ -121,7 +121,7 @@ class ImageCom extends Component {
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                                <div>
+                               <div class="main__img__content">
                                     <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"
@@ -136,11 +136,11 @@ class ImageCom extends Component {
                                     />
                                 </div>
                                 <input className="upload-image" id="image" type="file" />
-                                <button name="logo_browse" type="button" className="btn btn-link"
+                                <button name="logo_browse" type="button" className="btn btn-link Select__Img"
                                     value={DI_mage.id} onClick={this.image_upload} objectfieldid={DI_mage.ObjectFieldId}>                                    
                                     {localization.Browse}
                                 </button>
-                                <button type="button" className="btn btn-link"
+                                <button type="button" className="btn btn-link Clear__Img"
                                     value={DI_mage.id}
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>
@@ -158,7 +158,7 @@ class ImageCom extends Component {
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                                <div>
+                               <div class="main__img__content">
                                     <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"
@@ -173,11 +173,11 @@ class ImageCom extends Component {
                                     />
                                 </div>
                                 <input className="upload-image" id="image" type="file" />
-                                <button name="logo_browse" type="button" className="btn btn-link"
+                                <button name="logo_browse" type="button" className="btn btn-link Select__Img"
                                     value={DI_mage.id} onClick={this.image_upload} objectfieldid={DI_mage.ObjectFieldId}>
                                     {localization.Browse}
                                 </button>
-                                <button type="button" className="btn btn-link"
+                                <button type="button" className="btn btn-link Clear__Img" 
                                     value={DI_mage.id}
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>                                    
@@ -195,7 +195,7 @@ class ImageCom extends Component {
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                                <div>
+                               <div class="main__img__content">
                                     <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"
@@ -210,11 +210,11 @@ class ImageCom extends Component {
                                     />
                                 </div>
                                 <input className="upload-image" id="image" type="file" />
-                                <button name="logo_browse" type="button" className="btn btn-link"
+                                <button name="logo_browse" type="button" className="btn btn-link Select__Img"
                                     value={DI_mage.id} onClick={this.image_upload} objectfieldid={DI_mage.ObjectFieldId}>
                                     {localization.Browse}
                                 </button>
-                                <button type="button" className="btn btn-link"
+                                <button type="button" className="btn btn-link Clear__Img"
                                     value={DI_mage.id}
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>                                    

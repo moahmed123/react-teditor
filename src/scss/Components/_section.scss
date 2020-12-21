@@ -69,6 +69,9 @@
                     // padding-right: 0;
                     .color__main__content{
                         flex-wrap: wrap;
+                        .main__img__content {
+                            width: 100%;
+                        }
                             /* The check-container */
                                 .check-container {
                                     display: flex;
@@ -385,12 +388,29 @@
         position: absolute;
         z-index: 9999;
         width: 100%;
+        top: 70px;
+       text-align: start;
+       @if $start == 'left'{
+        right: 20px;
+      } @else{
+        left: 20px;
+    }
+      
         .toast{
             margin: 26px auto;
         }
         .alert {            
-            width: 40%;
-            margin: 20px auto;
+            width: 650px;
+            max-width: 95%;
+          
+            position: relative;
+            @if $start == 'left'{
+                text-align: right;
+            float: right;
+              } @else{
+                text-align: left;
+                float: left;
+            }
         }
     }
 }
