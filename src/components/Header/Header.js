@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames';
-import { Dropdown, Spinner, Alert } from 'react-bootstrap';
+import { Dropdown, Spinner, Alert, Button, Modal } from 'react-bootstrap';
 import { FaCheck, FaRocket, FaAngleDown, FaBars } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
@@ -38,6 +38,8 @@ class Header extends Component {
         toggleSideBar();
 
     }
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => this.setState({ isOpen: false });
     _PagesData() {
         if (!this.props.Pages) {
             return <div>Loading 1 </div>
@@ -105,11 +107,29 @@ class Header extends Component {
                     <div className="col-md-3 p-0">
                         <div className="header-left__controls">
                             <div className="header__back-circle">
-                                <Link to={`${PathsApp.AdminPaths}`}>
+                                <button onClick = {()=>{                                    
+                                    /*
+                                    ** User_Save_fields : if false User Still not Changes any fields                                    
+                                    */
+                                   let User_Save_Fields = localStorage.getItem('User_Save_Fields');
+                                   if(User_Save_Fields == "true"){
+                                        //show Popups
+                                        this.openModal();
+                                   }else{ 
+                                       console.log('hide Popups');
+                                        // back For History:         
+                                        window.history.back();
+                                   }
+                                }}>
                                     <span>
                                         <FaLongArrowAltLeft />
                                     </span>
-                                </Link>
+                                </button>
+                                {/* <Link to={`${PathsApp.AdminPaths}`}>
+                                    <span>
+                                        <FaLongArrowAltLeft />
+                                    </span>
+                                </Link> */}
                             </div>
                             <div className="header__page">
                                 <div className="dropdown">
@@ -175,9 +195,19 @@ class Header extends Component {
                             {this.state.PublishLoading && this.props.notification? <img className="controls-publish--xs" src={ShuttlBlue} /> : null}                            
                         </div>
                     </div>
-
-                </div>
-
+                </div>                
+                <Modal centered className="generic-alert" show={this.state.isOpen} onHide={this.closeModal} backdrop="static">
+                    <Modal.Header>
+                        <Modal.Title>You will missed your update</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="outline-secondary" onClick={this.closeModal}>Cancel</Button>                                
+                        <Link to = {`/admin`}>
+                            <Button variant="danger">Confirm</Button>
+                        </Link>
+                    </Modal.Footer>
+                </Modal>
             </header>
         )
     }

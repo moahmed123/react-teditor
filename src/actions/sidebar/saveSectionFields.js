@@ -74,5 +74,7 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
             delay : 3000            
         }
         dispatch(notification(notification_result));
+        // Change User_Save_Fields True To show popup when you back  
+        localStorage.setItem('User_Save_Fields', true);  
     })
 }

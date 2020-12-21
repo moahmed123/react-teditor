@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, HashRouter, Router } from 'react-router-dom'
+import { Route, Switch, HashRouter, Router,Redirect, BrowserRouter} from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import {GETLANGS} from '../actions'
@@ -21,13 +22,22 @@ import '../css/main-ltr.css';
 
 class App extends Component {
     componentDidMount = () =>{
-        this.props.dispatch(GETLANGS.getLanguages())                        
+        this.props.dispatch(GETLANGS.getLanguages());
+        // Save Local Storge To Check User change any Fields For App or not: 
+        localStorage.setItem('User_Save_Fields', false);    
+        
+        //
+        // if (window.location.hash.startsWith('#/')) {
+        //     console.log('yes #/')
+        //     window.history.push(window.location.hash.replace('#', '')) // or history.replace
+        // }
     }
     render() {
-        // let Router = window.ReactRouter;
-        // let RouteHandler = Router.RouteHandler;        
-        // let DefaultRoute = Router.DefaultRoute;
-        let hashHistory = Router.hashHistory;
+        
+        let HashHistory = Router.hashHistory;
+        let browserHistory =Router.browserHistory; 
+        console.log(HashHistory, browserHistory)
+
         if (this.props.getlanguages) {            
             let ActiveLanguage = this.props.getlanguages.data.ActiveLanguage.code;
         if (ActiveLanguage == "ar"){
@@ -46,30 +56,32 @@ class App extends Component {
         }  
         const appClass = classNames('App', {})
         if (this.props.getlanguages){                
-            return (
-                <main>
-                    {/* history={hashHistory} */}
-                    <HashRouter>
-                    <Route history={hashHistory} render={({ location }) => (
-                        <TransitionGroup className={appClass}>
-                            <CSSTransition
-                                key={location.key}
-                                classNames={this.props.transitions ? 'fade' : ''}
-                                timeout={this.props.transitions ? 350 : 0}
-                            >                                
-                                <Switch location={location}>
-                                    <Route exact path = {`${PathsApp.Paths}`} component={Home} />
-                                    <Route exact path = {`${PathsApp.Paths}header`} component={HeaderPG} />
-                                    <Route exact path = {`${PathsApp.Paths}footer`} component={FooterPG} />                                
-                                    <Route exact path = {`${PathsApp.Paths}section/:id?/:section`} component={SectionPG} />
-                                    <Route exact path = {`${PathsApp.Paths}setting`} component={SettingStylePG} />
-                                    <Route exact path = {`${PathsApp.Paths}region/:id?`} component={AvailableSectionsPG} />
-                                </Switch>                                
-                            </CSSTransition>
-                        </TransitionGroup>
-                    )}
-                    />   
-                    </HashRouter>                 
+            return (              
+                <main> 
+                    <BrowserRouter>                                        
+                    {/* history={HashHistory}  */}
+                        <Route render={({ location }) => (                                                    
+                            <TransitionGroup className={appClass}>
+                                <CSSTransition
+                                    key={location.key}
+                                    classNames={this.props.transitions ? 'fade' : ''}
+                                    timeout={this.props.transitions ? 350 : 0}
+                                >                                
+                                    <Switch location={location} >
+                                        {/* <Redirect from={`${PathsApp.Paths}header`} to ={`${PathsApp.Paths}#/header`} />                                         */}
+                                        <Route exact path = {`${PathsApp.Paths}`} component={Home} />
+                                        <Route exact path = {`${PathsApp.Paths}header`} component={HeaderPG} />
+                                        <Route exact path = {`${PathsApp.Paths}footer`} component={FooterPG} />                                
+                                        <Route exact path = {`${PathsApp.Paths}section/:id?/:section`} component={SectionPG} />
+                                        <Route exact path = {`${PathsApp.Paths}setting`} component={SettingStylePG} />
+                                        <Route exact path = {`${PathsApp.Paths}region/:id?`} component={AvailableSectionsPG} />
+                                    </Switch>                                
+                                   
+                                </CSSTransition>
+                            </TransitionGroup>                                                       
+                        )}
+                        />   
+                    </BrowserRouter>                                  
                 </main>
             )
         }else{

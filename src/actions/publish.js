@@ -25,5 +25,7 @@ export const publishFieldsVals = () => (dispatch) => {
             delay : null            
         }
         dispatch(notification(notification_result));
+         // Change User_Save_Fields false To back to admin 
+         localStorage.setItem('User_Save_Fields', false);  
     })
 }

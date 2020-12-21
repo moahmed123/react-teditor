@@ -12,8 +12,8 @@ class IframePrev extends Component {
                 carrentlyLang  = this.props.getlanguages.data.ActiveLanguage.code,
                 urlIndex     = API.IframeUrl,
                 
-                // sectionId = window.location.pathname.split('/')[length_Id], // /section/404/header
-                sectionId = window.location.hash.split('/')[2],
+                sectionId = window.location.pathname.split('/')[length_Id], // /section/404/header
+                // sectionId = window.location.hash.split('/')[2],
                 // OriginLocal  = window.location.origin; // As Life Production 
                 OriginLocal  = ""; // As demo Production                 
                 if (window.location.hostname == 'localhost') {
