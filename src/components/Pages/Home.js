@@ -33,7 +33,7 @@ class Home extends Component {
                         </div>
                         <div className='row no-gutters'>                                                                
                             <div className='col-md-3 p-0'>                             
-                                <div className="Home__sidebar">
+                                <div className="Home__sidebar Home__sidebar__HomePage">
                                     <div className="Home__sidebar__header">
                                         <Sidebar/>
                                     </div>                                        

@@ -31,6 +31,7 @@ html, body {
 .Select__Img {
  background-color: #03a9f4;
  color: #fff;
+ margin-top: 5px;
  &:hover,&:focus {
   text-decoration: none;
   color: #fff;
@@ -39,6 +40,7 @@ html, body {
 .Clear__Img {
   background-color: #999;
   color: #fff;
+  margin-top: 5px;
   &:hover,&:focus {
     text-decoration: none;
     color: #fff;
@@ -165,6 +167,9 @@ html, body {
     height: calc(100vh - 12px);
     overflow-y: auto;
     z-index: 2;
+    &.Home__sidebar__HomePage {
+      height: calc(100vh - 94px);
+    }
     .Home__sidebar__header{ 
       display: flex;
       flex-direction: column;  
@@ -279,6 +284,7 @@ html, body {
   
     }
   }
+
 }
 @include mediumLaptop{
   .Home {

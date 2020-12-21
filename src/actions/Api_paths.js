@@ -64,8 +64,8 @@ const ApiPaths = {
     setLanguage: "http://qaz123.expandcart.com/admin/common/installation/language",
     // Paths 
     IframeUrl: "/index.php?",
-    Paths: '/admin/teditor/teditorV2/', // ex '/admin/teditor/teditor/'
-    // Paths:'/',
+  //  Paths: '/admin/teditor/teditorV2/', // ex '/admin/teditor/teditor/'
+     Paths:'/',
     AdminPaths: '', // back To Admin ex '/admin'
     ecdata : "/ecdata/stores/",
     srcClearImage : '/image/cache/no_image-235x235.jpg',
