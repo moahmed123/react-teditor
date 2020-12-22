@@ -15,7 +15,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,                
                 updateSecFields: action.updataSecField
-            }                     
+            }      
+        case constants.SECTION_ID:
+            return {
+                ...state, 
+                sectionId: action.sectionFieldID
+            }               
         default:
             return state
     }

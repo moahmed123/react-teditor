@@ -31,5 +31,9 @@ export default keyMirror({
   CLOSE_ADD_PAGE: null,  
   SEARCH_BRANDS: null,
   SET_LANG: null,
-  NOTIFICATION: null
+  NOTIFICATION: null,
+  TOGGEL_SECTION: null,
+  ROUTE_COMPONENT: null,
+  SECTION_ID: null,
+  Back_ROUTE_COMPONENT: null
 })

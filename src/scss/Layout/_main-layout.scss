@@ -197,7 +197,7 @@ html, body {
           &:not(:last-child){
             border-bottom: 0;
           }
-          a{
+          a, div{
           font-weight: bold;
           padding: 15px;
           color: $main-color;

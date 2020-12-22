@@ -21,6 +21,7 @@ import * as UPDSECST from './sidebar/UpdateSectionState';
 import * as SEARBRAND from './sidebar/searchBrands';
 import * as SETLANG from './setLanguage';
 import * as NOTIFICATION from './notification/notification';
+import * as ROUTECOM from './RouteComponent/routeComponent';
 
 export {
   app,  
@@ -45,5 +46,6 @@ export {
   RESDRAFVER,
   SEARBRAND,
   SETLANG,
-  NOTIFICATION
+  NOTIFICATION,
+  ROUTECOM
 }

@@ -18,7 +18,8 @@ export const getSectionFields = (NotLoading, sectionFieldID) => (dispatch) => {
     let sectionId;
     // To Improve For Performance 
     if(sectionFieldID){
-         sectionId = sectionFieldID
+         sectionId = sectionFieldID;
+         dispatch({ type: constants.SECTION_ID, sectionFieldID });
     }else{
          sectionId = window.location.pathname.split('/')[length_Id]; // /section/404/header
     }

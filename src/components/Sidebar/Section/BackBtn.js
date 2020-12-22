@@ -1,10 +1,28 @@
 import React, { Component } from 'react';
 import deleteMark from '../../../assets/svg/delete.svg';
+import { connect } from 'react-redux';
+import {ROUTECOM} from '../../../actions';
 
 class BackBtn extends Component {
-    _BackHistory = () => {
-        // back For History:         
-        window.history.back();
+    /**
+     * Status  :  { null } =>  Redirect To Home Page ;
+     * backImg :  Replace for image  
+     * BackCom : Use When back Component
+     */
+    _BackHistory = () => {                   
+        let {Status, history, BackCom} = this.props; 
+        if(history){                        
+            // back For History:      
+            window.history.back();
+        }else{     
+            console.log("BackCom", BackCom)
+            if(BackCom){
+                this.props.dispatch(ROUTECOM.routeComponent(BackCom));
+            }else{
+                //Redirect To Page :
+                this.props.dispatch(ROUTECOM.routeComponent(Status));
+            }            
+        }
     }
     render() {
         return (
@@ -14,4 +32,6 @@ class BackBtn extends Component {
         )
     }
 }
-export default BackBtn;
+
+const mapStateToProps = state => ({})
+export default connect(mapStateToProps)(BackBtn)

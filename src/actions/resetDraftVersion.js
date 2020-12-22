@@ -15,7 +15,7 @@ export const resetDraftVersion = () => (dispatch) => {
         console.log(success);        
         // Update Section Data 
         dispatch(RefreshData());
-        dispatch(getSectionFields())
+        // dispatch(getSectionFields())
         window.location.href = API.Paths
         // TODO: Show Field Publish Is Done. 
     })

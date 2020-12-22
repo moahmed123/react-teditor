@@ -122,8 +122,11 @@ class Section extends Component {
             <>
                 <div className="Home__sidebar__header">
         <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} <span>{localization.HomePage}</span></h4>
-                    <div className="setting--sidebar__controls">
-                        <BackBtn />
+                    <div className="setting--sidebar__controls">                        
+                        <BackBtn 
+                            Status = { null } 
+                            history = {false}
+                            BackCom =  {this.props.backComponent? this.props.backComponent : null}/>
                         <SaveBtn />
                     </div>
                 </div>
@@ -161,7 +164,8 @@ const mapStateToProps = state => ({
     initialized: state.app.initialized,
     sectionFieldsDT: state.sectionData.sectionFields,
     // updateSecFields : state.sectionData.updateSecFields,
-    getlanguages: state.getlanguages.GetLangs
+    getlanguages: state.getlanguages.GetLangs,
+    backComponent: state.getlanguages.backCom // Back Component For Back From Section TO Header, Footer Component
 })
 
 export default connect(mapStateToProps)(Section)
