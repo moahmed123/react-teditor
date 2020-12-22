@@ -6,7 +6,7 @@ import { Dropdown, Spinner, Alert, Button, Modal } from 'react-bootstrap';
 import { FaCheck, FaRocket, FaAngleDown, FaBars } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
-import { app, PUBLISH, RESDRAFVER, SETLANG, NOTIFICATION } from './../../actions';
+import { app, PUBLISH, RESDRAFVER, SETLANG, NOTIFICATION, ROUTECOM } from './../../actions';
 import Shuttl from '../../assets/svg/shuttle.svg';
 import Reset from '../../assets/svg/reset.svg';
 import ShuttlBlue from '../../assets/svg/shuttle-blue.svg';
@@ -123,8 +123,12 @@ class Header extends Component {
                                         }
                                    }else{ 
                                        console.log('hide Popups');
-                                        // back For History:         
-                                        window.history.back();
+                                       if(this.props.routeComponent){
+                                            this.props.dispatch(ROUTECOM.routeComponent(null))            
+                                       }else{
+                                            // back For History:         
+                                            window.history.back();
+                                       }                                        
                                    }
                                 }}>
                                     <span>
@@ -222,7 +226,8 @@ class Header extends Component {
 const mapStateToProps = state => ({
     Pages: state.getPagesDropDown.pagesData, // All Page For Template Editor
     getlanguages: state.getlanguages.GetLangs,
-    notification: state.notification.result // get notification When Save and publshed data
+    notification: state.notification.result, // get notification When Save and publshed data
+    routeComponent: state.getlanguages.routeCom // To Use When Show Header, Footer Component and need TO Back 
 })
 
 export default connect(mapStateToProps)(Header)

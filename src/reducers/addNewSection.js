@@ -10,7 +10,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,                
                 Sections: action.AvailableSections
-            }                     
+            } 
+            // case constants.TOGGEL_SECTION:
+            //     return {
+            //         ...state,                
+            //         SectionsToggle: action.ToggleSection
+            //     }                     
         default:
             return state
     }

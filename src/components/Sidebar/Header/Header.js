@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form } from "react-bootstrap";
-import { UPDSECST } from '../../../actions'
+import { UPDSECST, GetSCFLD, ROUTECOM} from '../../../actions'
 import PathsApp from '../../../actions/Api_paths';
 
 class Header extends Component {
@@ -20,9 +20,15 @@ class Header extends Component {
             return this.props.HeaderData.UserSections.map((data, key)=>{
                 return(
                     <div className="label header--label" key={key} >
-                        <Link to={`${PathsApp.Paths}section/${data.id}/header`}>
+                        {/* <Link to={`${PathsApp.Paths}section/${data.id}/header`}>
                             <span>{data.DescName}</span>                                                                                                                                      
-                        </Link> 
+                        </Link>  */}
+                        <div className = 'Header_Box_Section' onClick={()=>{
+                                this.props.dispatch(GetSCFLD.getSectionFields(null, data.id));
+                                this.props.dispatch(ROUTECOM.routeComponent('SectionPG', 'HeaderPG'));
+                            }}>
+                            <span>{data.DescName}</span> 
+                        </div>
                         <Form>
                             <Form.Check
                                 type="switch"

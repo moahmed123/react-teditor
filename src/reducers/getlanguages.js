@@ -10,7 +10,18 @@ export default (state = initialState, action) => {
             return {
                 ...state,                
                 GetLangs: action.getLangs
-            }                     
+            }   
+            // route Component Use It : 
+            case constants.ROUTE_COMPONENT:
+                return {
+                    ...state,                
+                    routeCom: action.routeComponent
+                } 
+            case constants.Back_ROUTE_COMPONENT:
+                return {
+                    ...state,                
+                    backCom: action.backComponent
+                }                 
         default:
             return state
     }

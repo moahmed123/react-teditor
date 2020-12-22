@@ -14,7 +14,7 @@ import MainContentDT from './SidebarFormat/MainContentDT';
 import Settings from '../../assets/svg/settings.svg';
 import { FaPlus } from "react-icons/fa";
 
-import { app, ADDLAYOUT} from '../../actions';
+import { app, ADDLAYOUT,ADDNESEC, ROUTECOM} from '../../actions';
 import LoaderSpinner from './Spinner/LoaderSpinner';
 import PathsApp from '../../actions/Api_paths';
 //Sections Available
@@ -77,10 +77,12 @@ class Sidebar extends Component {
                         }     
                         { 
                             (key == regions_length )?                                
-                                <div className="sidebar__header__section">
-                                    <Link className="header__section--add" to = {`${PathsApp.Paths}region/${this.props.PageResions.id}`} >
-                                        <span> <FaPlus /> {localization.AddNewSection}</span>
-                                    </Link>                                
+                                <div className="sidebar__header__section" onClick = {()=>{
+                                    this.props.dispatch(ROUTECOM.routeComponent('sectionsAvailable'))
+                                }}>
+                                    {/* <Link className="header__section--add" to = {`${PathsApp.Paths}region/${this.props.PageResions.id}`} > */}
+                                        <span className= 'header__section--add'> <FaPlus /> {localization.AddNewSection}</span>
+                                    {/* </Link>                                 */}
                                 </div>
                             : 
                                 null

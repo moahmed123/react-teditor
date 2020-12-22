@@ -79,7 +79,7 @@ class ImageCom extends Component {
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                                <div class="main__img__content">
+                                <div className="main__img__content">
                                     <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"
@@ -121,7 +121,7 @@ class ImageCom extends Component {
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                               <div class="main__img__content">
+                               <div className="main__img__content">
                                     <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"
@@ -158,7 +158,7 @@ class ImageCom extends Component {
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                               <div class="main__img__content">
+                               <div className="main__img__content">
                                     <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"
@@ -195,7 +195,7 @@ class ImageCom extends Component {
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                               <div class="main__img__content">
+                               <div className="main__img__content">
                                     <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"

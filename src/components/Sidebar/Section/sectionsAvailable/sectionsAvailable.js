@@ -21,7 +21,11 @@ class SectionsAvailable extends Component {
         this.state = {}
     }
     componentDidMount = () =>{
-        this.props.dispatch(ADDNESEC.addNewSection())
+        
+        if(this.props.PageResions){
+            this.props.dispatch(ADDNESEC.addNewSection(this.props.PageResions.id))
+            console.log(this.props.PageResions.id)
+        }
     }
     _renderAvailSec = () => {
         if(this.props.AvailableSections){
@@ -48,8 +52,9 @@ class SectionsAvailable extends Component {
             <>                
                 <div className="Home__sidebar__header plato">
                     <h4 className="setting--sidebar__header d-flex">
-                    <div className="setting--sidebar__controls">                         
-                        <BackBtn backImg = {deleteMark}/>
+                    <div className="setting--sidebar__controls">
+
+                        <BackBtn backImg = {deleteMark} Status = { null } history = {false}/>
                     </div>
                        <div>
                             {localization.SectionsAvailable}
@@ -71,7 +76,9 @@ const mapStateToProps = state => ({
     sectionFieldsDT : state.sectionData.sectionFields,
     // updateSecFields : state.sectionData.updateSecFields,
     getlanguages: state.getlanguages.GetLangs,
-    AvailableSections: state.addNewSection.Sections
+    PageResions : state.slidebar.regions,
+    AvailableSections: state.addNewSection.Sections,
+    
 })
 
 export default connect(mapStateToProps)(SectionsAvailable)

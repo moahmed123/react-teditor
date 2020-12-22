@@ -6,7 +6,7 @@ import Promoted from '../../../assets/svg/promoted-product.svg';
 //sort Section 
 import { arrayMove, SortableContainer, SortableElement } from 'react-sortable-hoc';
 import trash from '../../../assets/svg/trash.svg';
-import { REMSEC , REODSEC, GetSCFLD } from '../../../actions';
+import { REMSEC , REODSEC, GetSCFLD, ROUTECOM } from '../../../actions';
 import PathsApp from './../../../actions/Api_paths';
 import { connect } from 'react-redux';
 
@@ -45,7 +45,7 @@ class MainContentDT extends Component {
         })
         this.setState({ items: itemCollection, sectionId: SectionId })   
     }  
-    onSortEnd = ({ oldIndex, newIndex }) => {
+    onSortEnd = ({ oldIndex, newIndex }) => {        
         this.setState(({ items }) => ({
             items: arrayMove(items, oldIndex, newIndex),
         }));
@@ -70,14 +70,23 @@ class MainContentDT extends Component {
                     return (  
                         <div className='Parent_Cart' key={value}>
                             <div className="label" >                    
-                                <Link to = {`${PathsApp.Paths}section/${collect_Data_state[value].id}`} onClick={()=>{
+                             <div onClick={()=>{
+                                    this.props.dispatch(GetSCFLD.getSectionFields(null, collect_Data_state[value].id));
+                                    this.props.dispatch(ROUTECOM.routeComponent('SectionPG'))
+                                }}>
+                                        <img className="label__icon" src={Promoted} />
+                                        <span> 
+                                            {collect_Data_state[value].DescName}
+                                        </span>                             
+                                </div>  
+                                {/* <Link to = {`${PathsApp.Paths}section/${collect_Data_state[value].id}`} onClick={()=>{
                                     this.props.dispatch(GetSCFLD.getSectionFields(null, collect_Data_state[value].id))
                                 }}>
                                         <img className="label__icon" src={Promoted} />
                                         <span> 
                                             {collect_Data_state[value].DescName}
                                         </span>                             
-                                </Link>                                                           
+                                </Link>                                                            */}
                             </div>                                                                                 
                             <div className= 'Delete_home' 
                                 onClick = {(e)=> {

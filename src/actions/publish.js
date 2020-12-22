@@ -16,7 +16,7 @@ export const publishFieldsVals = () => (dispatch) => {
     }).then((success) => {
         console.log(success);        
         // Update Section Data 
-        dispatch(getSectionFields())
+        // dispatch(getSectionFields())
         // TODO: Show Field Publish Is Done. 
         // Notification Data 
         let notification_result = {

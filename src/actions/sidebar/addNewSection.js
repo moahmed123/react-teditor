@@ -3,11 +3,15 @@ import constants from '../constants';
 import API from '../Api_paths';
 import qs from 'qs';
 
-export const addNewSection = () => (dispatch) => {       
+
+// export const ToggleSectionAdd = (ToggleSection) => (dispatch)=>{    
+//     dispatch({type: constants.TOGGEL_SECTION, ToggleSection})
+// }
+export const addNewSection = (PageId) => (dispatch) => {       
      
     let length_Id = API.Paths.split('/').length, // Get Index Of Id 
-        Page_Id = window.location.pathname.split('/')[length_Id], // /section/404/header    
-        createVal = '"PageId" : "' + Page_Id + '"',
+       // Page_Id = window.location.pathname.split('/')[length_Id], // /section/404/header    
+        createVal = '"PageId" : "' + PageId + '"',
         addToBra = "{" + createVal + "}",
         objCrParse = JSON.parse(addToBra);
         
