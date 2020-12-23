@@ -60,7 +60,10 @@ class MainContentDT extends Component {
             // REODSEC            
         }  
         this.props.dispatch(REODSEC.reorderSection(SECDrop));          
-    };    
+    };  
+    onSortMove = (e) =>{
+        console.log(e.target)
+    }  
     render() {
         const SortableItem = SortableElement(({ value }) => {
             if(this.props.MainContenData.UserSections && this.state.collectData.length > 0 ){
@@ -122,7 +125,7 @@ class MainContentDT extends Component {
                 }                                               
                 {
                 this.state.items.length > 0 ?
-                    <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1} />
+                    <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1} helperClass="sortable-list-tab" onSortMove={this.onSortMove} />
                     :
                     null
                 }                

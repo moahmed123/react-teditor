@@ -52,7 +52,9 @@ class Header extends Component {
                         className={key == 0 ? 'active' : null} // To Active First Page 
                         key={key}
                         onClick={
-                            (event) => {
+                            (event) => {                                
+                                // if(key == 0){ this.props.dispatch(app.RefreshData())}
+                                // console.log("Pages_DT", key, Pages_DT)
                                 this.props.dispatch(app.reloadRegionsOfPages(Pages_DT));
                                 this.dropdown.current.innerHTML = Pages_DT.Name; // Replace Name By Active Pages
                                 // To Remove All Active Form Dropdown  
@@ -124,7 +126,7 @@ class Header extends Component {
                                    }else{ 
                                        console.log('hide Popups');
                                        if(this.props.routeComponent){
-                                            this.props.dispatch(ROUTECOM.routeComponent(null))            
+                                            this.props.dispatch(ROUTECOM.routeComponent(null)) // redirect To Home Page       
                                        }else{
                                             // back For History:         
                                             window.history.back();
@@ -134,12 +136,7 @@ class Header extends Component {
                                     <span>
                                         <FaLongArrowAltLeft />
                                     </span>
-                                </button>
-                                {/* <Link to={`${PathsApp.AdminPaths}`}>
-                                    <span>
-                                        <FaLongArrowAltLeft />
-                                    </span>
-                                </Link> */}
+                                </button>                              
                             </div>
                             <div className="header__page">
                                 <div className="dropdown">
@@ -155,9 +152,12 @@ class Header extends Component {
                                 </div>
                             </div>
                             <div className="header__style">
-                                <Link to={`${PathsApp.Paths}setting`}>
+                                <div onClick = {()=> this.props.dispatch(ROUTECOM.routeComponent('SettingPG'))}>
                                     <img src={styleShape} />
-                                </Link>
+                                </div>
+                                {/* <Link to={`${PathsApp.Paths}setting`}>
+                                    <img src={styleShape} />
+                                </Link> */}
                             </div>
                         </div>
                     </div>

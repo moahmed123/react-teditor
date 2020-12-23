@@ -64,11 +64,11 @@ class App extends Component {
                                     <Switch location={location} >
                                             {/* <Redirect from={`${PathsApp.Paths}header`} to ={`${PathsApp.Paths}#/header`} /> */}
                                             <Route exact path = {`${PathsApp.Paths}`} component={Home} />                                                                               
-                                            <Route exact path = {`${PathsApp.Paths}header`} component={HeaderPG} />
+                                            {/* <Route exact path = {`${PathsApp.Paths}header`} component={HeaderPG} />
                                             <Route exact path = {`${PathsApp.Paths}footer`} component={FooterPG} />                                
                                             <Route exact path = {`${PathsApp.Paths}section/:id?/:section`} component={SectionPG} />
                                             <Route exact path = {`${PathsApp.Paths}setting`} component={SettingStylePG} />
-                                            <Route exact path = {`${PathsApp.Paths}region/:id?`} component={AvailableSectionsPG} />                                        
+                                            <Route exact path = {`${PathsApp.Paths}region/:id?`} component={AvailableSectionsPG} />                                         */}
                                     </Switch>                                                                                                                                
                                 </CSSTransition>
                             </TransitionGroup>                                                       

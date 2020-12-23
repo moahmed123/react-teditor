@@ -81,7 +81,8 @@ export const getDropdownPages = () => (dispatch) => {
             // dispatch({ type: constants.HEADER_USER_SECTIONS, pagesData });
 
             // Get Style Theme To Cahe it for Brawser 
-            dispatch(this.getTemplateSettings());
+            dispatch(getTemplateSettings());
+            // console.log(process.env.REACT_APP_API_ENDPOINT)
         })
         .catch((error) => {
             console.log(error.message);
