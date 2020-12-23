@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { ROUTECOM } from '../../../actions';
 import Footer from '../../../assets/svg/footer.svg';
 import PathsApp from './../../../actions/Api_paths';
 class FooterDT extends Component {
@@ -7,7 +9,10 @@ class FooterDT extends Component {
         return (
             <div className="sidebar__header__section">
                 <div className="label">
-                    <Link to={`${PathsApp.Paths}footer`}>
+                    <div
+                    onClick={ () => {                           
+                        this.props.dispatch(ROUTECOM.routeComponent('FooterPG'));
+                    }}>
                         <img className="label__icon" src={Footer} />
                         <span>{this.props.FooterData.Name}</span>
                         <svg className="label--delete" xmlns="http://www.w3.org/2000/svg" width="10.513" height="10.513" viewBox="0 0 10.513 10.513">
@@ -24,11 +29,12 @@ class FooterDT extends Component {
                                 </g>
                             </g>
                         </svg>
-                    </Link>
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-export default FooterDT
+const mapStateToProps = state => ({})
+export default connect(mapStateToProps)(FooterDT)

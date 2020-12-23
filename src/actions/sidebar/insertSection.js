@@ -2,6 +2,9 @@ import axios from 'axios'
 import constants from '../constants';
 import API from '../Api_paths';
 import qs from 'qs';
+import {getSectionFields} from './getSectionFields';
+import {routeComponent} from '../RouteComponent/routeComponent';
+import {RefreshData} from '../app'
 
 export const insertSection = (sourceSectionId) => (dispatch) => {       
      // Create Json Data To Send It:
@@ -23,6 +26,9 @@ export const insertSection = (sourceSectionId) => (dispatch) => {
     }).then((sectionId) => {        
         console.log(sectionId.data.insertedSectionId); 
         // Redirection To Section Added
-        window.location.href = API.Paths + 'section/' + sectionId.data.insertedSectionId   //#/section/4244/     
+       // window.location.href = API.Paths + 'section/' + sectionId.data.insertedSectionId   //#/section/4244/     
+       dispatch(getSectionFields(null, sectionId.data.insertedSectionId));
+       dispatch(RefreshData()) // Refresh Data 
+       dispatch(routeComponent('SectionPG', null));
     })            
 }

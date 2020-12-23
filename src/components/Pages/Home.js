@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { Container} from 'react-bootstrap';
-import { FaTrashAlt , FaPlus} from "react-icons/fa";
+import { Container } from 'react-bootstrap';
+import { FaTrashAlt, FaPlus } from "react-icons/fa";
 import { connect } from 'react-redux';
-import {GETLANGS} from '../../actions'
+import { GETLANGS } from '../../actions'
 // import '../../css/Home.css';
 
 // Component
@@ -19,87 +19,107 @@ import ArrowLeft from '../../assets/images/arrow-left.png';
 import SectionsAvailable from '../Sidebar/Section/sectionsAvailable/sectionsAvailable';
 import SectionData from '../Sidebar/Section/Section';
 import HeaderData from '../Sidebar/Header/Header';
+import FooterData from '../Sidebar/Footer/Footer';
+import TemplateSettings from '../Sidebar/TemplateSettings/TemplateSettings';
 
 // - LoaderSpinner
 import LoaderSpinner from '../Sidebar/Spinner/LoaderSpinner';
 
-class Home extends Component {       
+class Home extends Component {
     _routeComponent = () => {
-        const {routeComponent} = this.props;       
-        switch(routeComponent) {
+        const { routeComponent } = this.props;
+        switch (routeComponent) {
             case 'sectionsAvailable':
-              return (
-                <div className='col-md-3 p-0 position-static'>                             
-                    <div className="Home__sidebar setting--sidebar section--page">
-                        <div className="Home__sidebar__header flex-column">                                    
-                            <SectionsAvailable/>
-                        </div>                                                          
-                    </div>                          
-                </div> 
-              )            
-            case 'SectionPG':
-              return (
-                <div className='col-md-3 p-0 position-static'>                            
-                    <div className="Home__sidebar setting--sidebar section--page ">
-                        <SectionData/>
+                return (
+                    <div className='col-md-3 p-0 position-static'>
+                        <div className="Home__sidebar setting--sidebar section--page">
+                            <div className="Home__sidebar__header flex-column">
+                                <SectionsAvailable />
+                            </div>
+                        </div>
                     </div>
-                </div>
-            )
+                )
+            case 'SectionPG':
+                return (
+                    <div className='col-md-3 p-0 position-static'>
+                        <div className="Home__sidebar setting--sidebar section--page ">
+                            <SectionData />
+                        </div>
+                    </div>
+                )
             case 'HeaderPG':
                 return (
-                    <div className='col-md-3 p-0'>  
+                    <div className='col-md-3 p-0'>
                         <div className="Home__sidebar">
                             <div className="Home__sidebar__header">
                                 {
-                                    (this.props.UserSections)?                                      
-                                        <HeaderData HeaderData = {this.props.UserSections}/>
-                                    :
-                                       <LoaderSpinner/>                                    
+                                    (this.props.UserSections) ?
+                                        <HeaderData HeaderData={this.props.UserSections} />
+                                        :
+                                        <LoaderSpinner />
                                 }
                             </div>
-                        </div>                          
-                    </div>
-              )
-            default:
-                return(
-                    <div className='col-md-3 p-0'>                             
-                        <div className="Home__sidebar Home__sidebar__HomePage">
-                            <div className="Home__sidebar__header"> <Sidebar/> </div>                                        
-                        </div>                          
+                        </div>
                     </div>
                 )
-          }
+            case 'FooterPG':
+                return (
+                    <div className='col-md-3 p-0'>
+                        <div className="Home__sidebar">
+                            <div className="Home__sidebar__header">
+                                {
+                                    (this.props.FooterUserSections) ?
+                                        <FooterData FooterData={this.props.FooterUserSections} />
+                                        :
+                                        <LoaderSpinner />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                )
+            case 'SettingPG':
+                return  <TemplateSettings />                
+            default:
+                return (
+                    <div className='col-md-3 p-0'>
+                        <div className="Home__sidebar Home__sidebar__HomePage">
+                            <div className="Home__sidebar__header"> <Sidebar /> </div>
+                        </div>
+                    </div>
+                )
+        }
     }
     render() {
-        if(this.props.UserSections){
+        if (this.props.UserSections) {
             console.log("---------------------", this.props.UserSections)
         }
-        const homeClass = classNames('Home', {});       
+        const homeClass = classNames('Home', {});
         return (
             <section className={homeClass}>
-                    <Container fluid className="no-gutters p-0">  
-                        <div className="row no-gutters">
-                            <div className="col-md-12">
-                                <Header /> 
-                            </div>
+                <Container fluid className="no-gutters p-0">
+                    <div className="row no-gutters">
+                        <div className="col-md-12">
+                            <Header />
                         </div>
-                        <div className='row no-gutters'>    
-                            {this._routeComponent()}
-                            <div className='col-md-9'>   
-                                <IframePrev/>                            
-                            </div>
+                    </div>
+                    <div className='row no-gutters'>
+                        {this._routeComponent()}
+                        <div className='col-md-9'>
+                            <IframePrev />
                         </div>
-                    </Container> 
-                </section>            
-        )       
+                    </div>
+                </Container>
+            </section>
+        )
     }
 }
 
 // export default Home
-const mapStateToProps = state => ({    
+const mapStateToProps = state => ({
     getlanguages: state.getlanguages.GetLangs,
     routeComponent: state.getlanguages.routeCom,
-    UserSections : state.slidebar.UserSections
+    UserSections: state.slidebar.UserSections,
+    FooterUserSections: state.slidebar.FooterUserSections
 })
 
 export default connect(mapStateToProps)(Home)
