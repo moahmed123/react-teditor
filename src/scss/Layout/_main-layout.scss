@@ -152,7 +152,7 @@ html, body {
 }
   .iframe-site{
     width: 100%;
-    height: calc(100vh - 110px);    
+    height: calc(100vh - 85px);    
     border: none;
   }
   .Home__sidebar{ 
@@ -168,7 +168,7 @@ html, body {
     overflow-y: auto;
     z-index: 2;
     &.Home__sidebar__HomePage {
-      height: calc(100vh - 94px);
+      height: calc(100vh - 69px);
     }
     .Home__sidebar__header{ 
       display: flex;
