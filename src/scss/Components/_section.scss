@@ -438,6 +438,52 @@
         } 
     }
 }
+.sortable-list-tab {
+    cursor: default;
+    visibility: visible;
+    z-index: 99999999;
+    list-style-type: none;    
+    background-color: #fff;
+    position: relative;
+
+    .label {
+        background-color: #fff;
+        border: solid 1px #d5d5e0;        
+        div{
+            font-weight: bold;
+            padding: 15px;
+            color: #4c4c51;
+            position: relative;
+            font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+            font-family: HelveticaNeue;
+            display: flex;
+            padding-left: 70px;
+            justify-content: flex-start;
+            cursor: pointer;
+            span {
+                margin-right: 10px;
+            }
+            svg.label__icon {
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+   
+    .Delete,
+    .Delete_home{
+        position: absolute;
+        top: 13px;
+        right: 65px;
+        cursor: pointer;
+    }
+    .Delete_home{
+        #{$end}: 15px;
+        #{$start}: unset;
+    }
+  }
 //edit style
 .box-data{
     background-color: #fff;
