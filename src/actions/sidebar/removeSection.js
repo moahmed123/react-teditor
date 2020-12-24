@@ -5,7 +5,8 @@ import {RefreshData} from './../app';
 import { refreshIframe } from '../Iframe/refreshIframe';
 
 // Add a New Collection. 
-export const removeSection = (sectionId) => (dispatch) => {
+export const removeSection = (sectionId, keyValue) => (dispatch) => {
+    // keyValue --> To remove Section For UI
     console.log("SectionId", sectionId)
     let objCr = '"SectionId"' + ':"' +  sectionId + '"'; 
     let addToBra = "{" + objCr + "}";
@@ -22,8 +23,9 @@ export const removeSection = (sectionId) => (dispatch) => {
         }
     }).then((success) => {
         console.log(success);
+        
         // Fun To Refresh Iframe When Save.       
-        dispatch(refreshIframe())
+        dispatch(refreshIframe());                    
         // if(success.data.status == "OK"){
         //     // Update Home Data 
         //     dispatch(RefreshData());

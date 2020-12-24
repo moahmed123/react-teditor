@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import { FaTrashAlt, FaPlus } from "react-icons/fa";
 import Trash from '../../../assets/svg/trash.svg';
 import Promoted from '../../../assets/svg/promoted-product.svg';
+import { Modal, Button } from 'react-bootstrap';
 //sort Section 
 import { arrayMove, SortableContainer, SortableElement } from 'react-sortable-hoc';
 import trash from '../../../assets/svg/trash.svg';
 import { REMSEC , REODSEC, GetSCFLD, ROUTECOM } from '../../../actions';
 import PathsApp from './../../../actions/Api_paths';
 import { connect } from 'react-redux';
+import LocalizedStrings from 'react-localization';
+import localization from '../../../localization/localization';
 
 class MainContentDT extends Component {
     constructor(props){
@@ -16,7 +19,10 @@ class MainContentDT extends Component {
         this.state = {
             items: [],
             sectionId: [],
-            collectData: []
+            collectData: [],
+            isOpen: false,
+            SectionIdToRemoved: null,
+            eventTagetId: null
         }
     }
     componentDidMount(){
@@ -61,9 +67,12 @@ class MainContentDT extends Component {
         }  
         this.props.dispatch(REODSEC.reorderSection(SECDrop));          
     };  
-    onSortMove = (e) =>{
-        console.log(e.target)
-    }  
+
+    
+    closeModal = () => this.setState({ isOpen: false });
+    // onSortMove = (e) =>{
+    //     console.log(e.target)
+    // }  
     render() {
         const SortableItem = SortableElement(({ value }) => {
             if(this.props.MainContenData.UserSections && this.state.collectData.length > 0 ){
@@ -81,23 +90,21 @@ class MainContentDT extends Component {
                                         <span> 
                                             {collect_Data_state[value].DescName}
                                         </span>                             
-                                </div>  
-                                {/* <Link to = {`${PathsApp.Paths}section/${collect_Data_state[value].id}`} onClick={()=>{
-                                    this.props.dispatch(GetSCFLD.getSectionFields(null, collect_Data_state[value].id))
-                                }}>
-                                        <img className="label__icon" src={Promoted} />
-                                        <span> 
-                                            {collect_Data_state[value].DescName}
-                                        </span>                             
-                                </Link>                                                            */}
+                                </div>                                
                             </div>                                                                                 
                             <div className= 'Delete_home' 
                                 onClick = {(e)=> {
-                                    this.props.dispatch(REMSEC.removeSection(collect_Data_state[value].id));                                   
-                                    // TODO DYNAMIC CHECK REM IS OK 
-                                    setTimeout(()=>{
-                                        e.target.parentElement.parentElement.remove()
-                                    },200)                                   
+                                    this.setState({ 
+                                        SectionIdToRemoved: collect_Data_state[value].id,
+                                        eventTagetId: value,
+                                        isOpen: true 
+                                    });
+                                    console.log(e.target.parentElement.parentElement, value)
+                                    // this.props.dispatch(REMSEC.removeSection(collect_Data_state[value].id));                                   
+                                    // // TODO DYNAMIC CHECK REM IS OK 
+                                    // setTimeout(()=>{
+                                    //     e.target.parentElement.parentElement.remove()
+                                    // },200)                                   
                                 }}
                             > 
                                 <img src={trash} />
@@ -121,14 +128,34 @@ class MainContentDT extends Component {
                     this.props.MainContenData.UserSections.length > 0? 
                         <h2> {this.props.MainContenData.Name} </h2>
                     :
-                        <h6 className='text-center not-found-sc'> No Section Found </h6>
+                <h6 className='text-center not-found-sc'> {localization.SectionNotFound}</h6>
                 }                                               
                 {
                 this.state.items.length > 0 ?
                     <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1} helperClass="sortable-list-tab" onSortMove={this.onSortMove} />
                     :
                     null
-                }                
+                }   
+                <Modal centered className="generic-alert" show={this.state.isOpen} onHide={this.closeModal} backdrop="static">
+                    <Modal.Header>
+                            <Modal.Title>{localization.ConfirmMsgForDeleteSection}</Modal.Title>
+                    </Modal.Header>                            
+                    <Modal.Footer>
+                        <Button variant="outline-secondary" onClick={this.closeModal}>{localization.Cancel}</Button>                                
+                        <Button variant="danger" onClick={()=>{
+                            console.log(this.state.eventTagetId)
+                           // Remove Section Confirmed:                         
+                           this.props.dispatch(REMSEC.removeSection(this.state.SectionIdToRemoved, this.state.eventTagetId));
+                           
+                            // TODO DYNAMIC CHECK REM IS OK 
+                            setTimeout(()=>{
+                                this.setState({isOpen: false});
+                                document.getElementsByClassName("Parent_Cart")[this.state.eventTagetId].remove();
+                            },300)
+                        }}>{localization.Confirm}</Button>
+                        
+                    </Modal.Footer>
+                </Modal>             
             </div>
         )
     }
