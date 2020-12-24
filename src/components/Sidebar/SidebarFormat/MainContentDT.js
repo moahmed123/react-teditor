@@ -7,7 +7,7 @@ import { Modal, Button } from 'react-bootstrap';
 //sort Section 
 import { arrayMove, SortableContainer, SortableElement } from 'react-sortable-hoc';
 import trash from '../../../assets/svg/trash.svg';
-import { REMSEC , REODSEC, GetSCFLD, ROUTECOM } from '../../../actions';
+import { REMSEC , REODSEC, GetSCFLD, ROUTECOM, app} from '../../../actions';
 import PathsApp from './../../../actions/Api_paths';
 import { connect } from 'react-redux';
 import LocalizedStrings from 'react-localization';
@@ -99,7 +99,7 @@ class MainContentDT extends Component {
                                         eventTagetId: value,
                                         isOpen: true 
                                     });
-                                    console.log(e.target.parentElement.parentElement, value)
+                                    // console.log(e.target.parentElement.parentElement, value)
                                     // this.props.dispatch(REMSEC.removeSection(collect_Data_state[value].id));                                   
                                     // // TODO DYNAMIC CHECK REM IS OK 
                                     // setTimeout(()=>{
@@ -143,14 +143,18 @@ class MainContentDT extends Component {
                     <Modal.Footer>
                         <Button variant="outline-secondary" onClick={this.closeModal}>{localization.Cancel}</Button>                                
                         <Button variant="danger" onClick={()=>{
-                            console.log(this.state.eventTagetId)
-                           // Remove Section Confirmed:                         
-                           this.props.dispatch(REMSEC.removeSection(this.state.SectionIdToRemoved, this.state.eventTagetId));
-                           
+                            console.log(this.state.eventTagetId)                            
+                                // Remove Section Confirmed:
+                                this.props.dispatch(REMSEC.removeSection(this.state.SectionIdToRemoved));   
+                                // let NewData = this.props.MainContenData.UserSections.slice(this.state.eventTagetId + 1);
+                                // this.state.collectData.UserSections = NewData;
+                                // console.log(this.state.collectData)                                                                                                                                                                    
                             // TODO DYNAMIC CHECK REM IS OK 
-                            setTimeout(()=>{
-                                this.setState({isOpen: false});
-                                document.getElementsByClassName("Parent_Cart")[this.state.eventTagetId].remove();
+                            // document.getElementsByClassName("Parent_Cart")[this.state.eventTagetId].remove();
+                            setTimeout(()=>{                                
+                                // document.getElementsByClassName("Parent_Cart")[this.state.eventTagetId].remove()
+                                // this.setState({isOpen: false, SectionIdToRemoved: null});
+                                this.setState({isOpen: false});                                
                             },300)
                         }}>{localization.Confirm}</Button>
                         

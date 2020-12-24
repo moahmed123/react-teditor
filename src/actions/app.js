@@ -89,13 +89,18 @@ export const getDropdownPages = () => (dispatch) => {
         });
 }
 export const reloadRegionsOfPages = (regions) => (dispatch) => {
-    console.log("regions ----- ");  
+    console.log("regions ----- 2");  
     console.log(regions);
     dispatch({ type: constants.REGIONSOFPAGE, regions });
 }
 
 export const RefreshData = () => (dispatch) => {  
-    const pagesData = null
-    dispatch({ type: constants.DROPDOWN_PAGES, pagesData });
+    const pagesData = null,
+          regions = null,
+          Layouts = null ;
+    // dispatch({ type: constants.DROPDOWN_PAGES, pagesData });
+    // dispatch({ type: constants.LAYOUTS_PAGES, Layouts });
+    dispatch({ type: constants.REGIONSOFPAGE, regions });
+    console.log('Not Data ')
     dispatch(getDropdownPages())    
 }
