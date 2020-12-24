@@ -12,13 +12,14 @@
             align-items: center;
             border-#{$end}: solid 1px #d5d5e0;
             border-#{$start}: solid 1px #d5d5e0;
+            
             .header__back-circle{
                 width: 30%;
                 background-color: #155ebc;
                 display: flex;
                 align-items: center;   
                 justify-content: center;
-                padding: 17px 11px;
+                padding: 4px;
                 @if $start == 'right' {
                     transform: rotateZ(180deg);
                     -webkit-transform: rotateZ(180deg);
@@ -26,6 +27,9 @@
                     -ms-transform: rotateZ(180deg);
                     -o-transform: rotateZ(180deg);
             }
+            button{
+                border: none;
+                background-color: transparent;
                 span{
                     width: 47px;
                     height: 47px;
@@ -39,7 +43,11 @@
                     align-items: center;
                     justify-content: center;
                     color: #fff;
+                    svg {
+                        font-size: 25px;
+                    }
                 }
+            }
             }
             .header__page{
                 width: 70%;
@@ -56,7 +64,7 @@
                 button{
                     width: 100%;
                     height: 100%;
-                    padding: 28px 0;
+                    padding: 15px 0;
                     border-radius: 0;
                     margin: 0;
                     background: none;
