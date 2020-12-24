@@ -32,7 +32,7 @@ class Home extends Component {
             case 'sectionsAvailable':
                 return (
                     <div className='col-md-3 p-0 position-static'>
-                        <div className="Home__sidebar setting--sidebar section--page">
+                        <div className="Home__sidebar  Home__abs setting--sidebar section--page">
                             <div className="Home__sidebar__header flex-column">
                                 <SectionsAvailable />
                             </div>
@@ -42,7 +42,7 @@ class Home extends Component {
             case 'SectionPG':
                 return (
                     <div className='col-md-3 p-0 position-static'>
-                        <div className="Home__sidebar setting--sidebar section--page ">
+                        <div className="Home__sidebar Home__abs setting--sidebar section--page ">
                             <SectionData />
                         </div>
                     </div>
