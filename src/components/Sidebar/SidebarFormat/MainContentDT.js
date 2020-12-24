@@ -26,6 +26,7 @@ class MainContentDT extends Component {
         }
     }
     componentDidMount(){
+        // this.props.dispatch(app.reloadRegionsOfPages(null))
         // this.setState({ items: [] })
         if(this.props.MainContenData){
             this.state.collectData.push(this.props.MainContenData);
@@ -108,7 +109,7 @@ class MainContentDT extends Component {
                                 }}
                             > 
                                 <img src={trash} />
-                            </div>                  
+                            </div>                                            
                         </div>              
                     );                              
             }
@@ -146,6 +147,7 @@ class MainContentDT extends Component {
                             console.log(this.state.eventTagetId)                            
                                 // Remove Section Confirmed:
                                 this.props.dispatch(REMSEC.removeSection(this.state.SectionIdToRemoved));   
+                                this.setState({isOpen: false});  
                                 // let NewData = this.props.MainContenData.UserSections.slice(this.state.eventTagetId + 1);
                                 // this.state.collectData.UserSections = NewData;
                                 // console.log(this.state.collectData)                                                                                                                                                                    
@@ -154,7 +156,7 @@ class MainContentDT extends Component {
                             setTimeout(()=>{                                
                                 // document.getElementsByClassName("Parent_Cart")[this.state.eventTagetId].remove()
                                 // this.setState({isOpen: false, SectionIdToRemoved: null});
-                                this.setState({isOpen: false});                                
+                                // this.setState({isOpen: false});                                
                             },300)
                         }}>{localization.Confirm}</Button>
                         
