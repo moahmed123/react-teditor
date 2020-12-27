@@ -30,6 +30,7 @@ class HeaderDT extends Component {
                                     </g>
                                 </g>
                             </svg>
+                         
                         </div>
                         {/* <Link to={`${PathsApp.Paths}header`}>                        
                             <img className="label__icon" src={Header} />

@@ -77,7 +77,7 @@ class Sidebar extends Component {
                         }     
                         { 
                             (key == regions_length )?                                
-                                <div className="sidebar__header__section" onClick = {()=>{
+                                <div className="sidebar__header__section sidebar__header__section--add" onClick = {()=>{
                                     this.props.dispatch(ROUTECOM.routeComponent('sectionsAvailable'))
                                 }}>
                                     {/* <Link className="header__section--add" to = {`${PathsApp.Paths}region/${this.props.PageResions.id}`} > */}

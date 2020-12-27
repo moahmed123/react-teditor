@@ -37,14 +37,14 @@ class FooterPG extends Component {
                         </div>
                     </div>
                     <div className='row'>                    
-                        <div className='col-md-3 p-0'>  
+                        <div className='col-md-3 p-0 sidebar__section'>  
                             <div className="Home__sidebar">
                                 <div className="Home__sidebar__header">                         
                                     {this._FooterData()}    
                                 </div>
                             </div>                          
                         </div>
-                        <div className='col-md-9'>                            
+                        <div className='col-md-9 body__section'>                            
                             <IframePrev/>  
                         </div>
                     </div>

@@ -39,14 +39,14 @@ class HeaderPG extends Component {
                         </div>
                     </div>
                     <div className='row no-gutters'>                    
-                        <div className='col-md-3 p-0'>  
+                        <div className='col-md-3 p-0 sidebar__section'>  
                             <div className="Home__sidebar">
                                 <div className="Home__sidebar__header">                         
                                     {this._headerData()}
                                 </div>
                             </div>                          
                         </div>
-                        <div className='col-md-9'>                            
+                        <div className='col-md-9 body__section'>                            
                             <IframePrev/>  
                         </div>
                     </div>

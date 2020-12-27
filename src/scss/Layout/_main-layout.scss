@@ -1,9 +1,29 @@
 
+@font-face {
+  font-family: 'AvertaBold';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaBold.otf') format("opentype");
+}
+@font-face {
+  font-family: 'AvertaRegular';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaDemo-Regular.otf') format("opentype");
+}
+@font-face {
+  font-family: 'AvertaExtraBold';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaExtraBold.otf') format("opentype");
+}
+@font-face {
+  font-family: 'AvertaSemibold';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaSemibold.otf') format("opentype");
+}
+@font-face {
+  font-family: 'AvertaThin';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaThin.otf') format("opentype");
+}
 html, body {
     margin: 0; 
     padding: 0;
     @if $start == 'left'{
-      font-family: 'Montserrat';
+      font-family: 'AvertaRegular';
   } @else{
       font-family: 'Cairo';
   }    font-size: 1em;  
@@ -53,6 +73,12 @@ html, body {
   body{  
     overflow: hidden; 
   }
+  .Header {
+    margin-bottom: 19px;
+    .body__section {
+      box-shadow: none !important;
+    }
+  }
   .modal-header .close {
     @if $start == 'left'{
       float: left;
@@ -69,7 +95,7 @@ html, body {
       color: $main-color;  
 
     @if $start == 'left'{
-        font-family: 'Montserrat';
+        font-family: 'AvertaRegular';
       } @else{
           font-family: 'Cairo';
       }
@@ -91,7 +117,7 @@ html, body {
       color: #4c4c51ad;
       text-align: $start;
       @if $start == 'left'{
-        font-family: 'Montserrat';
+        font-family: 'AvertaRegular';
       } @else{
           font-family: 'Cairo';
       }
@@ -133,22 +159,21 @@ html, body {
   
   /* Track */
   *::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 3px grey; 
+    // box-shadow: inset 0 0 3px grey; 
     border-radius: 10px;
   }
    
   /* Handle */
   *::-webkit-scrollbar-thumb {
-    background: #155ebc; 
+    background: #999; 
     border-radius: 10px;
   }
 
 
 .Home {
-  background-color: white;
+  background-color: #f5f6f8;
 .main-frame{
-  border: solid 1px #d5d5e0;  
-  margin: 7px 5px; 
+  margin: 0; 
 }
   .iframe-site{
     width: 100%;
@@ -159,64 +184,100 @@ html, body {
     position: absolute;
     top: 0; 
     #{$start}: 0;
-    width: calc(100% - 7px);
     height: 100%; 
-    background: #f8f7ff; 
-    padding: 18px;
-    border: solid 1px #d5d5e0;
-    height: calc(100vh - 12px);
+    padding: 10px 20px;
+    height: calc(100vh - 88px);
     overflow-y: auto;
     z-index: 2;
     &.Home__sidebar__HomePage {
-      height: calc(100vh - 69px);
+      height: calc(100vh - 88px);
     }
     .Home__sidebar__header{ 
       display: flex;
       flex-direction: column;  
+      .generic-sidebar__section__list {
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07);
+      }
       .sidebar__header__section{
-        margin-bottom: 12px;
+        margin-bottom: 30px;
+&.sidebar__header__section--add {
+  margin-top: -15px;
+}
 
         h2{
           font-size: 18px;
-          font-size: calc(18px + (18 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+          font-size: calc(13px + (18 - 9) * ((100vw - 1024px) / (1920 - 1024)));
           color: $main-color; 
-          margin-bottom: 12px;
+          margin-bottom: -6px;
           text-transform: capitalize;
           @if $start == 'left'{
-            font-family: HelveticaNeue;
+            font-family: 'AvertaBold';
           } @else{
             font-family: 'Cairo';
         }
           text-align: $start;
-          display: flex;
+           display: flex;
           justify-content: space-between;
         }
+
+        h6 {
+          font-size: 12px;
+          font-size: calc(11px + (18 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+          font-weight: 600;
+          color: #919191;
+          text-transform: capitalize;
+          margin-bottom: 15px;
+          @if $start == 'left'{
+            font-family: 'AvertaRegular';
+          } @else{
+            font-family: 'Cairo';
+        }
+          text-align: $start;
+           display: flex;
+          justify-content: space-between;
+        } 
         .label{
-          background-color: #fff; 
-          border: solid 1px #d5d5e0;
+          border-radius: 4px;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07);
+        background-color: #ffffff;
+        position: relative;
           &:not(:last-child){
-            border-bottom: 0;
+            border-radius: 0;
+            box-shadow: none;
           }
-          a, div{
+         & > a,& > div{
           font-weight: bold;
-          padding: 15px;
+          padding: 11px;
           color: $main-color;
           position: relative;
           font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
           @if $start == 'left'{
-            font-family: HelveticaNeue;
+            font-family: 'AvertaRegular';
           } @else{
             font-family: 'Cairo';
         }
-          display: flex;
-          padding-#{$start}: 70px; 
+           // display: flex;
+           display: inline-block;
+           width: 100%;
+           padding-#{$end}: 46px; 
+          padding-#{$start}: 39px; 
           justify-content: flex-start;
           cursor: pointer;
+          & + form {
+            display: inline-block;
+            position: absolute;
+            #{$end}: 0;
+            bottom: 12px;
+          }
           &:hover{   
             text-decoration: none;
           }
           img , span{
             margin-#{$end}: 10px ; 
+            font-size: 13px;
+            line-height: 27px;
           } 
           // span{  
           //   display: inline-block;
@@ -248,6 +309,8 @@ html, body {
               #{$start}: 10px;  
               top: 50%;
               transform: translateY(-50%);
+              width: 22px;
+              height: 22px;
             }
           }
           img{
@@ -259,29 +322,67 @@ html, body {
           }
         } 
       }
+      ul {
+        border-radius: 4px;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07);
+        overflow: hidden;
+        .label {
+          border-bottom: solid 1px #f1f1f1;
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
       .header__section--add{
         display: block;
         width: 100%;
         background-color: #fff;
-        border: dashed 2px #d5d5e0;
+        border: 1px solid #f3f3f3;
+        border-radius: 4px;
         margin-top: 10px;
-        padding: 10px;
+        padding: 12px;
         color: #4c4c51;
         font-weight: bold;
         outline: none;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: start;
+        justify-content: start;
+        text-align: start;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07);
+        font-size: 14px;
+        line-height: 24px;
+        color: #155ebc;
+        cursor: pointer;
         @if $start == 'left'{
-          font-family: HelveticaNeue;
+          font-family: 'AvertaRegular';
         } @else{
           font-family: 'Cairo';
       }        svg{
-          padding-#{$end}: 6px;
+          margin-#{$end}: 10px;
+          color: #155ebc;
+          background-color: #eee;
+          padding: 3px;
+          height: 22px;
+          width: 22px;
+          border-radius: 4px;
         }
       }
+       }
+       .generic-sidebar__section {
+        h2{
+          margin-bottom: 20px;
+        }
+        .label {
+          border-bottom: 1px solid #f7f7f7 ;
+          &:last-child {
+            border-bottom:none ;
+          }
+          .Header_Box_Section {
+            padding-#{$start}: 15px !important;
+          }
+        }
+       
       }
-  
     }
   }
 
@@ -293,7 +394,10 @@ html, body {
         .sidebar__header__section {
           h2{
             font-size: calc(12px + (14 - 7) * ((100vw - 768px) / (1023 - 768)));
-          }  
+          } 
+          h6 {
+            font-size: calc(6px + (14 - 7) * ((100vw - 768px) / (1023 - 768)));
+          } 
           .label {
             a{
               padding: 10px;
@@ -350,6 +454,9 @@ html, body {
         h2{
           font-size: calc(14px + (14 - 9) * ((100vw - 320px) / (991 - 320)));
         }
+        h6 {
+          font-size: calc(6px + (14 - 9)  * ((100vw - 320px) / (991 - 320)));
+        } 
         .label {
           a{
             font-size: calc(12px + (12 - 9) * ((100vw - 320px) / (991 - 320)));
@@ -398,7 +505,7 @@ html, body {
   justify-content: center;
   outline: none;
   @if $start == 'left'{
-    font-family: HelveticaNeue;
+    font-family: AvertaRegular;
   } @else{
     font-family: 'Cairo';
 }        svg{
@@ -459,4 +566,20 @@ button:focus , select:focus{
         cursor: pointer;
       }
     }
+}
+
+@media (min-width: 768px) {
+  .sidebar__section {
+    width: 329px;
+    max-width: 329px;
+  }
+  .body__section {
+    width: calc( 100% - 329px);
+    max-width: calc( 100% - 329px);
+    flex: 1;
+    border-radius: 4px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+    overflow: hidden;
+  }
 }
