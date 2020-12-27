@@ -45,9 +45,11 @@ class Footer extends Component {
     render() {
         return (
             <div className="generic-sidebar__section">
-                <div className="sidebar__header__section">
+                <div className="sidebar__header__section Home__sidebar__footer__page">
                     <h2>{this.props.FooterData.Name}</h2>
+                    <div className="generic-sidebar__section__list">
                     {this.__FooterData()}
+                    </div>
                 </div>
             </div>
         )

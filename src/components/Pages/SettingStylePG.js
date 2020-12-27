@@ -25,7 +25,7 @@ class SettingStylePG extends Component {
                     </div>
                     <div className='row no-gutters'>
                         <TemplateSettings />
-                        <div className='col-md-9'>
+                        <div className='col-md-9 body__section'>
                             <IframeProv />
                         </div>
                     </div>

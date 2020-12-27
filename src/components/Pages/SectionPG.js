@@ -30,12 +30,12 @@ class SectionPG extends Component {
                     </div>
                     <div className='row'>
                         
-                        <div className='col-md-3 p-0 position-static'>                            
+                        <div className='col-md-3 p-0 sidebar__section'>                            
                             <div className="Home__sidebar setting--sidebar section--page ">
                             <SectionData/>
                             </div>
                         </div>
-                        <div className='col-md-9'>                            
+                        <div className='col-md-9 body__section'>                            
                             <IframeProv/>                            
                         </div>
                     </div>

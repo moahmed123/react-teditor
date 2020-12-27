@@ -119,7 +119,7 @@ class MainContentDT extends Component {
             <div className="sidebar__header__section" key={this.props.MainContenData.id}>
                 {
                     this.props.MainContenData.UserSections.length > 0? 
-                        <h2> {this.props.MainContenData.Name} </h2>
+                        <h6> {this.props.MainContenData.Name} </h6>
                     :
                         <h6 className='text-center not-found-sc'> No Section Found </h6>
                 }                                               

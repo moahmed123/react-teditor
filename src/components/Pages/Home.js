@@ -31,7 +31,7 @@ class Home extends Component {
         switch (routeComponent) {
             case 'sectionsAvailable':
                 return (
-                    <div className='col-md-3 p-0 position-static'>
+                    <div className='col-md-3 p-0 sidebar__section'>
                         <div className="Home__sidebar setting--sidebar section--page">
                             <div className="Home__sidebar__header flex-column">
                                 <SectionsAvailable />
@@ -41,7 +41,7 @@ class Home extends Component {
                 )
             case 'SectionPG':
                 return (
-                    <div className='col-md-3 p-0 position-static'>
+                    <div className='col-md-3 p-0 sidebar__section'>
                         <div className="Home__sidebar setting--sidebar section--page ">
                             <SectionData />
                         </div>
@@ -49,8 +49,8 @@ class Home extends Component {
                 )
             case 'HeaderPG':
                 return (
-                    <div className='col-md-3 p-0'>
-                        <div className="Home__sidebar">
+                    <div className='col-md-3 p-0 sidebar__section'>
+                        <div className="Home__sidebar Home__sidebar__HomePage">
                             <div className="Home__sidebar__header">
                                 {
                                     (this.props.UserSections) ?
@@ -64,8 +64,8 @@ class Home extends Component {
                 )
             case 'FooterPG':
                 return (
-                    <div className='col-md-3 p-0'>
-                        <div className="Home__sidebar">
+                    <div className='col-md-3 p-0 sidebar__section'>
+                        <div className="Home__sidebar Home__sidebar__HomePage">
                             <div className="Home__sidebar__header">
                                 {
                                     (this.props.FooterUserSections) ?
@@ -81,7 +81,7 @@ class Home extends Component {
                 return  <TemplateSettings />                
             default:
                 return (
-                    <div className='col-md-3 p-0'>
+                    <div className='col-md-3 p-0 sidebar__section'>
                         <div className="Home__sidebar Home__sidebar__HomePage">
                             <div className="Home__sidebar__header"> <Sidebar /> </div>
                         </div>
@@ -104,7 +104,7 @@ class Home extends Component {
                     </div>
                     <div className='row no-gutters'>
                         {this._routeComponent()}
-                        <div className='col-md-9'>
+                        <div className='col-md-9 body__section'>
                             <IframePrev />
                         </div>
                     </div>

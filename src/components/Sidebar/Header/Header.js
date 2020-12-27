@@ -45,9 +45,11 @@ class Header extends Component {
     render() {
         return (
             <div className="generic-sidebar__section"> 
-                <div className="sidebar__header__section">              
+                <div className="sidebar__header__section Home__sidebar__header__page">              
                     <h2>{this.props.HeaderData.Name} </h2>
-                    {this.__HeaderData()}                 
+                    <div className="generic-sidebar__section__list">
+                    {this.__HeaderData()}             
+                    </div>    
                 </div>                              
             </div> 
      
