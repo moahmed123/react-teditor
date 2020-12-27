@@ -17,7 +17,9 @@ const translationStrings = new LocalizedStrings({
         Confirm: "Confirm",
         SaveMessage: "The Changes Fields Saved Successfully",
         SaveMessageTitle: 'Save Fields',
-        PublishMessage: "publish Data Is Successfully"
+        PublishMessage: "publish Data Is Successfully",
+        SectionNotFound : "No Section Found",
+        ConfirmMsgForDeleteSection : 'Please Confirm To Delete Section'
     },
     ar: {
         Browse: "تصفح",
@@ -35,7 +37,9 @@ const translationStrings = new LocalizedStrings({
         Confirm:"تأكيد",
         SaveMessage: "تم حفظ التغييرات الحقول بنجاح",
         SaveMessageTitle: 'حفظ الحقول',
-        PublishMessage: "نشر البيانات بنجاح"
+        PublishMessage: "نشر البيانات بنجاح",
+        SectionNotFound : "لم يتم العثور على قسم",
+        ConfirmMsgForDeleteSection : 'يرجى التأكيد لحذف القسم'
     }
 });
 export default translationStrings;

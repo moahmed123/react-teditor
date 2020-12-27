@@ -1,9 +1,29 @@
 
+@font-face {
+  font-family: 'AvertaBold';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaBold.otf') format("opentype");
+}
+@font-face {
+  font-family: 'AvertaRegular';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaDemo-Regular.otf') format("opentype");
+}
+@font-face {
+  font-family: 'AvertaExtraBold';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaExtraBold.otf') format("opentype");
+}
+@font-face {
+  font-family: 'AvertaSemibold';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaSemibold.otf') format("opentype");
+}
+@font-face {
+  font-family: 'AvertaThin';
+  src: url('../assets/Fonts/EN-fonts/Averta/AvertaThin.otf') format("opentype");
+}
 html, body {
     margin: 0; 
     padding: 0;
     @if $start == 'left'{
-      font-family: 'Montserrat';
+      font-family: 'AvertaRegular';
   } @else{
       font-family: 'Cairo';
   }    font-size: 1em;  
@@ -53,6 +73,12 @@ html, body {
   body{  
     overflow: hidden; 
   }
+  .Header {
+    margin-bottom: 19px;
+    .body__section {
+      box-shadow: none !important;
+    }
+  }
   .modal-header .close {
     @if $start == 'left'{
       float: left;
@@ -69,7 +95,7 @@ html, body {
       color: $main-color;  
 
     @if $start == 'left'{
-        font-family: 'Montserrat';
+        font-family: 'AvertaRegular';
       } @else{
           font-family: 'Cairo';
       }
@@ -91,7 +117,7 @@ html, body {
       color: #4c4c51ad;
       text-align: $start;
       @if $start == 'left'{
-        font-family: 'Montserrat';
+        font-family: 'AvertaRegular';
       } @else{
           font-family: 'Cairo';
       }
@@ -147,7 +173,7 @@ html, body {
 .Home {
   background-color: #f5f6f8;
 .main-frame{
-  margin: 7px 5px; 
+  margin: 0; 
 }
   .iframe-site{
     width: 100%;
@@ -158,14 +184,13 @@ html, body {
     position: absolute;
     top: 0; 
     #{$start}: 0;
-    width: calc(100% - 7px);
     height: 100%; 
     padding: 10px 20px;
-    height: calc(100vh - 69px);
+    height: calc(100vh - 88px);
     overflow-y: auto;
     z-index: 2;
     &.Home__sidebar__HomePage {
-      height: calc(100vh - 69px);
+      height: calc(100vh - 88px);
     }
     .Home__sidebar__header{ 
       display: flex;
@@ -183,12 +208,12 @@ html, body {
 
         h2{
           font-size: 18px;
-          font-size: calc(18px + (18 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+          font-size: calc(13px + (18 - 9) * ((100vw - 1024px) / (1920 - 1024)));
           color: $main-color; 
           margin-bottom: -6px;
           text-transform: capitalize;
           @if $start == 'left'{
-            font-family: HelveticaNeue;
+            font-family: 'AvertaBold';
           } @else{
             font-family: 'Cairo';
         }
@@ -205,7 +230,7 @@ html, body {
           text-transform: capitalize;
           margin-bottom: 15px;
           @if $start == 'left'{
-            font-family: HelveticaNeue;
+            font-family: 'AvertaRegular';
           } @else{
             font-family: 'Cairo';
         }
@@ -229,15 +254,15 @@ html, body {
           position: relative;
           font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
           @if $start == 'left'{
-            font-family: HelveticaNeue;
+            font-family: 'AvertaRegular';
           } @else{
             font-family: 'Cairo';
         }
            // display: flex;
            display: inline-block;
            width: 100%;
-           padding-#{$end}: 30px; 
-          padding-#{$start}: 43px; 
+           padding-#{$end}: 46px; 
+          padding-#{$start}: 39px; 
           justify-content: flex-start;
           cursor: pointer;
           & + form {
@@ -329,7 +354,7 @@ html, body {
         color: #155ebc;
         cursor: pointer;
         @if $start == 'left'{
-          font-family: HelveticaNeue;
+          font-family: 'AvertaRegular';
         } @else{
           font-family: 'Cairo';
       }        svg{
@@ -480,7 +505,7 @@ html, body {
   justify-content: center;
   outline: none;
   @if $start == 'left'{
-    font-family: HelveticaNeue;
+    font-family: AvertaRegular;
   } @else{
     font-family: 'Cairo';
 }        svg{
@@ -552,5 +577,9 @@ button:focus , select:focus{
     width: calc( 100% - 329px);
     max-width: calc( 100% - 329px);
     flex: 1;
+    border-radius: 4px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+    overflow: hidden;
   }
 }

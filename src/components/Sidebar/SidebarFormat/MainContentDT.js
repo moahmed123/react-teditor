@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import { FaTrashAlt, FaPlus } from "react-icons/fa";
 import Trash from '../../../assets/svg/trash.svg';
 import Promoted from '../../../assets/svg/promoted-product.svg';
+import { Modal, Button } from 'react-bootstrap';
 //sort Section 
 import { arrayMove, SortableContainer, SortableElement } from 'react-sortable-hoc';
 import trash from '../../../assets/svg/trash.svg';
-import { REMSEC , REODSEC, GetSCFLD, ROUTECOM } from '../../../actions';
+import { REMSEC , REODSEC, GetSCFLD, ROUTECOM, app} from '../../../actions';
 import PathsApp from './../../../actions/Api_paths';
 import { connect } from 'react-redux';
+import LocalizedStrings from 'react-localization';
+import localization from '../../../localization/localization';
 
 class MainContentDT extends Component {
     constructor(props){
@@ -16,10 +19,14 @@ class MainContentDT extends Component {
         this.state = {
             items: [],
             sectionId: [],
-            collectData: []
+            collectData: [],
+            isOpen: false,
+            SectionIdToRemoved: null,
+            eventTagetId: null
         }
     }
     componentDidMount(){
+        // this.props.dispatch(app.reloadRegionsOfPages(null))
         // this.setState({ items: [] })
         if(this.props.MainContenData){
             this.state.collectData.push(this.props.MainContenData);
@@ -61,9 +68,12 @@ class MainContentDT extends Component {
         }  
         this.props.dispatch(REODSEC.reorderSection(SECDrop));          
     };  
-    onSortMove = (e) =>{
-        console.log(e.target)
-    }  
+
+    
+    closeModal = () => this.setState({ isOpen: false });
+    // onSortMove = (e) =>{
+    //     console.log(e.target)
+    // }  
     render() {
         const SortableItem = SortableElement(({ value }) => {
             if(this.props.MainContenData.UserSections && this.state.collectData.length > 0 ){
@@ -81,27 +91,53 @@ class MainContentDT extends Component {
                                         <span> 
                                             {collect_Data_state[value].DescName}
                                         </span>                             
-                                </div>  
-                                {/* <Link to = {`${PathsApp.Paths}section/${collect_Data_state[value].id}`} onClick={()=>{
-                                    this.props.dispatch(GetSCFLD.getSectionFields(null, collect_Data_state[value].id))
-                                }}>
-                                        <img className="label__icon" src={Promoted} />
-                                        <span> 
-                                            {collect_Data_state[value].DescName}
-                                        </span>                             
-                                </Link>                                                            */}
+                                </div>                                
                             </div>                                                                                 
                             <div className= 'Delete_home' 
                                 onClick = {(e)=> {
-                                    this.props.dispatch(REMSEC.removeSection(collect_Data_state[value].id));                                   
-                                    // TODO DYNAMIC CHECK REM IS OK 
-                                    setTimeout(()=>{
-                                        e.target.parentElement.parentElement.remove()
-                                    },200)                                   
+                                    this.setState({ 
+                                        SectionIdToRemoved: collect_Data_state[value].id,
+                                        eventTagetId: value,
+                                        isOpen: true 
+                                    });
+                                    // console.log(e.target.parentElement.parentElement, value)
+                                    // this.props.dispatch(REMSEC.removeSection(collect_Data_state[value].id));                                   
+                                    // // TODO DYNAMIC CHECK REM IS OK 
+                                    // setTimeout(()=>{
+                                    //     e.target.parentElement.parentElement.remove()
+                                    // },200)                                   
                                 }}
                             > 
                                 <img src={trash} />
-                            </div>                  
+                            </div>     
+                            <svg  className="label--drag" xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10">
+  <g id="Group_7136" data-name="Group 7136" transform="translate(-9413.335 -20234.123)" opacity="0.62">
+    <g id="Ellipse_1088" data-name="Ellipse 1088" transform="translate(9417.335 20234.123)" fill="#fff" stroke="#707070" stroke-width="1">
+      <circle cx="1" cy="1" r="1" stroke="none"/>
+      <circle cx="1" cy="1" r="0.5" fill="none"/>
+    </g>
+    <g id="Ellipse_1091" data-name="Ellipse 1091" transform="translate(9413.335 20234.123)" fill="#fff" stroke="#707070" stroke-width="1">
+      <circle cx="1" cy="1" r="1" stroke="none"/>
+      <circle cx="1" cy="1" r="0.5" fill="none"/>
+    </g>
+    <g id="Ellipse_1092" data-name="Ellipse 1092" transform="translate(9413.335 20238.123)" fill="#fff" stroke="#707070" stroke-width="1">
+      <circle cx="1" cy="1" r="1" stroke="none"/>
+      <circle cx="1" cy="1" r="0.5" fill="none"/>
+    </g>
+    <g id="Ellipse_1093" data-name="Ellipse 1093" transform="translate(9413.335 20242.123)" fill="#fff" stroke="#707070" stroke-width="1">
+      <circle cx="1" cy="1" r="1" stroke="none"/>
+      <circle cx="1" cy="1" r="0.5" fill="none"/>
+    </g>
+    <g id="Ellipse_1089" data-name="Ellipse 1089" transform="translate(9417.335 20238.123)" fill="#fff" stroke="#707070" stroke-width="1">
+      <circle cx="1" cy="1" r="1" stroke="none"/>
+      <circle cx="1" cy="1" r="0.5" fill="none"/>
+    </g>
+    <g id="Ellipse_1090" data-name="Ellipse 1090" transform="translate(9417.335 20242.123)" fill="#fff" stroke="#707070" stroke-width="1">
+      <circle cx="1" cy="1" r="1" stroke="none"/>
+      <circle cx="1" cy="1" r="0.5" fill="none"/>
+    </g>
+  </g>
+</svg>                                       
                         </div>              
                     );                              
             }
@@ -121,14 +157,39 @@ class MainContentDT extends Component {
                     this.props.MainContenData.UserSections.length > 0? 
                         <h6> {this.props.MainContenData.Name} </h6>
                     :
-                        <h6 className='text-center not-found-sc'> No Section Found </h6>
+                <h6 className='text-center not-found-sc'> {localization.SectionNotFound}</h6>
                 }                                               
                 {
                 this.state.items.length > 0 ?
                     <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1} helperClass="sortable-list-tab" onSortMove={this.onSortMove} />
                     :
                     null
-                }                
+                }   
+                <Modal centered className="generic-alert" show={this.state.isOpen} onHide={this.closeModal} backdrop="static">
+                    <Modal.Header>
+                            <Modal.Title>{localization.ConfirmMsgForDeleteSection}</Modal.Title>
+                    </Modal.Header>                            
+                    <Modal.Footer>
+                        <Button variant="outline-secondary" onClick={this.closeModal}>{localization.Cancel}</Button>                                
+                        <Button variant="danger" onClick={()=>{
+                            console.log(this.state.eventTagetId)                            
+                                // Remove Section Confirmed:
+                                this.props.dispatch(REMSEC.removeSection(this.state.SectionIdToRemoved));   
+                                this.setState({isOpen: false});  
+                                // let NewData = this.props.MainContenData.UserSections.slice(this.state.eventTagetId + 1);
+                                // this.state.collectData.UserSections = NewData;
+                                // console.log(this.state.collectData)                                                                                                                                                                    
+                            // TODO DYNAMIC CHECK REM IS OK 
+                            // document.getElementsByClassName("Parent_Cart")[this.state.eventTagetId].remove();
+                            setTimeout(()=>{                                
+                                // document.getElementsByClassName("Parent_Cart")[this.state.eventTagetId].remove()
+                                // this.setState({isOpen: false, SectionIdToRemoved: null});
+                                // this.setState({isOpen: false});                                
+                            },300)
+                        }}>{localization.Confirm}</Button>
+                        
+                    </Modal.Footer>
+                </Modal>             
             </div>
         )
     }

@@ -115,11 +115,11 @@ class Header extends Component {
                                     */
                                    let User_Save_Fields = localStorage.getItem('User_Save_Fields');
                                    if(User_Save_Fields == "true"){
-                                        //show Popups                                        
-                                        let lengthPath = window.location.pathname.split('/').length; 
-                                        let pathName = window.location.pathname.split('/')[lengthPath - 1];
-                                        if(pathName == 'header' || pathName == 'footer'){
-                                            window.history.back();
+                                        //show Popups       
+                                        console.log(this.props.routeComponent)                                                                         
+                                        let pathNameCom = this.props.routeComponent;
+                                        if(pathNameCom == 'HeaderPG' || pathNameCom == 'FooterrPG'){
+                                            this.props.dispatch(ROUTECOM.routeComponent(null));
                                         }else{
                                             this.openModal();
                                         }
@@ -227,7 +227,7 @@ class Header extends Component {
                             <Modal.Body>{localization.PargPopup}</Modal.Body>
                     <Modal.Footer>
                         <Button variant="outline-secondary" onClick={this.closeModal}>{localization.Cancel}</Button>                                
-                        <Link to = {`/admin`}>
+                        <Link to = {`/admin/`}>
                             <Button variant="danger">{localization.Confirm}</Button>
                         </Link>
                     </Modal.Footer>

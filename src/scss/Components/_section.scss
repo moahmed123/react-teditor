@@ -1,13 +1,14 @@
 .Home {
     .Home__sidebar{
+        position: relative;
         &.section--page {
             .Home__sidebar__header{
                 margin-bottom: 30px;
             }
             .setting--sidebar__header{
-                font-size: calc(13px + (13 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                font-size: calc(14px + (13 - 9) * ((100vw - 1024px) / (1920 - 1024)));
                 @if $start == 'left'{
-                    font-family: 'Montserrat';
+                    font-family: 'AvertaRegular';
                   } @else{ 
                       font-family: 'Cairo';
                   }
@@ -17,7 +18,7 @@
                     display: flex;
                     margin-top: 0px;
                     @if $start == 'left'{
-                        font-family: 'Montserrat';
+                        font-family: 'AvertaRegular';
                       } @else{
                           font-family: 'Cairo';
                       }
@@ -42,7 +43,7 @@
                         color: #b4afd3;
                         font-weight: bold;
                         @if $start == 'left'{
-                            font-family: 'Montserrat';
+                            font-family: 'AvertaRegular';
                           } @else{
                               font-family: 'Cairo';
                           }
@@ -83,7 +84,7 @@
                                     user-select: none;
                                    font-weight: bold;
                                     @if $start == 'left'{
-                                        font-family: 'Montserrat';
+                                        font-family: 'AvertaRegular';
                                       } @else{
                                           font-family: 'Cairo';
                                       }
@@ -148,7 +149,7 @@
                                     margin: 20px 0;
                                     padding: 5px 0;
                                     border: none;
-                                    border-bottom: solid 1px #d5d5e0;
+                                    // border-bottom: solid 1px #d5d5e0;
                                     width: 100%;
                                     .generic--section__form{
                                         border: 0; 
@@ -157,7 +158,7 @@
                                         font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
                                         font-weight: bold;
                                             @if $start == 'left'{
-                                                font-family: 'Montserrat';
+                                                font-family: 'AvertaRegular';
                                             } @else{
                                                 font-family: 'Cairo';
                                             }
@@ -168,7 +169,7 @@
                                             font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
                                             font-weight: bold;
                                                 @if $start == 'left'{
-                                                    font-family: 'Montserrat';
+                                                    font-family: 'AvertaRegular';
                                                 } @else{
                                                     font-family: 'Cairo';
                                                 }
@@ -180,7 +181,7 @@
                                             font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
                                             font-weight: bold;
                                                 @if $start == 'left'{
-                                                    font-family: 'Montserrat';
+                                                    font-family: 'AvertaRegular';
                                                 } @else{
                                                     font-family: 'Cairo';
                                                 }
@@ -192,7 +193,7 @@
                                             font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
                                             font-weight: bold;
                                                 @if $start == 'left'{
-                                                    font-family: 'Montserrat';
+                                                    font-family: 'AvertaRegular';
                                                 } @else{
                                                     font-family: 'Cairo';
                                                 }
@@ -206,6 +207,7 @@
                                             height: 2px; 
                                             background-color: #3399FF; 
                                             transition: 0.4s;
+                                            display: none;
                                         }
                                     }
                                     .generic--section__form:focus ~ .focus-border{
@@ -230,7 +232,7 @@
                                     color: $main-color;
                                     text-transform: capitalize;
                                         @if $start == 'left'{
-                                            font-family: 'Montserrat';
+                                            font-family: 'AvertaRegular';
                                         } @else{
                                             font-family: 'Cairo';
                                         }
@@ -260,7 +262,7 @@
                                     margin-bottom: 0;
                                     color: $main-color;
                                         @if $start == 'left'{
-                                            font-family: 'Montserrat';
+                                            font-family: 'AvertaRegular';
                                         } @else{
                                             font-family: 'Cairo';
                                         }
@@ -286,7 +288,7 @@
                         padding: 0;
                         width: 100%;
                         text-align: $start;
-                        font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                        font-size: calc(10px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
                         font-weight: bold;
                         margin-bottom: 0;
                         color: $main-color;
@@ -294,7 +296,7 @@
                         align-items: center;
                         justify-content: space-between; 
                             @if $start == 'left'{
-                                font-family: 'Montserrat';
+                                font-family: 'AvertaRegular';
                             } @else{
                                 font-family: 'Cairo';
                             }
@@ -326,7 +328,7 @@
                 font-weight: bold;
                 color: $main-color;
                     @if $start == 'left'{
-                        font-family: 'Montserrat';
+                        font-family: 'AvertaRegular';
                     } @else{
                         font-family: 'Cairo';
                     }
@@ -359,10 +361,32 @@
                 right: 65px;
                 cursor: pointer;
             }
-            .Delete_home{
-                #{$end}: 15px;
-                #{$start}: unset;
+            .Delete {
+                top: 10px;
             }
+            .Delete,
+            .Delete_home{
+                #{$end}: 32px;
+                #{$start}: unset;
+                width: 16px;
+             text-align: center;
+            }
+            .label--drag{
+                position: absolute;
+                #{$end}: 1px;
+                font-size: 18px;
+                width: 31px;
+                z-index: 2;
+                height: 14px;
+                top: 20px;
+                cursor: pointer;
+        }
+            .controls {
+                .label--drag{
+                    top: 17px;
+                }
+            }
+           
         }
         .hidden_Element{
             display: none;
@@ -384,6 +408,9 @@
             width: 100%;
         }
     } 
+    .Home__abs{
+        position: absolute;
+    }
     .container_notification{
         position: absolute;
         z-index: 9999;
@@ -455,7 +482,7 @@
             color: #4c4c51;
             position: relative;
             font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
-            font-family: HelveticaNeue;
+            font-family: 'AvertaRegular';
             display: flex;
             padding-left: 70px;
             justify-content: flex-start;
@@ -479,9 +506,15 @@
         right: 65px;
         cursor: pointer;
     }
+    .Delete {
+        top: 10px;
+    }
+    .Delete,
     .Delete_home{
-        #{$end}: 15px;
+        #{$end}: 32px;
         #{$start}: unset;
+        width: 16px;
+    text-align: center;
     }
   }
 //edit style

@@ -98,7 +98,7 @@ class Sidebar extends Component {
                 )            
             })
         }else{
-            return <LoaderSpinner/>
+            return <LoaderSpinner/>            
         }
     }
     render() {                
