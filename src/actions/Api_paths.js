@@ -37,7 +37,6 @@
 //     IframeLink: ''
 // };
 // export default ApiPaths;
-
 // At Demo App Version Use:
 const ApiPaths = {
     //API Links
