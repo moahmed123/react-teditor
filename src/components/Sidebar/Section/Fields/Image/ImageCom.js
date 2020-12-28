@@ -275,12 +275,12 @@ class ImageCom extends Component {
         this._sendSavedData(jsonFormatImg);
         setTimeout(() => {
             // console.log(document.getElementById(`Image_${e.target.value}`));
-            let imageClearValId = e.target.getAttribute("imageclearvalid");
+            let imageClearValId = e.target.parentElement.getAttribute("imageclearvalid");
             // Change Src Image 
-            let srcImageClear = document.getElementById(imageClearValId);
-
+            let srcImageClear = document.getElementById(imageClearValId);            
             let srcImageCurr = srcImageClear.src,            
                 storeCode = srcImageCurr.split('/')[5];
+                
                 // Save Store Code 
                 localStorage.setItem('storeCode', storeCode);
             let StoreCode = localStorage.getItem('storeCode'); 
