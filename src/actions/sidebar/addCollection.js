@@ -24,7 +24,7 @@ export const addCollection = (sectionId) => (dispatch) => {
         console.log(success);
         // Update Section Data
         let NotLoading = false; 
-        dispatch(getSectionFields(NotLoading));
+        dispatch(getSectionFields(NotLoading, sectionId));
         dispatch(refreshIframe())
         // TODO: Show Field Save Is Done. 
     }).catch((error) => {
