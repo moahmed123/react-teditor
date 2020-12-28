@@ -20,8 +20,9 @@
                 background-color: #fff;
                 border-radius: 4px;
                 box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07);
-                padding-top: 25px;
+                padding: 25px 10px 15px;
             }
+       
             .Home__sidebar__header{
                 font-weight: bold;
                 display: flex;
@@ -66,10 +67,14 @@
                @extend %main-label;
             }
             .setting--sidebar__color{
+                .row {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
                 margin-bottom: 40px;
                 .sidebar__color__main{
                     border: solid 1px #d5d5e0;
-                    padding: 15px;
+                    padding: 0;
                     .color__main__caption{ 
                         @extend %main-label;
                         font-size:calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
@@ -147,6 +152,32 @@
                 }
             }
         }
+        &.setting--page {
+            .setting--sidebar__color  {
+                .sidebar__color__main {
+                    
+                    .generic--section{
+                        border: 1px solid #d0d0d0 !important;
+                        border-radius: 4px !important;
+                        padding: 6px 10px !important;
+                   
+                    .color__main__content {
+
+                        .main__content__info {
+                            width: calc(100% - 50px);
+                            display: inline-block;
+                        }
+                        > div {
+                            display: inline-block;
+                        .main__content__circle {
+                            top: 8px;
+                        }
+                    }
+                    }
+                }
+                }
+                }
+            }
     } 
 }  
 @include smallLaptop{

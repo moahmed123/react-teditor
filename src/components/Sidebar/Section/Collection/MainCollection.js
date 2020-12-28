@@ -217,7 +217,7 @@ class MainCollection extends Component {
                     <h4 className="setting--sidebar__header col-md-12"> {CollectionName} </h4> 
                     <div className='col-md-12 p-0'>                 
                         <Accordion defaultActiveKey="0">
-                            <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1} />
+                            <SortableList items={this.state.items} onSortEnd={this.onSortEnd} distance={1}  helperClass="sortable-list-tab"/>
                         </Accordion>
                         {
                             this.state.loading ? 
@@ -235,7 +235,7 @@ class MainCollection extends Component {
                         :
                             null
                     }
-                    <div className="col-md-12">
+                    <div className="col-md-12 p-0">
                         <button onClick = {this._addCollection} className="header__section--add col-md-12"><svg stroke="currentColor" fill="currentColor" strokwidth="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
                             {CollectionButtonName}
                          </button>

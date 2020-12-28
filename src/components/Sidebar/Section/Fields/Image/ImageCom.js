@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { SaveSCFLD, SeaLink } from '../../../../../actions';
 import { connect } from 'react-redux';
 import Paths from '../../../../../actions/Api_paths'
+import RemoveImg from '../../../../../assets/svg/cancel.svg';
 import $ from "jquery-1.10.2";
 // import Jq from "jquery";
 
@@ -107,7 +108,7 @@ class ImageCom extends Component {
                                     value={DI_mage.id}
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>                                    
-                                    {localization.Clear}
+                             <img src={RemoveImg} />
                                 </button>
                             </div>
                         )
@@ -144,7 +145,8 @@ class ImageCom extends Component {
                                     value={DI_mage.id}
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>
-                                    {localization.Clear}
+                                <img src={RemoveImg} />
+
                                 </button>
                             </div>
                         )
@@ -181,7 +183,7 @@ class ImageCom extends Component {
                                     value={DI_mage.id}
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>                                    
-                                    {localization.Clear}
+                                 <img src={RemoveImg} />
                                 </button>
                             </div>
                         )
@@ -218,7 +220,7 @@ class ImageCom extends Component {
                                     value={DI_mage.id}
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>                                    
-                                    {localization.Clear}
+                                   <img src={RemoveImg} />
                                 </button>
                             </div>
                         )

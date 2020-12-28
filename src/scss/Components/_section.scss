@@ -1,12 +1,146 @@
+.Parent_Cart.sortable-list-tab{
+    position: relative;
+    .card-header {
+        background: unset;
+        padding-#{$start}: 10px;
+        margin-bottom: 0;
+        border-bottom: none;
+      button {
+        padding: 0;
+        width: 100%;
+        text-align: left;
+        font-size: calc(10px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+        font-weight: bold;
+        margin-bottom: 0;
+        color: #4c4c51;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'AvertaRegular';
+    }
+}
+    .hidden_Element {
+        display: none;
+    }
+    .label {
+        > div {
+            font-weight: bold;
+            padding: 11px;
+            color: #4c4c51;
+            position: relative;
+            font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+            font-family: 'AvertaRegular';
+            display: inline-block;
+            width: 100%;
+            padding-#{$end}: 46px;
+            padding-#{$start}: 39px;
+            justify-content: flex-start;
+            cursor: pointer;
+            span {
+                margin-#{$end}: 10px;
+                font-size: 13px;
+                line-height: 27px;
+            }
+            img {
+                position: absolute;
+    #{$start}: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+            }
+        }
+    }
+    .card-body {
+        padding: 10px;
+    }
+    .Delete,
+    .Delete_home{
+        position: absolute;
+        top: 13px;
+        right: 65px;
+        cursor: pointer;
+    }
+    .Delete {
+        top: 10px;
+    }
+    .Delete,
+    .Delete_home{
+        #{$end}: 32px;
+        #{$start}: unset;
+        width: 16px;
+     text-align: center;
+    }
+
+    .label--drag{
+        position: absolute;
+        #{$end}: 1px;
+        font-size: 18px;
+        width: 31px;
+        z-index: 2;
+        height: 11px;
+        top: 21px;
+        cursor: pointer;
+}
+    .controls {
+        .label--drag{
+            top: 17px;
+        }
+    }
+   
+}
 .Home {
     .Home__sidebar{
         position: relative;
+        .Parent_Cart{
+            position: relative;
+            .card-body {
+                padding: 10px;
+            }
+            .Delete,
+            .Delete_home{
+                position: absolute;
+                top: 13px;
+                right: 65px;
+                cursor: pointer;
+            }
+            .Delete {
+                top: 10px;
+            }
+            .Delete,
+            .Delete_home{
+                #{$end}: 32px;
+                #{$start}: unset;
+                width: 16px;
+             text-align: center;
+            }
+       
+            .label--drag{
+                position: absolute;
+                #{$end}: 1px;
+                font-size: 18px;
+                width: 31px;
+                z-index: 2;
+                height: 14px;
+                top: 20px;
+                cursor: pointer;
+        }
+            .controls {
+                .label--drag{
+                    top: 17px;
+                }
+            }
+           
+        }
         &.section--page {
+
             .Home__sidebar__header{
                 margin-bottom: 30px;
             }
             .setting--sidebar__header{
-                font-size: calc(14px + (13 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                font-size: calc(11px + (13 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                font-weight: 400;
+                    padding: 0;
                 @if $start == 'left'{
                     font-family: 'AvertaRegular';
                   } @else{ 
@@ -27,9 +161,10 @@
             }
             .section--page__flags{
                 display: flex;
-                margin-bottom: 20px;
+                margin-bottom: 5px;
                 .page__flags__country{
-                    padding: 8px 15px;
+                    padding: 4px 10px;
+                    font-size: 12px;
                     background-color: #f2f1f7;
                     margin-#{$end}: 10px;
                     &:hover{
@@ -70,8 +205,25 @@
                     // padding-right: 0;
                     .color__main__content{
                         flex-wrap: wrap;
+                        padding-top: 10px;
+                        position: relative;
+                        display: block;
+                        vertical-align:top;
                         .main__img__content {
-                            width: 100%;
+                            width: 100px;
+                            height: 67px;
+                            border-radius: 6px;
+                            overflow: hidden;
+                            border: 1px solid #ededed;
+                            display: inline-block;
+                            margin-#{$end}: 20px;
+                            text-align: center;
+                            img {
+                                width: auto;
+                                height: 100%;
+                               margin: auto;
+                               max-width: 100%;
+                            }
                         }
                             /* The check-container */
                                 .check-container {
@@ -131,8 +283,8 @@
                                 
                                 /* Style the checkmark/indicator */
                                 .check-container .checkmark:after {
-                                    #{$start}: 30%;
-                                    top: 50%;
+                                    #{$start}: 4px;
+                                    top: 7px;
                                     width: 4px;
                                     height: 9px;
                                     border: solid white;
@@ -146,13 +298,16 @@
                                     display: block;
                                     color: $main-color;
                                     position: relative;
-                                    margin: 20px 0;
+                                    margin: 5px 0;
                                     padding: 5px 0;
                                     border: none;
                                     // border-bottom: solid 1px #d5d5e0;
                                     width: 100%;
                                     .generic--section__form{
-                                        border: 0; 
+                                        border: 1px solid #ededed;
+                                        border-radius: 4px;
+                                        height: 36px;
+                                        padding: 0 10px;
                                         width: 100%;
                                         outline: none;
                                         font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
@@ -350,44 +505,14 @@
                 -o-border-radius: none;
 
             }
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
+       
         // TODO
-        .Parent_Cart{
-            position: relative;
-            .Delete,
-            .Delete_home{
-                position: absolute;
-                top: 13px;
-                right: 65px;
-                cursor: pointer;
-            }
-            .Delete {
-                top: 10px;
-            }
-            .Delete,
-            .Delete_home{
-                #{$end}: 32px;
-                #{$start}: unset;
-                width: 16px;
-             text-align: center;
-            }
-            .label--drag{
-                position: absolute;
-                #{$end}: 1px;
-                font-size: 18px;
-                width: 31px;
-                z-index: 2;
-                height: 14px;
-                top: 20px;
-                cursor: pointer;
-        }
-            .controls {
-                .label--drag{
-                    top: 17px;
-                }
-            }
-           
-        }
+      
         .hidden_Element{
             display: none;
         }
@@ -511,7 +636,7 @@
     }
     .Delete,
     .Delete_home{
-        #{$end}: 32px;
+        #{$end}: 34px;
         #{$start}: unset;
         width: 16px;
     text-align: center;

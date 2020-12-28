@@ -58,7 +58,7 @@ class SectionsAvailable extends Component {
                     </div>
                        <div>
                             {localization.SectionsAvailable}
-                            <span> {localization.HomePage} </span>
+                            {/* <span> {localization.HomePage} </span> */}
                         </div> 
                      </h4>
                     

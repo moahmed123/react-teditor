@@ -121,7 +121,9 @@ class Section extends Component {
 
             <>
                 <div className="Home__sidebar__header">
-        <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} <span>{localization.HomePage}</span></h4>
+        <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} 
+        {/* <span>{localization.HomePage}</span> */}
+        </h4>
                     <div className="setting--sidebar__controls">                        
                         <BackBtn 
                             Status = { null } 

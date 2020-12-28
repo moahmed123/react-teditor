@@ -33,7 +33,7 @@ class AvailableSectionsPG extends Component {
                         </div>
                     </div>
                     <div className='row no-gutters'>                                                                
-                        <div className='col-md-3 p-0 position-static'>                             
+                        <div className='col-md-3 p-0 sidebar__section'>                             
                             <div className="Home__sidebar setting--sidebar section--page">
                                 <div className="Home__sidebar__header flex-column">                                    
                                     <SectionsAvailable/>
