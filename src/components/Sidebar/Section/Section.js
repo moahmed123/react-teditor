@@ -115,7 +115,12 @@ class Section extends Component {
             ActiveLanguage = this.props.getlanguages.data.ActiveLanguage.code;
         }
         if (!this.props.sectionFieldsDT) {
-            return <div className="main-loader"> <Spinner animation="border" /></div>
+            return (
+                <div className="main-loader">  
+                
+                    <Spinner animation="border" />
+                </div>
+            )
         }
         return (
 
