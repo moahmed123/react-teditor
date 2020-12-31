@@ -85,7 +85,9 @@ class MainContentDT extends Component {
                             <div className="label" >                    
                              <div onClick={()=>{
                                     this.props.dispatch(GetSCFLD.getSectionFields(null, collect_Data_state[value].id));
-                                    this.props.dispatch(ROUTECOM.routeComponent('SectionPG'))
+                                    this.props.dispatch(ROUTECOM.routeComponent('SectionPG'));
+                                    //Add Class Loading For Layouts. 
+                                    document.getElementsByTagName("BODY")[0].classList.add('loading-Layout');
                                 }}>
                                         <img className="label__icon" src={Promoted} />
                                         <span> 

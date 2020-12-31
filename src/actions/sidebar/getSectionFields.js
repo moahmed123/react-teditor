@@ -27,6 +27,8 @@ export const getSectionFields = (NotLoading, sectionFieldID) => (dispatch) => {
     return axios.get(API.getSectionFieldsV2,{ params: {SectionId: sectionId}})
         .then((sectionFields) => {
             console.log(sectionFields);
+            //Remove Class Load Layouts . 
+            document.getElementsByTagName("BODY")[0].classList.remove('loading-Layout');
             dispatch({ type: constants.SECTION_FIELDS, sectionFields });
             // if(updataSecField){     
             //     console.log("updataSecField"+updataSecField)   
