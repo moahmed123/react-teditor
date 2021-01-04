@@ -116,12 +116,37 @@ class Section extends Component {
         }
         if (!this.props.sectionFieldsDT) {
             return (
-                <div className="main-loader">  
-                
-                    <Spinner animation="border" />
+                <div className="main-loader main-loader--sec">  
+                <div className="HeaderLoader--section">
+                    <span className="loadingStyle label--sec"></span>
+                    <span className="loadingStyle check--sec"></span>
+                    <span className="loadingStyle check--sec"></span>
+                </div>
+                <div className="mt-5 mb-5">
+                    <span className="loadingStyle languge--sec"></span>
+                    <span className="loadingStyle languge--sec"></span>
+                </div>
+                <div className="checkbox--sec mt-3">
+                    <span className="loadingStyle checkbox--input"></span>
+                    <span className="loadingStyle checkbox--label"></span>
+                    </div>
+                    <div className="row--sec mt-3">
+                    <span className="loadingStyle label--row--sec"></span>
+                    <span className="loadingStyle input--row--sec"></span>
+                    </div>
+                    <div className="row--sec mt-3">
+                    <span className="loadingStyle label--row--sec"></span>
+                    <span className="loadingStyle input--row--sec"></span>
+                    </div>
+                    <div className="row--sec mt-3">
+                    <span className="loadingStyle label--row--sec"></span>
+                    <span className="loadingStyle input--row--sec"></span>
+                    </div>
+                  
+                    {/* <Spinner animation="border" /> */}
                 </div>
             )
-        }
+       }
         return (
 
             <>
