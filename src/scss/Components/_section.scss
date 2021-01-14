@@ -75,6 +75,7 @@
     .label--drag{
         position: absolute;
         #{$end}: 1px;
+        #{$start}: unset;
         font-size: 18px;
         width: 31px;
         z-index: 2;
@@ -96,6 +97,7 @@
             position: relative;
             .card-body {
                 padding: 10px;
+                text-align: start;
             }
             .Delete,
             .Delete_home{
@@ -118,6 +120,7 @@
             .label--drag{
                 position: absolute;
                 #{$end}: 1px;
+                #{$start}: unset;
                 font-size: 18px;
                 width: 31px;
                 z-index: 2;
@@ -284,6 +287,7 @@
                                 /* Style the checkmark/indicator */
                                 .check-container .checkmark:after {
                                     #{$start}: 4px;
+                                    #{$end}: unset;
                                     top: 7px;
                                     width: 4px;
                                     height: 9px;

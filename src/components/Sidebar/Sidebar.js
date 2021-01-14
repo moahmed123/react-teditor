@@ -100,32 +100,78 @@ class Sidebar extends Component {
         }else{
             return (
                 <div className="main-loader main-loader--sec">  
-                <div className="HeaderLoader--section">
+                <div className="HeaderLoader--section mb-3">
                     <span className="loadingStyle label--sec"></span>
-                    <span className="loadingStyle check--sec"></span>
-                    <span className="loadingStyle check--sec"></span>
+                    <span className="loadingStyle setting--sec"></span>
                 </div>
-                <div className="mt-5 mb-5">
-                    <span className="loadingStyle languge--sec"></span>
-                    <span className="loadingStyle languge--sec"></span>
-                </div>
-                <div className="checkbox--sec mt-3">
-                    <span className="loadingStyle checkbox--input"></span>
-                    <span className="loadingStyle checkbox--label"></span>
+                <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--move"></span>
                     </div>
-                    <div className="row--sec mt-3">
-                    <span className="loadingStyle label--row--sec"></span>
+                    <div className="row--sec mt-5">
                     <span className="loadingStyle input--row--sec"></span>
                     </div>
-                    <div className="row--sec mt-3">
-                    <span className="loadingStyle label--row--sec"></span>
-                    <span className="loadingStyle input--row--sec"></span>
+                    <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
                     </div>
-                    <div className="row--sec mt-3">
-                    <span className="loadingStyle label--row--sec"></span>
-                    <span className="loadingStyle input--row--sec"></span>
+                    <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
                     </div>
-                  
+                    <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
+                    </div>
+                    <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
+                    </div>
+                    <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
+                    </div>
+                    <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
+                    </div>
+                     <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
+                    </div>
+                    <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
+                    </div>
+                    <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
+                    </div>
+                    <div className="row--sec--home mt-3">
+                    <span className="loadingStyle icon--input"></span>
+                    <span className="loadingStyle icon--label"></span>
+                    <span className="loadingStyle icon--delete"></span>
+                    <span className="loadingStyle icon--move"></span>
+                    </div>
                     {/* <Spinner animation="border" /> */}
                 </div>
             )
