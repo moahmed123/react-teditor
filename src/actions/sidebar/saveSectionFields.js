@@ -3,9 +3,9 @@ import constants from '../constants';
 import API from '../Api_paths';
 import qs from 'qs';
 import { getSectionFields } from './getSectionFields';
-import { refreshIframe } from '../Iframe/refreshIframe';
+import { replaceIframeSection } from '../Iframe/replaceIframeSection';
 import { notification } from '../notification/notification';
-import localization from '../../localization/localization'
+import localization from '../../localization/localization';
 
 // Collected New Value For Fields 
 export const newValFields = (newFields) => (dispatch) => {
@@ -53,8 +53,8 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
         headers: {
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
-    }).then((success) => {
-        console.log(success);
+    }).then((response) => {
+        console.log(response);
         // Update Section Data 
         // dispatch(getSectionFields())
         // Chack Route Of Section. 
@@ -63,8 +63,8 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
         if(lastOfRoute != 'setting'){
             // dispatch(getSectionFields()) // Update Section Fields 
         }
-        // Fun To Refresh Iframe When Save.       
-        dispatch(refreshIframe()) 
+        // Fun To Refresh Iframe When Save.  
+        dispatch(replaceIframeSection(response.data.sectionId, response.data.sectionHTML))
         
         // TODO: Show Field Save Is Done. 
         // Notification Data 

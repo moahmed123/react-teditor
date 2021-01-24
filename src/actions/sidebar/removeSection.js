@@ -2,7 +2,7 @@ import axios from 'axios'
 import API from '../Api_paths';
 import qs from 'qs';
 import { RefreshData, reloadRegionsOfPages } from '../app';
-import { refreshIframe } from '../Iframe/refreshIframe';
+import { removeIframeSection } from '../Iframe/removeIframeSection';
 
 // Add a New Collection. 
 export const removeSection = (sectionId) => (dispatch) => {
@@ -25,11 +25,11 @@ export const removeSection = (sectionId) => (dispatch) => {
         console.log(success);
         
         // Fun To Refresh Iframe When Save.       
-        dispatch(refreshIframe());                    
+        dispatch(removeIframeSection(sectionId));                    
         // if(success.data.status == "OK"){
         //     console.log('Refresh Data ..........')
         //     // Update Home Data 
-            dispatch(RefreshData());
+        dispatch(RefreshData());
         //     // dispatch(reloadRegionsOfPages(PagesRegions))
         // }
     }).catch((error) => {

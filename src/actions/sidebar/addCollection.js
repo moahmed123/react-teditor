@@ -2,7 +2,8 @@ import axios from 'axios'
 import API from '../Api_paths';
 import qs from 'qs';
 import {getSectionFields} from './getSectionFields';
-import { refreshIframe } from '../Iframe/refreshIframe';
+import { replaceIframeSection } from '../Iframe/replaceIframeSection';
+import $ from "jquery-1.10.2";
 
 // Add a New Collection. 
 export const addCollection = (sectionId) => (dispatch) => {
@@ -20,12 +21,12 @@ export const addCollection = (sectionId) => (dispatch) => {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json'
         }
-    }).then((success) => {
-        console.log(success);
+    }).then((response) => {
+        console.log(response);
         // Update Section Data
         let NotLoading = false; 
         dispatch(getSectionFields(NotLoading, sectionId));
-        dispatch(refreshIframe())
+        dispatch(replaceIframeSection(response.data.sectionId, response.data.sectionHTML))
         // TODO: Show Field Save Is Done. 
     }).catch((error) => {
         console.log(error.message);

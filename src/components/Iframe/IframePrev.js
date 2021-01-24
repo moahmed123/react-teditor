@@ -16,7 +16,7 @@ class IframePrev extends Component {
                 // sectionId = window.location.hash.split('/')[2],
 
                 OriginLocal  = ""; // As demo Production                 
-                if (window.location.hostname == 'localhost') {
+                if (window.location.hostname == 'localhost' || window.location.hostname == 'qaz123.expandcart.com') {
                     OriginLocal = "http://qaz123.expandcart.com";
                 }
                 // ( sectionId ) ? "&draftsectionid" + sectionId : null
@@ -24,24 +24,24 @@ class IframePrev extends Component {
             if(routeForIframe == ''){ routeForIframe = "common/home";}
             let { sectionId } = this.props;
             console.log(sectionId)
-            if(sectionId != undefined){               
-                return (
-                    <iframe 
-                        src = {
-                            OriginLocal + 
-                            API.IframeLink + 
-                            urlIndex + 
-                            "route=" +
-                            routeForIframe +
-                            "&isdraft=" + 1 +
-                            "&draftlangcode=" +
-                            carrentlyLang + 
-                            "&draftsectionid=" + 
-                            sectionId                    
-                        } 
-                        className='iframe-site' scrolling="yes"></iframe>
-                )    
-            }else{
+            // if(sectionId != undefined){               
+            //     return (
+            //         <iframe 
+            //             src = {
+            //                 OriginLocal + 
+            //                 API.IframeLink + 
+            //                 urlIndex + 
+            //                 "route=" +
+            //                 routeForIframe +
+            //                 "&isdraft=" + 1 +
+            //                 "&draftlangcode=" +
+            //                 carrentlyLang + 
+            //                 "&draftsectionid=" + 
+            //                 sectionId                    
+            //             } 
+            //             className='iframe-site' scrolling="yes"></iframe>
+            //     )    
+            // }else{
                 return (
                     <iframe 
                         src = {
@@ -56,7 +56,7 @@ class IframePrev extends Component {
                         } 
                         className='iframe-site'></iframe>
                 )
-            }           
+            // }           
         }
     }
 
@@ -70,11 +70,11 @@ class IframePrev extends Component {
     }
 }
 const mapStateToProps = state => ({
-    initialized: state.app.initialized,
-    dataFA: state.app.dataFirst,
+    // initialized: state.app.initialized,
+    // dataFA: state.app.dataFirst,
     PageResions : state.slidebar.regions,
     getlanguages: state.getlanguages.GetLangs,
-    sectionId: state.sectionData.sectionId,
+    // sectionId: state.sectionData.sectionId,
 })
 // export default IframePrev;
 export default connect(mapStateToProps)(IframePrev);
