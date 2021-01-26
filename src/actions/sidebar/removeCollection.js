@@ -2,7 +2,7 @@ import axios from 'axios'
 import API from '../Api_paths';
 import qs from 'qs';
 import {getSectionFields} from './getSectionFields';
-import { refreshIframe } from '../Iframe/refreshIframe';
+import { replaceIframeSection } from '../Iframe/replaceIframeSection';
 
 // Add a New Collection. 
 export const removeCollection = (CollectionId) => (dispatch) => {
@@ -20,13 +20,14 @@ export const removeCollection = (CollectionId) => (dispatch) => {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json'
         }
-    }).then((success) => {
-        console.log(success);
+    }).then((response) => {
+        console.log(response);
         // Update Section Data 
         
         let NotLoading = true;
-        dispatch(getSectionFields(NotLoading))
-        dispatch(refreshIframe())
+        dispatch(getSectionFields(NotLoading, response.data.sectionId))
+        dispatch(replaceIframeSection(response.data.sectionId, response.data.sectionHTML))
+        
         // TODO: Show Field Save Is Done. 
     }).catch((error) => {
         console.log(error.message);

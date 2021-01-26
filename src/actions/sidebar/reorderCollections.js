@@ -3,7 +3,7 @@ import constants from '../constants';
 import API from '../Api_paths';
 import qs from 'qs';
 import {getSectionFields} from './getSectionFields';
-import { refreshIframe } from '../Iframe/refreshIframe';
+import { replaceIframeSection } from '../Iframe/replaceIframeSection';
 
 
 export const reorderCollections = (reorderColls) => (dispatch) => {
@@ -44,12 +44,12 @@ export const reorderCollections = (reorderColls) => (dispatch) => {
         headers: {
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
-    }).then((success) => {
-        console.log(success);
+    }).then((response) => {
+        console.log(response);
         // Update Section Data 
         // dispatch(getSectionFields())
         // Fun To Refresh Iframe When Save.       
-        dispatch(refreshIframe())
+        dispatch(replaceIframeSection(response.data.sectionId, response.data.sectionHTML))
         // TODO: Show Field Save Is Done. 
     })
 }
