@@ -64,7 +64,7 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
             // dispatch(getSectionFields()) // Update Section Fields 
         }
         // Fun To Refresh Iframe When Save.  
-        dispatch(replaceIframeSection(response.data.sectionId, response.data.sectionHTML))
+        dispatch(replaceIframeSection(response.data.sectionId, response.data.sectionHTML, response.data.sectionScripts))
         
         // TODO: Show Field Save Is Done. 
         // Notification Data 
