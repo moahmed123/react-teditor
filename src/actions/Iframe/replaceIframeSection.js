@@ -6,11 +6,18 @@ export const replaceIframeSection = (sectionId, sectionHTML, sectionScripts) => 
     if(sectionHTML){
         $('.iframe-site').contents().find('#section-' + sectionId).replaceWith(sectionHTML);
         if(sectionScripts){
+            if(sectionScripts == "false"){
+                console.log("sectionScripts",sectionScripts)
+                dispatch(refreshIframe())                
+                sectionScripts = null ;
+                console.log("sectionScripts = ",sectionScripts)
+            }
+            
 			var myIframe = document.getElementsByClassName("iframe-site")[0];
 			var script = myIframe.contentWindow.document.createElement("script");
 			script.type = "text/javascript";
 			script.innerHTML = sectionScripts;
-			myIframe.contentWindow.document.body.appendChild(script);
+            myIframe.contentWindow.document.body.appendChild(script);         
         }
     }  
     else{

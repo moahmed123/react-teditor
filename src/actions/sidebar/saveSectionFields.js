@@ -9,7 +9,9 @@ import localization from '../../localization/localization';
 
 // Collected New Value For Fields 
 export const newValFields = (newFields) => (dispatch) => {
-    let collected = Object.values(newFields.reduce((acc, cur) => Object.assign(acc, { [cur.key]: cur }), {}));
+    
+    let collected = Object.values(newFields.reduce((acc, cur) => Object.assign(acc, { [cur.key]: cur }), {}));    
+    
     console.log(collected);
 
     dispatch({ type: constants.NEW_VAL_FIELDS, newFields });
@@ -63,6 +65,7 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
         if(lastOfRoute != 'setting'){
             // dispatch(getSectionFields()) // Update Section Fields 
         }
+        console.log(response.data)
         // Fun To Refresh Iframe When Save.  
         dispatch(replaceIframeSection(response.data.sectionId, response.data.sectionHTML, response.data.sectionScripts))
         
@@ -77,5 +80,9 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
         dispatch(notification(notification_result));
         // Change User_Save_Fields True To show popup when you back  
         localStorage.setItem('User_Save_Fields', true);  
+
+        // Make Value For newValFields Null 
+        // dispatch(newValFields(savedFieldVals))
+
     })
 }
