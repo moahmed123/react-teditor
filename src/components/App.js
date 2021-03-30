@@ -31,7 +31,7 @@ class App extends Component {
         
         let HashHistory = createBrowserHistory();
         let browserHistory =Router.browserHistory; 
-        console.log(HashHistory, browserHistory, process.env.PUBLIC_URL)
+        // console.log(HashHistory, browserHistory, process.env.PUBLIC_URL)
 
         if (this.props.getlanguages) {            
             let ActiveLanguage = this.props.getlanguages.data.ActiveLanguage.code;
@@ -40,7 +40,7 @@ class App extends Component {
                 document.documentElement.lang = "ar";
                 document.body.dir = 'rtl';
             })        
-            console.log('fdfdfdf>>>>>>')
+            // console.log('fdfdfdf>>>>>>')
         }else{
             import('../css/main-ltr.css').then(()=>{                    
                 document.documentElement.lang = "en";

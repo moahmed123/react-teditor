@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import API from '../../actions/Api_paths';
 
 class IframePrev extends Component {
+   
     _IframeData = () => {
         if(this.props.PageResions && this.props.getlanguages){
             console.log(this.props.PageResions.Route, this.props.getlanguages.data.ActiveLanguage.code , API.IframeUrl)

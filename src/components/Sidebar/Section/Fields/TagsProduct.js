@@ -151,8 +151,12 @@ class TagsProduct extends Component {
 
         return (
             <div className="setting--sidebar__color mb-3">
-
-                <h4 className="setting--sidebar__header"> {this.props.FieldTagsPro.Name} </h4>
+                {
+                    this.props.FieldTagsPro.Name != '' ? 
+                        <h4 className="setting--sidebar__header"> {this.props.FieldTagsPro.Name} </h4>             
+                    : 
+                        null
+                }                 
                 <Select
                     isMulti
                     name="colors"

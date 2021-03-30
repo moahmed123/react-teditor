@@ -9,11 +9,11 @@ const browserHistory = createHistory()
 const middleware = [thunk, routerMiddleware(browserHistory)]
 const enhancers = []
 
-if (process.env.NODE_ENV === 'development') {
-  if (typeof window.devToolsExtension === 'function') {
-    enhancers.push(window.devToolsExtension())
-  }
-}
+// if (process.env.NODE_ENV === 'development') {
+//   if (typeof window.devToolsExtension === 'function') {
+//     enhancers.push(window.devToolsExtension())
+//   }
+// }
 
 export const history = browserHistory
 export const store = createStore(

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames';
 import { Dropdown, Spinner, Alert, Button, Modal } from 'react-bootstrap';
-import { FaCheck, FaRocket, FaAngleDown, FaBars } from "react-icons/fa";
+import { FaCheck, FaRocket, FaAngleDown, FaBars, FaHome} from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
 import { app, PUBLISH, RESDRAFVER, SETLANG, NOTIFICATION, ROUTECOM } from './../../actions';
@@ -18,7 +18,8 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            PublishLoading: false 
+            PublishLoading: false,
+            DropDownFristOPen: false 
         }
         // create a ref to store the dropdown DOM element
         this.dropdown = React.createRef();
@@ -35,8 +36,7 @@ class Header extends Component {
                 sideBar.classList.toggle('home-sidebar--active');
             });
         }
-        toggleSideBar();
-
+        toggleSideBar();       
     }
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => this.setState({ isOpen: false });
@@ -63,9 +63,41 @@ class Header extends Component {
                                 }
                                 // Active Event Click
                                 event.target.classList.add('active');
+                                //get first URL For Iframe 
+                                let Link_Iframe_Store =  localStorage.getItem('Link_Iframe_Store')
+                                //set URL Iframe
+                                let iframe = document.getElementsByClassName('iframe-site');
+                                if(iframe[0].src != Link_Iframe_Store ){
+                                    iframe[0].src = Link_Iframe_Store // Result Reload it.
+                                }                                
+                                
                             }}>
 
                         { Pages_DT.Name}
+                    </Dropdown.Item>
+                )
+            })
+        }
+    }
+    _webPagesData(){
+        if(this.props.webPages){  
+                      
+            return this.props.webPages.map((result, key) => {
+                console.log(result);
+                return (
+                    // Onclick Fun : Send Web Pages Data Related User Pages added.
+                    <Dropdown.Item
+                        // className={key == 0 ? 'active' : null} // To Active First Page 
+                        key={key}
+                        onClick={
+                            () => {
+                                //Coding 
+                                let iframe = document.getElementsByClassName('iframe-site');
+                                iframe[0].src = result.prview // Result Reload it.
+                            }
+                        }>
+
+                        { result.title}
                     </Dropdown.Item>
                 )
             })
@@ -102,6 +134,7 @@ class Header extends Component {
         const headerClass = classNames('Header', {
             visible: this.props.initialized,
         })
+        
         return (
             <header className={headerClass}>
                 {this._notification()}
@@ -133,34 +166,53 @@ class Header extends Component {
                                        }                                        
                                    }
                                 }}>
-                                    <span>
-                                        {/* <FaLongArrowAltLeft /> */}
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="15.728" height="15.676" viewBox="0 0 15.728 15.676">
-  <g id="Group_7170" data-name="Group 7170" transform="translate(-21 -19)">
-    <g id="Group_7140" data-name="Group 7140" transform="translate(28.237 19)">
-      <g id="Group_7139" data-name="Group 7139">
-        <path id="Path_11501" data-name="Path 11501" d="M.653,15.219H6.532a.653.653,0,0,0,.653-.653V2.809a.653.653,0,0,0-.653-.653H.653A.653.653,0,0,1,.653.85H6.532A1.962,1.962,0,0,1,8.491,2.809V14.566a1.962,1.962,0,0,1-1.959,1.959H.653a.653.653,0,1,1,0-1.306Z" transform="translate(0 -0.85)" fill="#a2a6b7"/>
-      </g>
-    </g>
-    <g id="Group_7142" data-name="Group 7142" transform="translate(21 22.266)">
-      <g id="Group_7141" data-name="Group 7141">
-        <path id="Path_11502" data-name="Path 11502" d="M170.295,111.272l3.971-3.919a.653.653,0,1,1,.917.93l-2.838,2.8h7.6a.653.653,0,0,1,0,1.306h-7.6l2.838,2.8a.653.653,0,1,1-.917.93l-3.971-3.919a.653.653,0,0,1,0-.93Z" transform="translate(-170.1 -107.165)" fill="#a2a6b7"/>
-      </g>
-    </g>
-  </g>
-</svg>
-                                    </span>
+                                    {
+                                        this.props.routeComponent ? 
+                                            <span>                                        
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="15.728" height="15.676" viewBox="0 0 15.728 15.676">
+                                                    <g id="Group_7170" data-name="Group 7170" transform="translate(-21 -19)">
+                                                        <g id="Group_7140" data-name="Group 7140" transform="translate(28.237 19)">
+                                                        <g id="Group_7139" data-name="Group 7139">
+                                                            <path id="Path_11501" data-name="Path 11501" d="M.653,15.219H6.532a.653.653,0,0,0,.653-.653V2.809a.653.653,0,0,0-.653-.653H.653A.653.653,0,0,1,.653.85H6.532A1.962,1.962,0,0,1,8.491,2.809V14.566a1.962,1.962,0,0,1-1.959,1.959H.653a.653.653,0,1,1,0-1.306Z" transform="translate(0 -0.85)" fill="#a2a6b7"/>
+                                                        </g>
+                                                        </g>
+                                                        <g id="Group_7142" data-name="Group 7142" transform="translate(21 22.266)">
+                                                        <g id="Group_7141" data-name="Group 7141">
+                                                            <path id="Path_11502" data-name="Path 11502" d="M170.295,111.272l3.971-3.919a.653.653,0,1,1,.917.93l-2.838,2.8h7.6a.653.653,0,0,1,0,1.306h-7.6l2.838,2.8a.653.653,0,1,1-.917.93l-3.971-3.919a.653.653,0,0,1,0-.93Z" transform="translate(-170.1 -107.165)" fill="#a2a6b7"/>
+                                                        </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        :
+                                            <span>
+                                                <FaHome/>
+                                            </span>
+                                    }
+                                    
                                 </button>                              
                             </div>
                             <div className="header__page">
                                 <div className="dropdown">
-                                    <Dropdown>
+                                    <Dropdown onClick= {()=>{    
+                                        
+                                        if (this.state.DropDownFristOPen == false){
+                                            this.setState({DropDownFristOPen: true})
+                                            // Get Link For Store Code Iframe.
+                                            let iframe = document.getElementsByClassName('iframe-site')[0].src;
+                                            // Save The Frist Link For Store Iframe.
+                                            localStorage.setItem('Link_Iframe_Store',iframe);                                    
+                                        }                                                                                
+                                    }}>
                                         <Dropdown.Toggle variant="success" id='dropdown_pages'>
                                             <span ref={this.dropdown} id='name_page'> {localization.HomePage}</span>
                                             <FaAngleDown />
                                         </Dropdown.Toggle>
                                         <Dropdown.Menu>
                                             {this._PagesData()}
+                                            <Dropdown.Divider />
+                                            <Dropdown.Header>Web Pages</Dropdown.Header>
+                                            {this._webPagesData()}
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </div>
@@ -241,7 +293,8 @@ const mapStateToProps = state => ({
     Pages: state.getPagesDropDown.pagesData, // All Page For Template Editor
     getlanguages: state.getlanguages.GetLangs,
     notification: state.notification.result, // get notification When Save and publshed data
-    routeComponent: state.getlanguages.routeCom // To Use When Show Header, Footer Component and need TO Back 
+    routeComponent: state.getlanguages.routeCom, // To Use When Show Header, Footer Component and need TO Back 
+    webPages: state.slidebar.webPages
 })
 
 export default connect(mapStateToProps)(Header)

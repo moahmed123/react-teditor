@@ -126,7 +126,13 @@ class SelectLookup extends Component {
     render() {        
         return (
             <div className="setting--sidebar__color mb-3">   
-                <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>             
+                {
+                    this.props.FieldData.Name != '' ? 
+                        <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>             
+                    : 
+                        null
+                }
+                
                 {/* <Dropdown>
                     <Dropdown.Toggle>                           
                         <span>{this.state.DropdownVal}</span>

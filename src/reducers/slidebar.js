@@ -27,6 +27,11 @@ export default (state = initialState, action) => {
             ...state,                
             closeRoutePage: action.closeAddPage
         } 
+        case constants.WEB_PAGES:
+        return {
+            ...state,                
+            webPages: action.webPages
+        } 
         default:
             return state
     }

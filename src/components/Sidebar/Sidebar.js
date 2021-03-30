@@ -70,7 +70,7 @@ class Sidebar extends Component {
                              null 
                         }                        
                         { 
-                            data.CodeName != "header" && data.CodeName != "footer"? 
+                            data.CodeName != "header" && data.CodeName != "footer"?                             
                                 <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
                             :
                              null 

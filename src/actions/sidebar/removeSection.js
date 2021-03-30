@@ -3,6 +3,7 @@ import API from '../Api_paths';
 import qs from 'qs';
 import { RefreshData, reloadRegionsOfPages } from '../app';
 import { removeIframeSection } from '../Iframe/removeIframeSection';
+import { refreshIframe } from '../Iframe/refreshIframe';
 
 // Add a New Collection. 
 export const removeSection = (sectionId) => (dispatch) => {
@@ -25,9 +26,9 @@ export const removeSection = (sectionId) => (dispatch) => {
         console.log(success);
         
         // Fun To Refresh Iframe When Save.       
-        dispatch(removeIframeSection(sectionId));                    
+        dispatch(refreshIframe());
+        // dispatch(removeIframeSection(sectionId));                    
         // if(success.data.status == "OK"){
-        //     console.log('Refresh Data ..........')
         //     // Update Home Data 
         dispatch(RefreshData());
         //     // dispatch(reloadRegionsOfPages(PagesRegions))

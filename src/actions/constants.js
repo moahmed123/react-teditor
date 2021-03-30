@@ -35,5 +35,6 @@ export default keyMirror({
   TOGGEL_SECTION: null,
   ROUTE_COMPONENT: null,
   SECTION_ID: null,
-  Back_ROUTE_COMPONENT: null
+  Back_ROUTE_COMPONENT: null, 
+  WEB_PAGES: null
 })

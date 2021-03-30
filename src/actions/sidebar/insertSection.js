@@ -29,7 +29,7 @@ export const insertSection = (sourceSectionId) => (dispatch) => {
         // Redirection To Section Added
        // window.location.href = API.Paths + 'section/' + sectionId.data.insertedSectionId   //#/section/4244/     
        dispatch(getSectionFields(null, response.data.insertedSectionId));
-       dispatch(insertIframeSection(response.data.sectionHTML, response.data.prevSectionId, response.data.nextSectionId));
+    //    dispatch(insertIframeSection(response.data.sectionHTML, response.data.prevSectionId, response.data.nextSectionId));
        dispatch(RefreshData()) // Refresh Data 
        dispatch(routeComponent('SectionPG', null));
     })            

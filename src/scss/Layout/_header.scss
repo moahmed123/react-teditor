@@ -42,6 +42,7 @@
                     color: #fff;
                     svg {
                         font-size: 25px;
+                        fill: #afb3c1;
                     }
                 }
             }
@@ -54,6 +55,9 @@
                     width: 100%;
                     position:relative;
                     .dropdown-item{
+                        text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
                         &.active , &:active{
                             background-color: #155ebc;
                         }
@@ -144,6 +148,7 @@
                 img {
                     width: 25px;
                     height: 25px;
+                    cursor: pointer;
                 }
             }
         }

@@ -52,10 +52,10 @@ class SectionsAvailable extends Component {
             <>                
                 <div className="Home__sidebar__header plato">
                     <h4 className="setting--sidebar__header d-flex">
-                    <div className="setting--sidebar__controls">
+                    {/* <div className="setting--sidebar__controls">
 
                         <BackBtn backImg = {deleteMark} Status = { null } history = {false}/>
-                    </div>
+                    </div> */}
                        <div>
                             {localization.SectionsAvailable}
                             {/* <span> {localization.HomePage} </span> */}

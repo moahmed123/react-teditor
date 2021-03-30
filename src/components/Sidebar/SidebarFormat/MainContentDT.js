@@ -113,33 +113,33 @@ class MainContentDT extends Component {
                                 <img src={trash} />
                             </div>     
                             <svg  className="label--drag" xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10">
-  <g id="Group_7136" data-name="Group 7136" transform="translate(-9413.335 -20234.123)" opacity="0.62">
-    <g id="Ellipse_1088" data-name="Ellipse 1088" transform="translate(9417.335 20234.123)" fill="#fff" stroke="#707070" strokeWidth="1">
-      <circle cx="1" cy="1" r="1" stroke="none"/>
-      <circle cx="1" cy="1" r="0.5" fill="none"/>
-    </g>
-    <g id="Ellipse_1091" data-name="Ellipse 1091" transform="translate(9413.335 20234.123)" fill="#fff" stroke="#707070" strokeWidth="1">
-      <circle cx="1" cy="1" r="1" stroke="none"/>
-      <circle cx="1" cy="1" r="0.5" fill="none"/>
-    </g>
-    <g id="Ellipse_1092" data-name="Ellipse 1092" transform="translate(9413.335 20238.123)" fill="#fff" stroke="#707070" strokeWidth="1">
-      <circle cx="1" cy="1" r="1" stroke="none"/>
-      <circle cx="1" cy="1" r="0.5" fill="none"/>
-    </g>
-    <g id="Ellipse_1093" data-name="Ellipse 1093" transform="translate(9413.335 20242.123)" fill="#fff" stroke="#707070" strokeWidth="1">
-      <circle cx="1" cy="1" r="1" stroke="none"/>
-      <circle cx="1" cy="1" r="0.5" fill="none"/>
-    </g>
-    <g id="Ellipse_1089" data-name="Ellipse 1089" transform="translate(9417.335 20238.123)" fill="#fff" stroke="#707070" strokeWidth="1">
-      <circle cx="1" cy="1" r="1" stroke="none"/>
-      <circle cx="1" cy="1" r="0.5" fill="none"/>
-    </g>
-    <g id="Ellipse_1090" data-name="Ellipse 1090" transform="translate(9417.335 20242.123)" fill="#fff" stroke="#707070" strokeWidth="1">
-      <circle cx="1" cy="1" r="1" stroke="none"/>
-      <circle cx="1" cy="1" r="0.5" fill="none"/>
-    </g>
-  </g>
-</svg>                                       
+                                <g id="Group_7136" data-name="Group 7136" transform="translate(-9413.335 -20234.123)" opacity="0.62">
+                                    <g id="Ellipse_1088" data-name="Ellipse 1088" transform="translate(9417.335 20234.123)" fill="#fff" stroke="#707070" strokeWidth="1">
+                                    <circle cx="1" cy="1" r="1" stroke="none"/>
+                                    <circle cx="1" cy="1" r="0.5" fill="none"/>
+                                    </g>
+                                    <g id="Ellipse_1091" data-name="Ellipse 1091" transform="translate(9413.335 20234.123)" fill="#fff" stroke="#707070" strokeWidth="1">
+                                    <circle cx="1" cy="1" r="1" stroke="none"/>
+                                    <circle cx="1" cy="1" r="0.5" fill="none"/>
+                                    </g>
+                                    <g id="Ellipse_1092" data-name="Ellipse 1092" transform="translate(9413.335 20238.123)" fill="#fff" stroke="#707070" strokeWidth="1">
+                                    <circle cx="1" cy="1" r="1" stroke="none"/>
+                                    <circle cx="1" cy="1" r="0.5" fill="none"/>
+                                    </g>
+                                    <g id="Ellipse_1093" data-name="Ellipse 1093" transform="translate(9413.335 20242.123)" fill="#fff" stroke="#707070" strokeWidth="1">
+                                    <circle cx="1" cy="1" r="1" stroke="none"/>
+                                    <circle cx="1" cy="1" r="0.5" fill="none"/>
+                                    </g>
+                                    <g id="Ellipse_1089" data-name="Ellipse 1089" transform="translate(9417.335 20238.123)" fill="#fff" stroke="#707070" strokeWidth="1">
+                                    <circle cx="1" cy="1" r="1" stroke="none"/>
+                                    <circle cx="1" cy="1" r="0.5" fill="none"/>
+                                    </g>
+                                    <g id="Ellipse_1090" data-name="Ellipse 1090" transform="translate(9417.335 20242.123)" fill="#fff" stroke="#707070" strokeWidth="1">
+                                    <circle cx="1" cy="1" r="1" stroke="none"/>
+                                    <circle cx="1" cy="1" r="0.5" fill="none"/>
+                                    </g>
+                                </g>
+                                </svg>                                       
                         </div>              
                     );                              
             }
@@ -156,10 +156,19 @@ class MainContentDT extends Component {
         return (
             <div className="sidebar__header__section" key={this.props.MainContenData.id}>
                 {
-                    this.props.MainContenData.UserSections.length > 0? 
-                        <h6> {this.props.MainContenData.Name} </h6>
+                    this.props.MainContenData.UserSections.length > 0 ? 
+                        // <h6> 
+                        //     {this.props.MainContenData.Name}
+                        // </h6>
+                        
+                        this.props.MainContenData.Name.toUpperCase() == 'MAIN CONTENT' ? 
+                            <h6> main sections </h6> 
+                        : 
+                            <h6> {this.props.MainContenData.Name} </h6> 
+                        
+                        
                     :
-                <h6 className='text-center not-found-sc'> {localization.SectionNotFound}</h6>
+                        <h6 className='text-center not-found-sc'> {localization.SectionNotFound}</h6>
                 }                                               
                 {
                 this.state.items.length > 0 ?
@@ -169,8 +178,9 @@ class MainContentDT extends Component {
                 }   
                 <Modal centered className="generic-alert" show={this.state.isOpen} onHide={this.closeModal} backdrop="static">
                     <Modal.Header>
-                            <Modal.Title>{localization.ConfirmMsgForDeleteSection}</Modal.Title>
-                    </Modal.Header>                            
+                            <Modal.Title className='Pop_del_Sec'>{localization.TitleDeleteSection}</Modal.Title>
+                    </Modal.Header>    
+                            <Modal.Body className='Msg_Pop_Del_Sec'>{localization.ConfirmMsgForDeleteSection}</Modal.Body>
                     <Modal.Footer>
                         <Button variant="outline-secondary" onClick={this.closeModal}>{localization.Cancel}</Button>                                
                         <Button variant="danger" onClick={()=>{

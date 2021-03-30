@@ -63,7 +63,12 @@ class TypeText extends Component {
                 <div className="sidebar__color__main set--padding">
                     <div className="color__main__content">                           
                         <div className="label generic--section">
-                            <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>
+                        {
+                            this.props.FieldData.Name != '' ? 
+                                <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>             
+                            : 
+                                null
+                        }                              
                             {this._setlangVal()}                            
                             <span className="focus-border"></span>
                         </div>

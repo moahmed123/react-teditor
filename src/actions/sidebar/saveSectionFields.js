@@ -4,6 +4,7 @@ import API from '../Api_paths';
 import qs from 'qs';
 import { getSectionFields } from './getSectionFields';
 import { replaceIframeSection } from '../Iframe/replaceIframeSection';
+import { refreshIframe } from '../Iframe/refreshIframe';
 import { notification } from '../notification/notification';
 import localization from '../../localization/localization';
 
@@ -66,9 +67,10 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
             // dispatch(getSectionFields()) // Update Section Fields 
         }
         console.log(response.data)
-        // Fun To Refresh Iframe When Save.  
-        dispatch(replaceIframeSection(response.data.sectionId, response.data.sectionHTML, response.data.sectionScripts))
-        
+          
+        // dispatch(replaceIframeSection(response.data.sectionId, response.data.sectionHTML, response.data.sectionScripts))
+        // Fun To Refresh Iframe When Save.
+        dispatch(refreshIframe());
         // TODO: Show Field Save Is Done. 
         // Notification Data 
         let notification_result = {

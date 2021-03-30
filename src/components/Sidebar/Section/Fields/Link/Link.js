@@ -23,7 +23,7 @@ class Link extends Component {
     
     componentDidMount() {
         //Add Default Value For Selection                
-        this._addDefaultVal();              
+        this._addDefaultVal();                      
     }
     componentWillMount(){         
         document.addEventListener('mousedown', this._closeWhenClickBody, false)       
@@ -34,14 +34,30 @@ class Link extends Component {
     _closeWhenClickBody(e){               
         if(e.target.className == "generic--section__form Link_box_com" || e.target.className == 'Link_list_comp'){            
             if(e.target.className == 'Link_list_comp'){
-                // Nothing Code
+                // when click for order list value                              
+                var classname = document.getElementsByClassName("Link_list_comp");               
+                for (var i = 0; i < classname.length; i++) {
+                    classname[i].addEventListener('click', this._closeDropDChsData, false);
+                }
+
             }
         }else{
             if(this.state.showData == true){
                 this.setState({ showData: false })
-            }
+            }            
         }        
     }
+    /****
+     * Fun Close Dropdown When choose Value. 
+     */
+    _closeDropDChsData = (e) => {
+        // Select Data To Set It for Input.
+        let textContent = e.target.textContent;
+        // Select Input To Set A new Value.
+        window.document.getElementById(`Link_${this.state.LinkVal.id}`).value = textContent;
+        // close Dropdown 
+        this.setState({ showData: false })
+    };
     _addDefaultVal = () => {
         if (this.props.codelang == 'en') {
             if (this.props.FieldLink.FieldVals) {
@@ -80,8 +96,9 @@ class Link extends Component {
     _onFocus = () => {
         this.setState({ showData: true })
     }
-    _onBlur = () => { 
+    _onBlur = (e) => { 
         // Nothing Code
+        // console.log('Blur Input ' + e.target.value , this.props.defaultInputVal)
     }
     _handleChange = (e) => {         
         this.props.dispatch(SeaLink.LinkInputVal("not_click"));                
@@ -94,6 +111,7 @@ class Link extends Component {
             this.setState({ showData: false })
         }
         // Dispaly dropdown        
+        console.log(">>>>>>>>>>>",this.props.defaultInputVal)
         if(this.props.defaultInputVal){
             if (this.props.defaultInputVal == 'not_click'){
                 this.setState({ showData: true });
@@ -106,7 +124,8 @@ class Link extends Component {
 
 
     }
-    render() {                       
+    
+    render() {                           
         return (
             <div className="setting--sidebar__color">
                 <div className="sidebar__color__main set--padding">

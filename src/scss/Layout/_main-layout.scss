@@ -109,7 +109,7 @@ html, body {
   .generic-alert {
     .modal-content {
       .modal-header {
-        padding: 15px 0px;
+        padding: 20px 0px;
         width: 90%;
         margin: auto;
         .modal-title {
@@ -117,13 +117,25 @@ html, body {
           color: #080808;
           @if $start == 'left'{
             font-family: 'AvertaSemibold';
-        } @else{
+            } @else{
             font-family: 'Cairo';
-        }  
+            }  
         }
+        .Pop_del_Sec.modal-title{
+            font-size: 15px;
+            font-family: 'AvertaRegular';
+            color: #2c2c35;
+        }
+      }
+      .Msg_Pop_Del_Sec.modal-body{
+        font-size: 15px;
+        font-weight: 600;
+        font-family: 'AvertaRegular';
+        padding: 32px 25px;
       }
       .modal-footer {
         border-top: none;
+        padding: 0 .75rem .75rem;
         button {
           font-size: 14px;
           height: 40px;
@@ -459,7 +471,7 @@ html, body {
           } 
           h6 {
             font-size: calc(6px + (14 - 7) * ((100vw - 768px) / (1023 - 768)));
-          } 
+        } 
           .label {
             a{
               padding: 10px;
@@ -577,7 +589,13 @@ html, body {
 button:focus , select:focus{
   outline: none;
 }
-//generic select
+//generic select\
+.Home .Home__sidebar .Home__sidebar__header .sidebar__header__section h6{
+
+    font-size: calc(14px + (18 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+    font-weight: 400;
+
+}
 .generic-select{
   margin: 10px 0;
   position: relative;
@@ -589,12 +607,20 @@ button:focus , select:focus{
     border-radius: 4px;
     font-weight: bold;
     color: #4c4c51;
+    font-size: 14px;
   }
   svg{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    #{$end}: 17px;
+    
+    //  #{$end}: 17px;
+     @if $start == 'left'{
+        right: 17px ;  
+    } @else{     
+     left: 17px !important;
+     right: unset;
+  }
     pointer-events: none;
   }
 }

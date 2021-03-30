@@ -25,15 +25,19 @@ class LinkVal extends Component {
             })
         }
     }
-    _handleSelectData = (e) => {   
+    _handleSelectData = (e) => { 
+        //send Action for User to close Dropdown Menu.   
+        this.props.dispatch(SeaLink.LinkInputVal("click"));   
+
         let inputValue = e.target.textContent;    
         let inputV2 = [{key:this.props.ObjectFieldId, value: inputValue }] 
-        // this.props.dispatch(SeaLink.LinkInputVal(inputValue));     
+        // this.props.dispatch(SeaLink.LinkInputVal(inputValue)); 
+        console.log(inputValue)    
         
         //Test
-        let valIN = inputValue;
-        document.getElementById(`Link_${this.props.ObjectFieldId}`).value =  valIN;
-        this.props.dispatch(SeaLink.LinkInputVal("click"));   
+        // let valIN = inputValue;
+        // document.getElementById(`Link_${this.props.ObjectFieldId}`).value =  valIN;
+        // this.props.dispatch(SeaLink.LinkInputVal("click"));   
         //End Test             
         let LinkSaveJS = {"key": this.props.ObjectFieldId,"value": inputValue}; 
                         
