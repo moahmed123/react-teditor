@@ -59,7 +59,7 @@
   @mixin largeLaptop {
       @media (min-width: 1366px) {
           @content;
-      }
+      } 
   }
   @mixin mediumLaptop {
     @media (min-width: 768px) and (max-width: 1024px) {

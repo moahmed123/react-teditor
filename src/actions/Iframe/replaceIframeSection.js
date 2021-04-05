@@ -5,6 +5,8 @@ export const replaceIframeSection = (sectionId, sectionHTML, sectionScripts) => 
     // Refresh Iframe When Save.
     if(sectionHTML){
         $('.iframe-site').contents().find('#section-' + sectionId).replaceWith(sectionHTML);
+        console.log('sectionScripts');
+        console.log(sectionScripts);
         if(sectionScripts){
             if(sectionScripts == "false"){
                 console.log("sectionScripts",sectionScripts)

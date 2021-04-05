@@ -150,15 +150,18 @@ class Section extends Component {
         return (
 
             <>
-                <div className="Home__sidebar__header">
-        <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} 
-        {/* <span>{localization.HomePage}</span> */}
-        </h4>
-                    <div className="setting--sidebar__controls">                        
-                        <BackBtn 
+                <div className="Home__sidebar__header header--controls">
+                    <div className="setting--sidebar__controls">  
+                    <BackBtn 
                             Status = { null } 
                             history = {false}
                             BackCom =  {this.props.backComponent? this.props.backComponent : null}/>
+                    </div>
+                    <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} 
+                    {/* <span>{localization.HomePage}</span> */}
+                    </h4>
+                    <div className="setting--sidebar__controls save">                        
+                        
                         <SaveBtn />
                     </div>
                 </div>

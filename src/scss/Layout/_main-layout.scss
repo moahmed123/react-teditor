@@ -772,7 +772,7 @@ text-align: start;
 @media (max-width: 768px) {
   .Home .Home__sidebar {
     position: fixed !important;
-    background-color: #fff;
-    height: calc(100vh - 85px) !important;
-}
+    background-color: #f5f6f8;
+    height: 100% !important;
+  }
 }

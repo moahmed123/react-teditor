@@ -210,17 +210,71 @@
         }
     }  
 }   
+.header-control__mobile{
+    display: none;
+}
+.mobile__controls{
+    display: none;
+}
+    .close--icon__delete{
+        display: none;
+    }
+.mobile-control__reset__exit{
+    display: none;
+}
+.header--controls{
+    justify-content: flex-start !important;
+    align-items: center !important;
+    .setting--sidebar__header{
+        margin-bottom: 0 !important;
+    }
+    .setting--sidebar__controls.save{
+        margin-#{$start}: auto;
+        .check{
+            border-radius: 4px;
+            background-color: rgba(21, 94, 188, 0.13);
+            padding: 1px 11px;
+            color: #155ebc;
+            span{
+                margin: 0 5px;
+            }
+        }
+    }
+}
 //media for header
 @include portraitTablet{ 
+    .d-xs--none{
+        display: none !important;
+    }
+    .Header .body__section.col-6{
+        border: none;
+        display: none;
+    }
     .Header {
-        .header-left__controls{
-            display: none;
+        padding:  0;
+        // .header-left__controls{
+        //     position: absolute;
+        //     width: 86%;
+        //     right: 0;
+        //     border: none;
+        // } 
+        .header__back-circle{
+            display: none !important;
+        }
+        .publish--mob{
+            background-color: #03a9f4;
+            border: none;
+            outline: none;
+            border-radius: 3px;
         }
         .Header__controls {
             button{
                 &.Header__controls__save , &.Header__controls__publish{
                     display: none;
                 }
+            }
+            .Header__controls__save , .Header__controls__reset{
+                display: none !important;
             }
             .Header__controls__reset , .controls-publish--xs{
                 display: block;
@@ -230,16 +284,120 @@
                     -moz-transform: rotateY(180deg);
                     -ms-transform: rotateY(180deg);
                     -o-transform: rotateY(180deg);
-}
+                }
             }
             .controls-publish--xs{
                 margin-#{$start}: 15px;
             }
         }
     }
+  
+    .mobile__controls{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: none;
+        .burger-menu{
+            margin: 0 !important;
+            background-color: #e0ddef33 !important;
+        }
+    }
+    .header-control__mobile{
+        display: block;
+        width: 100%;
+        margin: 0 10px; 
+        border: none !important;
+        .Header__controls__publish{
+            padding: 3px 20px;
+        }
+        .header__page{
+            border: none !important;
+            border-#{$end}: 1px solid #d5d5e0 !important;
+            padding: 4px 10px !important; 
+            .dropdown{
+                button{
+                    background-color: #e0ddef33;
+                    color: #000000; 
+                    font-weight: normal;
+                }
+            }
+        }
+        .header__style{
+            border-#{$end}: 1px solid #d5d5e0;
+            margin-#{$end}: 10px;
+        }
+    }
+    .Home {
+        .Home__sidebar{
+            height: 100%;
+            background-color: #f5f6f8;
+        }
+    }
+    .Home {
+        .Home__sidebar {
+            .Home__sidebar__header{
+                margin-bottom: 40px;
+            }
+        }
+        
+    }
+    .Header__controls__publish{ 
+        .spinner-grow-sm{
+            color: #fff;
+        }
+    }
+    .close--icon{
+        .close--icon__delete{
+            display: block;
+            path{
+                fill: #000;
+            }
+        }
+        .bar{
+            display: none;
+        }
+    }
+    .mobile-control__reset__exit{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        button{
+            background-color: #fff; 
+            color: #000000;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'AvertaRegular';
+            border: none;
+            padding: 8px 25px; 
+            box-shadow: 0 0 3px 0 #00000012; 
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            img{
+                width: 18px;
+                margin: 0 10px;
+            }
+            svg{
+                margin: 0 10px;
+            }
+        }
+    }
+    .Home{
+        .Home__sidebar {
+            .Home__sidebar__header {
+                .sidebar__header__section {
+                    h6{
+                        color: #919191 !important;
+                        font-size: 12px !important;
+                        font-weight: bold !important;
+                    }
+                }
+            }
+        }
+    }
 }   
 @include mediumLaptop{
-    .Header {
+    .Header { 
         .header-left__controls {
             .header__back-circle{
                 padding: 15px 10px;

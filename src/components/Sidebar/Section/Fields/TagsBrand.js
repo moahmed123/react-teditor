@@ -62,6 +62,7 @@ class TagsBrand extends Component {
         }
     }
     handleChange = selectedOption => {
+        
         this.setState({ selectedOption });
         let idFieldTagsbrand ; 
         if (this.props.codelang == 'en'){

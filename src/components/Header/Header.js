@@ -34,8 +34,10 @@ class Header extends Component {
         function toggleSideBar() {
             menu.addEventListener('click', function () {
                 sideBar.classList.toggle('home-sidebar--active');
+                menu.classList.toggle('close--icon');
             });
         }
+        
         toggleSideBar();       
     }
     openModal = () => this.setState({ isOpen: true });
@@ -140,7 +142,7 @@ class Header extends Component {
                 {this._notification()}
                 <div className="row align-items-center">
                     <div className="col-md-3 p-0 sidebar__section">
-                        <div className="header-left__controls">
+                        <div className="header-left__controls d-xs--none">
                             <div className="header__back-circle">
                                 <button onClick = {()=>{                                    
                                     /*
@@ -192,6 +194,7 @@ class Header extends Component {
                                     
                                 </button>                              
                             </div>
+                         
                             <div className="header__page">
                                 <div className="dropdown">
                                     <Dropdown onClick= {()=>{    
@@ -225,13 +228,91 @@ class Header extends Component {
                                     <img src={styleShape} />
                                 </Link> */}
                             </div>
+                     
+                            <button className="Header__controls__publish publish--mob d-block d-sm-none" onClick={() => {
+                                // Publish All Changes For Fields                            
+                                this.props.dispatch(PUBLISH.publishFieldsVals());
+                                this.setState({PublishLoading: true})
+
+                            }}>
+                                {
+                                    !this.state.PublishLoading? 
+                                        <><img className="controls-publish--lg" src={Shuttl} />{localization.Publish}</> 
+                                    : 
+                                        this.props.notification? 
+                                            <><img className="controls-publish--lg" src={Shuttl} />{localization.Publish}</> 
+                                            :
+                                            <Spinner animation="grow" size="sm" />
+                                }
+                            </button>
+                         
                         </div>
                     </div>
                     {/* navbar for mobile */}
-                    <div className="col-6 d-xs">
-                        <span className="burger-menu" >
-                            <FaBars />
-                        </span>
+                    <div className="col-md-6 col-12">
+                        <div className="mobile__controls">
+                            <div className="header-control__mobile header-left__controls">
+                                <span className="burger-menu">
+                                    <FaBars className="bar" />
+                                    <svg className="close--icon__delete" xmlns="http://www.w3.org/2000/svg" width="15.899" height="15.767" viewBox="0 0 15.899 15.767">
+                                        <g>
+                                            <path fill="#b9b9c5" stroke="#fff" d="M14.14 2.884L9.705 7.319l4.434 4.434a1.689 1.689 0 1 1-2.387 2.388L7.317 9.707l-4.435 4.435a1.689 1.689 0 0 1-2.387-2.389l4.434-4.434L.494 2.884A1.688 1.688 0 0 1 2.882.5l4.435 4.431L11.752.5a1.689 1.689 0 0 1 2.388 2.384z" transform="translate(.632 .632) translate(0 -.002)"/>
+                                        </g>
+                                    </svg>
+                                </span>
+                                <div className="header__page">
+                                        <div className="dropdown">
+                                            <Dropdown onClick= {()=>{    
+                                                
+                                                if (this.state.DropDownFristOPen == false){
+                                                    this.setState({DropDownFristOPen: true})
+                                                    // Get Link For Store Code Iframe.
+                                                    let iframe = document.getElementsByClassName('iframe-site')[0].src;
+                                                    // Save The Frist Link For Store Iframe.
+                                                    localStorage.setItem('Link_Iframe_Store',iframe);                                    
+                                                }                                                                                
+                                            }}>
+                                                <Dropdown.Toggle variant="success" id='dropdown_pages'>
+                                                    <span ref={this.dropdown} id='name_page'> {localization.HomePage}</span>
+                                                    <FaAngleDown />
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    {this._PagesData()}
+                                                    <Dropdown.Divider />
+                                                    <Dropdown.Header>Web Pages</Dropdown.Header>
+                                                    {this._webPagesData()}
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </div>
+                                    </div>
+                                    <div className="header__style">
+                                        <div onClick = {()=> this.props.dispatch(ROUTECOM.routeComponent('SettingPG'))}>
+                                            <img src={styleShape} />
+                                        </div>
+                                        {/* <Link to={`${PathsApp.Paths}setting`}>
+                                            <img src={styleShape} />
+                                        </Link> */}
+                                    </div>
+                            
+                                    <button className="Header__controls__publish publish--mob d-block d-sm-none" onClick={() => {
+                                        // Publish All Changes For Fields                            
+                                        this.props.dispatch(PUBLISH.publishFieldsVals());
+                                        this.setState({PublishLoading: true})
+
+                                    }}>
+                                        {
+                                            !this.state.PublishLoading? 
+                                                <><img className="controls-publish--lg" src={Shuttl} /></> 
+                                            : 
+                                                this.props.notification? 
+                                                    <><img className="controls-publish--lg" src={Shuttl} /></> 
+                                                    :
+                                                    <Spinner animation="grow" size="sm" />
+                                        }
+                                    </button>
+                                
+                                </div>
+                        </div>
                     </div>
                     {/* end navbar for mobile */}
                     <div className="col-md-9 col-6 body__section">
@@ -268,6 +349,7 @@ class Header extends Component {
                                             <Spinner animation="grow" size="sm" />
                                 }
                             </button>
+                         
                             {this.state.PublishLoading && this.props.notification? <img className="controls-publish--xs" src={ShuttlBlue} /> : null}                            
                         </div>
                     </div>
