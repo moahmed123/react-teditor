@@ -157,7 +157,7 @@ class Section extends Component {
                             history = {false}
                             BackCom =  {this.props.backComponent? this.props.backComponent : null}/>
                     </div>
-                    <h4 className="setting--sidebar__header">  {this.props.sectionFieldsDT.data.section.DescName} 
+                    <h4 className="setting--sidebar__header setting--label">  {this.props.sectionFieldsDT.data.section.DescName} 
                     {/* <span>{localization.HomePage}</span> */}
                     </h4>
                     <div className="setting--sidebar__controls save">                        

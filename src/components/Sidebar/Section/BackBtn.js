@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import deleteMark from '../../../assets/svg/delete.svg';
+import deleteMark from '../../../assets/svg/delete-2.svg';
 import { connect } from 'react-redux';
 import {ROUTECOM} from '../../../actions';
 

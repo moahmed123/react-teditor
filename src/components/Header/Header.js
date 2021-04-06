@@ -141,7 +141,7 @@ class Header extends Component {
             <header className={headerClass}>
                 {this._notification()}
                 <div className="row align-items-center">
-                    <div className="col-md-3 p-0 sidebar__section">
+                    <div className="col-md-3 sidebar__section">
                         <div className="header-left__controls d-xs--none">
                             <div className="header__back-circle">
                                 <button onClick = {()=>{                                    
@@ -188,7 +188,14 @@ class Header extends Component {
                                             </span>
                                         :
                                             <span>
-                                                <FaHome/>
+                                               <svg xmlns="http://www.w3.org/2000/svg" width="38" height="35" viewBox="0 0 38 35">
+                                                    <g id="Group_7180" data-name="Group 7180" transform="translate(-14 -10)">
+                                                        <g id="Group_7178" data-name="Group 7178">
+                                                        <rect id="Rectangle_4843" data-name="Rectangle 4843" width="38" height="35" rx="3" transform="translate(14 10)" fill="#e0ddef" opacity="0.28"/>
+                                                        </g>
+                                                        <path id="Path_11524" data-name="Path 11524" d="M16.035,12.561a.774.774,0,0,0-.063-1.108L8.714,5.1a.9.9,0,0,0-1.18.014L.252,11.791A.77.77,0,0,0,.217,12.9l.183.19a.8.8,0,0,0,1.093.084l.544-.487v7.135a.792.792,0,0,0,.792.792H5.668a.792.792,0,0,0,.792-.792V14.828H10.08v4.992a.749.749,0,0,0,.744.792h3.008a.792.792,0,0,0,.792-.792V12.785l.336.295c.185.163.574.032.868-.292Z" transform="translate(24.937 15.167)" fill="#a2a6b7"/>
+                                                    </g>
+                                                </svg>
                                             </span>
                                     }
                                     

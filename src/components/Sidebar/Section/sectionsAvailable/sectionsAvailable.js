@@ -50,7 +50,7 @@ class SectionsAvailable extends Component {
     render() {                       
         return (
             <>                
-                <div className="Home__sidebar__header plato">
+                <div className="Home__sidebar__header">
                     <h4 className="setting--sidebar__header d-flex">
                     {/* <div className="setting--sidebar__controls">
 
