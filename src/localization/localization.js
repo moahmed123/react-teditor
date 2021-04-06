@@ -12,7 +12,7 @@ const translationStrings = new LocalizedStrings({
         SectionsAvailable: 'sections Available',
         MainTheme: 'Main Theme',
         MessagePopup: "You will missed your update",
-        PargPopup : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+        PargPopup : "Are you sure you want back a dashboard?",
         Cancel: 'Cancel',
         Confirm: "Confirm",
         SaveMessage: "The Changes Fields Saved Successfully",
@@ -20,7 +20,9 @@ const translationStrings = new LocalizedStrings({
         PublishMessage: "publish Data Is Successfully",
         SectionNotFound : "No Section Found",
         ConfirmMsgForDeleteSection : 'Are you sure you want to delete this section ?',
-        TitleDeleteSection:"Delete Section"
+        TitleDeleteSection:"Delete Section",
+        internalPages: "Internal Pages",
+        Exiteditor: "Exit editor"
     },
     ar: {
         Browse: "تصفح",
@@ -33,7 +35,7 @@ const translationStrings = new LocalizedStrings({
         SectionsAvailable: 'الأقسام المتاحة',
         MainTheme: 'الثيمات الرئيسية',
         MessagePopup: "سوف تفوت التحديث الخاص بك",
-        PargPopup : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+        PargPopup : "هل أنت متأكد أنك تريد الرجوع إلى لوحة القيادة؟",
         Cancel: "إلغاء",
         Confirm:"تأكيد",
         SaveMessage: "تم حفظ التغييرات الحقول بنجاح",
@@ -41,7 +43,9 @@ const translationStrings = new LocalizedStrings({
         PublishMessage: "نشر البيانات بنجاح",
         SectionNotFound : "لم يتم العثور على قسم",
         ConfirmMsgForDeleteSection : 'هل أنت متأكد أنك تريد حذف هذا القسم؟',
-        TitleDeleteSection:"حذف القسم"
+        TitleDeleteSection:"حذف القسم",
+        internalPages: "الصفحات الداخلية",
+        Exiteditor: "الخروج من المحرر"
     }
 });
 export default translationStrings;

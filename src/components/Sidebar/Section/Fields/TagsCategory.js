@@ -12,6 +12,7 @@ class TagsCategory extends Component {
             tagsidFieldEn : '',
             tagsidFieldAr : '',
             tagsidFieldFr : '',
+            SelectHeight: ''
         };
     }
 
@@ -73,7 +74,24 @@ class TagsCategory extends Component {
         else if (this.props.codelang == 'fr'){
             idFieldTagsCat = this.state.tagsidFieldFr;            
         }
-        console.log(`Option selected:`, selectedOption , idFieldTagsCat);
+        console.log(`Option selected change:`, selectedOption , idFieldTagsCat);
+
+        // Set Height For Select Option Categories         
+        // let height = document.querySelector('.select__value-container').offsetHeight;
+        let height;
+        if(selectedOption){
+            if(selectedOption.length > 0){
+                height = (selectedOption.length * 35) + 15 + 'px';
+            }else{
+                height = 'auto';
+            }
+        }        
+        this.setState({
+            SelectHeight: height
+        })
+        console.log(height)
+        // End Set Height 
+        
         let jsonFormatCat; 
         let textValCat; 
         if(selectedOption){
@@ -150,7 +168,7 @@ class TagsCategory extends Component {
         }
 
         return (
-            <div className="setting--sidebar__color mb-3">
+            <div className="setting--sidebar__color mb-3" style={{height: this.state.SelectHeight}}>
                 {
                     this.props.FieldTagsData.Name != '' ? 
                         <h4 className="setting--sidebar__header"> {this.props.FieldTagsData.Name} </h4>             
@@ -165,7 +183,7 @@ class TagsCategory extends Component {
                     className="basic-multi-select"
                     classNamePrefix="select"
                     onChange={this.handleChange}
-                    inputValue={inputValue}
+                    inputValue={inputValue}                    
                     onInputChange={this.handleInputValueChange}
                 />
             </div>

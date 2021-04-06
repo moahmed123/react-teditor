@@ -12,6 +12,7 @@ class TagsProduct extends Component {
             tagsidFieldEn : '',
             tagsidFieldAr : '',
             tagsidFieldFr : '',
+            SelectHeight  : ''
         };
     }
 
@@ -74,6 +75,20 @@ class TagsProduct extends Component {
             idFieldTagsCat = this.state.tagsidFieldFr;            
         }
         console.log(`Option selected:`, selectedOption , idFieldTagsCat);
+        // Set Height For Select Option Categories         
+        // let height = document.querySelector('.select__value-container').offsetHeight;
+        let height;
+        if(selectedOption){
+            if(selectedOption.length > 0){
+                height = (selectedOption.length * 35) + 15 + 'px';
+            }else{
+                height = 'auto';
+            }
+        }        
+        this.setState({
+            SelectHeight: height
+        })        
+        // End Set Height 
         let jsonFormatCat; 
         let textValCat; 
         if(selectedOption){
@@ -146,11 +161,11 @@ class TagsProduct extends Component {
                 let jsonFormat = { value: data.value, label: data.display }
                 sectionOptions.push(jsonFormat);
             })
-            optionsCategories = sectionOptions; // Set 
+            optionsCategories = sectionOptions; // Set            
         }
 
         return (
-            <div className="setting--sidebar__color mb-3">
+            <div className="setting--sidebar__color mb-3" style={{height: this.state.SelectHeight}}>
                 {
                     this.props.FieldTagsPro.Name != '' ? 
                         <h4 className="setting--sidebar__header"> {this.props.FieldTagsPro.Name} </h4>             

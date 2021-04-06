@@ -28,17 +28,17 @@ class Header extends Component {
     componentDidMount() {
         this.props.dispatch(app.getDropdownPages()); // Dispatch Data For Pages;    
         //open menu in mobile
-        var menu, sideBar, body;
-        menu = document.querySelector('.burger-menu');
-        sideBar = document.querySelector('.Home__sidebar');
-        function toggleSideBar() {
-            menu.addEventListener('click', function () {
-                sideBar.classList.toggle('home-sidebar--active');
-                menu.classList.toggle('close--icon');
-            });
-        }
+        // var menu, sideBar, body;
+        // menu = document.querySelector('.burger-menu');
+        // sideBar = document.querySelector('.Home__sidebar');
+        // function toggleSideBar() {            
+        //     menu.addEventListener('click', function () {
+        //         sideBar.classList.toggle('home-sidebar--active');
+        //         menu.classList.toggle('close--icon');
+        //     });
+        // }
         
-        toggleSideBar();       
+        // toggleSideBar();       
     }
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => this.setState({ isOpen: false });
@@ -214,7 +214,7 @@ class Header extends Component {
                                         <Dropdown.Menu>
                                             {this._PagesData()}
                                             <Dropdown.Divider />
-                                            <Dropdown.Header>Web Pages</Dropdown.Header>
+                                            <Dropdown.Header>{localization.internalPages}</Dropdown.Header>
                                             {this._webPagesData()}
                                         </Dropdown.Menu>
                                     </Dropdown>
@@ -252,7 +252,14 @@ class Header extends Component {
                     <div className="col-md-6 col-12">
                         <div className="mobile__controls">
                             <div className="header-control__mobile header-left__controls">
-                                <span className="burger-menu">
+                                <span className="burger-menu" onClick = {(e)=>{
+                                        console.log('show')
+                                        var menu, sideBar;
+                                        menu = document.querySelector('.burger-menu');
+                                        sideBar = document.querySelector('.Home__sidebar');
+                                        sideBar.classList.toggle('home-sidebar--active');                                        
+                                        menu.classList.toggle('close--icon');
+                                    }}>
                                     <FaBars className="bar" />
                                     <svg className="close--icon__delete" xmlns="http://www.w3.org/2000/svg" width="15.899" height="15.767" viewBox="0 0 15.899 15.767">
                                         <g>
@@ -279,7 +286,7 @@ class Header extends Component {
                                                 <Dropdown.Menu>
                                                     {this._PagesData()}
                                                     <Dropdown.Divider />
-                                                    <Dropdown.Header>Web Pages</Dropdown.Header>
+                                                    <Dropdown.Header>{localization.internalPages}</Dropdown.Header>
                                                     {this._webPagesData()}
                                                 </Dropdown.Menu>
                                             </Dropdown>

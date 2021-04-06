@@ -84,11 +84,11 @@ class TemplateSettings extends Component {
        
         return (
             <div className='col-md-3 p-0 sidebar__section'>
-                <div className="Home__sidebar Home__abs setting--sidebar section--page setting--page">
+                <div className="Home__sidebar Home__abs setting--sidebar section--page setting--page home-sidebar--active">
                     <div className="Home__sidebar__header">
                         <h4 className="setting--sidebar__header">  {localization.MainTheme} </h4>
                         <div className="setting--sidebar__controls">
-                            <BackBtn/>
+                            <BackBtn BackCom = {null}/>
                             <SaveBtn/>
                         </div>
                     </div>
