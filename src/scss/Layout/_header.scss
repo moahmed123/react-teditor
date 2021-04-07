@@ -287,7 +287,16 @@
         }
     }
 }
-
+.delete__modal{
+    svg{
+        path{
+            fill:#d2cfe3
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
 //media for header 
 @include portraitTablet{ 
     .d-xs--none{

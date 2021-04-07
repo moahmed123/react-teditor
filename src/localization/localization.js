@@ -22,7 +22,8 @@ const translationStrings = new LocalizedStrings({
         ConfirmMsgForDeleteSection : 'Are you sure you want to delete this section ?',
         TitleDeleteSection:"Delete Section",
         internalPages: "Internal Pages",
-        Exiteditor: "Exit editor"
+        Exiteditor: "Exit editor",
+        Delete_modal: 'Delete'
     },
     ar: {
         Browse: "تصفح",
