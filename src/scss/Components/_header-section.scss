@@ -80,3 +80,21 @@
     }
 }
 }
+body[dir="rtl"]{
+    .Home {
+        .Home__sidebar{
+            &.setting--sidebar {
+                .Home__sidebar__header {
+                    .setting--sidebar__controls {
+                        > div{
+                            &.delete{
+                                transform: rotateY(180deg);
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

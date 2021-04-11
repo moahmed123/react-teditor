@@ -171,7 +171,7 @@ class Header extends Component {
                                     {
                                         this.props.routeComponent ? 
                                             <span>                                        
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15.728" height="15.676" viewBox="0 0 15.728 15.676">
+                                                <svg className="back" xmlns="http://www.w3.org/2000/svg" width="15.728" height="15.676" viewBox="0 0 15.728 15.676">
                                                     <g id="Group_7170" data-name="Group 7170" transform="translate(-21 -19)">
                                                         <g id="Group_7140" data-name="Group 7140" transform="translate(28.237 19)">
                                                         <g id="Group_7139" data-name="Group 7139">

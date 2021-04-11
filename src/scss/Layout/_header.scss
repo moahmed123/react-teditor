@@ -10,21 +10,22 @@
         .header-left__controls{
             display: flex;
             align-items: center;
-            border-#{$start}: solid 3px #f5f5f5;
-            
+            border-#{$start}: solid 2px #f5f5f5;
+            border-#{$end}: solid 2px #f5f5f5;
+
             .header__back-circle{
                 width: 30%;
                 display: flex;
                 align-items: center;   
                 justify-content: center;
                 padding: 4px;
-                @if $start == 'right' {
-                    transform: rotateZ(180deg);
-                    -webkit-transform: rotateZ(180deg);
-                    -moz-transform: rotateZ(180deg);
-                    -ms-transform: rotateZ(180deg);
-                    -o-transform: rotateZ(180deg);
-            }
+            //     @if $start == 'right' {
+            //         transform: rotateZ(180deg);
+            //         -webkit-transform: rotateZ(180deg);
+            //         -moz-transform: rotateZ(180deg);
+            //         -ms-transform: rotateZ(180deg);
+            //         -o-transform: rotateZ(180deg);
+            // } 
             button{
                 border: none;
                 background-color: transparent;
@@ -50,6 +51,7 @@
             .header__page{
                 width: 70%;
                 border-#{$end}: 2px solid #f5f5f5;
+                border-#{$start}: 2px solid #f5f5f5;
                 padding: 6px 10px;
                 .dropdown-menu{
                     width: 100%;
@@ -146,7 +148,7 @@
                 align-items: center; 
                 justify-content: center;
                 padding: 8px;
-                border-#{$end}: 2px solid #f5f5f5;
+                // border-#{$end}: 2px solid #f5f5f5;
                 padding: 12px 15px;
                 img {
                     width: 25px;
@@ -226,13 +228,13 @@
     display: none;
 }
 .header--controls{
-    justify-content: flex-start !important;
+    // justify-content: flex-start !important;
     align-items: center !important;
     .setting--sidebar__header{
         margin-bottom: 0 !important;
     }
     .setting--sidebar__controls.save{
-        margin-#{$start}: auto;
+        // margin-#{$end}: auto;
         .check{
             border-radius: 4px;
             background-color: rgba(21, 94, 188, 0.13);
@@ -241,6 +243,7 @@
             font-size: 13px;
             span{
                 margin: 0 5px;
+                font-weight: normal;
             }
             svg{
                 position: relative;
@@ -441,7 +444,7 @@
             font-weight: 600;
             font-family: 'AvertaRegular';
             border: none;
-            padding: 8px 25px; 
+            padding: 8px 5px; 
             box-shadow: 0 0 3px 0 #00000012; 
             border-radius: 4px;
             display: flex;
@@ -521,4 +524,16 @@
             margin: 0 10px;
         } 
     } 
+}
+.Home .Home__sidebar.setting--sidebar .Home__sidebar__header .setting--sidebar__controls.save{
+    margin-left: auto;
+}
+body[dir="rtl"]{
+    .Home .Home__sidebar.setting--sidebar .Home__sidebar__header .setting--sidebar__controls.save{
+        margin-right: auto;
+        margin-left: unset;
+    }
+    .header__control svg{
+        transform: rotate(-90deg);
+    }
 }

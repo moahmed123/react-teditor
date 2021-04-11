@@ -102,7 +102,7 @@ html, body {
     margin-bottom: 19px;
     .body__section {
       box-shadow: none !important;
-      border-#{$start}: 2px solid #f5f5f5;
+      // border-#{$start}: 2px solid #f5f5f5;
       border-radius: 0;
     }
   }
@@ -455,6 +455,8 @@ html, body {
        .generic-sidebar__section {
         h2{
           margin-bottom: 20px;
+          display: flex;
+          align-items: center;
         }
         .label {
           border-bottom: 1px solid #f7f7f7 ;
@@ -762,6 +764,12 @@ text-align: start;
         cursor: pointer;
       }
     }
+}
+
+body[dir="rtl"]{
+  .Header .header-left__controls .header__back-circle button span svg.back{
+    transform: rotate(180deg);
+  }
 }
 
 @media (min-width: 768px) {
