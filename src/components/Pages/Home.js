@@ -104,6 +104,7 @@ class Home extends Component {
                                         <img src={Reset} /> 
                                         {localization.Reset}
                                     </button>
+                                    <button className="language-btn">عربي</button>
                                 </div>
                             </div>
                         </div>

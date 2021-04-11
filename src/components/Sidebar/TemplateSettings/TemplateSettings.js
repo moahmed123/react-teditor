@@ -83,7 +83,7 @@ class TemplateSettings extends Component {
         }
        
         return (
-            <div className='col-md-3 p-0 sidebar__section'>
+            <div className='col-md-3 p-0 sidebar__section section--static'>
                 <div className="Home__sidebar Home__abs setting--sidebar section--page setting--page home-sidebar--active">
                     <div className="Home__sidebar__header header--controls">
 

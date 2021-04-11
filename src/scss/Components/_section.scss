@@ -145,7 +145,8 @@
                 font-weight: 400;
                     padding: 0;
                     // margin-top: 20px;
-                    margin-bottom: 15px;
+                    margin-bottom: 20px;
+                    text-align: $start;
                 @if $start == 'left'{
                     font-family: 'AvertaRegular';
                   } @else{ 
@@ -176,6 +177,9 @@
                     // margin-#{$end}: 10px;
                     opacity: .5;
                     padding: 10px 20px;
+                    width: 50%;
+                    display: flex;
+                    justify-content: center;
                     &:hover{
                        cursor: pointer;
                     }
