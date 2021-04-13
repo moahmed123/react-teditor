@@ -21,7 +21,7 @@ class PagesAvailable extends Component {
                          this.props.dispatch(ADDLAYOUT.addLayout( dataLayouts.name , dataLayouts.route))
                          }} >
                              <a>
-                                <img className="label__icon" src={Promoted} />
+                                {/* <img className="label__icon" src={Promoted} /> */}
                                 <span> {dataLayouts.name}</span>                                             
                              </a>
                      </div>

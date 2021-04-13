@@ -33,7 +33,7 @@ const translationStrings = new LocalizedStrings({
         AddNewSection: 'إضافة قسم جديد',
         Lang: 'EN',
         Reset: 'إعادة تعيين',
-        Publish:'نشر',
+        Publish:'نشر التحديثات',
         SectionsAvailable: 'الأقسام المتاحة',
         MainTheme: 'الثيمات الرئيسية',
         MessagePopup: "سوف تفوت التحديث الخاص بك",

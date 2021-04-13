@@ -89,7 +89,7 @@ class MainContentDT extends Component {
                                     //Add Class Loading For Layouts. 
                                     document.getElementsByTagName("BODY")[0].classList.add('loading-Layout');
                                 }}>
-                                        <img className="label__icon" src={Promoted} />
+                                        {/* <img className="label__icon" src={Promoted} /> */}
                                         <span> 
                                             {collect_Data_state[value].DescName}
                                         </span>                             

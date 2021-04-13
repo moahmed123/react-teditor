@@ -54,7 +54,9 @@
                 }
             }
             .setting--sidebar__header{
-               @extend %main-label;
+            //    @extend %main-label;
+         
+
             }
             .setting--sidebar__color{
                 .row {
@@ -272,9 +274,22 @@
         }
     }
 }
+.Home{
+    .Home__sidebar{
+        &.section--page {
+            .accordion {
+                .card-header{
+                    span{
+                        font-weight: normal;
+                    }
+                }
+            }
+        }
+    }
+}
 @include portraitTablet{
     %main-label{
-        font-size: calc(17px + (17 - 15) * ((100vw - 320px) / (768 - 320)));
+        font-size: calc(12px + (15 - 12) * ((100vw - 320px) / (768 - 320))) !important;
     }
     .Home {
         .Home__sidebar{
@@ -302,6 +317,51 @@
                             margin-#{$end}: 10px;
                         }
                      }
+                    }
+                }
+            }
+        }
+    }
+    .Home {
+        .Home__sidebar{
+            &.section--page {
+                .setting--sidebar__header{
+                    font-size: calc(12px + (15 - 12) * ((100vw - 320px) / (768 - 320))) !important;
+                    margin-bottom: 7px !important;
+                    &.setting--label{ 
+                        font-size: 16px !important;
+                        font-weight: 600 !important;
+                        padding: 0 10px;
+                    }
+                }
+            }
+        }
+    }
+    .Home{
+        .Home__sidebar{
+            &.section--page {
+                .accordion {
+                    .card-header{
+                        span{
+                            font-size: calc(12px + (15 - 12) * ((100vw - 320px) / (768 - 320))) ;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .Home {
+        .Home__sidebar{
+            &.section--page {
+                .setting--sidebar__color {
+                    .sidebar__color__main {
+                        .color__main__content {
+                            .label.generic--section {
+                                .generic--section__form{
+                                    font-size: calc(12px + (15 - 12) * ((100vw - 320px) / (768 - 320))) !important;
+                                }
+                            }
+                        }
                     }
                 }
             }

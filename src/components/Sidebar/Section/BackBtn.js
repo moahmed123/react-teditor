@@ -33,7 +33,17 @@ class BackBtn extends Component {
             <div className="delete" onClick={this._BackHistory}>
                 {
                     this.props.NotImage?
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="26" viewBox="0 0 22 26">
+  <g id="Group_7315" data-name="Group 7315" transform="translate(-29.095 -101)">
+    <rect id="Rectangle_4844" data-name="Rectangle 4844" width="22" height="26" rx="3" transform="translate(29.095 101)" fill="#fff" opacity="0.95"/>
+    <g id="Group_7176" data-name="Group 7176" transform="translate(36.078 107.001)">
+      <g id="Group_7141" data-name="Group 7141">
+        <path id="Path_11502" data-name="Path 11502" d="M170.387,113.226l5.861-5.784a.964.964,0,1,1,1.353,1.373l-4.188,4.133-.723.964.723.964,4.188,4.133a.964.964,0,1,1-1.353,1.373l-5.861-5.783a.963.963,0,0,1,0-1.373Z" transform="translate(-170.1 -107.165)" fill="#a2a6b7"/>
+      </g>
+    </g>
+  </g>
+</svg>
+
                     :
                     <img src={this.props.backImg ? this.props.backImg : deleteMark} />
                 }                

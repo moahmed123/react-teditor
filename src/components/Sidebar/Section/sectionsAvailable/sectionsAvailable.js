@@ -36,7 +36,7 @@ class SectionsAvailable extends Component {
                             this.props.dispatch(INSERTSEC.insertSection(AvailSec.id))
                         }}>
                             <a>
-                                <img className="label__icon" src={Promoted} />
+                                {/* <img className="label__icon" src={Promoted} /> */}
                                 <span> 
                                     {AvailSec.DescName}
                                 </span>                                                             

@@ -11,7 +11,7 @@ import FooterDT from './SidebarFormat/FooterDT';
 import MainContentDT from './SidebarFormat/MainContentDT';
 
 //LocalImage
-import Settings from '../../assets/svg/settings.svg';
+import Settings from '../../assets/svg/add-page.svg';
 import { FaPlus } from "react-icons/fa";
 
 import { app, ADDLAYOUT,ADDNESEC, ROUTECOM} from '../../actions';

@@ -288,8 +288,9 @@
     .Home__sidebar.section--page{
         .setting--sidebar__header{
             &.setting--label{
-                font-size: 13px;
+                font-size: 14px;
                 color: #000000;
+                font-weight: 600;
             }
         }
     }
@@ -310,7 +311,7 @@
         justify-content: flex-start !important;
     }
     svg{
-        transform: rotate(90deg);
+        // transform: rotate(90deg);
         cursor: pointer;
     }
     span{
@@ -444,17 +445,19 @@
             font-weight: 600;
             font-family: 'AvertaRegular';
             border: none;
-            padding: 8px 5px; 
+            padding: 16px 14px; 
             box-shadow: 0 0 3px 0 #00000012; 
             border-radius: 4px;
             display: flex;
             align-items: center;
             img{
                 width: 18px;
-                margin: 0 10px;
+                // margin: 0 10px;
+                margin-#{$end}: 10px;
             }
             svg{
-                margin: 0 10px;
+                // margin: 0 10px;
+                margin-#{$end}: 10px;
             }
             &.language-btn{
                 padding: 15px 26px;

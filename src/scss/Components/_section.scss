@@ -142,10 +142,10 @@
             }
             .setting--sidebar__header{
                 font-size: calc(11px + (13 - 9) * ((100vw - 1024px) / (1920 - 1024)));
-                font-weight: 400;
+                font-weight: 600;
                     padding: 0;
                     // margin-top: 20px;
-                    margin-bottom: 20px;
+                    margin-bottom: 7px;
                     text-align: $start;
                 @if $start == 'left'{
                     font-family: 'AvertaRegular';
@@ -337,7 +337,7 @@
                                         width: 100%;
                                         outline: none;
                                         font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
-                                        font-weight: bold;
+                                        // font-weight: bold;
                                             @if $start == 'left'{
                                                 font-family: 'AvertaRegular';
                                             } @else{
@@ -589,7 +589,28 @@
                 text-align: left;
                 float: left;
             }
+            width: 22%;
+            background-color: #e0e8f3;
+            .close{
+                color: #155ebc;
+            }
+            .alert-heading{
+                font-size: 14px;
+                text-align: left;
+                color: #155ebc;
+                text-align: $start;
+            }
+            p{
+                text-align: $start;
+                font-size: 14px;
+                color: #155ebc;
+            }
         }
+    }
+}
+.alert-success {
+    hr{
+        border-top-color: #155ebc1c;
     }
 }
 .Home__sidebar__header {
