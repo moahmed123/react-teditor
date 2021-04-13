@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Container } from 'react-bootstrap';
 import { FaTrashAlt, FaPlus } from "react-icons/fa";
 import { connect } from 'react-redux';
-import { GETLANGS, RESDRAFVER } from '../../actions'
+import { GETLANGS, RESDRAFVER, SETLANG } from '../../actions'
 // import '../../css/Home.css';
 
 // Component
@@ -29,6 +29,11 @@ import localization from '../../localization/localization';
 
 class Home extends Component {
     _routeComponent = () => {
+        let ActiveLanguage;
+        if (this.props.getlanguages) {
+            ActiveLanguage = this.props.getlanguages.data.ActiveLanguage.code;
+            localization.setLanguage(ActiveLanguage);
+        }
         const { routeComponent } = this.props;
         switch (routeComponent) {
             case 'sectionsAvailable':
@@ -45,7 +50,7 @@ class Home extends Component {
                 return (
 
                     <div className='col-md-3 p-0 sidebar__section section--static'>
-                        <div className="Home__sidebar Home__abs setting--sidebar section--page ">
+                        <div className="Home__sidebar Home__abs setting--sidebar section--page home-sidebar--active">
                             <SectionData />
                         </div>
                     </div>
@@ -53,7 +58,7 @@ class Home extends Component {
             case 'HeaderPG':
                 return (
                     <div className='col-md-3 p-0 sidebar__section'>
-                        <div className="Home__sidebar Home__sidebar__HomePage">
+                        <div className="Home__sidebar Home__sidebar__HomePage home-sidebar--active">
                             <div className="Home__sidebar__header">
                                 {
                                     (this.props.UserSections) ?
@@ -68,7 +73,7 @@ class Home extends Component {
             case 'FooterPG':
                 return (
                     <div className='col-md-3 p-0 sidebar__section'>
-                        <div className="Home__sidebar Home__sidebar__HomePage">
+                        <div className="Home__sidebar Home__sidebar__HomePage home-sidebar--active">
                             <div className="Home__sidebar__header">
                                 {
                                     (this.props.FooterUserSections) ?
@@ -104,7 +109,15 @@ class Home extends Component {
                                         <img src={Reset} /> 
                                         {localization.Reset}
                                     </button>
-                                    <button className="language-btn">عربي</button>
+                                    <button className="language-btn" onClick={() => {
+                                        // set Language:                                
+                                        ActiveLanguage == "en" ?
+                                            this.props.dispatch(SETLANG.setLanguage('ar'))
+                                            :
+                                            this.props.dispatch(SETLANG.setLanguage('en'))
+                                    }}>
+                                        {localization.Lang}
+                                    </button>                                    
                                 </div>
                             </div>
                         </div>
@@ -115,7 +128,7 @@ class Home extends Component {
     render() {
         if (this.props.UserSections) {
             console.log("---------------------", this.props.UserSections)
-        }
+        }       
         const homeClass = classNames('Home', {});
         return (
             <section className={homeClass}>
@@ -139,7 +152,7 @@ class Home extends Component {
 
 // export default Home
 const mapStateToProps = state => ({
-    getlanguages: state.getlanguages.GetLangs,
+    getlanguages: state.getlanguages.GetLangs,    
     routeComponent: state.getlanguages.routeCom,
     UserSections: state.slidebar.UserSections,
     FooterUserSections: state.slidebar.FooterUserSections

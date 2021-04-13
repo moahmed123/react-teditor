@@ -23,7 +23,8 @@ const translationStrings = new LocalizedStrings({
         TitleDeleteSection:"Delete Section",
         internalPages: "Internal Pages",
         Exiteditor: "Exit editor",
-        Delete_modal: 'Delete'
+        Delete_modal: 'Delete',
+        save:"save"
     },
     ar: {
         Browse: "تصفح",
@@ -46,7 +47,8 @@ const translationStrings = new LocalizedStrings({
         ConfirmMsgForDeleteSection : 'هل أنت متأكد أنك تريد حذف هذا القسم؟',
         TitleDeleteSection:"حذف القسم",
         internalPages: "الصفحات الداخلية",
-        Exiteditor: "الخروج من المحرر"
+        Exiteditor: "الخروج من المحرر",
+        save:"حفظ"
     }
 });
 export default translationStrings;

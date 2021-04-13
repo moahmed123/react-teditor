@@ -81,7 +81,7 @@ class TagsCategory extends Component {
         let height;
         if(selectedOption){
             if(selectedOption.length > 0){
-                height = (selectedOption.length * 35) + 15 + 'px';
+                height = (selectedOption.length * 35) + 20 + 'px';
             }else{
                 height = 'auto';
             }

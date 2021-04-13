@@ -496,6 +496,7 @@ html, body {
   }
 }
 @include portraitTablet{
+   
   .Home {
       .main-frame{
           margin: 15px; 
@@ -525,8 +526,7 @@ html, body {
           -moz-transform:  translateX(-100%);
           -ms-transform:  translateX(-100%);
           -o-transform:  translateX(-100%);
-        }
-
+        }       
         &.home-sidebar--active{
           transform: translateX(0px);
           -webkit-transform: translateX(0px);
@@ -534,7 +534,7 @@ html, body {
           -ms-transform: translateX(0px);
           -o-transform: translateX(0px);
      
-    }
+        }       
     .Home__sidebar__header {
       .sidebar__header__section {
         h2{
@@ -552,6 +552,13 @@ html, body {
     }
 }
   }
+  .home-sidebar--active .Home__sidebar{
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    }
   .Header{
     position: fixed;
     top: 0; 

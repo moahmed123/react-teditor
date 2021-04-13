@@ -261,11 +261,23 @@ class Header extends Component {
                             <div className="header-control__mobile header-left__controls">
                                 <span className="burger-menu" onClick = {(e)=>{
                                         console.log('show')
-                                        var menu, sideBar;
-                                        menu = document.querySelector('.burger-menu');
-                                        sideBar = document.querySelector('.Home__sidebar');
-                                        sideBar.classList.toggle('home-sidebar--active');                                        
-                                        menu.classList.toggle('close--icon');
+                                        var menu, sideBar, Body;
+                                         menu = document.querySelector('.burger-menu');
+                                         // TODO : will revoke this code condation
+                                        if(menu.classList.contains("close--icon")){                                                                                        
+                                            sideBar = document.querySelector('.Home__sidebar');
+                                            Body = document.querySelector('body');
+                                            sideBar.classList.remove('home-sidebar--active');
+                                            Body.classList.remove('home-sidebar--active');
+                                            menu.classList.remove('close--icon');
+                                        }else{
+                                            sideBar = document.querySelector('.Home__sidebar');
+                                            Body = document.querySelector('body');
+                                            sideBar.classList.add('home-sidebar--active');
+                                            // Body.classList.add('home-sidebar--active');
+                                            menu.classList.add('close--icon');
+                                        }
+                                        
                                     }}>
                                     <FaBars className="bar" />
                                     <svg className="close--icon__delete" xmlns="http://www.w3.org/2000/svg" width="15.899" height="15.767" viewBox="0 0 15.899 15.767">

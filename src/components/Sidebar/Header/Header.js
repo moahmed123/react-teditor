@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Form } from "react-bootstrap";
 import { UPDSECST, GetSCFLD, ROUTECOM} from '../../../actions'
 import PathsApp from '../../../actions/Api_paths';
+import BackBtn from '../Section/BackBtn'
 
 class Header extends Component {
     constructor(props) {
@@ -48,7 +49,7 @@ class Header extends Component {
                 <div className="sidebar__header__section Home__sidebar__header__page">    
                 <div className="header__control">
                     <h2>
-                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path></svg>
+                        <BackBtn NotImage={true}/>                        
                       <span>  {this.props.HeaderData.Name} </span>
                     </h2>
                 </div>          
