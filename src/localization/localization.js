@@ -11,7 +11,7 @@ const translationStrings = new LocalizedStrings({
         Publish:"Publish",
         SectionsAvailable: 'sections Available',
         MainTheme: 'Main Theme',
-        MessagePopup: "You will missed your update",
+        MessagePopup: "You will miss your update if not published",
         PargPopup : "Are you sure you want back a dashboard?",
         Cancel: 'Cancel',
         Confirm: "Confirm",
@@ -24,7 +24,8 @@ const translationStrings = new LocalizedStrings({
         internalPages: "Internal Pages",
         Exiteditor: "Exit editor",
         Delete_modal: 'Delete',
-        save:"save"
+        save:"save",
+        mainLayout:"main Layout"
     },
     ar: {
         Browse: "تصفح",
@@ -36,7 +37,7 @@ const translationStrings = new LocalizedStrings({
         Publish:'نشر التحديثات',
         SectionsAvailable: 'الأقسام المتاحة',
         MainTheme: 'الثيمات الرئيسية',
-        MessagePopup: "سوف تفوت التحديث الخاص بك",
+        MessagePopup: "سوف تفوت التحديث الخاص بك إذا لم يتم نشره",
         PargPopup : "هل أنت متأكد أنك تريد الرجوع إلى لوحة القيادة؟",
         Cancel: "إلغاء",
         Confirm:"تأكيد",
@@ -48,7 +49,8 @@ const translationStrings = new LocalizedStrings({
         TitleDeleteSection:"حذف القسم",
         internalPages: "الصفحات الداخلية",
         Exiteditor: "الخروج من المحرر",
-        save:"حفظ"
+        save:"حفظ",
+        mainLayout:"نموذج الرئيسي"
     }
 });
 export default translationStrings;

@@ -28,19 +28,34 @@ class Sidebar extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            showPagesAvailable: false
+            showPagesAvailable: false,
+            mainLayout: false
         }
     }  
     _PageName(){
         if(this.props.PageResions){
             return (
                 <h2>
-                    {this.props.PageResions.Name} 
-                    <span onClick = {()=> {
-                            this.props.closeRoutePage?
-                                this.props.dispatch(ADDLAYOUT.CloseAddLayout(!this.props.closeRoutePage))
+                   <span>
+                        {
+                            this.state.mainLayout?
+                                localization.mainLayout
                             :
-                                this.props.dispatch(ADDLAYOUT.CloseAddLayout(true))                                                                                
+                                this.props.PageResions.Name
+                        } 
+                    </span> 
+                    <span onClick = {()=> {
+                            if(this.props.closeRoutePage){
+                                this.props.dispatch(ADDLAYOUT.CloseAddLayout(!this.props.closeRoutePage))                              
+                                this.setState({mainLayout: false})
+                            }else{
+                                this.props.dispatch(ADDLAYOUT.CloseAddLayout(true));                                                                              
+                                this.setState({mainLayout: true})
+                            }
+                            // this.props.closeRoutePage?
+                            //     this.props.dispatch(ADDLAYOUT.CloseAddLayout(!this.props.closeRoutePage))
+                            // :                                
+                            //     this.props.dispatch(ADDLAYOUT.CloseAddLayout(true));
                         }}>
                         <img src={this.props.closeRoutePage?  deleteMark : Settings} />
                         

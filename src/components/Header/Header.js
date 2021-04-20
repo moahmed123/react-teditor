@@ -164,7 +164,9 @@ class Header extends Component {
                                             this.props.dispatch(ROUTECOM.routeComponent(null)) // redirect To Home Page       
                                        }else{
                                             // back For History:         
-                                            window.history.back();
+                                            // window.history.back();
+                                            // console.log('back To Admin ')
+                                            this.openModal();
                                        }                                        
                                    }
                                 }}>
@@ -396,9 +398,11 @@ class Header extends Component {
                             <Modal.Body>{localization.PargPopup}</Modal.Body>
                     <Modal.Footer>
                         <Button variant="outline-secondary" onClick={this.closeModal}>{localization.Cancel}</Button>                                
-                        <Link to = {`/admin/`}>
-                            <Button variant="danger">{localization.Delete_modal}</Button>
-                        </Link>
+                        {/* <Link to = {`/admin/`}> */}
+                            <Button variant="danger" onClick={()=>{
+                                document.location.href = document.location.origin + '/admin/';
+                            }}>{localization.Confirm}</Button>
+                        {/* </Link> */}
                     </Modal.Footer>
                 </Modal>
             </header>
