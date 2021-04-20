@@ -39,7 +39,7 @@ class Home extends Component {
             case 'sectionsAvailable':
                 return (
                     <div className='col-md-3 p-0 sidebar__section'>
-                        <div className="Home__sidebar  Home__abs setting--sidebar add--page">
+                        <div className="Home__sidebar  Home__abs setting--sidebar add--page home-sidebar--active">
                             <div className="Home__sidebar__header flex-column">
                                 <SectionsAvailable />
                             </div>
