@@ -11,8 +11,8 @@ const translationStrings = new LocalizedStrings({
         Publish:"Publish",
         SectionsAvailable: 'sections Available',
         MainTheme: 'Main Theme',
-        MessagePopup: "You will miss your update if not published",
-        PargPopup : "Are you sure you want back a dashboard?",
+        MessagePopup: "Missing updates",
+        PargPopup : "If you haven't published them, you will miss out on the updates you made, before returning to the dashboard Are you sure you want to return to the dashboard?        ",
         Cancel: 'Cancel',
         Confirm: "Confirm",
         SaveMessage: "The Changes Fields Saved Successfully",
@@ -25,7 +25,8 @@ const translationStrings = new LocalizedStrings({
         Exiteditor: "Exit editor",
         Delete_modal: 'Delete',
         save:"save",
-        mainLayout:"main Layout"
+        mainLayout:"main Layout",
+        notChanged:"Please Change Any Fields Value"
     },
     ar: {
         Browse: "تصفح",
@@ -37,9 +38,9 @@ const translationStrings = new LocalizedStrings({
         Publish:'نشر التحديثات',
         SectionsAvailable: 'الأقسام المتاحة',
         MainTheme: 'الثيمات الرئيسية',
-        MessagePopup: "سوف تفوت التحديث الخاص بك إذا لم يتم نشره",
-        PargPopup : "هل أنت متأكد أنك تريد الرجوع إلى لوحة القيادة؟",
-        Cancel: "إلغاء",
+        MessagePopup: "فقدان التحديثات",
+        PargPopup : `سوف تفقد التحديثات التى قمت بها إذا لم تقم بنشرها، قبل العودة للوحة التحكم
+هل أنت متأكد أنك تريد العودة للوحة القيادة؟`,
         Confirm:"تأكيد",
         SaveMessage: "تم حفظ التغييرات الحقول بنجاح",
         SaveMessageTitle: 'حفظ الحقول',
@@ -50,7 +51,8 @@ const translationStrings = new LocalizedStrings({
         internalPages: "الصفحات الداخلية",
         Exiteditor: "الخروج من المحرر",
         save:"حفظ",
-        mainLayout:"نموذج الرئيسي"
+        mainLayout:"نموذج الرئيسي",
+        notChanged:"الرجاء تغيير أي قيمة في الحقول"
     }
 });
 export default translationStrings;

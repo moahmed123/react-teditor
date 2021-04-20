@@ -44,7 +44,7 @@ class Section extends Component {
     }
     componentDidMount() {
         // Get Section By Id. 
-        this.props.dispatch(GetSCFLD.getSectionFields());
+        // this.props.dispatch(GetSCFLD.getSectionFields());
         // active lang for fields               
     }
 
