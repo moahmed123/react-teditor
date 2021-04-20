@@ -13,7 +13,7 @@
 .Home {
     .Home__sidebar{
         &.setting--sidebar{
-            width: 329px;
+            // width: 329px;
             &.section--page {
                 width: 309px;
                 margin: 0 10px;
@@ -176,12 +176,12 @@
     .Home {
         .Home__sidebar{
             &.setting--sidebar{
-                width: 30%;
+                // width: 30%;
                 .Home__sidebar__header{
                     margin-bottom: 20px;
                     .setting--sidebar__controls {
                         > div{
-                            width: 25px;
+                            // width: 25px;
                             height: 25px;
                             img{
                                 width: 11px;
@@ -226,13 +226,15 @@
 @include mediumLaptop{
     .Home {
         .Home__sidebar{
-            &.setting--sidebar{
-                width: 30%;
+            &.setting--sidebar{ 
+                // width: 30%;
+                padding: 10px;
+
                 .Home__sidebar__header{
                     margin-bottom: 20px;
                     .setting--sidebar__controls {
                         > div{
-                            width: 25px;
+                            // width: 25px;
                             height: 25px;
                             img{
                                 width: 11px;

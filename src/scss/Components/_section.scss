@@ -768,3 +768,23 @@
     font-size: 13px !important;
     font-weight: normal !important;
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .Home {
+        .container_notification {
+            .alert{
+                width: 40%;
+            }
+        }
+    }
+}
+@media (max-width: 768px) {
+    .container_notification{
+        right: unset !important;
+        left: unset !important;
+        padding: 10px;
+        .alert{
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+    }
+}
