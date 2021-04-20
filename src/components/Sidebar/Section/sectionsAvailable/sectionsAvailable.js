@@ -51,7 +51,7 @@ class SectionsAvailable extends Component {
         return (
             <>                
                 <div className="Home__sidebar__header">
-                    <h4 className="setting--sidebar__header d-flex">
+                    <h4 className="setting--sidebar__header d-flex sec_availble">
                         <div className="setting--sidebar__controls">
                             <BackBtn NotImage = {true} Status = { null } history = {false}/>
                         </div>
