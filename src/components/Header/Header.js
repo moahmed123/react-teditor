@@ -258,7 +258,7 @@ class Header extends Component {
                         </div>
                     </div>
                     {/* navbar for mobile */}
-                    <div className="col-md-6 col-12">
+                    <div className="col-md-6 col-12 hidden--md">
                         <div className="mobile__controls">
                             <div className="header-control__mobile header-left__controls">
                                 <span className="burger-menu" onClick = {(e)=>{

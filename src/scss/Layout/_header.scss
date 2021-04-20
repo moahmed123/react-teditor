@@ -185,19 +185,25 @@
             -o-border-radius: 2px;
             border-radius: 4px;
             &.Header__controls__save{
-                border: solid 1px #d2cfe3;
+                // border: solid 1px #d2cfe3;
                 background-color: unset;
-                color: $button-color;
+                color: #4c4c51;
                 margin-#{$end}: 15px; 
+                &:first-child{
+                    font-weight: bold;
+                }
             }
        
             &.Header__controls__publish{ 
                 background-color: #03a9f4;  
                 @if $start == 'right' {
                     direction: ltr;
+                } 
+                @else{
+                    direction: rtl;
                 }
                 img{
-                    padding-right:5px;
+                    padding-#{$start}:5px;
                 }
             
             }  
@@ -386,6 +392,7 @@
         border: none !important;
         .Header__controls__publish{
             padding: 3px 20px;
+            display: block !important;
         }
         .header__page{
             border: none !important;
@@ -490,15 +497,22 @@
 @include mediumLaptop{
     .Header { 
         .header-left__controls {
+
             .header__back-circle{
-                padding: 15px 10px;
+                padding: 0px 5px;
                 span{
                     width: 30px;
                     height: 30px;
                 }
             }
-            .header__page button{
-                padding: 19px 10px;
+            .header__page {
+                padding: 5px;
+                button{
+                    padding: 10px;
+                    #name_page{
+                        padding-#{$end}: 15px;
+                    }
+                }
             }
         }
     }
