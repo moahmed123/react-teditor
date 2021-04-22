@@ -152,7 +152,7 @@
                   } @else{ 
                       font-family: 'Cairo';
                   }
-                
+                font-size: 14px !important;
                 span{
                     font-size: calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
                     color: #b4afd3;
@@ -329,6 +329,9 @@
                                     border: none;
                                     // border-bottom: solid 1px #d5d5e0;
                                     width: 100%;
+                                    textarea.generic--section__form{
+                                        height: 70px;
+                                    }
                                     .generic--section__form{
                                         border: 1px solid #ededed;
                                         border-radius: 4px;
@@ -337,6 +340,7 @@
                                         width: 100%;
                                         outline: none;
                                         font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                                        font-size: 14px !important;
                                         // font-weight: bold;
                                             @if $start == 'left'{
                                                 font-family: 'AvertaRegular';
@@ -743,6 +747,9 @@
 // }
 .sec_availble{
     padding: 0 !important;
+    span{
+        transform: translate(0,2px);
+    }
 }
 .select__value-container--has-value{
     position: absolute !important;
@@ -789,5 +796,5 @@
             max-width: 100% !important;
             width: 100% !important;
         }
-    }
+    }    
 }

@@ -90,7 +90,7 @@ class TemplateSettings extends Component {
                     <div className="setting--sidebar__controls">  
                             <BackBtn BackCom = {null}/>
                     </div>
-                        <h4 className="setting--sidebar__header">  {localization.MainTheme} </h4>
+                        <h4 className="setting--sidebar__header setting--label">  {localization.MainTheme} </h4>
                         <div className="setting--sidebar__controls save">
                             <SaveBtn/>
                         </div>

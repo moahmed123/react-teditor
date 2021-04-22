@@ -20,7 +20,7 @@
                 background-color: #fff;
                 border-radius: 4px;
                 box-shadow: 2px 0 3px 0 rgba(0, 0, 0, 0.07);
-                padding: 25px 10px 15px;
+                padding: 25px 20px 15px;
             }
        
             .Home__sidebar__header{
@@ -328,12 +328,15 @@
         .Home__sidebar{
             &.section--page {
                 .setting--sidebar__header{
-                    font-size: calc(12px + (15 - 12) * ((100vw - 320px) / (768 - 320))) !important;
+                    // font-size: calc(12px + (15 - 12) * ((100vw - 320px) / (768 - 320))) !important;
+                    font-size: calc(14px + (15 - 14) * ((100vw - 320px) / (768 - 320))) !important;
+                    
                     margin-bottom: 7px !important;
                     &.setting--label{ 
                         font-size: 16px !important;
                         font-weight: 600 !important;
                         padding: 0 10px;
+                        transform: translate(0px, 3px);
                     }
                 }
             }
@@ -360,7 +363,8 @@
                         .color__main__content {
                             .label.generic--section {
                                 .generic--section__form{
-                                    font-size: calc(12px + (15 - 12) * ((100vw - 320px) / (768 - 320))) !important;
+                                    // font-size: calc(12px + (15 - 12) * ((100vw - 320px) / (768 - 320))) !important;
+                                    font-size: calc(14px + (15 - 14) * ((100vw - 320px) / (768 - 320))) !important;
                                 }
                             }
                         }

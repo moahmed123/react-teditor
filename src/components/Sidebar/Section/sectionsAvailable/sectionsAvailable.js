@@ -55,10 +55,10 @@ class SectionsAvailable extends Component {
                         <div className="setting--sidebar__controls">
                             <BackBtn NotImage = {true} Status = { null } history = {false}/>
                         </div>
-                       <div>
+                       <span>
                             {localization.SectionsAvailable}
                             {/* <span> {localization.HomePage} </span> */}
-                        </div> 
+                        </span> 
                      </h4>
                     
                     <div className="sidebar__header__section">

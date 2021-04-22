@@ -50,7 +50,7 @@ class Footer extends Component {
                   <div className="header__control">
                         <h2>
                             <BackBtn NotImage={true}/>  
-                            <span>{this.props.FooterData.Name}</span>
+                            <span className='title-se'>{this.props.FooterData.Name}</span>
                         </h2>
                    </div>
                    

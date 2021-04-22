@@ -150,27 +150,38 @@ class Header extends Component {
                                     */
                                    let User_Save_Fields = localStorage.getItem('User_Save_Fields');
                                    if(User_Save_Fields == "true"){
-                                        //show Popups       
-                                        console.log(this.props.routeComponent)                                                                         
-                                        let pathNameCom = this.props.routeComponent;
-                                        if(pathNameCom == 'HeaderPG' || pathNameCom == 'FooterrPG'){
-                                            this.props.dispatch(ROUTECOM.routeComponent(null));
-                                        }else{
-                                            this.openModal();
-                                        }
+                                        // console.log(this.props.routeComponent)   
+                                        /**
+                                         * show Popups : Work Fine But Deprecated at version 1.0.0                                          
+                                        */
+                                        /**
+                                            let pathNameCom = this.props.routeComponent;
+                                            if(pathNameCom == 'HeaderPG' || pathNameCom == 'FooterrPG'){
+                                                this.props.dispatch(ROUTECOM.routeComponent(null));
+                                            }else{
+                                                this.openModal();
+                                            } 
+                                        */
+                                        this.openModal();
                                    }else{ 
-                                       console.log('hide Popups');
-                                       if(this.props.routeComponent){
-                                            this.props.dispatch(ROUTECOM.routeComponent(null)) // redirect To Home Page       
-                                       }else{
-                                            // back For History:         
-                                            // window.history.back();
-                                            // console.log('back To Admin ')
-                                            this.openModal();
-                                       }                                        
+                                    //    console.log('hide Popups');
+                                     /**
+                                         * route back component : Work Fine But Deprecated at version 1.0.0                                          
+                                        */
+                                       /**
+                                         if(this.props.routeComponent){
+                                                this.props.dispatch(ROUTECOM.routeComponent(null)) // redirect To Home Page       
+                                        }else{
+                                                // back For History:         
+                                                // window.history.back();
+                                                // console.log('back To Admin ')
+                                                this.openModal();
+                                        }  
+                                       */                   
+                                       this.openModal();                   
                                    }
                                 }}>
-                                    {
+                                    {/* {
                                         this.props.routeComponent ? 
                                             <span>                                        
                                                 <svg className="back" xmlns="http://www.w3.org/2000/svg" width="15.728" height="15.676" viewBox="0 0 15.728 15.676">
@@ -199,8 +210,17 @@ class Header extends Component {
                                                     </g>
                                                 </svg>
                                             </span>
-                                    }
-                                    
+                                    } */}
+                                     <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="35" viewBox="0 0 38 35">
+                                            <g id="Group_7180" data-name="Group 7180" transform="translate(-14 -10)">
+                                                <g id="Group_7178" data-name="Group 7178">
+                                                <rect id="Rectangle_4843" data-name="Rectangle 4843" width="38" height="35" rx="3" transform="translate(14 10)" fill="#e0ddef" opacity="0.28"/>
+                                                </g>
+                                                <path id="Path_11524" data-name="Path 11524" d="M16.035,12.561a.774.774,0,0,0-.063-1.108L8.714,5.1a.9.9,0,0,0-1.18.014L.252,11.791A.77.77,0,0,0,.217,12.9l.183.19a.8.8,0,0,0,1.093.084l.544-.487v7.135a.792.792,0,0,0,.792.792H5.668a.792.792,0,0,0,.792-.792V14.828H10.08v4.992a.749.749,0,0,0,.744.792h3.008a.792.792,0,0,0,.792-.792V12.785l.336.295c.185.163.574.032.868-.292Z" transform="translate(24.937 15.167)" fill="#a2a6b7"/>
+                                            </g>
+                                        </svg>
+                                    </span>
                                 </button>                              
                             </div>
                          

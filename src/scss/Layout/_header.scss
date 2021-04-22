@@ -297,6 +297,7 @@
                 font-size: 14px;
                 color: #000000;
                 font-weight: 600;
+                transform: translate(0px, 2px);
             }
         }
     }
@@ -322,6 +323,9 @@
     }
     span{
         margin: 0 5px;
+    }
+    span.title-se{
+        transform: translate(0px, 2px);
     }
 }
 //media for header 
