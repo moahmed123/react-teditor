@@ -47,7 +47,7 @@ class Header extends Component {
         return (
             <div className="generic-sidebar__section"> 
                 <div className="sidebar__header__section Home__sidebar__header__page">    
-                <div className="header__control">
+                <div className="header__control hf--back">
                     <h2>
                         <BackBtn NotImage={true}/>                        
                       <span className='title-se'>  {this.props.HeaderData.Name} </span>

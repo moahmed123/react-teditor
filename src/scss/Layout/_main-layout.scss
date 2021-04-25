@@ -835,6 +835,13 @@ body[dir="rtl"]{
     }
   }
 }
+body[dir="rtl"]{
+  .hf--back{
+    svg{
+      transform: rotate(180deg) !important;
+    }
+  }
+}
 @media (max-width: 768px) {
   .Home .Home__sidebar{
     position: fixed !important;

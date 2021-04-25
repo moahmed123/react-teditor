@@ -249,7 +249,8 @@
             font-size: 13px;
             span{
                 margin: 0 5px;
-                font-weight: normal;
+                // font-weight: normal;
+                text-transform: capitalize;
             }
             svg{
                 position: relative;
@@ -298,6 +299,7 @@
                 color: #000000;
                 font-weight: 600;
                 transform: translate(0px, 2px);
+                padding-bottom: 4px;
             }
         }
     }
@@ -326,6 +328,7 @@
     }
     span.title-se{
         transform: translate(0px, 2px);
+        padding-bottom: 4px;
     }
 }
 //media for header 
