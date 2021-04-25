@@ -102,6 +102,14 @@ html, body {
   //hidden class
   body{  
     overflow: hidden; 
+    .res-danger{
+        background-color: #c40000;
+        border-color: #c40000;        
+        .modal-title,svg {
+            color: #fff !important;
+        }
+        
+    }
   }
   .Header {
     margin-bottom: 19px;

@@ -104,7 +104,9 @@ class Home extends Component {
                                     </button>
                                     <button onClick={() => {
                                         // reset Dreft Version Changes For Fields :
-                                        this.props.dispatch(RESDRAFVER.resetDraftVersion());
+                                        // this.props.dispatch(RESDRAFVER.resetDraftVersion());
+                                        // TODO: revoke this Click 
+                                        document.querySelector('.Header__controls__save.reset_tm').click()
                                     }} >
                                         <img src={Reset} /> 
                                         {localization.Reset}

@@ -42,6 +42,11 @@ class Header extends Component {
     }
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => this.setState({ isOpen: false });
+
+    // Fun For Modal Reset. 
+    openModalReset = () => this.setState({ isOpenReset: true });
+    closeModalReset = () => this.setState({ isOpenReset: false });
+
     _PagesData() {
         if (!this.props.Pages) {
             return <div>Loading 1 </div>
@@ -375,9 +380,10 @@ class Header extends Component {
                                 {localization.Lang}
                             </button>
 
-                            <button className="Header__controls__save" onClick={() => {
+                            <button className="Header__controls__save reset_tm" onClick={() => {
                                 // reset Dreft Version Changes For Fields :
-                                this.props.dispatch(RESDRAFVER.resetDraftVersion());
+                                // this.props.dispatch(RESDRAFVER.resetDraftVersion());
+                                this.openModalReset()
                             }} > {localization.Reset} </button>
                             <img className="Header__controls__reset" src={Reset} />
 
@@ -410,8 +416,8 @@ class Header extends Component {
                                     <defs>
                                     
                                     </defs>
-                                    <path id="Path_67" d="M12.417 10.674L2.43.687a1.114 1.114 0 0 0-1.577 0l-.526.526a1.115 1.115 0 0 0 0 1.577l9.987 9.987a1.115 1.115 0 0 0 1.577 0l.526-.526a1.114 1.114 0 0 0 0-1.577zm0 0" class="cls-1" transform="translate(0 -.36)"/>
-                                    <path id="Path_68" d="M10.314.688L.327 10.675a1.115 1.115 0 0 0 0 1.577l.526.526a1.115 1.115 0 0 0 1.577 0l9.988-9.986a1.114 1.114 0 0 0 0-1.577l-.527-.526a1.115 1.115 0 0 0-1.577 0zm0 0" class="cls-1" transform="translate(0 -.362)"/>
+                                    <path id="Path_67" d="M12.417 10.674L2.43.687a1.114 1.114 0 0 0-1.577 0l-.526.526a1.115 1.115 0 0 0 0 1.577l9.987 9.987a1.115 1.115 0 0 0 1.577 0l.526-.526a1.114 1.114 0 0 0 0-1.577zm0 0" className="cls-1" transform="translate(0 -.36)"/>
+                                    <path id="Path_68" d="M10.314.688L.327 10.675a1.115 1.115 0 0 0 0 1.577l.526.526a1.115 1.115 0 0 0 1.577 0l9.988-9.986a1.114 1.114 0 0 0 0-1.577l-.527-.526a1.115 1.115 0 0 0-1.577 0zm0 0" className="cls-1" transform="translate(0 -.362)"/>
                                 </svg>                             
                             </div>
                     </Modal.Header>
@@ -422,6 +428,31 @@ class Header extends Component {
                             <Button variant="danger" onClick={()=>{
                                 document.location.href = document.location.origin + '/admin/';
                             }}>{localization.Confirm}</Button>
+                        {/* </Link> */}
+                    </Modal.Footer>
+                </Modal>
+                {/* Model Of Reset Data For Template */}
+                <Modal centered className="generic-alert" show={this.state.isOpenReset} onHide={this.closeModalReset} backdrop="static">
+                    <Modal.Header className = 'res-danger'>
+                            <Modal.Title>{localization.MessageResetPopup}</Modal.Title>
+                            <div className="delete__modal">
+                                <svg onClick={this.closeModalReset} xmlns="http://www.w3.org/2000/svg" id="close_3_" width="12.743" height="12.743" viewBox="0 0 12.743 12.743">
+                                    <defs>
+                                    
+                                    </defs>
+                                    <path id="Path_67" d="M12.417 10.674L2.43.687a1.114 1.114 0 0 0-1.577 0l-.526.526a1.115 1.115 0 0 0 0 1.577l9.987 9.987a1.115 1.115 0 0 0 1.577 0l.526-.526a1.114 1.114 0 0 0 0-1.577zm0 0" className="cls-1" transform="translate(0 -.36)"/>
+                                    <path id="Path_68" d="M10.314.688L.327 10.675a1.115 1.115 0 0 0 0 1.577l.526.526a1.115 1.115 0 0 0 1.577 0l9.988-9.986a1.114 1.114 0 0 0 0-1.577l-.527-.526a1.115 1.115 0 0 0-1.577 0zm0 0" className="cls-1" transform="translate(0 -.362)"/>
+                                </svg>                             
+                            </div>
+                    </Modal.Header>
+                            <Modal.Body>{localization.PargResetPopup}</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="outline-secondary" onClick={this.closeModalReset}>{localization.Cancel}</Button>                                
+                        {/* <Link to = {`/admin/`}> */}
+                            <Button variant="danger" onClick={()=>{
+                                // reset Dreft Version Changes For Fields :
+                                this.props.dispatch(RESDRAFVER.resetDraftVersion());
+                            }}>{localization.btnResetpopup}</Button>
                         {/* </Link> */}
                     </Modal.Footer>
                 </Modal>
