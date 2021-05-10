@@ -19,6 +19,10 @@ class TagsCategory extends Component {
     componentDidMount() {
         //Add Default Value For Selection
         this._addDefaultVal();
+        
+        // Use defaultCategories To Show It First click for Field.
+        let defaultCategories = '';
+        this.props.dispatch(SeaCate.searchCategories(defaultCategories));
 
     }
     _addDefaultVal = () => {
@@ -77,11 +81,13 @@ class TagsCategory extends Component {
         console.log(`Option selected change:`, selectedOption , idFieldTagsCat);
 
         // Set Height For Select Option Categories         
-        // let height = document.querySelector('.select__value-container').offsetHeight;
+        // let height3 = document.querySele
         let height;
         if(selectedOption){
-            if(selectedOption.length > 0){
-                height = (selectedOption.length * 35) + 20 + 'px';
+            if(selectedOption.length > 0 && selectedOption.length < 2){
+                height =  75 + 'px';
+            } else if(selectedOption.length > 1){
+                height = (selectedOption.length * 35) + 33 + 'px';
             }else{
                 height = 'auto';
             }

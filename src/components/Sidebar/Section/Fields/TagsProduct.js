@@ -20,6 +20,10 @@ class TagsProduct extends Component {
         //Add Default Value For Selection
         this._addDefaultVal();
 
+          // Use defaultProduct To Show It First click for Field.
+          let defaultProduct = '';          
+          this.props.dispatch(SeaPro.searchProducts(defaultProduct));
+
     }
     _addDefaultVal = () => {
         if (this.props.codelang == 'en') {
@@ -77,14 +81,16 @@ class TagsProduct extends Component {
         console.log(`Option selected:`, selectedOption , idFieldTagsCat);
         // Set Height For Select Option Categories         
         // let height = document.querySelector('.select__value-container').offsetHeight;
-        let height;
+        let height;      
         if(selectedOption){
-            if(selectedOption.length > 0){
-                height = (selectedOption.length * 35) + 20 + 'px';
+            if(selectedOption.length > 0 && selectedOption.length < 2){
+                height =  75 + 'px';
+            } else if(selectedOption.length > 1){
+                height = (selectedOption.length * 35) + 33 + 'px';
             }else{
                 height = 'auto';
             }
-        }        
+        }       
         this.setState({
             SelectHeight: height
         })        

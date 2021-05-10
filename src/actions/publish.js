@@ -26,9 +26,15 @@ export const publishFieldsVals = () => (dispatch) => {
             delay : null            
         }
         dispatch(notification(notification_result));
+
+         //TODO: revoke add and remove loading Process
+         document.querySelector('.container_notification').classList.remove('next-layer');
+         document.querySelector('.container_notification .alert-success').classList.add('show');
+         
         setTimeout(()=>{
-            //code
-            document.querySelector('.container_notification .alert-success').classList.remove('show')
+            //code            
+            document.querySelector('.container_notification .alert-success').classList.remove('show');
+            document.querySelector('.container_notification').classList.add('next-layer');
         },2000)
          // Change User_Save_Fields false To back to admin 
          localStorage.setItem('User_Save_Fields', false);  

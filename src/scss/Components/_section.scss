@@ -569,7 +569,7 @@
     .container_notification{
         position: absolute;
         z-index: 9999;
-        width: 100%;
+        // width: 100%;
         top: 70px;
        text-align: start;
        @if $start == 'left'{
@@ -582,8 +582,8 @@
             margin: 26px auto;
         }
         .alert {            
-            width: 650px;
-            max-width: 95%;
+            // width: 650px;
+            // max-width: 95%;
           
             position: relative;
             @if $start == 'left'{
@@ -593,7 +593,7 @@
                 text-align: left;
                 float: left;
             }
-            width: 22%;
+            // width: 22%;
             background-color: #e0e8f3;
             .close{
                 color: #155ebc;
@@ -610,6 +610,11 @@
                 color: #155ebc;
             }
         }
+    }
+    .container_notification.next-layer{
+        z-index: 0;        
+        width: 0;
+        padding: 0;
     }
 }
 .alert-success {
@@ -777,6 +782,9 @@
     color: #707070 !important;
     font-size: 13px !important;
     font-weight: normal !important;
+}
+.css-b8ldur-Input{
+    opacity: 0;
 }
 @media (min-width: 769px) and (max-width: 1024px) {
     .Home {

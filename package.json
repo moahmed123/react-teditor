@@ -2,7 +2,7 @@
   "name": "react-redux-template-editor-expandcart",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/admin/view/template/teditorV2",
+  "homepage": "/admin/view/template/designeditor",
   "dependencies": {
     "@babel/core": "^7.12.3",
     "@lourenci/react-kanban": "^2.1.0",
