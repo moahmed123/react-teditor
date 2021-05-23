@@ -29,7 +29,8 @@ const translationStrings = new LocalizedStrings({
         Delete_modal: 'Delete',
         save:"save",
         mainLayout:"main Layout",
-        notChanged:"Please Change Any Fields Value"
+        notChanged:"Please Change Any Fields Value",
+        OldEditor: 'Switch to old editor'
     },
     ar: {
         Browse: "تصفح",
@@ -58,7 +59,8 @@ const translationStrings = new LocalizedStrings({
         Exiteditor: "الخروج من المحرر",
         save:"حفظ",
         mainLayout:"نموذج الرئيسي",
-        notChanged:"الرجاء تغيير أي قيمة في الحقول"
+        notChanged:"الرجاء تغيير أي قيمة في الحقول",
+        OldEditor: ' العودة الى المحررر القديم'
     }
 });
 export default translationStrings;

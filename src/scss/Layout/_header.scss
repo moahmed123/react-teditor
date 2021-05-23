@@ -452,6 +452,9 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 30px;
+        .full-width-btn{
+            width: 100%;
+        }
         button{
             background-color: #fff; 
             color: #000000;
@@ -548,6 +551,11 @@
             margin: 0 10px;
         } 
     } 
+}
+.old-Editor-St{
+    background-color: #f6f6fb!important;
+    position: absolute;
+    #{$start}: 0;
 }
 .Home .Home__sidebar.setting--sidebar .Home__sidebar__header .setting--sidebar__controls.save{
     margin-left: auto;

@@ -370,6 +370,14 @@ class Header extends Component {
                     {/* end navbar for mobile */}
                     <div className="col-md-9 col-6 body__section">
                         <div className="Header__controls">
+                            <button className="Header__controls__save d-block old-Editor-St" onClick={() => {
+                                // Switch To Old Editor 
+                                document.location.href = document.location.origin + '/admin/teditor/teditor#/';                               
+                             
+                            }}>
+                                {localization.OldEditor}
+                            </button>
+
                             <button className="Header__controls__save d-block" onClick={() => {
                                 // set Language:                                
                                 ActiveLanguage == "en" ?
@@ -378,7 +386,7 @@ class Header extends Component {
                                     this.props.dispatch(SETLANG.setLanguage('en'))
                             }}>
                                 {localization.Lang}
-                            </button>
+                            </button>                           
 
                             <button className="Header__controls__save reset_tm" onClick={() => {
                                 // reset Dreft Version Changes For Fields :

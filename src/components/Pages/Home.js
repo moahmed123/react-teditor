@@ -119,8 +119,17 @@ class Home extends Component {
                                             this.props.dispatch(SETLANG.setLanguage('en'))
                                     }}>
                                         {localization.Lang}
-                                    </button>                                    
+                                    </button>                                                                     
                                 </div>
+                                <div className="mobile-control__reset__exit">
+                                    <button className="Header__controls__save d-block full-width-btn" onClick={() => {
+                                            // Switch To Old Editor 
+                                            document.location.href = document.location.origin + '/admin/teditor/teditor#/';                               
+                                        
+                                        }}>
+                                            {localization.OldEditor}
+                                    </button> 
+                                </div>                                 
                             </div>
                         </div>
                     </div>
