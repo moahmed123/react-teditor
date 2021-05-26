@@ -72,11 +72,17 @@ class MainCollection extends Component {
         this.props.dispatch(REODCOLLS.reorderCollections(collDrop));
         console.log(collDrop)
     };   
+    // Add New Collection.
     _addCollection = () => {
         this.setState({addCol: true, addLoading: true})
         const sectionId = this.props.collectionData.id; // Setion Id TO USe It FOr Add Some Of Collection
         //Send Section Id:
-        this.props.dispatch(ADCOLLE.addCollection(sectionId));    
+        this.props.dispatch(ADCOLLE.addCollection(sectionId));           
+        /**
+         * Set Storage To User change notifcation when save.
+         * when add collction we not need to save date to need user this storage to know some of change to change notifcation.
+         */
+        localStorage.setItem('collection_add', true);
         setTimeout(()=>{
            this._checkAddOrRemoave()
         }, 800)            

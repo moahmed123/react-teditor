@@ -3,6 +3,7 @@ import constants from '../constants';
 import API from '../Api_paths';
 import qs from 'qs';
 import { refreshIframe } from '../Iframe/refreshIframe';
+import { RefreshData } from '../app'
 
 export const UpdateSectionState = (SectionId, State) => (dispatch) => {
     // Create Json Data To Send It:
@@ -20,6 +21,8 @@ export const UpdateSectionState = (SectionId, State) => (dispatch) => {
         }
     }).then((success) => {        
        console.log(success.data.status);
+       // Fun To Refresh State {Data}
+       dispatch(RefreshData());       
        // Fun To Refresh Iframe When Save.       
        dispatch(refreshIframe());
     }).catch((error) => {

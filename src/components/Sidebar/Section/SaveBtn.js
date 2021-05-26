@@ -15,7 +15,9 @@ class SaveBtn extends Component {
     componentDidMount(){
         // localStorage.setItem('Save_to_Loading', false); 
     }
-    _saveFieldsCahnges = (e) => {                              
+    _saveFieldsCahnges = (e) => {        
+        let addIsCollection = localStorage.getItem('collection_add');
+        //console.log("addIsCollection",addIsCollection)        
         // Check User Change Data Or Not:         
         if(this.props.newFieldsChanges){    
             this.setState({SaveLoading: true})                        
@@ -26,14 +28,26 @@ class SaveBtn extends Component {
                 this.setState({SaveLoading: false})
             },2000)            
         }else{
-            // MSG: Please Change For Fields Value 
-            let notification_result = {
-                status: 'warning', // danger
-                title: null,
-                Message : localization.notChanged,
-                delay : 2000            
-            }
-            this.props.dispatch(NOTIFICATION.notification(notification_result));            
+            if(addIsCollection != "false"){
+                console.log('mohamed alaa aabas ')
+                let notification_result = {
+                    status: 'success', // danger
+                    title: localization.SaveMessageTitle,
+                    Message : localization.SaveMessage,
+                    delay : 3000            
+                }
+                this.props.dispatch(NOTIFICATION.notification(notification_result));  
+                localStorage.setItem('collection_add', false);  
+            }else{
+                // MSG: Please Change For Fields Value 
+                let notification_result = {
+                    status: 'warning', // danger
+                    title: null,
+                    Message : localization.notChanged,
+                    delay : 2000            
+                }
+                this.props.dispatch(NOTIFICATION.notification(notification_result));  
+            }                    
         }          
     }
     render() {       

@@ -288,7 +288,7 @@ class ImageCom extends Component {
             window.location.hostname == 'localhost' ?
                 srcImageClear.src = "http://qaz123.expandcart.com" + Paths.ecdata + StoreCode + Paths.srcClearImage
                 :
-                srcImageClear.src = + Paths.ecdata + StoreCode + Paths.srcClearImage
+                srcImageClear.src = Paths.ecdata + StoreCode + Paths.srcClearImage
         }, 100)
     }
     _sendSavedData = (jsonFormat) => {

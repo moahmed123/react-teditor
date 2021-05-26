@@ -23,7 +23,7 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
     console.log("savedFieldVals", savedFieldVals)
     let objCr;
     if (savedFieldVals.length == 1) {
-        objCr = '"' + savedFieldVals[0].key + '": "' + savedFieldVals[0].value + '"';
+        objCr = '"' + savedFieldVals[0].key + '": "' + savedFieldVals[0].value.replace(/"/g, "'") + '"';
     }
     else {
         // To Get Format To Save Values 
@@ -47,8 +47,11 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
         }
     }
     let addToBra = "{" + objCr + "}";
+    console.log(addToBra)
+    // return false;
     let objCrParse = JSON.parse(addToBra);
     console.log("saveTest", objCrParse);
+    
     axios({
         method: 'post',
         url: API.SaveFieldsVal,

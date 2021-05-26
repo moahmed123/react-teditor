@@ -35,8 +35,14 @@ class LinkVal extends Component {
         console.log(inputValue)    
         
         //Test
-        // let valIN = inputValue;
-        // document.getElementById(`Link_${this.props.ObjectFieldId}`).value =  valIN;
+        // let selectInput = e.target.parentNode.parentNode.parentNode.parentNode.previousSibling.getElementsByTagName('input');
+        // console.log('33333333', selectInput, selectInput[0].id)
+        // selectInput[0].value = "mohamed";
+        // document.getElementById(selectInput[0].id).value = inputValue; 
+        //console.log("test this.props.ObjectFieldId",this.props.ObjectFieldId, inputValue)
+        //let valIN = inputValue;
+        //document.getElementById(`Link_${this.props.ObjectFieldId}`).value =  valIN;
+        //window.document.getElementById(`Link_${this.props.ObjectFieldId}`).value = valIN; 
         // this.props.dispatch(SeaLink.LinkInputVal("click"));   
         //End Test             
         let LinkSaveJS = {"key": this.props.ObjectFieldId,"value": inputValue}; 

@@ -400,6 +400,9 @@ html, body {
             #{$end}: 0;
             bottom: 12px;
             padding: 0 6px;
+            @if $end == 'left' {
+                right: unset;
+            }
           }
           &:hover{   
             text-decoration: none;

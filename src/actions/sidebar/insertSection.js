@@ -25,6 +25,7 @@ export const insertSection = (sourceSectionId) => (dispatch) => {
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
     }).then((response) => {        
+        console.log(response);
         console.log(response.data.insertedSectionId); 
         // Redirection To Section Added
        // window.location.href = API.Paths + 'section/' + sectionId.data.insertedSectionId   //#/section/4244/     
