@@ -104,7 +104,7 @@ class Header extends Component {
                             }
                         }>
 
-                        { result.title}
+                        { result.title.replace(' &amp;', ' &')}
                     </Dropdown.Item>
                 )
             })

@@ -90,6 +90,401 @@
     }
    
 }
+.sortable-list-tab{
+    .setting--sidebar__header{
+        font-size: calc(11px + (13 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+        font-weight: 600;
+            padding: 0;
+            // margin-top: 20px;
+            margin-bottom: 7px;
+            text-align: $start;
+        @if $start == 'left'{
+            font-family: 'AvertaRegular';
+          } @else{ 
+              font-family: 'Cairo';
+          }
+        font-size: 14px !important;
+    }
+    .section--page__flags{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+        position: relative;
+        .page__flags__country{
+            font-size: 14px;
+            // background-color: #f2f1f7;
+            // margin-#{$end}: 10px;
+            opacity: .5;
+            padding: 10px 20px;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            &:hover{
+               cursor: pointer;
+            }
+            img{
+                max-width: 20px;
+                margin-#{$end}: 5px;
+            }
+            span{
+                color: #b4afd3;
+                font-weight: bold;
+                @if $start == 'left'{
+                    font-family: 'AvertaRegular';
+                  } @else{
+                      font-family: 'Cairo';
+                  }
+            }
+            &.active{
+                // border: solid 1px #e0ddef;
+                // background-color: unset;
+                border-bottom: solid 2px #2386dc;
+                opacity: 1;
+                &:hover{
+                    cursor: pointer;
+                    pointer-events: auto;
+                }
+                span{
+                    color: #155ebc;
+                }
+            }
+        }
+        &::after{
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: #e2e2e3;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            z-index: -1;
+        }
+    }
+    .setting--sidebar__color{
+        margin-bottom: 20px !important;
+        .sidebar__color__main{
+            border:none;
+            position: relative;
+            // padding-left: 0;
+            // padding-right: 0;
+            .color__main__content{
+                flex-wrap: wrap;
+                // padding-top: 10px;
+                position: relative;
+                display: block;
+                vertical-align:top;
+                .main__img__content {
+                    width: 100px;
+                    height: 67px;
+                    border-radius: 6px;
+                    overflow: hidden;
+                    border: 1px solid #ededed;
+                    display: inline-block;
+                    margin-#{$end}: 20px;
+                    text-align: center;
+                    img {
+                        width: auto;
+                        height: 100%;
+                       margin: auto;
+                       max-width: 100%;
+                    }
+                }
+                    /* The check-container */
+                        .check-container {
+                            display: flex;
+                            align-items: center;
+                            position: relative;
+                            padding-#{$start}: 25px;
+                            cursor: pointer;
+                            font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                            user-select: none;
+                           font-weight: bold;
+                            @if $start == 'left'{
+                                font-family: 'AvertaRegular';
+                              } @else{
+                                  font-family: 'Cairo';
+                              }
+                              margin-bottom: 0;
+                        }
+                        
+                        /* Hide the browser's default checkbox */
+                        .check-container input {
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+                            height: 0;
+                            width: 0;
+                        }
+                        
+                        /* Create a custom checkbox */
+                        .checkmark {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            #{$start}: 0;
+                            height: 15px;
+                            width: 15px;
+                            background-color: #eee;
+                            border-radius: 1px;
+                        }
+                        
+                        /* When the checkbox is checked, add a blue background */
+                        .check-container input:checked ~ .checkmark {
+                            background-color: #03a9f4;
+                        }
+                        
+                        /* Create the checkmark/indicator (hidden when not checked) */
+                        .checkmark:after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                        }
+                        
+                        /* Show the checkmark when checked */
+                        .check-container input:checked ~ .checkmark:after {
+                            display: block;
+                        }
+                        
+                        /* Style the checkmark/indicator */
+                        .check-container .checkmark:after {
+                            #{$start}: 4px;
+                            #{$end}: unset;
+                            top: 7px;
+                            width: 4px;
+                            height: 9px;
+                            border: solid white;
+                            border-width: 0 2px 2px 0;
+                            transform: rotate(45deg) translate(-50%, -50%);
+                        }
+                        .label { 
+                            &.generic--section{
+                            font-size: 14px; 
+                            font-weight: bold;
+                            display: block;
+                            color: $main-color;
+                            position: relative;
+                            // margin: 5px 0;
+                            // padding: 5px 0;
+                            border: none;
+                            // border-bottom: solid 1px #d5d5e0;
+                            width: 100%;
+                            textarea.generic--section__form{
+                                height: 70px;
+                            }
+                            .generic--section__form{
+                                border: 1px solid #ededed;
+                                border-radius: 4px;
+                                height: 36px;
+                                padding: 0 10px;
+                                width: 100%;
+                                outline: none;
+                                font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                                font-size: 14px !important;
+                                // font-weight: bold;
+                                    @if $start == 'left'{
+                                        font-family: 'AvertaRegular';
+                                    } @else{
+                                        font-family: 'Cairo';
+                                    }
+                                    color: $main-color;
+                                &::placeholder {
+                                    color: #4c4c51bf;
+                                    opacity: 1; /* Firefox */
+                                    font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                                    font-weight: bold;
+                                        @if $start == 'left'{
+                                            font-family: 'AvertaRegular';
+                                        } @else{
+                                            font-family: 'Cairo';
+                                        }
+                                  }
+                                  
+                                  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                                    color: #4c4c51bf;
+                                    opacity: 1; /* Firefox */
+                                    font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                                    font-weight: bold;
+                                        @if $start == 'left'{
+                                            font-family: 'AvertaRegular';
+                                        } @else{
+                                            font-family: 'Cairo';
+                                        }
+                                    }
+                                  
+                                  &::-ms-input-placeholder { /* Microsoft Edge */
+                                    color: #4c4c51bf;
+                                    opacity: 1; /* Firefox */
+                                    font-size: calc(12px + (12 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                                    font-weight: bold;
+                                        @if $start == 'left'{
+                                            font-family: 'AvertaRegular';
+                                        } @else{
+                                            font-family: 'Cairo';
+                                        }
+                                    }
+                                ~ .focus-border
+                                {
+                                    position: absolute; 
+                                    bottom: -1px; 
+                                    left: 50%;  
+                                    width: 0; 
+                                    height: 2px; 
+                                    background-color: #3399FF; 
+                                    transition: 0.4s;
+                                    display: none;
+                                }
+                            }
+                            .generic--section__form:focus ~ .focus-border{
+                                width: 100%; 
+                                transition: 0.4s; 
+                                left: 0;
+                            }
+                            }
+                          
+                        }
+                    .upload-image{
+                        display: none;
+                    }
+                    .upload-image__label{
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        align-items: center;
+                        span{
+                            font-weight: bold;
+                            font-size: calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                            color: $main-color;
+                            text-transform: capitalize;
+                                @if $start == 'left'{
+                                    font-family: 'AvertaRegular';
+                                } @else{
+                                    font-family: 'Cairo';
+                                }
+                        }
+                    }
+                    .upload-image__label__icon{
+                        width: 120px;
+                        height: 120px;
+                        background-color: #f9f9fc;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-image: url('../assets//svg/file.svg');
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        border-radius: 2px;
+                        -webkit-border-radius: 2px;
+                        -moz-border-radius: 2px;
+                        -ms-border-radius: 2px;
+                        -o-border-radius: 2px;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                        p{
+                            font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                            font-weight: bold;
+                            margin-bottom: 0;
+                            color: $main-color;
+                                @if $start == 'left'{
+                                    font-family: 'AvertaRegular';
+                                } @else{
+                                    font-family: 'Cairo';
+                                }
+                        }
+                    }
+            }
+        }
+    }
+    .accordion{
+        .card{
+            margin-bottom: 10px;
+            border: 1px solid rgba(0,0,0,.125);
+        }
+        .card-body{
+            // padding: 0;
+        }
+        .card-header{
+            background: unset;
+            padding-#{$start}: 10px;
+            margin-bottom: 0;
+            border-bottom:  none;
+            button{
+                padding: 0;
+                width: 100%;
+                text-align: $start;
+                font-size: calc(10px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+                font-weight: bold;
+                margin-bottom: 0;
+                color: $main-color;
+                display: flex;
+                align-items: center;
+                justify-content: space-between; 
+                    @if $start == 'left'{
+                        font-family: 'AvertaRegular';
+                    } @else{
+                        font-family: 'Cairo';
+                    }
+                    &:hover{
+                        text-decoration: none;
+                    }
+                    &:focus{
+                        box-shadow:none;
+                        text-decoration: none;
+                    }
+                    .controls{
+                        img{
+                            margin-#{$end}: 10px;
+                        }
+                    }
+            }
+        }
+        .collapse {
+            &.show{
+                border-top:none;
+            }
+        }
+    }
+    .css-yk16xz-control , .select__placeholder, .select__menu{
+        padding-#{$end}: 12px;
+        border-color: rgba(0,0,0,.125);
+        text-align: $start;
+        font-size: calc(14px + (14 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+        font-weight: bold;
+        color: $main-color;
+            @if $start == 'left'{
+                font-family: 'AvertaRegular';
+            } @else{
+                font-family: 'Cairo';
+            }
+    }
+    .select__menu{
+        font-size: calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
+        padding-right: 0;
+    }
+    .css-tlfecz-indicatorContainer{
+        color: $main-color;
+    }
+    .css-1pahdxg-control{
+        border-color: rgba(0,0,0,.125) ;
+        box-shadow: none;
+        border-radius: none;
+        -webkit-border-radius: none;
+        -moz-border-radius: none;
+        -ms-border-radius: none;
+        -o-border-radius: none;
+
+    }
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .select__placeholder{
+        @if $start == 'right'{
+          padding: 0;
+        } 
+    }
+}
+
 .Home {
     .Home__sidebar{
         position: relative;
@@ -539,6 +934,11 @@
                 margin-left: 0;
                 margin-right: 0;
             }
+            .select__placeholder{
+                @if $start == 'right'{
+                  padding: 0;
+                } 
+            }
         }
        
         // TODO
@@ -762,7 +1162,14 @@
 }
 .select__indicators{
     position: absolute;
-    right: 0;
+    
+    @if $start == 'left'{
+        right: 0; 
+        left: unset;   
+    } @else{
+        left: 0;
+        right: unset;
+    }
 }
 .css-1rhbuit-multiValue{
     border-radius: 5px !important;
@@ -785,7 +1192,7 @@
 }
 .css-b8ldur-Input,
 .css-1g6gooi{
-    opacity: 0 !important;
+    // opacity: 0 !important;
 }
 @media (min-width: 769px) and (max-width: 1024px) {
     .Home {

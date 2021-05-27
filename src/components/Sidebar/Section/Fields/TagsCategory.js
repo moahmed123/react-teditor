@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { SaveSCFLD, SeaCate } from '../../../../actions';
 import { connect } from 'react-redux';
 import Select from 'react-select';
+import localization from '../../../../localization/localization';
 
 class TagsCategory extends Component {
     constructor(props) {
@@ -187,8 +188,9 @@ class TagsCategory extends Component {
                     value={selectedOption}
                     options={optionsCategories}
                     className="basic-multi-select"
-                    classNamePrefix="select"
+                    classNamePrefix="select"                    
                     onChange={this.handleChange}
+                    placeholder = {localization.Select}
                     inputValue={inputValue}                    
                     onInputChange={this.handleInputValueChange}
                 />

@@ -30,7 +30,8 @@ const translationStrings = new LocalizedStrings({
         save:"save",
         mainLayout:"main Layout",
         notChanged:"Please Change Any Fields Value",
-        OldEditor: 'Switch to old editor'
+        OldEditor: 'Switch to old editor',
+        Select: 'select'
     },
     ar: {
         Browse: "تصفح",
@@ -55,13 +56,15 @@ const translationStrings = new LocalizedStrings({
         PublishMessage: "نشر البيانات بنجاح",
         SectionNotFound : "لم يتم العثور على قسم",
         ConfirmMsgForDeleteSection : 'هل أنت متأكد أنك تريد حذف هذا القسم؟',
+        Delete_modal: 'حذف',
         TitleDeleteSection:"حذف القسم",
         internalPages: "الصفحات الداخلية",
         Exiteditor: "الخروج من المحرر",
         save:"حفظ",
         mainLayout:"نموذج الرئيسي",
         notChanged:"الرجاء تغيير أي قيمة في الحقول",
-        OldEditor: ' العودة الى المحرر القديم'
+        OldEditor: ' العودة الى المحرر القديم',
+        Select: 'اختار'
     }
 });
 export default translationStrings;
