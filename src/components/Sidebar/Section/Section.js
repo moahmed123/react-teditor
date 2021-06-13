@@ -25,6 +25,7 @@ import LinkTag from './Fields/Link/Link';
 import ImageTag from './Fields/Image/ImageCom';
 import TypeTextarea from './Fields/TypeTextarea';
 import TagsBrand from './Fields/TagsBrand';
+import TagColorPicker from './Fields/TagColorPicker';
 // Main Collection 
 import MainCollection from './Collection/MainCollection';
 //action Btn Included {save, Cancel}
@@ -84,7 +85,7 @@ class Section extends Component {
                 else if (Fields.Type == "tags-product") {
                     return <TagsProduct key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldTagsPro={Fields} />
                 }// View For Type Link
-                else if (Fields.Type == "link") {
+                else if (Fields.Type == "link" || Fields.Type == "Link") {
                     return <LinkTag key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldLink={Fields} />
                 }// View For Type Image
                 else if (Fields.Type == "image") {
@@ -93,6 +94,10 @@ class Section extends Component {
                 // View For Type Brand
                 else if (Fields.Type == "tags-brand") {
                     return <TagsBrand key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldBrand={Fields} />
+                }
+                 // View For Type colorpicker
+                 else if(Fields.Type == "colorpicker"){                        
+                    return <TagColorPicker key={key} ccodelang={this.state.codeLang ? this.state.codeLang : langActive} FieldColorPicker = {Fields}/>
                 }
             })
         }
@@ -165,20 +170,26 @@ class Section extends Component {
                         <SaveBtn />
                     </div>
                 </div>
-                <div className="section--page__flags">
+                <div className = {`section--page__flags ${this.props.getlanguages ? this.props.getlanguages.data.Languages.length > 3 ? ' multi_lang': '' : null }`}>
                     {
-                        (this.props.getlanguages) ?
+                        
+                        (this.props.getlanguages) ?                        
                             this.props.getlanguages.data.Languages.map((langs, key) => {
                                 return (
                                     <div
-                                        className={`page__flags__country ${langs.code == ActiveLanguage && this.state.codeLangST ? 'active' : ''}${langs.code == this.state.codeLang ? 'active' : ''}`}
+                                        className = {`page__flags__country ${langs.code == ActiveLanguage && this.state.codeLangST ? 'active' : ''}${langs.code == this.state.codeLang ? 'active' : ''} `}
                                         key={key}
                                         onClick={(e) => this.setState({ codeLangST: false, codeLang: langs.code })}>
 
-                                        {langs.code == 'en' ?
-                                            <img className="en-flag" src={enFlag} width={20} />
-                                            :
-                                            <img className="ar-flag" src={arFlag} width={20} />}
+                                        {   
+                                            langs.code == 'en' ?
+                                                <img className="en-flag" src={enFlag} width={20} />
+                                                :
+                                                    langs.code == 'ar'?
+                                                        <img className="ar-flag" src={arFlag} width={20} />
+                                                    : 
+                                                        <img className="ar-flag" src={`/admin/view/image/flags/${langs.code}.png`} width={20} />
+                                        }
                                         {langs.name}
                                     </div>
                                 )

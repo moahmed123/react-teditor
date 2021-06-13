@@ -38,6 +38,9 @@ html, body {
       justify-content: center;
       align-items: center;
     }
+    .modal-header{
+        flex-direction: row-reverse;
+    }
   }
 .generic-alert{
   .modal-body{

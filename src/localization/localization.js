@@ -34,7 +34,7 @@ const translationStrings = new LocalizedStrings({
         Select: 'select'
     },
     ar: {
-        Browse: "تصفح",
+        Browse: "تحميل",
         Clear: "مسح",
         HomePage: 'الصفحة الرئيسية',
         AddNewSection: 'إضافة قسم جديد',

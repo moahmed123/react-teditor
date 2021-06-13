@@ -12,12 +12,14 @@ class TagsBrand extends Component {
             tagsidFieldEn : '',
             tagsidFieldAr : '',
             tagsidFieldFr : '',
+            SelectHeight  : ''
         };
     }
 
     componentDidMount() {
         //Add Default Value For Selection
         this._addDefaultVal();
+        this.props.dispatch(SEARBRAND.searchBrands());
 
     }
     _addDefaultVal = () => {
@@ -30,7 +32,11 @@ class TagsBrand extends Component {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
                     })
-                    this.setState({ selectedOption: tagsxcd })
+                    this.setState({ 
+                        selectedOption: tagsxcd,
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 3 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null 
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                    })
                 }
             })
         }
@@ -43,20 +49,28 @@ class TagsBrand extends Component {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
                     })
-                    this.setState({ selectedOption: tagsxcd })
+                    this.setState({ 
+                        selectedOption: tagsxcd,
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 3 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null 
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                    })
                 }
             })
         }
         if (this.props.codelang == 'fr') {
             let tagsxcd = [];
             this.props.FieldBrand.FieldVals.map((dataTagCat, key) => {
-                if (dataTagCat.Lang == 'ar') {
+                if (dataTagCat.Lang == 'fr') {
                     this.setState({tagsidFieldFr:dataTagCat.id }); // To Save Id For Field Fr
                     dataTagCat['tags-brand'].map((VCdataTags, key) => {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
                     })
-                    this.setState({ selectedOption: tagsxcd })
+                    this.setState({ 
+                        selectedOption: tagsxcd,
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 3 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null 
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                    })
                 }
             })
         }
@@ -75,6 +89,23 @@ class TagsBrand extends Component {
             idFieldTagsbrand = this.state.tagsidFieldFr;            
         }
         console.log(`Option selected:`, selectedOption , idFieldTagsbrand);
+        // Set Height For Select Option Categories         
+        // let height = document.querySelector('.select__value-container').offsetHeight;
+        let height;      
+        if(selectedOption){
+            if(selectedOption.length > 0 && selectedOption.length < 2){
+                height =  75 + 'px';
+            } else if(selectedOption.length > 1){
+                height = (selectedOption.length * 35) + 33 + 'px';
+            }else{
+                height = 'auto';
+            }
+        }       
+        this.setState({
+            SelectHeight: height
+        })        
+        // End Set Height 
+
         let jsonFormatbrand; 
         let textValbrand; 
         if(selectedOption){
@@ -151,7 +182,7 @@ class TagsBrand extends Component {
         }
 
         return (
-            <div className="setting--sidebar__color mb-3">
+            <div className="setting--sidebar__color mb-3" style={{height: this.state.SelectHeight}}>
                 {
                     this.props.FieldBrand.Name != '' ? 
                         <h4 className="setting--sidebar__header"> {this.props.FieldBrand.Name} </h4>             

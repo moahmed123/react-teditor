@@ -25,6 +25,8 @@ class TagsCategory extends Component {
         let defaultCategories = '';
         this.props.dispatch(SeaCate.searchCategories(defaultCategories));
 
+        // console.log("inputValue ==> ",this.state.inputValue)
+
     }
     _addDefaultVal = () => {
         if (this.props.codelang == 'en') {
@@ -35,8 +37,14 @@ class TagsCategory extends Component {
                     dataTagCat['tags-category'].map((VCdataTags, key) => {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
-                    })
-                    this.setState({ selectedOption: tagsxcd })
+                    })             
+                    console.log("dddc ", tagsxcd.length )      
+                    this.setState({ 
+                        selectedOption: tagsxcd,
+                        //collect Default Height 
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 2 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                    });
                 }
             })
         }
@@ -49,20 +57,29 @@ class TagsCategory extends Component {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
                     })
-                    this.setState({ selectedOption: tagsxcd })
+                    this.setState({ 
+                        selectedOption: tagsxcd,
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45  + 15: null
+                        //tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 2 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null
+                    })
                 }
             })
         }
         if (this.props.codelang == 'fr') {
             let tagsxcd = [];
             this.props.FieldTagsData.FieldVals.map((dataTagCat, key) => {
-                if (dataTagCat.Lang == 'ar') {
+                if (dataTagCat.Lang == 'fr') {
                     this.setState({tagsidFieldFr:dataTagCat.id }); // To Save Id For Field Fr
                     dataTagCat['tags-category'].map((VCdataTags, key) => {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
                     })
-                    this.setState({ selectedOption: tagsxcd })
+                    this.setState({ 
+                        selectedOption: tagsxcd,
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 2 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null})
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null})
+
+                        //tagsxcd.length == 1 ? tagsxcd.length * 60 : agsxcd.length > 1 ? tagsxcd.length * 45 : null})
                 }
             })
         }
@@ -78,6 +95,8 @@ class TagsCategory extends Component {
         }
         else if (this.props.codelang == 'fr'){
             idFieldTagsCat = this.state.tagsidFieldFr;            
+        }else{
+            idFieldTagsCat = this.state.tagsidFieldEn;
         }
         console.log(`Option selected change:`, selectedOption , idFieldTagsCat);
 
@@ -165,7 +184,7 @@ class TagsCategory extends Component {
     render() {
         const { selectedOption, inputValue } = this.state;
         let optionsCategories = [];
-        if (this.props.cateData) {
+        if (this.props.cateData) {            
             let sectionOptions = [];
             this.props.cateData.map((data, key) => {
                 let jsonFormat = { value: data.value, label: data.display }

@@ -158,8 +158,17 @@
             left: 0;
             position: absolute;
             z-index: -1;
+        }        
+        &.multi_lang{
+            display: block;
+            .page__flags__country{
+                text-align: center;
+                width: 25%;
+                display: inline-block
+            } 
         }
     }
+   
     .setting--sidebar__color{
         margin-bottom: 20px !important;
         .sidebar__color__main{
@@ -615,7 +624,15 @@
                     position: absolute;
                     z-index: -1;
                 }
-            }
+                &.multi_lang{
+                    display: block;
+                    .page__flags__country{
+                        text-align: center;
+                        width: 25%;
+                        display: inline-block
+                    } 
+                }
+            }            
             .setting--sidebar__color{
                 margin-bottom: 20px !important;
                 .sidebar__color__main{

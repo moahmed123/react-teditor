@@ -15,7 +15,8 @@ import TagsProduct from '../Fields/TagsProduct';
 import LinkTag from '../Fields/Link/Link';
 import ImageTag from '../Fields/Image/ImageCom';
 import TypeTextarea from '../Fields/TypeTextarea';
-import TagsBrand from '../Fields/TagsBrand'
+import TagsBrand from '../Fields/TagsBrand';
+import TagColorPicker from '../Fields/TagColorPicker';
 
 class SetionCollection extends Component {
     constructor(props) {
@@ -55,7 +56,7 @@ class SetionCollection extends Component {
                     else if(Fields.Type == "tags-product"){
                         return <TagsProduct key={key} codelang = {lang} FieldTagsPro = {Fields}/>
                     }// View For Type Link
-                    else if(Fields.Type == "link"){
+                    else if(Fields.Type == "link" || Fields.Type == "Link"){
                         return <LinkTag key={key} codelang = {lang} FieldLink = {Fields}/>
                     }// View For Type Image
                     else if(Fields.Type == "image"){
@@ -64,6 +65,10 @@ class SetionCollection extends Component {
                     // View For Type Brand
                     else if(Fields.Type == "tags-brand"){
                         return <TagsBrand key={key} codelang = {lang} FieldBrand = {Fields}/>
+                    }
+                     // View For Type colorpicker
+                     else if(Fields.Type == "colorpicker"){                        
+                        return <TagColorPicker key={key} codelang = {lang} FieldColorPicker = {Fields}/>
                     }
                 })
              }  

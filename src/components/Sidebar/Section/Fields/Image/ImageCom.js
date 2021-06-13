@@ -61,8 +61,10 @@ class ImageCom extends Component {
                         *  -- Close Modal 
                         */
                         $('body').removeClass('modal-open');
-                        $('#modal-image').removeClass('in').hide().remove();;
+                        $('#modal-image').removeClass('in').hide().remove();
                         $('.modal-backdrop').remove();
+                        // Save data 
+                        $('.setting--sidebar__controls.save .check').trigger('click');
                     }, 200);
 
 
@@ -277,7 +279,7 @@ class ImageCom extends Component {
             // console.log(document.getElementById(`Image_${e.target.value}`));
             let imageClearValId = e.target.parentElement.getAttribute("imageclearvalid");
             // Change Src Image 
-            let srcImageClear = document.getElementById(imageClearValId);            
+            let srcImageClear = document.getElementById(imageClearValId);                      
             let srcImageCurr = srcImageClear.src,            
                 storeCode = srcImageCurr.split('/')[5];
                 

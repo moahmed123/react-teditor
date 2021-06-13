@@ -35,7 +35,12 @@ class TagsProduct extends Component {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
                     })
-                    this.setState({ selectedOption: tagsxcd })
+                    this.setState({
+                        selectedOption: tagsxcd,
+                        // collect Default Height
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 3 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null
+                    })
                 }
             })
         }
@@ -48,20 +53,28 @@ class TagsProduct extends Component {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
                     })
-                    this.setState({ selectedOption: tagsxcd })
+                    this.setState({ 
+                        selectedOption: tagsxcd,
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 3 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null
+                    })
                 }
             })
         }
         if (this.props.codelang == 'fr') {
             let tagsxcd = [];
             this.props.FieldTagsPro.FieldVals.map((dataTagPro, key) => {
-                if (dataTagPro.Lang == 'ar') {
+                if (dataTagPro.Lang == 'fr') {
                     this.setState({tagsidFieldFr:dataTagPro.id }); // To Save Id For Field Fr
                     dataTagPro["tags-product"].map((VCdataTags, key) => {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
                     })
-                    this.setState({ selectedOption: tagsxcd })
+                    this.setState({ 
+                        selectedOption: tagsxcd ,
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 3 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null 
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                    })
                 }
             })
         }

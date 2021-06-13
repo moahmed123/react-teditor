@@ -23,7 +23,11 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
     console.log("savedFieldVals", savedFieldVals)
     let objCr;
     if (savedFieldVals.length == 1) {
-        objCr = '"' + savedFieldVals[0].key + '": "' + savedFieldVals[0].value.replace(/"/g, "'") + '"';
+        if (savedFieldVals[0].value.indexOf('"') >= 0) {
+            objCr = '"' + savedFieldVals[0].key + '": "' + savedFieldVals[0].value.replace(/"/g, "'") + '"';
+        }else{
+            objCr = '"' + savedFieldVals[0].key + '": "' + savedFieldVals[0].value + '"';
+        }        
     }
     else {
         // To Get Format To Save Values 
