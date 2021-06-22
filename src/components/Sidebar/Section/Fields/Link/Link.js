@@ -133,7 +133,47 @@ class Link extends Component {
         // console.log('Blur Input ' + e.target.value , this.props.defaultInputVal)
     }
     _handleChange = (e) => {         
-        this.props.dispatch(SeaLink.LinkInputVal("not_click"));                
+        this.props.dispatch(SeaLink.LinkInputVal("not_click"));        
+
+        // Start Resolved Add Text By Input Link 
+        let ValidURL = this._validURL(e.target.value);        
+        // Valid Value Is URL Or Not 
+        if(ValidURL){
+            // This Value is URL 
+            console.log(e.target.value)
+            console.log(e.target.id.replace('Link_', ''))
+            
+            //TODO: One Of Function To Not Duplicated Code
+            // To User On Save Data 
+            let keyId = e.target.id.replace('Link_', ''),
+            valueForInput = e.target.value;
+            let TXTLinkSaveJS = {"key": keyId,"value": valueForInput}; 
+                        
+            if(this.props.newFields){                        
+                let x = this.props.newFields; // first input 
+                let s = -1;
+                x.map((d, key)=>{
+                    if(d.key == TXTLinkSaveJS.key){
+                        d.value =  TXTLinkSaveJS.value;                    
+                        this.props.dispatch(SaveSCFLD.newValFields(x))
+                        // break;
+                    }else{
+                        s = 0;
+                    }
+                })
+                if(s >= 0 ){
+                    x.push(TXTLinkSaveJS);
+                    this.props.dispatch(SaveSCFLD.newValFields(x)); 
+                }         
+            }else{
+                let x2 = []
+                let lg = x2.push(TXTLinkSaveJS);
+
+                this.props.dispatch(SaveSCFLD.newValFields(x2));            
+            }
+        }
+        // End Resolved Add Text By Input Link 
+
         if (e.target.value) {            
             this.setState({ showData: true })
             console.log(e.target.value);            
@@ -152,10 +192,21 @@ class Link extends Component {
                 this.setState({ showData: false })
                 console.log('Click and Doen')
             }
-        }
-
-
+        }        
     }
+
+    // Fun To Valid URL : Value Is Link Or Not 
+    // To accept this url: https://example.com/index.php?route=information/contact
+    _validURL(str) {
+        var pattern = new RegExp('^(http(s)?:\\/\\/)?'//+ // protocol
+        //   '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        //   '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        //   '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        //   '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        //   '(\\#[-a-z\\d_]*)?$','i'
+        ); // fragment locator
+        return !!pattern.test(str);
+      }
     
     render() {                           
         return (
@@ -175,7 +226,7 @@ class Link extends Component {
                     {
                         this.state.showData?                            
                             <div className='box-data'>                                
-                                <LinkVal LinkValData={this.state.LinkVal} ObjectFieldId={this.state.LinkVal.id} />
+                                <LinkVal LinkValData={this.state.LinkVal} ObjectFieldId={this.state.LinkVal.id}/>
                             </div>                            
                         :
                             null

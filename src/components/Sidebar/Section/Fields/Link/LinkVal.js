@@ -10,7 +10,6 @@ class LinkVal extends Component {
             // search_data: false
         }        
     }
-  
     _listOfLinksData = () => {
         let Links_data = this.props.LinkValData.Links;
         if (Links_data) {
