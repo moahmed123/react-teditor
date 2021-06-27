@@ -271,8 +271,9 @@ class ImageCom extends Component {
         // $.startImageManager(objectFieldtImageId, objectFieldthumbId);
     }
     clear_image(e) {
+       // console.log(e.target.parentElement.value)
         //Create Json Format To Save It.  
-        let jsonFormatImg = { "key": e.target.value, "value": '' };
+        let jsonFormatImg = { "key": e.target.parentElement.value, "value": '' };
         // Save Clear Data.          
         this._sendSavedData(jsonFormatImg);
         setTimeout(() => {

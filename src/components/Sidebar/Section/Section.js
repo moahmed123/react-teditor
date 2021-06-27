@@ -96,7 +96,12 @@ class Section extends Component {
                     return <TagsBrand key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldBrand={Fields} />
                 }
                  // View For Type colorpicker
-                 else if(Fields.Type == "colorpicker"){                        
+                 else if(Fields.Type == "colorpicker"){ 
+                    console.log(sectionFields.length - 1 , "key: ", key)
+                    let checkColection = this.props.sectionFieldsDT.data.section.IsCollection;
+                    if (sectionFields.length - 1 == key && checkColection != 1 ){
+                        return <TagColorPicker key={key} ccodelang={this.state.codeLang ? this.state.codeLang : langActive} FieldColorPicker = {Fields} LastField= {true}/>    
+                    }
                     return <TagColorPicker key={key} ccodelang={this.state.codeLang ? this.state.codeLang : langActive} FieldColorPicker = {Fields}/>
                 }
             })

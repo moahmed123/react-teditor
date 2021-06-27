@@ -171,10 +171,11 @@ class TagColorPicker extends Component {
             this.props.dispatch(SaveSCFLD.newValFields(x2));            
         }
     }
-    render() {        
-        return (
+    render() {           
+        return (            
             <div className="setting--sidebar__color">
-                <div className="sidebar__color__main set--padding">
+                
+                <div className="sidebar__color__main set--padding ">
                     <div className="color__main__content">                           
                         <div className="label generic--section">
                         {
@@ -188,6 +189,7 @@ class TagColorPicker extends Component {
                         </div>
                     </div>
                 </div>
+                {this.props.LastField ? <div className="height_last_color"></div> : null }
             </div> 
         )        
     }

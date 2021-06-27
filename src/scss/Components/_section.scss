@@ -497,6 +497,7 @@
 .Home {
     .Home__sidebar{
         position: relative;
+       
         .Parent_Cart{
             position: relative;
             .card-body {
@@ -959,7 +960,9 @@
         }
        
         // TODO
-      
+        .height_last_color{
+            height: 400px;
+        }
         .hidden_Element{
             display: none;
         }
