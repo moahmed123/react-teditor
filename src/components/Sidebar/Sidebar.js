@@ -87,14 +87,18 @@ class Sidebar extends Component {
                             }                        
                             {                         
                                 data.CodeName != "header" && data.CodeName != "footer"? 
-                                    //console.log('data.CodeName', data.CodeName.toUpperCase())
-                                    data.CodeName.toUpperCase() == "BOTTOMCONTENT" ?
-                                    <MainContentDT MainContenData = {data} SectionItems = {itemsForSection} key = { key + "00"} />
+                                    // console.log('data.CodeName', data.CodeName.toUpperCase())                                    
+                                    data.CodeName.toUpperCase() == "SIDEBAR" ?
+                                        <MainContentDT MainContenData = {data} SectionItems = {itemsForSection} key = { key + "00Sid"} />
                                     :
-                                    <MainContentDT MainContenData = {data} SectionItems = {itemsForSection} key = { key + "01"} />                                
+                                    data.CodeName.toUpperCase() == "BOTTOMCONTENT" ?
+                                        <MainContentDT MainContenData = {data} SectionItems = {itemsForSection} key = { key + "00"} />
+                                    :
+                                        <MainContentDT MainContenData = {data} SectionItems = {itemsForSection} key = { key + "01"} />                                
                                 :
-                                null                         
+                                    null                         
                             }     
+                            
                             { 
                                 (key == regions_length )?                                
                                     <div className="sidebar__header__section sidebar__header__section--add" onClick = {()=>{
