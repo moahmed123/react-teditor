@@ -67,50 +67,55 @@ class Sidebar extends Component {
     
     _getData(){
         if(this.props.PageResions){
-            console.log(this.props.PageResions)
+            console.log("-----> ",this.props.PageResions)
             let itemsForSection = 0,
                 regions_length = this.props.PageResions.Regions.length - 2; // Get index Before Footer 
             return this.props.PageResions.Regions.map((data, key)=>{  
+                
                 // send Length Data Of Section:
                 if(data.CodeName != "header" && data.CodeName != "footer"){
                     itemsForSection = data.UserSections.length;
                     console.log(itemsForSection)
-                }          
-                return(                    
-                    <div key={key}>                        
-                        { 
-                            data.CodeName == "header"? 
-                                <HeaderDT headerData = {data}/>
-                            :
-                             null 
-                        }                        
-                        { 
-                            data.CodeName != "header" && data.CodeName != "footer"?                             
-                                <MainContentDT MainContenData = {data} SectionItems = {itemsForSection}/>
-                            :
-                             null 
-                        }     
-                        { 
-                            (key == regions_length )?                                
-                                <div className="sidebar__header__section sidebar__header__section--add" onClick = {()=>{
-                                    this.props.dispatch(ROUTECOM.routeComponent('sectionsAvailable'))
-                                }}>
-                                    {/* <Link className="header__section--add" to = {`${PathsApp.Paths}region/${this.props.PageResions.id}`} > */}
-                                        <span className= 'header__section--add'> <FaPlus /> {localization.AddNewSection}</span>
-                                    {/* </Link>                                 */}
-                                </div>
-                            : 
-                                null
-                        }                                                                 
-                        {
-                            data.CodeName == "footer"?                                
-                                <FooterDT FooterData = {data}/>
-                            :
+                }                  
+                    return(                             
+                        <div key={key}>                        
+                            { 
+                                data.CodeName == "header"? 
+                                    <HeaderDT headerData = {data}/>
+                                :
                                 null 
-                        }
-                        
-                    </div>
-                )            
+                            }                        
+                            {                         
+                                data.CodeName != "header" && data.CodeName != "footer"? 
+                                    //console.log('data.CodeName', data.CodeName.toUpperCase())
+                                    data.CodeName.toUpperCase() == "BOTTOMCONTENT" ?
+                                    <MainContentDT MainContenData = {data} SectionItems = {itemsForSection} key = { key + "00"} />
+                                    :
+                                    <MainContentDT MainContenData = {data} SectionItems = {itemsForSection} key = { key + "01"} />                                
+                                :
+                                null                         
+                            }     
+                            { 
+                                (key == regions_length )?                                
+                                    <div className="sidebar__header__section sidebar__header__section--add" onClick = {()=>{
+                                        this.props.dispatch(ROUTECOM.routeComponent('sectionsAvailable'))
+                                    }}>
+                                        {/* <Link className="header__section--add" to = {`${PathsApp.Paths}region/${this.props.PageResions.id}`} > */}
+                                            <span className= 'header__section--add'> <FaPlus /> {localization.AddNewSection}</span>
+                                        {/* </Link>                                 */}
+                                    </div>
+                                : 
+                                    null
+                            }                                                                 
+                            {
+                                data.CodeName == "footer"?                                
+                                    <FooterDT FooterData = {data}/>
+                                :
+                                    null 
+                            }                            
+                        </div>                    
+                    )                            
+                
             })
         }else{
             return (

@@ -173,8 +173,7 @@ class TagColorPicker extends Component {
     }
     render() {           
         return (            
-            <div className="setting--sidebar__color">
-                
+            <div className="setting--sidebar__color">                
                 <div className="sidebar__color__main set--padding ">
                     <div className="color__main__content">                           
                         <div className="label generic--section">
