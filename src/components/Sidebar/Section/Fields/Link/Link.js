@@ -116,8 +116,8 @@ class Link extends Component {
             }
         } else {
             if (this.props.FieldLink.FieldVals) {
-                return this.props.FieldLink.FieldVals.map((LinkData, key) => {
-                    if (LinkData.Lang == 'en') {
+                return this.props.FieldLink.FieldVals.map((LinkData, key) => {                    
+                    if (LinkData.Lang == this.props.codelang) {
                         this.setState({ LinkVal: LinkData, defaultValue: LinkData.Value })
                     }
                 })

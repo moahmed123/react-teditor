@@ -12,6 +12,7 @@ class TagsProduct extends Component {
             tagsidFieldEn : '',
             tagsidFieldAr : '',
             tagsidFieldFr : '',
+            tagsidFieldTr: '',
             SelectHeight  : ''
         };
     }
@@ -26,6 +27,20 @@ class TagsProduct extends Component {
 
     }
     _addDefaultVal = () => {
+        /***
+         * TODO: Will Revoke Lang To Not Duplicated coding. 
+         */
+         this.props.FieldTagsPro.FieldVals.map((dataTagPro, key) => {
+            if(dataTagPro.Lang == 'en'){
+                this.setState({tagsidFieldEn: dataTagPro.id});
+            }else if(dataTagPro.Lang == 'ar') {
+                this.setState({tagsidFieldAr: dataTagPro.id});
+            }else if(dataTagPro.Lang == 'fr') {
+                this.setState({tagsidFieldFr: dataTagPro.id});
+            }else if(dataTagPro.Lang == 'tr') {
+                this.setState({tagsidFieldTr: dataTagPro.id});
+            }
+        }) 
         if (this.props.codelang == 'en') {
             let tagsxcd = [];
             this.props.FieldTagsPro.FieldVals.map((dataTagPro, key) => {
@@ -78,6 +93,25 @@ class TagsProduct extends Component {
                 }
             })
         }
+        if (this.props.codelang == 'tr') {
+            let tagsxcd = [];
+            this.props.FieldTagsPro.FieldVals.map((dataTagPro, key) => {
+                if (dataTagPro.Lang == 'tr') {
+                    this.setState({tagsidFieldTr:dataTagPro.id }); // To Save Id For Field En
+                    dataTagPro["tags-product"].map((VCdataTags, key) => {
+                        let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
+                        tagsxcd.push(jsonFormat);
+                    })
+                    this.setState({
+                        selectedOption: tagsxcd,
+                        // collect Default Height
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 3 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null
+                    })
+                }
+            })
+        }
+
     }
     handleChange = selectedOption => {
         this.setState({ selectedOption });
@@ -90,6 +124,9 @@ class TagsProduct extends Component {
         }
         else if (this.props.codelang == 'fr'){
             idFieldTagsCat = this.state.tagsidFieldFr;            
+        }
+        else if (this.props.codelang == 'tr'){
+            idFieldTagsCat = this.state.tagsidFieldTr;            
         }
         console.log(`Option selected:`, selectedOption , idFieldTagsCat);
         // Set Height For Select Option Categories         

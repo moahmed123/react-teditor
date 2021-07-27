@@ -36,8 +36,8 @@ class TypeCheckbox extends Component {
                 }
             })
         } else {
-            return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-                if (langInputVal.Lang == 'en') {
+            return this.props.FieldData.FieldVals.map((langInputVal, key) => {                
+                if(langInputVal.Lang == this.props.codelang){
                     if(langInputVal.Value == 0 || langInputVal.Value == false){
                         return   <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>;
                     }else{

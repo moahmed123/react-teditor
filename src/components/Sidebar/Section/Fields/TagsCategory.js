@@ -13,6 +13,7 @@ class TagsCategory extends Component {
             tagsidFieldEn : '',
             tagsidFieldAr : '',
             tagsidFieldFr : '',
+            tagsidFieldTr: '',
             SelectHeight: ''
         };
     }
@@ -29,6 +30,20 @@ class TagsCategory extends Component {
 
     }
     _addDefaultVal = () => {
+        /***
+         * TODO: Will Revoke Lang To Not Duplicated coding. 
+         */
+         this.props.FieldTagsData.FieldVals.map((dataTagCat, key) => {
+            if(dataTagCat.Lang == 'en'){
+                this.setState({tagsidFieldEn: dataTagCat.id});
+            }else if(dataTagCat.Lang == 'ar') {
+                this.setState({tagsidFieldAr: dataTagCat.id});
+            }else if(dataTagCat.Lang == 'fr') {
+                this.setState({tagsidFieldFr: dataTagCat.id});
+            }else if(dataTagCat.Lang == 'tr') {
+                this.setState({tagsidFieldTr: dataTagCat.id});
+            }
+        }) 
         if (this.props.codelang == 'en') {
             let tagsxcd = [];
             this.props.FieldTagsData.FieldVals.map((dataTagCat, key) => {
@@ -83,10 +98,32 @@ class TagsCategory extends Component {
                 }
             })
         }
+        if (this.props.codelang == 'tr') {
+            let tagsxcd = [];
+            this.props.FieldTagsData.FieldVals.map((dataTagCat, key) => {
+                if (dataTagCat.Lang == 'tr') {
+                    this.setState({tagsidFieldTr:dataTagCat.id }); // To Save Id For Field En
+                    dataTagCat['tags-category'].map((VCdataTags, key) => {
+                        let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
+                        tagsxcd.push(jsonFormat);
+                    })             
+                    console.log("dddc ", tagsxcd.length )      
+                    this.setState({ 
+                        selectedOption: tagsxcd,
+                        //collect Default Height 
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 2 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                    });
+                }
+            })
+        }
     }
     handleChange = selectedOption => {
         this.setState({ selectedOption });
         let idFieldTagsCat ; 
+        /***
+         * TODO: Will Revoke Lang To Not Duplicated coding. 
+         */
         if (this.props.codelang == 'en'){
             idFieldTagsCat = this.state.tagsidFieldEn;            
         }
@@ -94,7 +131,9 @@ class TagsCategory extends Component {
             idFieldTagsCat = this.state.tagsidFieldAr;            
         }
         else if (this.props.codelang == 'fr'){
-            idFieldTagsCat = this.state.tagsidFieldFr;            
+            idFieldTagsCat = this.state.tagsidFieldFr;  
+        }else if (this.props.codelang == 'tr'){
+                idFieldTagsCat = this.state.tagsidFieldTr;            
         }else{
             idFieldTagsCat = this.state.tagsidFieldEn;
         }

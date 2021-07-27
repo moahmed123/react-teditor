@@ -11,10 +11,7 @@ class TagColorPicker extends Component {
             displayColorPicker: false,
             background: null,
             color: null,
-            IdColorPicker: null
-            // fieldIdEn: null,
-            // fieldIdAr: null,
-            // fieldIdFr: null            
+            IdColorPicker: null                     
         };
     }
     handleClick = () => {
@@ -113,7 +110,8 @@ class TagColorPicker extends Component {
             })
         }else{
             return this.props.FieldColorPicker.FieldVals.map((langInputVal, key) => {
-                if(langInputVal.Lang == 'en'){
+                // if(langInputVal.Lang == 'en'){
+                if(langInputVal.Lang == this.props.codelang){
                     return (
                         <div className="color__main__content" key={key}>
                             <div>

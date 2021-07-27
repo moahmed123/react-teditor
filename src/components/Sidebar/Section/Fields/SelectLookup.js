@@ -12,13 +12,30 @@ class SelectLookup extends Component {
             idFieldEn : '',
             idFieldAr : '',
             idFieldFr : '',
-        }
+            idFieldTr : ''
+        }        
     }    
     componentDidMount(){
         this._setlangDefaultVal();        
-    }
+    }    
 
     _setlangDefaultVal = () => {    
+
+         /***
+         * TODO: Will Revoke Lang To Not Duplicated coding. 
+         */
+        this.props.FieldData.FieldVals.map((langInputVal, key) => {
+            if(langInputVal.Lang == 'en'){
+                this.setState({idFieldEn: langInputVal.id});
+            }else if(langInputVal.Lang == 'ar') {
+                this.setState({idFieldAr: langInputVal.id});
+            }else if(langInputVal.Lang == 'fr') {
+                this.setState({idFieldFr: langInputVal.id});
+            }else if(langInputVal.Lang == 'tr') {
+                this.setState({idFieldTr: langInputVal.id});
+            }
+        })       
+
         if(this.props.codelang == 'en'){
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'en'){                                       
@@ -49,6 +66,17 @@ class SelectLookup extends Component {
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'fr'){
                     this.setState({idFieldFr: langInputVal.id});                    
+                    let valSelected = langInputVal.Value;                                                
+                    return this.props.FieldData.LookUpVals.map((data, key)=>{
+                        if(valSelected == data.Value){
+                            return <span> {data.Name}</span>
+                        }
+                    })
+                }
+            })
+        }else if (this.props.codelang == 'tr'){
+            return this.props.FieldData.FieldVals.map((langInputVal, key) => {
+                if(langInputVal.Lang == 'tr'){                                        
                     let valSelected = langInputVal.Value;                                                
                     return this.props.FieldData.LookUpVals.map((data, key)=>{
                         if(valSelected == data.Value){
@@ -90,6 +118,9 @@ class SelectLookup extends Component {
                 idField = this.state.idFieldAr;
             } else if(this.props.codelang == 'fr'){
                 idField = this.state.idFieldFr;
+            } 
+            else if(this.props.codelang == 'tr'){
+                idField = this.state.idFieldTr;
             } 
         // endLang
         // To Change Selection Value 

@@ -12,6 +12,7 @@ class TagsBrand extends Component {
             tagsidFieldEn : '',
             tagsidFieldAr : '',
             tagsidFieldFr : '',
+            tagsidFieldTr:'',
             SelectHeight  : ''
         };
     }
@@ -23,6 +24,20 @@ class TagsBrand extends Component {
 
     }
     _addDefaultVal = () => {
+        /***
+         * TODO: Will Revoke Lang To Not Duplicated coding. 
+         */
+         this.props.FieldBrand.FieldVals.map((dataTag, key) => {
+            if(dataTag.Lang == 'en'){
+                this.setState({tagsidFieldEn: dataTag.id});
+            }else if(dataTag.Lang == 'ar') {
+                this.setState({tagsidFieldAr: dataTag.id});
+            }else if(dataTag.Lang == 'fr') {
+                this.setState({tagsidFieldFr: dataTag.id});
+            }else if(dataTag.Lang == 'tr') {
+                this.setState({tagsidFieldTr: dataTag.id});
+            }
+        }) 
         if (this.props.codelang == 'en') {
             let tagsxcd = [];
             this.props.FieldBrand.FieldVals.map((dataTagCat, key) => {
@@ -74,11 +89,31 @@ class TagsBrand extends Component {
                 }
             })
         }
+        if (this.props.codelang == 'tr') {
+            let tagsxcd = [];
+            this.props.FieldBrand.FieldVals.map((dataTagCat, key) => {
+                if (dataTagCat.Lang == 'tr') {
+                    this.setState({tagsidFieldTr:dataTagCat.id }); // To Save Id For Field Fr
+                    dataTagCat['tags-brand'].map((VCdataTags, key) => {
+                        let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
+                        tagsxcd.push(jsonFormat);
+                    })
+                    this.setState({ 
+                        selectedOption: tagsxcd,
+                        //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 3 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null 
+                        SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
+                    })
+                }
+            })
+        }
     }
     handleChange = selectedOption => {
         
         this.setState({ selectedOption });
         let idFieldTagsbrand ; 
+        /***
+         * TODO: Will Revoke Lang To Not Duplicated coding. 
+         */
         if (this.props.codelang == 'en'){
             idFieldTagsbrand = this.state.tagsidFieldEn;            
         }
@@ -87,6 +122,9 @@ class TagsBrand extends Component {
         }
         else if (this.props.codelang == 'fr'){
             idFieldTagsbrand = this.state.tagsidFieldFr;            
+        }
+        else if (this.props.codelang == 'tr'){
+            idFieldTagsbrand = this.state.tagsidFieldTr;            
         }
         console.log(`Option selected:`, selectedOption , idFieldTagsbrand);
         // Set Height For Select Option Categories         

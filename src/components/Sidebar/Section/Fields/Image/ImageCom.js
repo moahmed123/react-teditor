@@ -194,8 +194,8 @@ class ImageCom extends Component {
             }
         } else {
             if (Image_data) {
-                return Image_data.FieldVals.map((DI_mage, key) => {
-                    if (DI_mage.Lang == 'en') {
+                return Image_data.FieldVals.map((DI_mage, key) => {                    
+                    if(DI_mage.Lang == this.props.codelang){
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>

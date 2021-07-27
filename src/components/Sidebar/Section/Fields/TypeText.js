@@ -24,7 +24,7 @@ class TypeText extends Component {
             })
         }else{
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-                if(langInputVal.Lang == 'en'){
+                if(langInputVal.Lang == this.props.codelang){
                     return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
                 }
             })
