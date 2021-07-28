@@ -100,9 +100,10 @@ class Section extends Component {
                     console.log(sectionFields.length - 1 , "key: ", key)
                     let checkColection = this.props.sectionFieldsDT.data.section.IsCollection;
                     if (sectionFields.length - 1 == key && checkColection != 1 ){
-                        return <TagColorPicker key={key} ccodelang={this.state.codeLang ? this.state.codeLang : langActive} FieldColorPicker = {Fields} LastField= {true}/>    
+                        console.log()
+                        return <TagColorPicker key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldColorPicker = {Fields} LastField= {true}/>                        
                     }
-                    return <TagColorPicker key={key} ccodelang={this.state.codeLang ? this.state.codeLang : langActive} FieldColorPicker = {Fields}/>
+                    return <TagColorPicker key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldColorPicker = {Fields}/>
                 }
             })
         }

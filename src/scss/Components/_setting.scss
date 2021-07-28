@@ -67,6 +67,11 @@
                 .sidebar__color__main{
                     border: solid 1px #d5d5e0;
                     padding: 0;
+                    .generic--section{
+                        border: 1px solid #d0d0d0 !important;
+                        border-radius: 4px !important;
+                        padding: 6px 10px !important;
+                    }
                     .color__main__caption{ 
                         @extend %main-label;
                         font-size:calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
@@ -77,6 +82,12 @@
                         justify-content: space-between;
                         align-items: center;
                         padding: 0px;
+                        > div {
+                            display: inline-block;
+                            .main__content__circle {
+                                top: 8px;
+                            }
+                        }
                         .main__content__circle{
                             width: 20px;
                             height: 20px;
@@ -91,17 +102,19 @@
                             &:hover{
                                 cursor: pointer;
                             }   
-                        }
+                        }                       
                         .main__content__info{
                             @extend %main-label;
-                            width: 88%;
+                            // width: 88%;
+                            width: calc(100% - 50px);
+                            display: inline-block;
                             p{
                                 font-size:calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
                                 padding-bottom: 5px;
                                 border-bottom: solid 1px #d5d5e0;
                                 margin-bottom: 0;
                             }
-                        }
+                        }                       
                     }
                 } 
             }
@@ -142,7 +155,7 @@
                         }
                     }
                 }
-            }
+            }            
         }
         &.setting--page {
             .setting--sidebar__color  {
@@ -161,10 +174,10 @@
                         }
                         > div {
                             display: inline-block;
-                        .main__content__circle {
-                            top: 8px;
+                            .main__content__circle {
+                                top: 8px;
+                            }
                         }
-                    }
                     }
                 }
                 }

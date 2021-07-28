@@ -31,7 +31,7 @@ class TagColorPicker extends Component {
     _setlangVal = () => {
         const popover = {position: 'absolute',zIndex: '2'}
         const cover = {position: 'fixed',top: '0px',right: '0px',bottom: '0px',left: '0px'}
-
+        // console.log('lang of  code ', this.props.codelang)
         if(this.props.codelang == 'en'){                        
             return this.props.FieldColorPicker.FieldVals.map((langInputVal, key) => {                               
                 if(langInputVal.Lang == 'en'){                                        
