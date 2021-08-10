@@ -75,9 +75,8 @@ class Section extends Component {
                 else if (Fields.Type == "checkbox") {
                     return <TypeCheckbox key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldData={Fields} />
                     // View For Type sselect Lookup
-                } else if (Fields.Type == "sselect-lookup") {
+                } else if (Fields.Type == "sselect-lookup") {                    
                     return <SelectLookup key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldData={Fields} />
-
                 }// View For Type tags-category
                 else if (Fields.Type == "tags-category") {
                     return <TagsCategory key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldTagsData={Fields} />
