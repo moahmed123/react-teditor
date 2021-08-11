@@ -10,12 +10,22 @@ class Link extends Component {
         super(props);
         this.state = {
             LinkVal: [],
+            LinkValEn: [],
+            LinkValAr: [],
+            LinkValLang: [],
+
             inputValue: '',
             tagsidFieldEn: '',
             tagsidFieldAr: '',
             tagsidFieldFr: '',
             showData: false,
-            defaultValue: '',
+            
+            defaultValueEn: '',
+            defaultValueAr: '',
+            defaultValueLang: '',
+
+
+
             correctId: null,
             textVal : null
         };
@@ -90,39 +100,54 @@ class Link extends Component {
         // this.setState({ showData: false })
     };
     _addDefaultVal = () => {
-        if (this.props.codelang == 'en') {
-            if (this.props.FieldLink.FieldVals) {
-                return this.props.FieldLink.FieldVals.map((LinkData, key) => {
-                    if (LinkData.Lang == 'en') {
-                        this.setState({ LinkVal: LinkData, defaultValue: LinkData.Value })
-                    }
-                })
-            }
-        } else if (this.props.codelang == 'ar') {
-            if (this.props.FieldLink.FieldVals) {
-                return this.props.FieldLink.FieldVals.map((LinkData, key) => {
-                    if (LinkData.Lang == 'ar') {
-                        this.setState({ LinkVal: LinkData, defaultValue: LinkData.Value })
-                    }
-                })
-            }
-        } else if (this.props.codelang == 'fr') {
-            if (this.props.FieldLink.FieldVals) {
-                return this.props.FieldLink.FieldVals.map((LinkData, key) => {
-                    if (LinkData.Lang == 'fr') {
-                        this.setState({ LinkVal: LinkData, defaultValue: LinkData.Value })
-                    }
-                })
-            }
-        } else {
-            if (this.props.FieldLink.FieldVals) {
-                return this.props.FieldLink.FieldVals.map((LinkData, key) => {                    
-                    if (LinkData.Lang == this.props.codelang) {
-                        this.setState({ LinkVal: LinkData, defaultValue: LinkData.Value })
-                    }
-                })
-            }
+        if (this.props.FieldLink.FieldVals) {
+            return this.props.FieldLink.FieldVals.map((LinkData, key) => {
+                if (LinkData.Lang == 'en') {
+                    this.setState({ LinkValEn: LinkData,defaultValueEn: LinkData.Value })
+                }
+                if (LinkData.Lang == 'ar') {
+                    this.setState({ LinkValAr: LinkData, defaultValueAr: LinkData.Value })
+                }
+                if (LinkData.Lang == this.props.codelang) {
+                    this.setState({ LinkValLang: LinkData, defaultValue: LinkData.Value, defaultValueLang: LinkData.Value })
+                }
+            })
         }
+
+        // if (this.props.codelang == 'en') {
+        //     if (this.props.FieldLink.FieldVals) {
+        //         return this.props.FieldLink.FieldVals.map((LinkData, key) => {
+        //             if (LinkData.Lang == 'en') {
+        //                 this.setState({ LinkValEn: LinkData,defaultValueEn: LinkData.Value
+        //                  })
+        //             }
+        //         })
+        //     }
+        // } else if (this.props.codelang == 'ar') {
+        //     if (this.props.FieldLink.FieldVals) {
+        //         return this.props.FieldLink.FieldVals.map((LinkData, key) => {
+        //             if (LinkData.Lang == 'ar') {
+        //                 this.setState({ LinkValAr: LinkData, defaultValueAr: LinkData.Value })
+        //             }
+        //         })
+        //     }
+        // } else if (this.props.codelang == 'fr') {
+        //     if (this.props.FieldLink.FieldVals) {
+        //         return this.props.FieldLink.FieldVals.map((LinkData, key) => {
+        //             if (LinkData.Lang == 'fr') {
+        //                 this.setState({ LinkValLang: LinkData, defaultValueLang: LinkData.Value })
+        //             }
+        //         })
+        //     }
+        // } else {
+        //     if (this.props.FieldLink.FieldVals) {
+        //         return this.props.FieldLink.FieldVals.map((LinkData, key) => {                    
+        //             if (LinkData.Lang == this.props.codelang) {
+        //                 this.setState({ LinkValLang: LinkData, defaultValue: LinkData.Value, defaultValueLang: LinkData.Value })
+        //             }
+        //         })
+        //     }
+        // }
     }
     _onFocus = (e) => {
         this.setState({ showData: true, correctId: e.target.id });
@@ -209,16 +234,25 @@ class Link extends Component {
       }
     
     render() {                           
+        // console.log("this.state.LinkVal",this.state.LinkVal)
         return (
             <div className="setting--sidebar__color">
                 <div className="sidebar__color__main set--padding">
                     <div className="color__main__content">
                         <div className="label generic--section">
                             <h4 className="setting--sidebar__header"> {this.props.FieldLink.Name} </h4>
-                            <input className="generic--section__form Link_box_com" id= {`Link_${this.state.LinkVal.id}`}
+                            <input className="generic--section__form Link_box_com" id= {`Link_${
+                                this.props.codelang  == 'en'? this.state.LinkValEn.id : 
+                                this.props.codelang  == 'ar'? this.state.LinkValAr.id : this.state.LinkValLang.id 
+                                // this.state.LinkVal.id
+                            }`}
                                 type='text' 
                                 onChange={this._handleChange} 
-                                defaultValue={this.state.defaultValue}                                
+                                defaultValue={
+                                    this.props.codelang  == 'en'? this.state.defaultValueEn : 
+                                    this.props.codelang  == 'ar'? this.state.defaultValueAr : this.state.defaultValueLang 
+                                    // this.state.defaultValue
+                                }
                                 onFocus={this._onFocus} onBlur={this._onBlur} />                          
                             <span className="focus-border"></span>
                         </div>
