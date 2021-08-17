@@ -9,6 +9,7 @@ class TagsCategory extends Component {
         super(props);
         this.state = {
             selectedOption: null,
+            selectedOptionMultiLang: null,
             inputValue: '',
             tagsidFieldEn : '',
             tagsidFieldAr : '',
@@ -33,6 +34,34 @@ class TagsCategory extends Component {
         /***
          * TODO: Will Revoke Lang To Not Duplicated coding. 
          */
+
+        //1- Revoke Duplicated Code For Multi Language.         
+            let value_categories = {};
+            let value_categories_lang = [];
+            this.props.FieldTagsData.FieldVals.map((dataTagCat, key) => {      
+                    dataTagCat['tags-category'].map((VCdataTags, key) => {                        
+                        let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
+                        //"{"a":1,"b":2,"c":{"d":1,"e":[1,2]}}"                        
+                        value_categories_lang.push(jsonFormat);
+                        if (key + 1 == dataTagCat['tags-category'].length ){                                                        
+                            let SinglelangCate = dataTagCat.Lang
+                            value_categories[SinglelangCate] = value_categories_lang;
+                            value_categories_lang =[]; // To Clear Array
+                        } 
+                    })  
+                    console.log(value_categories,'value_categories');
+                    console.log(value_categories['en']);
+                    console.log(value_categories['ar']);                    
+                    
+                    this.setState({ 
+                        selectedOptionMultiLang: value_categories,
+                        // Collect Default Height                         
+                        SelectHeight: value_categories['en'].length == 1 ? value_categories['en'].length * 80 : value_categories['en'].length > 1 ? value_categories['en'].length * 45 + 15 : null
+                    });                
+            })        
+        //End Revoke Duplicated Code For Multi Language. 
+
+
          this.props.FieldTagsData.FieldVals.map((dataTagCat, key) => {
             if(dataTagCat.Lang == 'en'){
                 this.setState({tagsidFieldEn: dataTagCat.id});
@@ -119,6 +148,11 @@ class TagsCategory extends Component {
         }
     }
     handleChange = selectedOption => {
+        
+        //console.log(" 1- selectedOption ===> ",selectedOption, ' 1- selectedOptionMultiLang ==> ', this.state.selectedOptionMultiLang[this.props.codelang])
+        this.state.selectedOptionMultiLang[this.props.codelang] = selectedOption;
+       // console.log(" 2- selectedOption ===> ",selectedOption, ' 2- selectedOptionMultiLang ==> ', this.state.selectedOptionMultiLang[this.props.codelang])
+
         this.setState({ selectedOption });
         let idFieldTagsCat ; 
         /***
@@ -137,7 +171,9 @@ class TagsCategory extends Component {
         }else{
             idFieldTagsCat = this.state.tagsidFieldEn;
         }
-        console.log(`Option selected change:`, selectedOption , idFieldTagsCat);
+
+        console.log(`Id Option selected change:`, idFieldTagsCat);
+        console.log(`Option selected change:`, selectedOption);
 
         // Set Height For Select Option Categories         
         // let height3 = document.querySele
@@ -157,13 +193,16 @@ class TagsCategory extends Component {
         console.log(height)
         // End Set Height 
         
+        // Work For Revoke Save Mutli Language 
         let jsonFormatCat; 
         let textValCat; 
-        if(selectedOption){
-            if(selectedOption.length > 1){
-                // Map 
-                const optionLen = selectedOption.length;
-                selectedOption.map((selectOpData, key)=>{
+        const { selectedOptionMultiLang } = this.state
+        if(selectedOptionMultiLang){
+            const optionLen = selectedOptionMultiLang[this.props.codelang].length;
+            if(selectedOptionMultiLang[this.props.codelang].length > 1){
+                // Map                 
+                //selectedOption
+                selectedOptionMultiLang[this.props.codelang].map((selectOpData, key)=>{
                     if(key == 0 ){
                         textValCat = selectOpData.value + ',';    
                     }else if(optionLen == key + 1){
@@ -177,18 +216,51 @@ class TagsCategory extends Component {
                     
                 })                
                 jsonFormatCat = {"key": idFieldTagsCat,"value": textValCat};
-            }else if (selectedOption.length == 1){
-                jsonFormatCat = {"key": idFieldTagsCat,"value": selectedOption[0].value};
-            }else if (selectedOption.length == []){
+            }else if (optionLen == 1){
+                jsonFormatCat = {"key": idFieldTagsCat,"value": selectedOptionMultiLang[this.props.codelang][0].value};
+            }else if (optionLen == []){
                 jsonFormatCat = {"key": idFieldTagsCat,"value": ''};
             }
 
         }else{
             jsonFormatCat = {"key": idFieldTagsCat,"value": ''}             
         }         
-        console.log(jsonFormatCat)
+        console.log("jsonFormatCat",jsonFormatCat)
+        // End Work For Revoke Save Mutli Language 
+
+
+        // let jsonFormatCat; 
+        // let textValCat; 
+        // if(selectedOption){
+        //     if(selectedOption.length > 1){
+        //         // Map 
+        //         const optionLen = selectedOption.length;
+        //         selectedOption.map((selectOpData, key)=>{
+        //             if(key == 0 ){
+        //                 textValCat = selectOpData.value + ',';    
+        //             }else if(optionLen == key + 1){
+        //                 // last OF Map 
+        //                 textValCat += selectOpData.value;
+        //                 console.log('last Of Map ')
+        //             }
+        //             else{
+        //                 textValCat += selectOpData.value + ',';
+        //             }
+                    
+        //         })                
+        //         jsonFormatCat = {"key": idFieldTagsCat,"value": textValCat};
+        //     }else if (selectedOption.length == 1){
+        //         jsonFormatCat = {"key": idFieldTagsCat,"value": selectedOption[0].value};
+        //     }else if (selectedOption.length == []){
+        //         jsonFormatCat = {"key": idFieldTagsCat,"value": ''};
+        //     }
+
+        // }else{
+        //     jsonFormatCat = {"key": idFieldTagsCat,"value": ''}             
+        // }         
+        // console.log(jsonFormatCat)
         
-        // Sart Sand Data To Save It:
+        // Sart Sand Data To Save It: TODO: Will Change Convantion For Word. 
         if(this.props.newFields){                        
             let x = this.props.newFields; // first input 
             let s = -1;
@@ -231,7 +303,7 @@ class TagsCategory extends Component {
             })
             optionsCategories = sectionOptions; // Set 
         }
-
+        console.log(this.state.selectedOptionMultiLang?this.state.selectedOptionMultiLang['ar']:null, "State")
         return (
             <div className="setting--sidebar__color mb-3" style={{height: this.state.SelectHeight}}>
                 {
@@ -243,8 +315,9 @@ class TagsCategory extends Component {
                 <Select
                     isMulti
                     name="colors"
-                    value={selectedOption}
-                    options={optionsCategories}
+                    // value={selectedOption}
+                    value={this.state.selectedOptionMultiLang? this.state.selectedOptionMultiLang[this.props.codelang] : null} //this.state.selectedOptionMultiLang.this.props.codelang             
+                    options={optionsCategories}  
                     className="basic-multi-select"
                     classNamePrefix="select"                    
                     onChange={this.handleChange}

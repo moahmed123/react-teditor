@@ -29,7 +29,8 @@ class TagsProduct extends Component {
     _addDefaultVal = () => {
         /***
          * TODO: Will Revoke Lang To Not Duplicated coding. 
-         */
+         * Revoke Done on some multi language at Tags Category 
+         */        
          this.props.FieldTagsPro.FieldVals.map((dataTagPro, key) => {
             if(dataTagPro.Lang == 'en'){
                 this.setState({tagsidFieldEn: dataTagPro.id});
@@ -49,7 +50,9 @@ class TagsProduct extends Component {
                     dataTagPro["tags-product"].map((VCdataTags, key) => {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
+                        
                     })
+                    console.log(this.state.selectedOption,"tagsxcd")
                     this.setState({
                         selectedOption: tagsxcd,
                         // collect Default Height
@@ -66,8 +69,9 @@ class TagsProduct extends Component {
                     this.setState({tagsidFieldAr:dataTagPro.id }); // To Save Id For Field Ar
                     dataTagPro["tags-product"].map((VCdataTags, key) => {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
-                        tagsxcd.push(jsonFormat);
+                        tagsxcd.push(jsonFormat);                        
                     })
+                    console.log(this.state.selectedOption,"tagsxcd")
                     this.setState({ 
                         selectedOption: tagsxcd,
                         SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
