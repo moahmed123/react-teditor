@@ -49,14 +49,25 @@ class TagsCategory extends Component {
                             value_categories_lang =[]; // To Clear Array
                         } 
                     })  
-                    console.log(value_categories,'value_categories');
-                    console.log(value_categories['en']);
-                    console.log(value_categories['ar']);                    
-                    
+                    console.log(value_categories,'value_categories', Object.keys(value_categories).length);
+                    // console.log(value_categories['en']);
+                    // console.log(value_categories['ar']);                                        
                     this.setState({ 
                         selectedOptionMultiLang: value_categories,
                         // Collect Default Height                         
-                        SelectHeight: value_categories['en'].length == 1 ? value_categories['en'].length * 80 : value_categories['en'].length > 1 ? value_categories['en'].length * 45 + 15 : null
+                        SelectHeight: Object.keys(value_categories).length != 0 ? 
+                            value_categories['en'] ?
+                                value_categories['en'].length == 1 ? 
+                                    value_categories['en'].length * 80 
+                                    : 
+                                    value_categories['en'].length > 1 ? 
+                                        value_categories['en'].length * 45 + 15 
+                                        : 
+                                        null 
+                                :
+                                null
+                            :
+                            null
                     });                
             })        
         //End Revoke Duplicated Code For Multi Language. 
@@ -151,7 +162,8 @@ class TagsCategory extends Component {
         
         //console.log(" 1- selectedOption ===> ",selectedOption, ' 1- selectedOptionMultiLang ==> ', this.state.selectedOptionMultiLang[this.props.codelang])
         this.state.selectedOptionMultiLang[this.props.codelang] = selectedOption;
-       // console.log(" 2- selectedOption ===> ",selectedOption, ' 2- selectedOptionMultiLang ==> ', this.state.selectedOptionMultiLang[this.props.codelang])
+       console.log(" 2- selectedOption ===> ",selectedOption, ' 2- selectedOptionMultiLang ==> ', this.state.selectedOptionMultiLang[this.props.codelang])
+       console.log(this.state.selectedOptionMultiLang)
 
         this.setState({ selectedOption });
         let idFieldTagsCat ; 
@@ -196,32 +208,38 @@ class TagsCategory extends Component {
         // Work For Revoke Save Mutli Language 
         let jsonFormatCat; 
         let textValCat; 
-        const { selectedOptionMultiLang } = this.state
-        if(selectedOptionMultiLang){
-            const optionLen = selectedOptionMultiLang[this.props.codelang].length;
-            if(selectedOptionMultiLang[this.props.codelang].length > 1){
-                // Map                 
-                //selectedOption
-                selectedOptionMultiLang[this.props.codelang].map((selectOpData, key)=>{
-                    if(key == 0 ){
-                        textValCat = selectOpData.value + ',';    
-                    }else if(optionLen == key + 1){
-                        // last OF Map 
-                        textValCat += selectOpData.value;
-                        console.log('last Of Map ')
-                    }
-                    else{
-                        textValCat += selectOpData.value + ',';
-                    }
-                    
-                })                
-                jsonFormatCat = {"key": idFieldTagsCat,"value": textValCat};
-            }else if (optionLen == 1){
-                jsonFormatCat = {"key": idFieldTagsCat,"value": selectedOptionMultiLang[this.props.codelang][0].value};
-            }else if (optionLen == []){
-                jsonFormatCat = {"key": idFieldTagsCat,"value": ''};
-            }
+        const { selectedOptionMultiLang } = this.state;
+        console.log('Object.keys(selectedOptionMultiLang).length', Object.keys(selectedOptionMultiLang).length)
 
+        if(Object.keys(selectedOptionMultiLang).length > 0){
+            // Condation to check when remove all data.
+            if(selectedOptionMultiLang[this.props.codelang]){            
+                const optionLen = selectedOptionMultiLang[this.props.codelang].length;
+                if(selectedOptionMultiLang[this.props.codelang].length > 1){
+                    // Map                 
+                    //selectedOption
+                    selectedOptionMultiLang[this.props.codelang].map((selectOpData, key)=>{
+                        if(key == 0 ){
+                            textValCat = selectOpData.value + ',';    
+                        }else if(optionLen == key + 1){
+                            // last OF Map 
+                            textValCat += selectOpData.value;
+                            console.log('last Of Map ')
+                        }
+                        else{
+                            textValCat += selectOpData.value + ',';
+                        }
+                        
+                    })                
+                    jsonFormatCat = {"key": idFieldTagsCat,"value": textValCat};
+                }else if (optionLen == 1){
+                    jsonFormatCat = {"key": idFieldTagsCat,"value": selectedOptionMultiLang[this.props.codelang][0].value};
+                }else if (optionLen == []){
+                    jsonFormatCat = {"key": idFieldTagsCat,"value": ''}; // Field Empty Data.
+                }
+            }else{
+                jsonFormatCat = {"key": idFieldTagsCat,"value": ''}; // Field Empty Data.
+            }
         }else{
             jsonFormatCat = {"key": idFieldTagsCat,"value": ''}             
         }         
@@ -260,7 +278,7 @@ class TagsCategory extends Component {
         // }         
         // console.log(jsonFormatCat)
         
-        // Sart Sand Data To Save It: TODO: Will Change Convantion For Word. 
+        // Sart Sand Data To Save It: TODO: Will Change Convantion For Word.
         if(this.props.newFields){                        
             let x = this.props.newFields; // first input 
             let s = -1;
@@ -293,7 +311,7 @@ class TagsCategory extends Component {
         }
     };    
     render() {
-        const { selectedOption, inputValue } = this.state;
+        const { selectedOption, inputValue, selectedOptionMultiLang } = this.state;
         let optionsCategories = [];
         if (this.props.cateData) {            
             let sectionOptions = [];
@@ -316,7 +334,7 @@ class TagsCategory extends Component {
                     isMulti
                     name="colors"
                     // value={selectedOption}
-                    value={this.state.selectedOptionMultiLang? this.state.selectedOptionMultiLang[this.props.codelang] : null} //this.state.selectedOptionMultiLang.this.props.codelang             
+                    value={selectedOptionMultiLang? selectedOptionMultiLang[this.props.codelang]? selectedOptionMultiLang[this.props.codelang]: null : null} //this.state.selectedOptionMultiLang.this.props.codelang             
                     options={optionsCategories}  
                     className="basic-multi-select"
                     classNamePrefix="select"                    

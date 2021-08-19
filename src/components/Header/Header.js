@@ -418,7 +418,7 @@ class Header extends Component {
                 </div>                
                 <Modal centered className="generic-alert" show={this.state.isOpen} onHide={this.closeModal} backdrop="static">
                     <Modal.Header>
-                            <Modal.Title>{localization.MessagePopup}</Modal.Title>
+                            
                             <div className="delete__modal">
                                 <svg onClick={this.closeModal} xmlns="http://www.w3.org/2000/svg" id="close_3_" width="12.743" height="12.743" viewBox="0 0 12.743 12.743">
                                     <defs>
@@ -428,6 +428,7 @@ class Header extends Component {
                                     <path id="Path_68" d="M10.314.688L.327 10.675a1.115 1.115 0 0 0 0 1.577l.526.526a1.115 1.115 0 0 0 1.577 0l9.988-9.986a1.114 1.114 0 0 0 0-1.577l-.527-.526a1.115 1.115 0 0 0-1.577 0zm0 0" className="cls-1" transform="translate(0 -.362)"/>
                                 </svg>                             
                             </div>
+                            <Modal.Title>{localization.MessagePopup}</Modal.Title>
                     </Modal.Header>
                             <Modal.Body>{localization.PargPopup}</Modal.Body>
                     <Modal.Footer>
