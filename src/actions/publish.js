@@ -36,7 +36,10 @@ export const publishFieldsVals = () => (dispatch) => {
             if (document.body.classList.contains('.container_notification .alert-success')) {
                 document.querySelector('.container_notification .alert-success').classList.remove('show');
             }            
-            document.querySelector('.container_notification').classList.add('next-layer');
+            if (document.body.classList.contains('.container_notification')) {
+                document.querySelector('.container_notification').classList.add('next-layer');
+            }
+            // 
         },2000)
          // Change User_Save_Fields false To back to admin 
          localStorage.setItem('User_Save_Fields', false);  

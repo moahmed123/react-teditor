@@ -40,6 +40,16 @@ class Header extends Component {
         
         // toggleSideBar();       
     }
+
+    componentDidUpdate =()=>{
+        // resolved Loading for Published 
+        if(this.props.notification){            
+            if(this.state.PublishLoading){
+                this.setState({PublishLoading: false})
+            }
+        }
+        console.log("notification",this.props.notification);
+    }
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => this.setState({ isOpen: false });
 
@@ -275,7 +285,7 @@ class Header extends Component {
                                     : 
                                         this.props.notification? 
                                             <><img className="controls-publish--lg" src={Shuttl} />{localization.Publish}</> 
-                                            :
+                                            :                                                                                        
                                             <Spinner animation="grow" size="sm" />
                                 }
                             </button>
