@@ -32,6 +32,7 @@ import MainCollection from './Collection/MainCollection';
 import SaveBtn from './SaveBtn';
 import BackBtn from './BackBtn';
 import localization from '../../../localization/localization';
+import TemplateInfo from '../../../reducers/TemplateInfo';
 
 
 class Section extends Component {
@@ -46,7 +47,8 @@ class Section extends Component {
     componentDidMount() {
         // Get Section By Id. 
         // this.props.dispatch(GetSCFLD.getSectionFields());
-        // active lang for fields               
+        // active lang for fields   
+        console.log('TemplateInfo --> ',this.props.TemplateInfo)            
     }
 
     _getSectionFields = () => {
@@ -119,8 +121,70 @@ class Section extends Component {
         }
     }
 
+    // Start For Wonder Template And Will TODO: Global Function For All Template. 
+    _getSectionFieldsWonderTM = (TemplateName) => {
+        let sectionFields = this.props.sectionFieldsDT.data.section.Fields;
+        let langActive = 'en'
+        if (sectionFields.length > 0) {
+            if (this.props.getlanguages) {
+                langActive = this.props.getlanguages.data.ActiveLanguage.code;
+            }
+            return sectionFields.map((Fields, key) => {
+                // View For Type Text               
+                if (Fields.Type == "text") {
+                    return <TypeText
+                        key={key}
+                        codelang={this.state.codeLang ? this.state.codeLang : langActive}
+                        TemplateName = {TemplateName}
+                        FieldData={Fields} />
+                }
+                // View For Type textarea
+                else if (Fields.Type == "textarea") {
+                    return <TypeTextarea
+                        key={key}
+                        codelang={this.state.codeLang ? this.state.codeLang : langActive}
+                        FieldData={Fields} />
+                }
+                // View For Type Checkbox
+                else if (Fields.Type == "checkbox") {
+                    return <TypeCheckbox key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldData={Fields} />
+                    // View For Type sselect Lookup
+                } else if (Fields.Type == "sselect-lookup") {                    
+                    return <SelectLookup key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldData={Fields} />
+                }// View For Type tags-category
+                else if (Fields.Type == "tags-category") {
+                    return <TagsCategory key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldTagsData={Fields} />
+                }// View For Type tags-category
+                else if (Fields.Type == "tags-product") {
+                    return <TagsProduct key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldTagsPro={Fields} />
+                }// View For Type Link
+                else if (Fields.Type == "link" || Fields.Type == "Link") {
+                    return <LinkTag key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldLink={Fields} />
+                }// View For Type Image
+                else if (Fields.Type == "image") {
+                    return <ImageTag key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldImage={Fields} />
+                }
+                // View For Type Brand
+                else if (Fields.Type == "tags-brand") {
+                    return <TagsBrand key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldBrand={Fields} />
+                }
+                 // View For Type colorpicker
+                 else if(Fields.Type == "colorpicker"){ 
+                    console.log(sectionFields.length - 1 , "key: ", key)
+                    let checkColection = this.props.sectionFieldsDT.data.section.IsCollection;
+                    if (sectionFields.length - 1 == key && checkColection != 1 ){
+                        console.log()
+                        return <TagColorPicker key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldColorPicker = {Fields} LastField= {true}/>                        
+                    }
+                    return <TagColorPicker key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldColorPicker = {Fields}/>
+                }
+            })
+        }
+    }
+
     render() {        
         let ActiveLanguage;
+        const {TemplateInfo} = this.props
         if (this.props.getlanguages) {            
             ActiveLanguage = this.props.getlanguages.data.ActiveLanguage.code;
         }
@@ -204,8 +268,21 @@ class Section extends Component {
                     }
                 </div>
 
-                {this._getSectionFields()}
+                {
+                    // Condation For Check Wonder Template 
+                    TemplateInfo?
+                        TemplateInfo.CodeName.toLowerCase() == 'wonder2'? 
+                            //console.log('Template is wonder ')
+                            this._getSectionFieldsWonderTM(TemplateInfo.CodeName)
+                            : 
+                            //console.log(`Template is ${TemplateInfo.CodeName} not wonder`)
+                            this._getSectionFields()
+                    :
+                        null
+                }
+                {/* {this._getSectionFields()} */}
                 {this._getCollection()}
+                
             </>
         )
     }
@@ -216,7 +293,8 @@ const mapStateToProps = state => ({
     sectionFieldsDT: state.sectionData.sectionFields,
     // updateSecFields : state.sectionData.updateSecFields,
     getlanguages: state.getlanguages.GetLangs,
-    backComponent: state.getlanguages.backCom // Back Component For Back From Section TO Header, Footer Component
+    backComponent: state.getlanguages.backCom, // Back Component For Back From Section TO Header, Footer Component
+    TemplateInfo: state.TemplateInfo.TemInfo    // Info For Template.
 })
 
 export default connect(mapStateToProps)(Section)

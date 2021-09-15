@@ -36,5 +36,6 @@ export default keyMirror({
   ROUTE_COMPONENT: null,
   SECTION_ID: null,
   Back_ROUTE_COMPONENT: null, 
-  WEB_PAGES: null
+  WEB_PAGES: null,
+  TEMPLATE_INFO: null
 })

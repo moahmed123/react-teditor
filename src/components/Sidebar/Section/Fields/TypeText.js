@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { SaveSCFLD } from '../../../../actions';
 import { connect } from 'react-redux'
 
-class TypeText extends Component {      
+class TypeText extends Component {  
+    state = {
+        radioToggleText: true
+    }    
     _setlangVal = () => {
         if(this.props.codelang == 'en'){
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
@@ -58,20 +61,90 @@ class TypeText extends Component {
         }
     }
     render() {
+        const {TemplateName} = this.props;
         return (
             <div className="setting--sidebar__color">
                 <div className="sidebar__color__main set--padding">
-                    <div className="color__main__content">                           
-                        <div className="label generic--section">
+                    <div className="color__main__content"> 
+                    {/* Start Wonder Login */}
                         {
-                            this.props.FieldData.Name != '' ? 
-                                <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>             
+                            // Check Template name for Wonder to add radio input 
+                            TemplateName ?                                
+                                <div className="label generic--section">
+                                
+                                    <h2> Radio </h2>
+                                    <div style={{
+                                        borderRadius: 10, 
+                                        borderWidth: 1, 
+                                        width: 20, height: 20,
+                                        borderWidth: 2,
+                                        borderStyle: "solid",
+                                        borderColor: "#333",
+                                        position:"relative"
+                                        }}
+                                        onClick = {() => this.setState({radioToggleText: !this.state.radioToggleText})}                                         
+                                         >
+                                       {
+                                           this.state.radioToggleText?
+                                                <div style={{                                            
+                                                    background: "#333",
+                                                    borderRadius: 100,
+                                                    width: 11,
+                                                    height: 11,
+                                                    position: 'absolute',
+                                                    left: 0,
+                                                    right: 0,
+                                                    marginLeft: "auto",
+                                                    marginRight: "auto",
+                                                    marginTop: 0,
+                                                    marginBottom: 0,                                                                                                        
+                                                    transform: `translate(${0}px, ${2}px)`
+                                                }}></div>
+                                            : 
+                                                null
+                                       }                                        
+                                    </div>
+                                
+                                    {
+                                        this.state.radioToggleText? 
+                                            <>
+                                                {
+                                                    this.props.FieldData.Name != '' ? 
+                                                        <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>             
+                                                    : 
+                                                        null
+                                                }                              
+                                                {this._setlangVal()}                            
+                                                <span className="focus-border"></span>
+                                            </>
+                                        : 
+                                            null
+                                    }                                                                   
+                                </div>
                             : 
-                                null
-                        }                              
+                                <div className="label generic--section">
+                                    {
+                                        this.props.FieldData.Name != '' ? 
+                                            <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>             
+                                        : 
+                                            null
+                                    }                              
+                                    {this._setlangVal()}                            
+                                    <span className="focus-border"></span>
+                                </div>
+                        }             
+                        {/* End Wonder Login */}     
+
+                        {/* <div className="label generic--section">
+                            {
+                                this.props.FieldData.Name != '' ? 
+                                    <h4 className="setting--sidebar__header"> {this.props.FieldData.Name} </h4>             
+                                : 
+                                    null
+                            }                              
                             {this._setlangVal()}                            
                             <span className="focus-border"></span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div> 

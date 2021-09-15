@@ -23,22 +23,39 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
     console.log("savedFieldVals", savedFieldVals)
     let objCr;
     if (savedFieldVals.length == 1) {
-        if (savedFieldVals[0].value.indexOf('"') >= 0) {
-            objCr = '"' + savedFieldVals[0].key + '": "' + savedFieldVals[0].value.replace(/"/g, "'") + '"';
+        console.log(savedFieldVals[0].value)
+        // return false;
+        if(isNaN(savedFieldVals[0].value)){
+            if (savedFieldVals[0].value.indexOf('"') >= 0) {
+                objCr = '"' + savedFieldVals[0].key + '": "' + savedFieldVals[0].value.replace(/"/g, "'") + '"';
+            }else{
+                objCr = '"' + savedFieldVals[0].key + '": "' + savedFieldVals[0].value + '"';
+            }
         }else{
             objCr = '"' + savedFieldVals[0].key + '": "' + savedFieldVals[0].value + '"';
-        }        
+        }                        
     }
     else {
         // To Get Format To Save Values 
         console.log(">>>>>", savedFieldVals)
         for (let i = 0; i < savedFieldVals.length; i++) {
-            let createVal = '"' + savedFieldVals[i].key + '": "' + savedFieldVals[i].value;
+            let createVal;
+            if(isNaN(savedFieldVals[i].value)){
+                if (savedFieldVals[i].value.indexOf('"') >= 0) {
+                     createVal = '"' + savedFieldVals[i].key + '": "' + savedFieldVals[i].value.replace(/"/g, "'") + '"';        
+                }else{
+                     createVal = '"' + savedFieldVals[i].key + '": "' + savedFieldVals[i].value;        
+                }
+            }else{
+                createVal = '"' + savedFieldVals[i].key + '": "' + savedFieldVals[i].value;
+            }
+            
             // if (i == 0) { objCr = createVal + '",' }
             // if (i == savedFieldVals.length - 1) {
             //     // Last Of 
             //     objCr += createVal + '"';
             // }
+           
             if (i == 0) { 
                 objCr = createVal + '",' 
             }else{

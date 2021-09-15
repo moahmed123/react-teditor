@@ -19,8 +19,13 @@ export const getDropdownPages = () => (dispatch) => {
     const urlAllData = API.getTemplateStructureV2;
     return axios.get(urlAllData)
         .then((response) => {     
-            console.log(response.data) 
-            let Layouts = response.data.Layouts;
+            console.log(response.data) // 
+
+            let Layouts = response.data.Layouts,
+                TemplateInfo = response.data.Template;
+            //    console.log(TemplateInfo,'from app')
+            // Template Info
+            dispatch(Template_Info(TemplateInfo));
             // Get Pages For Dorpdown
             const pagesData = response.data.Pages; // All Page Data Only To Send it 
             console.log(pagesData);
@@ -53,6 +58,8 @@ export const getDropdownPages = () => (dispatch) => {
             // Get Style Theme To Cahe it for Brawser 
             dispatch(getTemplateSettings());
             // console.log(process.env.REACT_APP_API_ENDPOINT)
+            
+
         })
         .catch((error) => {
             console.log(error.message);
@@ -74,4 +81,9 @@ export const RefreshData = () => (dispatch) => {
     dispatch({ type: constants.REGIONSOFPAGE, regions });
     console.log('Not Data ')
     dispatch(getDropdownPages())    
+}
+
+// Template Info
+export const Template_Info = (TemplateInfo) => (dispatch) =>{    
+    dispatch({ type: constants.TEMPLATE_INFO, TemplateInfo });
 }

@@ -12,6 +12,7 @@ import getTemplateSettings from './getTemplateSettings';
 import addNewSection from './addNewSection';
 import searchBrands from './searchBrands';
 import notification from './notification';
+import TemplateInfo from './TemplateInfo';
 // import { combineReducers } from 'redux';
 
 export default {
@@ -28,5 +29,6 @@ export default {
   getTemplateSettings,
   addNewSection,
   searchBrands,
-  notification
+  notification,
+  TemplateInfo
 }
