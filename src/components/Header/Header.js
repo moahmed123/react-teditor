@@ -452,6 +452,7 @@ class Header extends Component {
                 </Modal>
                 {/* Model Of Reset Data For Template */}
                 <Modal centered className="generic-alert" show={this.state.isOpenReset} onHide={this.closeModalReset} backdrop="static">
+
                     <Modal.Header className = 'res-danger'>
                             <Modal.Title>{localization.MessageResetPopup}</Modal.Title>
                             <div className="delete__modal">
@@ -474,7 +475,7 @@ class Header extends Component {
                             }}>{localization.btnResetpopup}</Button>
                         {/* </Link> */}
                     </Modal.Footer>
-                </Modal>
+                </Modal>            
             </header>
         )
     }

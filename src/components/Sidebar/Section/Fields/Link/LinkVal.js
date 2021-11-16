@@ -45,7 +45,7 @@ class LinkVal extends Component {
         // this.props.dispatch(SeaLink.LinkInputVal("click"));   
         //End Test             
         let LinkSaveJS = {"key": this.props.ObjectFieldId,"value": inputValue}; 
-                        
+                            
         if(this.props.newFields){                        
             let x = this.props.newFields; // first input 
             let s = -1;
@@ -70,8 +70,9 @@ class LinkVal extends Component {
         }
     }
     render() {
-        if (this.props.GetLinkData) {
-            // console.log(this.props.GetLinkData)            
+        if (this.props.GetLinkData && this.props.GetLinkData.length > 0) {
+            console.log("this.props.GetLinkData ++++++ ");            
+            console.log(this.props.GetLinkData.length)            
             return (
                 <div>
                     <ul>                        

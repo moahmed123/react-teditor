@@ -20,16 +20,23 @@ import TagColorPicker from '../Fields/TagColorPicker';
 
 class SetionCollection extends Component {
     constructor(props) {
-        super(props);        
+        super(props); 
+        this.state = {
+            StopUpdateSection: false
+        }       
     }
+    // componentDidMount = () =>{
+        
+    // }
 
  
     _getSectionFields = () => {        
         let sectionFields   = this.props.CollectionField;
-        let lang = this.props.langCollection
+        let lang = this.props.langCollection;        
         
-        if(sectionFields && sectionFields != undefined){
+        if(sectionFields && sectionFields != undefined && this.state.StopUpdateSection == false){
             console.log("sectionFields com" , sectionFields ,lang );
+            // this.setState({StopUpdateSection: true})
              // Update Data Collection         
         
             if(sectionFields){                
@@ -69,6 +76,9 @@ class SetionCollection extends Component {
                      // View For Type colorpicker
                      else if(Fields.Type == "colorpicker"){                        
                         return <TagColorPicker key={key} codelang = {lang} FieldColorPicker = {Fields}/>
+                    }
+                    if(key == sectionFields.Fields.lenght - 1){
+                        this.setState({StopUpdateSection: true})
                     }
                 })
              }  

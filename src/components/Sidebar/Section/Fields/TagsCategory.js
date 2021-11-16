@@ -8,10 +8,11 @@ class TagsCategory extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            sectionId: null,
             selectedOption: null,
             selectedOptionMultiLang: null,
             inputValue: '',
-            tagsidFieldEn : '',
+            tagsidFieldEn : '',            
             tagsidFieldAr : '',
             tagsidFieldFr : '',
             tagsidFieldTr: '',
@@ -19,7 +20,16 @@ class TagsCategory extends Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount() {        
+        // Test 
+        // if(localStorage.getItem('Data_Saving') == null){
+        //     localStorage.setItem('Data_Saving','')
+        // }   
+        this.setState({sectionId:this.props.FieldTagsData.id})
+        console.log(this.props.FieldTagsData.id,"this.props.FieldTagsData")        
+        console.log(this.state.selectedOptionMultiLang, "this.state.selectedOptionMultiLang")    
+        // End Test 
+
         //Add Default Value For Selection
         this._addDefaultVal();
         
@@ -32,7 +42,7 @@ class TagsCategory extends Component {
     }
     _addDefaultVal = () => {
         /***
-         * TODO: Will Revoke Lang To Not Duplicated coding. 
+         * TODO: Will Revoke Lang To Not Duplicated and Repeat coding. 
          */
 
         //1- Revoke Duplicated Code For Multi Language.         
@@ -51,7 +61,7 @@ class TagsCategory extends Component {
                     })  
                     console.log(value_categories,'value_categories', Object.keys(value_categories).length);
                     // console.log(value_categories['en']);
-                    // console.log(value_categories['ar']);                                        
+                    // console.log(value_categories['ar']);                        
                     this.setState({ 
                         selectedOptionMultiLang: value_categories,
                         // Collect Default Height                         
@@ -93,9 +103,11 @@ class TagsCategory extends Component {
                         let jsonFormat = { value: VCdataTags.value, label: VCdataTags.display }
                         tagsxcd.push(jsonFormat);
                     })             
-                    console.log("dddc ", tagsxcd.length )      
+                    console.log("dddc ", tagsxcd.length );  
+                    console.log("dddc ", tagsxcd);    
+                    
                     this.setState({ 
-                        selectedOption: tagsxcd,
+                        selectedOption: tagsxcd,                        
                         //collect Default Height 
                         //SelectHeight: tagsxcd.length > 1 ? tagsxcd.length > 0 && tagsxcd.length < 2 ? tagsxcd.length * 60 : tagsxcd.length * 45 : null
                         SelectHeight: tagsxcd.length == 1 ? tagsxcd.length * 80 : tagsxcd.length > 1 ? tagsxcd.length * 45 + 15 : null
@@ -164,6 +176,11 @@ class TagsCategory extends Component {
         this.state.selectedOptionMultiLang[this.props.codelang] = selectedOption;
        console.log(" 2- selectedOption ===> ",selectedOption, ' 2- selectedOptionMultiLang ==> ', this.state.selectedOptionMultiLang[this.props.codelang])
        console.log(this.state.selectedOptionMultiLang)
+
+       //Test           
+        localStorage.setItem(`Data_Cat_Saving_${this.state.sectionId}_${this.props.codelang}`, JSON.stringify(this.state.selectedOptionMultiLang));
+        // console.log(localStorage.getItem(`Data_Saving_${this.state.sectionId}_${this.props.codelang}`), "DataCateSaving")
+       //End TEst
 
         this.setState({ selectedOption });
         let idFieldTagsCat ; 
@@ -315,12 +332,58 @@ class TagsCategory extends Component {
         let optionsCategories = [];
         if (this.props.cateData) {            
             let sectionOptions = [];
+            
             this.props.cateData.map((data, key) => {
                 let jsonFormat = { value: data.value, label: data.display }
-                sectionOptions.push(jsonFormat);
-            })
+                sectionOptions.push(jsonFormat);               
+            })            
             optionsCategories = sectionOptions; // Set 
         }
+           
+         /*
+          ** Start To Saved Categories Data, to don't change data when Switching language.
+          **             
+          */
+        if(localStorage.getItem(`Data_Cat_Saving_${this.state.sectionId}_${this.props.codelang}`)){                                   
+            let categories_data_saving = JSON.parse(localStorage.getItem(`Data_Cat_Saving_${this.state.sectionId}_${this.props.codelang}`));
+            let categories_Lang_SV = categories_data_saving[this.props.codelang];
+            let SELMultiLang_SV = this.state.selectedOptionMultiLang[this.props.codelang];
+
+            console.log(categories_Lang_SV, SELMultiLang_SV )
+            /*
+             ** Start To Saved Categories Data, to don't change data when Switching language.
+             **             
+             */
+            if(JSON.stringify(categories_Lang_SV) === JSON.stringify(SELMultiLang_SV)){
+                //console.log(true)
+                // Other code hare. 
+                // it's same object. 
+            }else{
+                // console.log(false);
+                // console.log(this.state.selectedOptionMultiLang)
+                // console.log(this.state.selectedOptionMultiLang.length)
+                // Repalce data for saved by old value. 
+                this.state.selectedOptionMultiLang[this.props.codelang] = categories_Lang_SV;
+                // To count height for value 
+                this.setState({ selectedOption:  categories_Lang_SV});
+                console.log(selectedOption.length,"selectedOption------->", categories_Lang_SV.length)
+                let height;
+                if(categories_Lang_SV){
+                    if(categories_Lang_SV.length > 0 && categories_Lang_SV.length < 2){
+                        height =  75 + 'px';
+                    } else if(categories_Lang_SV.length > 1){
+                        height = (categories_Lang_SV.length * 35) + 33 + 'px';
+                    }else{
+                        height = 'auto';
+                    }
+                }  
+                // To count height for value       
+                this.setState({
+                    SelectHeight: height
+                })                                 
+            }              
+        }                                            
+
         console.log(this.state.selectedOptionMultiLang?this.state.selectedOptionMultiLang['ar']:null, "State")
         return (
             <div className="setting--sidebar__color mb-3" style={{height: this.state.SelectHeight}}>

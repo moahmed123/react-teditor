@@ -174,7 +174,7 @@ class Link extends Component {
             valueForInput = e.target.value;
             let TXTLinkSaveJS = {"key": keyId,"value": valueForInput}; 
                         
-            if(this.props.newFields){                        
+            if(this.props.newFields){                                 
                 let x = this.props.newFields; // first input 
                 let s = -1;
                 x.map((d, key)=>{
@@ -259,9 +259,14 @@ class Link extends Component {
                         </div>
                     </div>
                     {
-                        this.state.showData?                            
-                            <div className='box-data'>                                
-                                <LinkVal LinkValData={this.state.LinkVal} ObjectFieldId={this.state.LinkVal.id}/>
+                        this.state.showData?
+                            <div className='box-data'>
+                                {/* Work For Link Data For Multi  */}
+                                <LinkVal LinkValData={this.state.LinkVal} ObjectFieldId={
+                                    this.props.codelang  == 'en'? this.state.LinkValEn.id : 
+                                    this.props.codelang  == 'ar'? this.state.LinkValAr.id : this.state.LinkValLang.id 
+                                }/>
+
                             </div>                            
                         :
                             null

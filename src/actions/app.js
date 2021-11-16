@@ -22,8 +22,12 @@ export const getDropdownPages = () => (dispatch) => {
             console.log(response.data) // 
 
             let Layouts = response.data.Layouts,
-                TemplateInfo = response.data.Template;
-            //    console.log(TemplateInfo,'from app')
+                TemplateInfo = response.data.Template,
+                UserCurrentPlan = response.data.current_plan_id;
+
+            //console.log(UserCurrentPlan,'from app -------- ')
+            // User Current Plan
+            dispatch(CurrentPlan(UserCurrentPlan));
             // Template Info
             dispatch(Template_Info(TemplateInfo));
             // Get Pages For Dorpdown
@@ -86,4 +90,9 @@ export const RefreshData = () => (dispatch) => {
 // Template Info
 export const Template_Info = (TemplateInfo) => (dispatch) =>{    
     dispatch({ type: constants.TEMPLATE_INFO, TemplateInfo });
+}
+
+// User Current Plan
+export const CurrentPlan = (UserCurrentPlan) =>(dispatch) => {
+    dispatch({ type: constants.USER_CURRENTPLAN, UserCurrentPlan }); 
 }

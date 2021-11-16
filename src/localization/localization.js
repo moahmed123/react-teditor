@@ -2,8 +2,9 @@ import LocalizedStrings from 'react-localization';
 
 const translationStrings = new LocalizedStrings({
     en: {
-        Browse: "Browse",
+        Browse: "Upload",
         Clear: "Clear", 
+        Delete: "Delete", 
         HomePage: 'home page',
         AddNewSection: 'Add New Section',
         Lang: 'عربي',
@@ -31,11 +32,15 @@ const translationStrings = new LocalizedStrings({
         mainLayout:"main Layout",
         notChanged:"Please Change Any Fields Value",
         OldEditor: 'Switch to old editor',
-        Select: 'select'
+        Select: 'select',
+        EnterpriseParagraph: "Get a store manager to help you run your store",
+        UltimateParagraph:"Relax and let us launch your store for you!",
+        btnUpgrade: "upgrade now"
     },
     ar: {
         Browse: "تحميل",
         Clear: "مسح",
+        Delete: "مسح",
         HomePage: 'الصفحة الرئيسية',
         AddNewSection: 'إضافة قسم جديد',
         Lang: 'EN',
@@ -64,7 +69,10 @@ const translationStrings = new LocalizedStrings({
         mainLayout:"نموذج الرئيسي",
         notChanged:"الرجاء تغيير أي قيمة في الحقول",
         OldEditor: ' العودة الى المحرر القديم',
-        Select: 'اختار'
+        Select: 'اختار',
+        EnterpriseParagraph: "احصل على مدير لمتجرك ليقوم بمساعدتك في كل تفاصيل المتجر ",
+        UltimateParagraph: "إسترخ ودعنا نعد متجرك بدلا عنك!",
+        btnUpgrade: "تحديث الآن"
     }
 });
 export default translationStrings;

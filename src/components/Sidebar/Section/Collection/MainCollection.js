@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GetSCFLD, ADCOLLE, REMCOLLE, REODCOLLS} from '../../../../actions';
+import { SaveSCFLD, ADCOLLE, REMCOLLE, REODCOLLS} from '../../../../actions';
 import { connect } from 'react-redux';
 import { arrayMove, SortableContainer, SortableElement } from 'react-sortable-hoc';
 import { FaBars } from "react-icons/fa";
@@ -149,7 +149,9 @@ class MainCollection extends Component {
         const {CollectionName, Collections, CollectionButtonName, CollectionItemName} = this.props.collectionData;         
         const SortableItem = SortableElement(({ value }) => {
             return (  
-                <div className='Parent_Cart'>
+                <div 
+                    className='Parent_Cart' 
+                    key={`collection_id_${value}`}>
                      <Card>
                         <Card.Header>
                             <Accordion.Toggle as={Button} variant="link" eventKey={`col_${value}`}>
@@ -260,7 +262,7 @@ class MainCollection extends Component {
     }
 }
 const mapStateToProps = state => ({
-    newFields: state.newValFields.newFields,    
+    // newFields: state.newValFields.newFields,    
     sectionFieldsDT : state.sectionData.sectionFields,
 })
 export default connect(mapStateToProps)(MainCollection)

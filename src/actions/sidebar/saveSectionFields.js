@@ -7,17 +7,51 @@ import { replaceIframeSection } from '../Iframe/replaceIframeSection';
 import { refreshIframe } from '../Iframe/refreshIframe';
 import { notification } from '../notification/notification';
 import localization from '../../localization/localization';
+// import $ from "jquery-1.10.2";
 
 // Collected New Value For Fields 
 export const newValFields = (newFields) => (dispatch) => {
-    
+    console.log(newFields)
     let collected = Object.values(newFields.reduce((acc, cur) => Object.assign(acc, { [cur.key]: cur }), {}));    
-    
+    console.log(collected, '-------> colection');
     console.log(collected);
 
     dispatch({ type: constants.NEW_VAL_FIELDS, newFields });
     dispatch({ type: constants.TO_SAVE_FIELDS, collected });
 }
+// export const changeImgForSelector = (data) => () => {
+//     console.log(data, 'data')
+//     let dataCollected;
+//     if(data){
+//         dataCollected = Object.values(data.reduce((acc, cur) => Object.assign(acc, { [cur.key]: cur }), {})); 
+//         // Loop For Modify Images. 
+//         setTimeout(()=>{
+//             console.log(dataCollected.length);
+//             for(let i = 0; i < dataCollected.length; i++ ){  
+//                 console.log(i)                  
+//                 if(dataCollected[i].img){
+                    
+//                     let idValid = document.querySelector("[imagevalid='"+data[i].key+"_image']");            
+//                     if(idValid){
+//                         let ImageId = idValid.id.replace('image', 'thumb_img'),
+//                             StoreCode = localStorage.getItem('storeCode'),
+//                             getElement = document.getElementById(ImageId);
+
+//                         // idValid.style.color = "red";            
+//                         window.location.hostname == 'localhost' ?
+//                             getElement.src = "http://qaz123.expandcart.com" + API.ecdata + StoreCode + API.saveImageData + data[i].value                    
+//                         :
+//                             getElement.src = API.ecdata + StoreCode + API.saveImageData + data[i].value;
+                            
+//                         //$('.setting--sidebar__controls.save .check').trigger('click');
+//                     }                
+//                 }         
+//             }
+//         }) 
+//     }    
+//     console.log(dataCollected, 'dataCollected')
+    
+// }
 
 export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
     console.log("savedFieldVals", savedFieldVals)
@@ -42,7 +76,7 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
             let createVal;
             if(isNaN(savedFieldVals[i].value)){
                 if (savedFieldVals[i].value.indexOf('"') >= 0) {
-                     createVal = '"' + savedFieldVals[i].key + '": "' + savedFieldVals[i].value.replace(/"/g, "'") + '"';        
+                     createVal = '"' + savedFieldVals[i].key + '": "' + savedFieldVals[i].value.replace(/"/g, "'");        
                 }else{
                      createVal = '"' + savedFieldVals[i].key + '": "' + savedFieldVals[i].value;        
                 }
@@ -67,6 +101,7 @@ export const savedFieldsVals = (savedFieldVals) => (dispatch) => {
             } 
         }
     }
+
     let addToBra = "{" + objCr + "}";
     console.log(addToBra)
     // return false;

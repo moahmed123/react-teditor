@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import { Form, Button, FormGroup, FormControl, ControlLabel, Dropdown, Accordion, Card } from "react-bootstrap";
 // import '../../../css/Header-section.css';
-import { GetSCFLD } from '../../../actions';
+import { GetSCFLD, SaveSCFLD } from '../../../actions';
 import check from '../../../assets/svg/check-mark.svg';
 import deleteMark from '../../../assets/svg/delete.svg';
 import arFlag from '../../../assets/svg/flag-of-saudi-arabia.svg';
@@ -18,6 +18,7 @@ import { arrayMove, SortableContainer, SortableElement } from 'react-sortable-ho
 // Sections Fields 
 import TypeText from './Fields/TypeText';
 import TypeCheckbox from './Fields/TypeCheckbox';
+import TypeRadio from './Fields/TypeRadio';
 import SelectLookup from './Fields/SelectLookup';
 import TagsCategory from './Fields/TagsCategory';
 import TagsProduct from './Fields/TagsProduct';
@@ -146,6 +147,11 @@ class Section extends Component {
                         FieldData={Fields} />
                 }
                 // View For Type Checkbox
+                else if (Fields.Type == "radio") {
+                    return <TypeRadio key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldData={Fields} />
+                    // View For Type sselect Lookup
+                } 
+                // View For Type Checkbox
                 else if (Fields.Type == "checkbox") {
                     return <TypeCheckbox key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldData={Fields} />
                     // View For Type sselect Lookup
@@ -161,7 +167,7 @@ class Section extends Component {
                 else if (Fields.Type == "link" || Fields.Type == "Link") {
                     return <LinkTag key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldLink={Fields} />
                 }// View For Type Image
-                else if (Fields.Type == "image") {
+                else if (Fields.Type == "image") {                   
                     return <ImageTag key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldImage={Fields} />
                 }
                 // View For Type Brand
@@ -220,7 +226,7 @@ class Section extends Component {
                     {/* <Spinner animation="border" /> */}
                 </div>
             )
-       }
+       }       
         return (
 
             <>
@@ -248,7 +254,17 @@ class Section extends Component {
                                     <div
                                         className = {`page__flags__country ${langs.code == ActiveLanguage && this.state.codeLangST ? 'active' : ''}${langs.code == this.state.codeLang ? 'active' : ''} `}
                                         key={key}
-                                        onClick={(e) => this.setState({ codeLangST: false, codeLang: langs.code })}>
+                                        onClick={(e) => {
+                                                this.setState({ codeLangST: false, codeLang: langs.code })
+                                                
+                                                // let savedFieldsVals = this.props.newFieldsChanges;                                                
+                                                // if (savedFieldsVals != undefined ) {
+                                                //     console.log(savedFieldsVals.length); 
+                                                //     if (savedFieldsVals.length > 0 ){
+                                                //         this.props.dispatch(SaveSCFLD.savedFieldsVals(savedFieldsVals))
+                                                //     }                                                
+                                                // }
+                                            }}>
 
                                         {   
                                             langs.code == 'en' ?
@@ -266,17 +282,18 @@ class Section extends Component {
                             :
                             null
                     }
-                </div>
-
+                    
+                </div>                
                 {
                     // Condation For Check Wonder Template 
                     TemplateInfo?
-                        TemplateInfo.CodeName.toLowerCase() == 'wonder2'? 
-                            //console.log('Template is wonder ')
-                            this._getSectionFieldsWonderTM(TemplateInfo.CodeName)
-                            : 
-                            //console.log(`Template is ${TemplateInfo.CodeName} not wonder`)
-                            this._getSectionFields()
+                        TemplateInfo.CodeName.toLowerCase() == 'wonder'?
+                                <>                            
+                                    {/* {langs.code == 'en' ? "That what will display in-store when user use English view" : "That what will display in-store when user use English view"} */}                                                        
+                                   <div className='section__v2'>{this._getSectionFieldsWonderTM(TemplateInfo.CodeName)}</div> 
+                                </>
+                            :                             
+                                this._getSectionFields()
                     :
                         null
                 }
@@ -294,7 +311,8 @@ const mapStateToProps = state => ({
     // updateSecFields : state.sectionData.updateSecFields,
     getlanguages: state.getlanguages.GetLangs,
     backComponent: state.getlanguages.backCom, // Back Component For Back From Section TO Header, Footer Component
-    TemplateInfo: state.TemplateInfo.TemInfo    // Info For Template.
+    TemplateInfo: state.TemplateInfo.TemInfo,    // Info For Template.
+    newFieldsChanges: state.newValFields.collectANewFields,
 })
 
 export default connect(mapStateToProps)(Section)

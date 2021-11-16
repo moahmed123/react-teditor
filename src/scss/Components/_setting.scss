@@ -72,6 +72,12 @@
                         border-radius: 4px !important;
                         padding: 6px 10px !important;
                     }
+                    .generic--section--v2{
+                        border: none !important;
+                        border-radius: 0px !important;
+                        padding: 0px !important; 
+                        padding-left: 23px !important;
+                    }
                     .color__main__caption{ 
                         @extend %main-label;
                         font-size:calc(11px + (11 - 9) * ((100vw - 1024px) / (1920 - 1024)));
@@ -207,6 +213,9 @@
                 }
                 .setting--sidebar__color{
                     margin-bottom: 20px;
+                    &.setting--sidebar__radio{
+                        margin-bottom: 4px;
+                    }
                     .sidebar__color__main {
                         .color__main__caption{
                             margin-bottom: 10px;
@@ -219,7 +228,7 @@
                                 width: 80%;
                             }
                         }
-                    }
+                    }                    
                 }
                 .setting--sidebar__fonts {
                     .sidebar__fonts__main {
@@ -260,6 +269,10 @@
                 }
                 .setting--sidebar__color{
                     margin-bottom: 20px;
+                    &.setting--sidebar__radio{
+                        margin-bottom: 4px;
+                    }
+                    
                     .sidebar__color__main {
                         .color__main__caption{
                             margin-bottom: 10px;
@@ -322,7 +335,7 @@
                         }
                     }
                 }
-                .setting--sidebar__color {
+                .setting--sidebar__color {                   
                     .sidebar__color__main {
                         .color__main__content {
                         .main__content__info{
@@ -350,8 +363,10 @@
                         font-weight: 600 !important;
                         padding: 0 10px;
                         transform: translate(0px, 3px);
-                    }
+                    }                   
+                    
                 }
+                
             }
         }
     }
