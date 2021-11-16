@@ -51,7 +51,9 @@ class Section extends Component {
         // active lang for fields   
         console.log('TemplateInfo --> ',this.props.TemplateInfo)            
     }
-
+    componentDidUpdate(){
+        this.Message_alert_lang()
+    }
     _getSectionFields = () => {
         let sectionFields = this.props.sectionFieldsDT.data.section.Fields;
         let langActive = 'en'
@@ -187,7 +189,23 @@ class Section extends Component {
             })
         }
     }
-
+    Message_alert_lang(ActiveLanguage){
+        return (            
+            <h6 className='section--page__alert'>
+                {
+                    this.state.codeLang ? 
+                        this.state.codeLang == 'en' ? "That what will display in-store when user use English view "
+                        :
+                        this.state.codeLang == 'ar' ? "هذا ما سيتم عرضه في المتجر عندما يستخدم المستخدم طريقة العرض العربية":""
+                    : 
+                        ActiveLanguage == 'en' ? 
+                            "That what will display in-store when user use English view "
+                        :
+                            "هذا ما سيتم عرضه في المتجر عندما يستخدم المستخدم طريقة العرض العربية"
+                }                
+            </h6>
+        )
+    }
     render() {        
         let ActiveLanguage;
         const {TemplateInfo} = this.props
@@ -290,6 +308,7 @@ class Section extends Component {
                         TemplateInfo.CodeName.toLowerCase() == 'wonder'?
                                 <>                            
                                     {/* {langs.code == 'en' ? "That what will display in-store when user use English view" : "That what will display in-store when user use English view"} */}                                                        
+                                    {this.Message_alert_lang(ActiveLanguage)}
                                    <div className='section__v2'>{this._getSectionFieldsWonderTM(TemplateInfo.CodeName)}</div> 
                                 </>
                             :                             

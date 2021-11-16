@@ -1227,7 +1227,15 @@
 }
 .Home {    
     .Home__sidebar.section--page {
+        .section--page__alert{
+            font-size: 13px;
+            line-height: 17px;
+            color:  #707070;
+            transform: translate(0px, -35px);
+            text-align: #{$start};
+        }
         .section__v2{
+             
             .setting--sidebar__color {            
                 &.setting--sidebar__color__v2{
                     .sidebar__color__main {
@@ -1253,12 +1261,10 @@
                                 border: none;
                                 vertical-align: top;
                                 font-size: 12px;
-                                position: absolute;
-                                
+                                position: absolute;                                
                                 #{$end}: 45px;
                                 #{$start}: unset;
                                 font-weight: bold;
-
                             }
                             .Clear__Img {
                                 top: 1px;
@@ -1279,22 +1285,33 @@
                             }
                             .Clear__Img span{
                                 display: block;
-                            }
+                            }                           
                         }
                     }
+                    
                     &.mr-0{
                         .sidebar__color__main {
                             .color__main__content {
                                 .main__img__content{
                                     width: 100%;                                    
                                     margin-#{$start}: 0px;                                     
-                                }                               
+                                }                                                              
                             }
                             .silder__color--hint{
                                 padding: 0px;
                             }
                         }   
                     }
+                }
+
+                .sidebar__color__main {
+                    .label{
+                        &.generic--section{
+                            border: none !important;
+                            border-radius: 0 !important;
+                            padding: 0 !important;
+                        }
+                    } 
                 }
                 
             }            

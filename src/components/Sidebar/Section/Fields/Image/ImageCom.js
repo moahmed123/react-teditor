@@ -160,7 +160,7 @@ class ImageCom extends Component {
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>
                                     <img src={RemoveImg} />
-                                    <span>Delete</span>
+                                      <span>{localization.Delete}</span>
                                 </button>
                             </div>
                         )
@@ -198,7 +198,7 @@ class ImageCom extends Component {
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>
                                     <img src={RemoveImg} />
-                                    <span>Delete</span>
+                                      <span>{localization.Delete}</span>
                                 </button>
                             </div>
                         )
@@ -236,7 +236,7 @@ class ImageCom extends Component {
                                     imageclearvalid={`${DI_mage.ObjectFieldId}_thumb_img`}
                                     onClick={this.clear_image}>
                                     <img src={RemoveImg} />
-                                    <span>Delete</span>
+                                      <span>{localization.Delete}</span>
                                 </button>
                             </div>
                         )

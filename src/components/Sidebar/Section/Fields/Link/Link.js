@@ -103,13 +103,13 @@ class Link extends Component {
         if (this.props.FieldLink.FieldVals) {
             return this.props.FieldLink.FieldVals.map((LinkData, key) => {
                 if (LinkData.Lang == 'en') {
-                    this.setState({ LinkValEn: LinkData,defaultValueEn: LinkData.Value })
+                    this.setState({ LinkValEn: LinkData, defaultValueEn: LinkData.Value == 'Home' ? '#': LinkData.Value })
                 }
                 if (LinkData.Lang == 'ar') {
-                    this.setState({ LinkValAr: LinkData, defaultValueAr: LinkData.Value })
+                    this.setState({ LinkValAr: LinkData, defaultValueAr: LinkData.Value == 'Home' ? '#': LinkData.Value })
                 }
                 if (LinkData.Lang == this.props.codelang) {
-                    this.setState({ LinkValLang: LinkData, defaultValue: LinkData.Value, defaultValueLang: LinkData.Value })
+                    this.setState({ LinkValLang: LinkData, defaultValue: LinkData.Value == 'Home' ? '#': LinkData.Value, defaultValueLang: LinkData.Value == 'Home' ? '#': LinkData.Value })
                 }
             })
         }
