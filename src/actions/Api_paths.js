@@ -36,7 +36,7 @@ const ApiPaths = {
     IframeLink: ''
 };
 export default ApiPaths;
-// // At Demo App Version Use:
+// At Demo App Version Use:
 // const ApiPaths = {
 //     //API Links
 //     getTemplateStructureV2:'http://qaz123.expandcart.com/admin/teditor/designeditor/getTemplateStructure',

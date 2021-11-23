@@ -662,7 +662,8 @@
                     .silder__color--hint{
                         font-size: 12px;
                         color:#707070;
-                        padding: 0 23px
+                        padding: 0 23px;
+                        text-align: $start;
                     }
                     // padding-left: 0;
                     // padding-right: 0;
@@ -766,6 +767,7 @@
                                         border: 1px solid #333;
                                         height: 18px;
                                         width: 18px;
+                                        background: #fff;
                                     }
                                     .checkmark:after {
                                         #{$start}: 4px;
@@ -777,9 +779,9 @@
                                         border-width: 6px 6px 6px 6px;
                                         // transform: translate(-18%, 18%);
                                         @if $start == 'left'{
-                                            transform: translate(-18%, 18%);
+                                            transform: translate(-18%, 14%);
                                         } @else{
-                                            transform: translate(15%, 18%);
+                                            transform: translate(17%, 14%);
                                         }
                                         border-radius: 100%;
                                         background: #333;                              
@@ -1318,7 +1320,11 @@
         }  
     }
 }
-
+#modal-image{
+    .dz-error-mark{
+        z-index: 9999;
+    }
+}
 
 //enhancment 
 // .select__value-container{

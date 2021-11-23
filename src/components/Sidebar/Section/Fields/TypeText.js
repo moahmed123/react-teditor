@@ -10,25 +10,25 @@ class TypeText extends Component {
         if(this.props.codelang == 'en'){
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'en'){
-                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
+                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" maxLength="25" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
                 }
             })
         } else if (this.props.codelang == 'ar'){
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'ar'){
-                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
+                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" maxLength="25" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
                 }
             })
         } else if (this.props.codelang == 'fr'){
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == 'fr'){
-                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
+                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" maxLength="25" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
                 }
             })
         }else{
             return this.props.FieldData.FieldVals.map((langInputVal, key) => {
                 if(langInputVal.Lang == this.props.codelang){
-                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
+                    return <input className="generic--section__form" placeholder="" id={langInputVal.id} key={key} type="text" maxLength="25" defaultValue = {langInputVal.Value} onKeyUpCapture={this._changeTextVal}/>
                 }
             })
         }

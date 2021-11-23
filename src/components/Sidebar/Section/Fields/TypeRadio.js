@@ -17,7 +17,7 @@ class TypeRadio extends Component {
         window.addEventListener('load', this.handleLoad);
      }
     
-     componentWillUnmount() { 
+     componentWillUnmount() {         
        window.removeEventListener('load', this.handleLoad)  
      }
         
@@ -25,15 +25,30 @@ class TypeRadio extends Component {
          setTimeout(()=>{
              if (document.getElementById(this.props.FieldData.hides)){
                  document.getElementById(this.props.FieldData.hides).classList.add('hidden')
-             }                
+             } 
+             if (document.getElementById(this.props.FieldData.shows)){
+                document.getElementById(this.props.FieldData.shows).classList.remove('hidden')
+            }                
          },100)
                 
      }
+     handleLoad2() {
+         console.log('change Langauge ')
+        
+            if (document.getElementById(this.props.FieldData.hides)){
+                document.getElementById(this.props.FieldData.hides).style.display = 'none';
+                document.getElementById(this.props.FieldData.shows).style.display = 'block';
+            } 
+                           
+        
+               
+    }
     _setlangVal = () => {
               
         return this.props.FieldData.FieldVals.map((langInputVal, key) => {
             if (langInputVal.Lang == this.props.codelang) {                    
-                if(langInputVal.Value == 0 || langInputVal.Value == false){                                        
+                if(langInputVal.Value == 0 || langInputVal.Value == false){                     
+                    // this.handleLoad2();
                   return  <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>
                 }else{                 
                     this.handleLoad();

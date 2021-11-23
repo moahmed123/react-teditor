@@ -11,6 +11,7 @@ import TypeText from '../Fields/TypeText';
 import TypeCheckbox from '../Fields/TypeCheckbox';
 import SelectLookup from '../Fields/SelectLookup';
 import TagsCategory from '../Fields/TagsCategory';
+import TagsCategoryDynamic from '../Fields/TagsCategoryDynamic';
 import TagsProduct from '../Fields/TagsProduct';
 import LinkTag from '../Fields/Link/Link';
 import ImageTag from '../Fields/Image/ImageCom';
@@ -60,6 +61,9 @@ class SetionCollection extends Component {
                     else if(Fields.Type == "tags-category"){
                         return <TagsCategory key={key} codelang = {lang} FieldTagsData = {Fields}/>
                     }// View For Type tags-category
+                    else if(Fields.Type == "tags-category-dynamic"){
+                        return <TagsCategoryDynamic key={key} codelang = {lang} FieldTagsData = {Fields}/>
+                    }
                     else if(Fields.Type == "tags-product"){
                         return <TagsProduct key={key} codelang = {lang} FieldTagsPro = {Fields}/>
                     }// View For Type Link

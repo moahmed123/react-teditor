@@ -16,7 +16,10 @@ class ImageCom extends Component {
             noImageThumb: String,
             ClearImage: null,
             firstRender: true,
-            IdImgUpload: []
+            IdImgUpload: [],
+            ImageCaching: false,
+            ImageCachingAr: false,
+            ImageCachingFr: false            
         }
         this.clear_image = this.clear_image.bind(this);
         this.image_upload = this.image_upload.bind(this);
@@ -32,7 +35,7 @@ class ImageCom extends Component {
         let _TS = this; // This For React Not JQ.                
         //Fixed Issue for image. 
         $('body').on('click', '#modal-image', function (event) {
-            if (!$(event.target).closest('a.directory, #button-upload, #button-delete, .modal-body .input-group, .dropzone.dz-started .dz-message, .modal-header .close').length) {
+            if (!$(event.target).closest('a.directory, #button-upload, #button-delete, .modal-body .input-group, .dropzone .dz-message, .modal-header .close').length) {
                 // ... clicked on the 'body', but not inside of This Class                                
                 let currentImageLength = $('.current_value_image').length,
                     currentImage = $('.current_value_image');
@@ -49,7 +52,7 @@ class ImageCom extends Component {
                         let keyJson = currentImage[i].getAttribute('imagevalid').replace('_image', ''),
                             ValueJson = currentImage[i].value,
                             idThumbImage = currentImage[i].id.replace("_image", ''),
-                            jsonFormatImgVal = { "key": keyJson, "value": ValueJson };
+                            jsonFormatImgVal = { "key": keyJson, "value": ValueJson , "img": true};
                         // jsonFormatImgVal = { "key": keyJson, "value": ValueJson};
 
                         _TS._sendSavedData(jsonFormatImgVal);
@@ -83,27 +86,54 @@ class ImageCom extends Component {
         // End Fixed Issue for image. 
     }
     _renderDataImage() {
+        console.log("----------------")
+        console.log("this.props.newFields =",this.props.newFields)
+        console.log("this.props.FieldImage =", this.props.FieldImage)
+        console.log(localStorage.getItem('storeCode'))
+        console.log("----------------")
         let Image_data = this.props.FieldImage;
         if (this.props.codelang == 'en') {
             if (Image_data) {
                 return Image_data.FieldVals.map((DI_mage, key) => {
                     if (DI_mage.Lang == 'en') {
-                        console.log("DImage" + DI_mage)
+                        console.log("DImage", DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                                <div className="main__img__content">
-                                    {/* <img                                                                           
-                                        src={DI_mage.ImageThumb}
-                                        width="100%"
-                                        id={`${DI_mage.ObjectFieldId}_thumb`} // Will Remove.
-                                    />   */}
-
+                                <div className="main__img__content">                                    
+                                    {
+                                        this.props.newFields? 
+                                            this.props.newFields.map((data, key)=>{
+                                                console.log(data.key, DI_mage.id)  
+                                                if(data.img){
+                                                    if(data.key == DI_mage.id){ 
+                                                        if(this.state.ImageCaching == false){
+                                                            this.setState({
+                                                                ImageCaching: true
+                                                            })
+                                                        }                                                                                                    
+                                                        return  <img
+                                                                    // src={DI_mage.ImageThumb.split('/data/')[0].replace('cache','')+ data.value}
+                                                                    src={data.value? DI_mage.ImageThumb.split('/data/')[0].replace('cache','')+ data.value : DI_mage.ImageThumb.split('image/cache/')[0]+Paths.srcClearImage}
+                                                                    key={key}
+                                                                    width="100%"
+                                                                    id={`${DI_mage.ObjectFieldId}_thumb_img`}
+                                                                />                                                       
+                                                       }
+                                                }
+                                            })
+                                        : 
+                                            null                                                                          
+                                    }
+                               {
+                                   this.state.ImageCaching == false?
                                     <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"
                                         id={`${DI_mage.ObjectFieldId}_thumb_img`}
-                                    />
-
+                                        />
+                                    : 
+                                    null
+                               }                                                                                                      
                                     <input
                                         type="hidden"
                                         className='current_value_image'
@@ -136,12 +166,46 @@ class ImageCom extends Component {
                         console.log("DImage" + DI_mage)
                         return (
                             <div className="color__main__content" key={key}>
-                                <div className="main__img__content">
-                                    <img
+                                <div className="main__img__content">                                    
+                                      {
+                                        this.props.newFields? 
+                                            this.props.newFields.map((data, key)=>{
+                                                console.log(data.key, DI_mage.id)  
+                                                if(data.img){
+                                                    if(data.key == DI_mage.id){ 
+                                                        if(this.state.ImageCachingAr == false){
+                                                            this.setState({
+                                                                ImageCachingAr: true
+                                                            })
+                                                        }                                                                                                    
+                                                        return  <img
+                                                                    // src={DI_mage.ImageThumb.split('/data/')[0].replace('cache','')+ data.value}
+                                                                    src={data.value? DI_mage.ImageThumb.split('/data/')[0].replace('cache','')+ data.value : DI_mage.ImageThumb.split('image/cache/')[0]+Paths.srcClearImage}
+                                                                    key={key}
+                                                                    width="100%"
+                                                                    id={`${DI_mage.ObjectFieldId}_thumb_img`}
+                                                                />                                                       
+                                                       }
+                                                }
+                                            })
+                                        : 
+                                            null                                                                          
+                                    }
+                                    {
+                                        this.state.ImageCachingAr == false?
+                                            <img
+                                                src={DI_mage.ImageThumb}
+                                                width="100%"
+                                                id={`${DI_mage.ObjectFieldId}_thumb_img`}
+                                                />
+                                            : 
+                                            null
+                                    }
+                                    {/* <img
                                         src={DI_mage.ImageThumb}
                                         width="100%"
                                         id={`${DI_mage.ObjectFieldId}_thumb_img`}
-                                    />
+                                    /> */}
                                     <input
                                         type="hidden"
                                         className='current_value_image'
@@ -175,11 +239,40 @@ class ImageCom extends Component {
                         return (
                             <div className="color__main__content" key={key}>
                                 <div className="main__img__content">
-                                    <img
-                                        src={DI_mage.ImageThumb}
-                                        width="100%"
-                                        id={`${DI_mage.ObjectFieldId}_thumb_img`}
-                                    />
+                                {
+                                        this.props.newFields? 
+                                            this.props.newFields.map((data, key)=>{
+                                                console.log(data.key, DI_mage.id)  
+                                                if(data.img){
+                                                    if(data.key == DI_mage.id){ 
+                                                        if(this.state.ImageCachingFr == false){
+                                                            this.setState({
+                                                                ImageCachingFr: true
+                                                            })
+                                                        }                                                                                                    
+                                                        return  <img
+                                                                    // src={DI_mage.ImageThumb.split('/data/')[0].replace('cache','')+ data.value}
+                                                                    src={data.value? DI_mage.ImageThumb.split('/data/')[0].replace('cache','')+ data.value : DI_mage.ImageThumb.split('image/cache/')[0]+Paths.srcClearImage}
+                                                                    key={key}
+                                                                    width="100%"
+                                                                    id={`${DI_mage.ObjectFieldId}_thumb_img`}
+                                                                />                                                       
+                                                       }
+                                                }
+                                            })
+                                        : 
+                                            null                                                                          
+                                    }
+                                    {
+                                        this.state.ImageCachingFr == false?
+                                            <img
+                                                src={DI_mage.ImageThumb}
+                                                width="100%"
+                                                id={`${DI_mage.ObjectFieldId}_thumb_img`}
+                                                />
+                                            : 
+                                            null
+                                    }
                                     <input
                                         type="hidden"
                                         className='current_value_image'
@@ -213,11 +306,41 @@ class ImageCom extends Component {
                         return (
                             <div className="color__main__content" key={key}>
                                 <div className="main__img__content">
-                                    <img
-                                        src={DI_mage.ImageThumb}
-                                        width="100%"
-                                        id={`${DI_mage.ObjectFieldId}_thumb_img`}
-                                    />
+                                    {
+                                        this.props.newFields? 
+                                            this.props.newFields.map((data, key)=>{
+                                                console.log(data.key, DI_mage.id)  
+                                                if(data.img){
+                                                    if(data.key == DI_mage.id){ 
+                                                        if(this.state.ImageCaching == false){
+                                                            this.setState({
+                                                                ImageCaching: true
+                                                            })
+                                                        }                                                                                                    
+                                                        return  <img
+                                                                    // src={DI_mage.ImageThumb.split('/data/')[0].replace('cache','')+ data.value}
+                                                                    src={data.value? DI_mage.ImageThumb.split('/data/')[0].replace('cache','')+ data.value : DI_mage.ImageThumb.split('image/cache/')[0]+Paths.srcClearImage}
+                                                                    key={key}
+                                                                    width="100%"
+                                                                    id={`${DI_mage.ObjectFieldId}_thumb_img`}
+                                                                />                                                       
+                                                       }
+                                                }
+                                            })
+                                        : 
+                                            null                                                                          
+                                    }
+                                   
+                                    {
+                                        this.state.ImageCaching == false?
+                                            <img
+                                                src={DI_mage.ImageThumb}
+                                                width="100%"
+                                                id={`${DI_mage.ObjectFieldId}_thumb_img`}
+                                                />
+                                            : 
+                                            null
+                                    }
                                     <input
                                         type="hidden"
                                         className='current_value_image'
