@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SaveSCFLD } from '../../../../actions';
+import { SaveSCFLD, GetSCFLD } from '../../../../actions';
 import { connect } from 'react-redux'
 
 
@@ -8,13 +8,25 @@ class TypeRadio extends Component {
         super(props);
         this.state = {
             idSelectorShow: null,
-            idSelectorHide: null
+            idSelectorHide: null,
+            switchlang: false,
+            langDefault: null,
+            changedData:[],
+            checkInput: true
         }
         this._setlangVal = this._setlangVal.bind(this, false);
         this.handleLoad = this.handleLoad.bind(this);
     }
     componentDidMount() {
         window.addEventListener('load', this.handleLoad);
+        if(this.state.langDefault == null ){
+            this.setState({langDefault: this.props.codelang})
+        }                
+     }
+     componentDidUpdate(){
+        // if(this.state.switchlang == false){
+        //     this.setState({switchlang: true})
+        // } 
      }
     
      componentWillUnmount() {         
@@ -29,8 +41,7 @@ class TypeRadio extends Component {
              if (document.getElementById(this.props.FieldData.shows)){
                 document.getElementById(this.props.FieldData.shows).classList.remove('hidden')
             }                
-         },100)
-                
+         },120)              
      }
      handleLoad2() {
          console.log('change Langauge ')
@@ -43,61 +54,73 @@ class TypeRadio extends Component {
         
                
     }
-    _setlangVal = () => {
-              
+    _setlangVal = () => {               
         return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-            if (langInputVal.Lang == this.props.codelang) {                    
-                if(langInputVal.Value == 0 || langInputVal.Value == false){                     
-                    // this.handleLoad2();
-                  return  <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>
-                }else{                 
-                    this.handleLoad();
-                    return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
-                }                    
+            if (langInputVal.Lang == this.props.codelang) { 
+                const DefaultLang = this.state.langDefault,
+                switchLang = this.props.codelang; 
+                if(DefaultLang && switchLang){                    
+                    if(DefaultLang != switchLang){
+                        console.log('change lang', langInputVal.Lang, langInputVal.id, langInputVal.Value)
+                        
+                        if(langInputVal.Value == 1){
+                             document.getElementById(this.props.FieldData.hides).style.display = 'none';
+                                        document.getElementById(this.props.FieldData.shows).style.display = 'block';
+                        }
+                        if(langInputVal.Value == 0){
+                            document.getElementById(this.props.FieldData.hides).style.display = 'block';
+                            document.getElementById(this.props.FieldData.shows).style.display = 'none';
+                       }
+                    }
+                } 
+                if(this.props.newFields){
+                    this.props.newFields.map((doc, key)=>{ 
+                        if(doc.key == langInputVal.id){
+                            if(doc.value == 1){                                
+                                setTimeout(()=>{
+                                    if(document.getElementById(doc.key)){
+                                        document.getElementById(doc.key).checked = true  
+                                    }    
+                                    console.log("doc.value = ", doc.value , "key = ", doc.key, this.props.FieldData.hides)
+                                        document.getElementById(this.props.FieldData.hides).style.display = 'none';
+                                        document.getElementById(this.props.FieldData.shows).style.display = 'block';
+                                                                        
+                                },100)                                
+                            }
+                            // console.log(doc.key, 'checked false ')
+                            if(doc.value == 0){
+                                setTimeout(()=>{
+                                    if(document.getElementById(doc.key)){
+                                        document.getElementById(doc.key).checked = false  
+                                    }
+                                    console.log("doc.value = ", doc.value , "key = ", doc.key, this.props.FieldData.hides)
+                                    document.getElementById(this.props.FieldData.hides).style.display = 'block';
+                                    document.getElementById(this.props.FieldData.shows).style.display = 'none';
+                                
+                                },100)                                
+                            }
+                        }
+                    })                    
+                }
+                    if(langInputVal.Value == 0 || langInputVal.Value == false){                     
+                        // this.handleLoad();
+                         return  <input type="checkbox" id={langInputVal.id} defaultChecked ='' key={key} onChange={this._changeCheckboxVal}/>
+                    }else{                 
+                        this.handleLoad();
+                        return   <input type="checkbox" id={langInputVal.id} defaultChecked = "check" key={key} onChange={this._changeCheckboxVal}/>;
+                    }
+                
+                // if(langInputVal.Value == 0 || langInputVal.Value == false){                     
+                //     // this.handleLoad();
+                //      return  <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>
+                // }else{                 
+                //     this.handleLoad();
+                //     return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
+                // }                    
             }
-        })
-        // if (this.props.codelang == 'en') {
-        //     return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-        //         if (langInputVal.Lang == 'en') {                    
-        //             if(langInputVal.Value == 0 || langInputVal.Value == false){
-        //                 return   <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>;
-        //             }else{
-        //                 return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
-        //             }                    
-        //         }
-        //     })
-        // } else if (this.props.codelang == 'ar') {
-        //     return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-        //         if (langInputVal.Lang == 'ar') {
-        //             if(langInputVal.Value == 0 || langInputVal.Value == false){
-        //                 return   <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>;
-        //             }else{
-        //                 return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
-        //             }                    
-        //         }
-        //     })
-        // } else if (this.props.codelang == 'fr') {
-        //     return this.props.FieldData.FieldVals.map((langInputVal, key) => {
-        //         if (langInputVal.Lang == 'fr') {
-        //             if(langInputVal.Value == 0 || langInputVal.Value == false){
-        //                 return   <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>;
-        //             }else{
-        //                 return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
-        //             }                    
-        //         }
-        //     })
-        // } else {
-        //     return this.props.FieldData.FieldVals.map((langInputVal, key) => {                
-        //         if(langInputVal.Lang == this.props.codelang){
-        //             if(langInputVal.Value == 0 || langInputVal.Value == false){
-        //                 return   <input type="checkbox" id={langInputVal.id} defaultChecked = '' key={key} onChange={this._changeCheckboxVal}/>;
-        //             }else{
-        //                 return   <input type="checkbox" id={langInputVal.id} defaultChecked = 'check' key={key} onChange={this._changeCheckboxVal}/>;
-        //             }                    
-        //         }
-        //     })
-        // }
-    }
+
+        })                 
+    }   
     _changeCheckboxVal = (e) => { 
         
         let checkValTOJ; 
@@ -116,7 +139,12 @@ class TypeRadio extends Component {
             document.getElementById(this.props.FieldData.hides).style.display = 'block';
             document.getElementById(this.props.FieldData.shows).style.display = 'none';
         }        
-
+        // let lg = `${this.props.codelang}:{key:${e.target.id}, value:${checkValTOJ}}`;      
+        // console.log('ddddddd', lg)
+        // let datalanf = this.state.changedData.push(lg)
+        // let datasss = this.props.codelang + {"key": e.target.id, "value": checkValTOJ};
+        // this.setState({changedData: this.state.changedData.push(datasss)})
+        
             // Get Relation for radio.             
             let lengthIdRadio = document.getElementsByClassName('radio-input').length;
             let valueToSave = [],
@@ -202,7 +230,7 @@ class TypeRadio extends Component {
             this.props.dispatch(SaveSCFLD.newValFields(value)); 
         }  
     }
-    render() {        
+    render() {            
         return (
             <div className="setting--sidebar__color mb-3 setting--sidebar__radio">
                 <div className="sidebar__color__main  set--padding">

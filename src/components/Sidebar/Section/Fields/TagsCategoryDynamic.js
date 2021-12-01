@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SaveSCFLD, SeaCate } from '../../../../actions';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import Select from 'react-select';
 import localization from '../../../../localization/localization';
 
@@ -16,7 +17,7 @@ class TagsCategoryDynamic extends Component {
             tagsidFieldAr : '',
             tagsidFieldFr : '',
             tagsidFieldTr: '',
-            SelectHeight: ''
+            SelectHeight: ''         
         };
     }
 
@@ -25,6 +26,8 @@ class TagsCategoryDynamic extends Component {
         // if(localStorage.getItem('Data_Saving') == null){
         //     localStorage.setItem('Data_Saving','')
         // }   
+        localStorage.clear()
+
         this.setState({sectionId:this.props.FieldTagsData.id})
         console.log(this.props.FieldTagsData.id,"this.props.FieldTagsData")        
         console.log(this.state.selectedOptionMultiLang, "this.state.selectedOptionMultiLang")    
@@ -32,7 +35,7 @@ class TagsCategoryDynamic extends Component {
 
         //Add Default Value For Selection
 
-        // this._addDefaultVal();
+        this._addDefaultVal();
         
         // Use defaultCategories To Show It First click for Field.
         let defaultCategories = '';
@@ -87,9 +90,10 @@ class TagsCategoryDynamic extends Component {
             })        
         //End Revoke Duplicated Code For Multi Language. 
 
-        return false 
+        // return false 
          this.props.FieldTagsData.FieldVals.map((dataTagCat, key) => {
             if(dataTagCat.Lang == 'en'){
+                console.log("dataTagCat.id",dataTagCat.id)
                 this.setState({tagsidFieldEn: dataTagCat.id});
             }else if(dataTagCat.Lang == 'ar') {
                 this.setState({tagsidFieldAr: dataTagCat.id});
@@ -175,13 +179,37 @@ class TagsCategoryDynamic extends Component {
             })
         }
     }
-    handleChange = selectedOption => {
-        
+    handleChange = selectedOption => {           
+        // console.log(this.state.selectedOptionMultiLang, "sele", selectedOption,  selectedOption.pop())
+        // return false
         //console.log(" 1- selectedOption ===> ",selectedOption, ' 1- selectedOptionMultiLang ==> ', this.state.selectedOptionMultiLang[this.props.codelang])
-        this.state.selectedOptionMultiLang[this.props.codelang] = selectedOption;
-       console.log(" 2- selectedOption ===> ",selectedOption, ' 2- selectedOptionMultiLang ==> ', this.state.selectedOptionMultiLang[this.props.codelang])
-       console.log(this.state.selectedOptionMultiLang)
+        if(this.state.selectedOptionMultiLang == null ){
+            console.log("sele", selectedOption,  selectedOption.pop())
+            console.log("sele",JSON.stringify(selectedOption) )
+            let StringObject = JSON.stringify(selectedOption),
+            // const jsonCreated2 =`{ ${this.props.codelang}:${selectedOption}}`;
+              jsonCreated2 =  this.props.codelang + ':' + StringObject ,
+              JsonParseCode = `{${jsonCreated2}}`;                        
 
+            let jsonStr = JsonParseCode.replace(/(\w+:)|(\w+ :)/g, function(matchedStr) {
+              return '"' + matchedStr.substring(0, matchedStr.length - 1) + '":';
+            });
+            
+            JsonParseCode = JSON.parse(jsonStr); //converts to a regular object
+            console.log(jsonCreated2, "JsonParseCode = obj", 'd', JsonParseCode, "jsonStr", jsonStr )
+            
+            this.state.selectedOptionMultiLang = JsonParseCode;
+            
+        }else{
+            console.log(" 2- selectedOption ===> ",selectedOption, 'this.props.codelang', this.props.codelang, 's', this.state.selectedOptionMultiLang)            
+           this.state.selectedOptionMultiLang[this.props.codelang] = selectedOption;   
+        }        
+        console.log(" 2- selectedOption ===> ",selectedOption, 'this.props.codelang', this.props.codelang, 's', this.state.selectedOptionMultiLang)
+                    
+        // console.log(" 2- selectedOption ===> ",selectedOption, ' 2- selectedOptionMultiLang ==> ', this.state.selectedOptionMultiLang[this.props.codelang])
+    //    console.log(this.state.selectedOptionMultiLang)
+
+        
        //Test           
         localStorage.setItem(`Data_Cat_Saving_${this.state.sectionId}_${this.props.codelang}`, JSON.stringify(this.state.selectedOptionMultiLang));
         // console.log(localStorage.getItem(`Data_Saving_${this.state.sectionId}_${this.props.codelang}`), "DataCateSaving")
@@ -211,20 +239,20 @@ class TagsCategoryDynamic extends Component {
 
         // Set Height For Select Option Categories         
         // let height3 = document.querySele
-        let height;
-        if(selectedOption){
-            if(selectedOption.length > 0 && selectedOption.length < 2){
-                height =  75 + 'px';
-            } else if(selectedOption.length > 1){
-                height = (selectedOption.length * 35) + 33 + 'px';
-            }else{
-                height = 'auto';
-            }
-        }        
-        this.setState({
-            SelectHeight: height
-        })
-        console.log(height)
+        // let height;
+        // if(selectedOption){
+        //     if(selectedOption.length > 0 && selectedOption.length < 2){
+        //         height =  75 + 'px';
+        //     } else if(selectedOption.length > 1){
+        //         height = (selectedOption.length * 35) + 33 + 'px';
+        //     }else{
+        //         height = 'auto';
+        //     }
+        // }        
+        // this.setState({
+        //     SelectHeight: height
+        // })
+        // console.log(height)
         // End Set Height 
         
         // Work For Revoke Save Mutli Language 
@@ -238,22 +266,29 @@ class TagsCategoryDynamic extends Component {
             if(selectedOptionMultiLang[this.props.codelang]){            
                 const optionLen = selectedOptionMultiLang[this.props.codelang].length;
                 if(selectedOptionMultiLang[this.props.codelang].length > 1){
-                    // Map                 
+                  
                     //selectedOption
-                    selectedOptionMultiLang[this.props.codelang].map((selectOpData, key)=>{
-                        if(key == 0 ){
-                            textValCat = selectOpData.value + ',';    
-                        }else if(optionLen == key + 1){
-                            // last OF Map 
-                            textValCat += selectOpData.value;
-                            console.log('last Of Map ')
-                        }
-                        else{
-                            textValCat += selectOpData.value + ',';
-                        }
-                        
-                    })                
-                    jsonFormatCat = {"key": idFieldTagsCat,"value": textValCat};
+                    // selectedOptionMultiLang[this.props.codelang].map((selectOpData, key)=>{
+                    //     if(key == 0 ){
+                    //         textValCat = selectOpData.value + ',';    
+                    //     }else if(optionLen == key + 1){
+                    //         // last OF Map 
+                    //         textValCat += selectOpData.value;
+                    //         console.log('last Of Map ')
+                    //     }
+                    //     else{
+                    //         textValCat += selectOpData.value + ',';
+                    //     }                        
+                    // })                
+                    //jsonFormatCat = {"key": idFieldTagsCat,"value": textValCat};
+
+                    // New Collect Data to Dynamic Field.
+                    let dataSelectValue = selectedOptionMultiLang[this.props.codelang].slice(-1);
+                    console.log(dataSelectValue[0].value , "data for now data ", textValCat)
+                    
+                    jsonFormatCat = {"key": idFieldTagsCat,"value": dataSelectValue[0].value};
+
+
                 }else if (optionLen == 1){
                     jsonFormatCat = {"key": idFieldTagsCat,"value": selectedOptionMultiLang[this.props.codelang][0].value};
                 }else if (optionLen == []){
@@ -299,6 +334,8 @@ class TagsCategoryDynamic extends Component {
         //     jsonFormatCat = {"key": idFieldTagsCat,"value": ''}             
         // }         
         // console.log(jsonFormatCat)
+
+
         
         // Sart Sand Data To Save It: TODO: Will Change Convantion For Word.
         if(this.props.newFields){                        
@@ -319,7 +356,7 @@ class TagsCategoryDynamic extends Component {
             }         
         }else{
             let x2 = []
-            let lg = x2.push(jsonFormatCat);
+            let lg = x2.push(jsonFormatCat);            
             this.props.dispatch(SaveSCFLD.newValFields(x2));            
         }
         // Close Sand Data To Save It
@@ -328,6 +365,7 @@ class TagsCategoryDynamic extends Component {
     handleInputValueChange = inputValue => {
         this.setState({ inputValue });
         console.log(`Option selected:`, inputValue);
+        console.log(`Option selected:ldldlflf----   `);
         if (inputValue) {
             this.props.dispatch(SeaCate.searchCategories(inputValue))
         }
@@ -335,11 +373,12 @@ class TagsCategoryDynamic extends Component {
     render() {
         const { selectedOption, inputValue, selectedOptionMultiLang } = this.state;
         let optionsCategories = [];
-        if (this.props.cateData) {            
+        if (this.props.cateData) { 
+            console.log(this.props.cateData, "this.props.cateData")           
             let sectionOptions = [];
             
             this.props.cateData.map((data, key) => {
-                let jsonFormat = { value: data.value, label: data.display }
+                let jsonFormat = { value: data.value, label: data.display, has_image: data.has_image}
                 sectionOptions.push(jsonFormat);               
             })            
             optionsCategories = sectionOptions; // Set 
@@ -351,8 +390,8 @@ class TagsCategoryDynamic extends Component {
           */
         if(localStorage.getItem(`Data_Cat_Saving_${this.state.sectionId}_${this.props.codelang}`)){                                   
             let categories_data_saving = JSON.parse(localStorage.getItem(`Data_Cat_Saving_${this.state.sectionId}_${this.props.codelang}`));
-            let categories_Lang_SV = categories_data_saving[this.props.codelang];
-            let SELMultiLang_SV = this.state.selectedOptionMultiLang[this.props.codelang];
+            let categories_Lang_SV = categories_data_saving ? categories_data_saving[this.props.codelang] : null;
+            let SELMultiLang_SV = this.state.selectedOptionMultiLang? this.state.selectedOptionMultiLang[this.props.codelang]: null;
 
             console.log(categories_Lang_SV, SELMultiLang_SV )
             /*
@@ -368,28 +407,49 @@ class TagsCategoryDynamic extends Component {
                 // console.log(this.state.selectedOptionMultiLang)
                 // console.log(this.state.selectedOptionMultiLang.length)
                 // Repalce data for saved by old value. 
-                this.state.selectedOptionMultiLang[this.props.codelang] = categories_Lang_SV;
+                if(this.state.selectedOptionMultiLang == null ){
+
+                    let StringObject = JSON.stringify(categories_Lang_SV),
+                    // const jsonCreated2 =`{ ${this.props.codelang}:${selectedOption}}`;
+                      jsonCreated2 =  this.props.codelang + ':' + StringObject ,
+                      JsonParseCode = `{${jsonCreated2}}`;                        
+        
+                    let jsonStr = JsonParseCode.replace(/(\w+:)|(\w+ :)/g, function(matchedStr) {
+                      return '"' + matchedStr.substring(0, matchedStr.length - 1) + '":';
+                    });
+                    
+                    JsonParseCode = JSON.parse(jsonStr); //converts to a regular object
+                    console.log(jsonCreated2, "JsonParseCode = obj", 'd222 save ==> ',categories_Lang_SV, JsonParseCode )
+                    
+                    // this.state.selectedOptionMultiLang = JsonParseCode;                    
+                }else{
+                    // this.state.selectedOptionMultiLang[this.props.codelang] = categories_Lang_SV;
+                }                
                 // To count height for value 
-                this.setState({ selectedOption:  categories_Lang_SV});
-                console.log(selectedOption.length,"selectedOption------->", categories_Lang_SV.length)
-                let height;
-                if(categories_Lang_SV){
-                    if(categories_Lang_SV.length > 0 && categories_Lang_SV.length < 2){
-                        height =  75 + 'px';
-                    } else if(categories_Lang_SV.length > 1){
-                        height = (categories_Lang_SV.length * 35) + 33 + 'px';
-                    }else{
-                        height = 'auto';
-                    }
-                }  
-                // To count height for value       
-                this.setState({
-                    SelectHeight: height
-                })                                 
+                console.log("categories_Lang_SV", categories_Lang_SV, "this.state.selectedOption",this.state.selectedOption)
+                if(JSON.stringify(this.state.selectedOption) != JSON.stringify(categories_Lang_SV)){
+                    // this.setState({ selectedOption:  categories_Lang_SV});
+                }
+                
+                // console.log(selectedOption.length,"selectedOption------->", categories_Lang_SV.length)
+                // let height;
+                // if(categories_Lang_SV){
+                //     if(categories_Lang_SV.length > 0 && categories_Lang_SV.length < 2){
+                //         height =  75 + 'px';
+                //     } else if(categories_Lang_SV.length > 1){
+                //         height = (categories_Lang_SV.length * 35) + 33 + 'px';
+                //     }else{
+                //         height = 'auto';
+                //     }
+                // }  
+                // // To count height for value       
+                // this.setState({
+                //     SelectHeight: height
+                // })                                 
             }              
         }                                            
 
-        console.log(this.state.selectedOptionMultiLang?this.state.selectedOptionMultiLang['ar']:null, "State")
+        // console.log(this.state.selectedOptionMultiLang?this.state.selectedOptionMultiLang['ar']:null, "State")
         return (
             <div className="setting--sidebar__color mb-3" style={{height: this.state.SelectHeight}}>
                 {
@@ -401,16 +461,66 @@ class TagsCategoryDynamic extends Component {
                 <Select
                     isMulti
                     name="colors"
+                    // controlShouldRenderValue = {1}
                     // value={selectedOption}
-                    value={selectedOptionMultiLang? selectedOptionMultiLang[this.props.codelang]? selectedOptionMultiLang[this.props.codelang]: null : null} //this.state.selectedOptionMultiLang.this.props.codelang             
+                    value={selectedOptionMultiLang? selectedOptionMultiLang[this.props.codelang]? selectedOptionMultiLang[this.props.codelang].slice(-1): null : null} //this.state.selectedOptionMultiLang.this.props.codelang             
                     options={optionsCategories}  
-                    className="basic-multi-select"
+                    className="basic-multi-select position-relative"
                     classNamePrefix="select"                    
                     onChange={this.handleChange}
                     placeholder = {localization.Select}
                     inputValue={inputValue}                    
                     onInputChange={this.handleInputValueChange}
                 />
+                <p className='setting--sidebar__message--Image'>                    
+                    {   
+                        selectedOptionMultiLang? 
+                            selectedOptionMultiLang[this.props.codelang]?
+                                // check category have image or not. 
+                                selectedOptionMultiLang[this.props.codelang].slice(-1)[0].has_image == 0?                                
+                                    // notImage.
+                                    <>
+                                        {localization.updateImage}                                                                        
+                                    <Button className={`category-link not-image`} onClick={()=>{                                
+                                        let categoryId = selectedOptionMultiLang[this.props.codelang].slice(-1)[0].value;
+                                        let categoryURL = `${document.location.origin}/admin/catalog/category/update?category_id=${categoryId}`
+                                        console.log(categoryURL)
+                                        window.open(categoryURL, '_blank').focus();                                
+                                    }}>
+                                        {localization.Change}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+                                    </Button>
+                                    </>
+                                :
+                                    // include image. 
+                                    <>
+                                    {localization.updateImage}  
+                                    <Button className={`category-link `} disabled onClick={()=>{                                
+                                        let categoryId = selectedOptionMultiLang[this.props.codelang].slice(-1)[0].value;
+                                        let categoryURL = `${document.location.origin}/admin/catalog/category/update?category_id=${categoryId}`
+                                        console.log(categoryURL)
+                                        window.open(categoryURL, '_blank').focus();                                
+                                    }}>
+                                        {localization.Change}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+                                    </Button>
+                                    </>
+                            : 
+                            // include image.
+                            null
+                            // <Button className={`category-link`} disabled onClick={()=>{                                
+                            //     let categoryId = selectedOptionMultiLang[this.props.codelang].slice(-1)[0].value;
+                            //     let categoryURL = `${document.location.origin}/admin/catalog/category/update?category_id=${categoryId}`
+                            //     console.log(categoryURL)
+                            //     window.open(categoryURL, '_blank').focus();                                
+                            // }}>
+                            //     Change
+                            //     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+                            // </Button>
+                        : 
+                            null
+                    }                   
+                </p>
             </div>
         )
     }

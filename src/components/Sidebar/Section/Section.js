@@ -150,7 +150,7 @@ class Section extends Component {
                 }
                 // View For Type Checkbox
                 else if (Fields.Type == "radio") {
-                    return <TypeRadio key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldData={Fields} />
+                    return <TypeRadio key={key} codelang={this.state.codeLang ? this.state.codeLang : langActive} FieldData={Fields} sectionId={this.props.sectionFieldsDT.data.section.id}/>
                     // View For Type sselect Lookup
                 } 
                 // View For Type Checkbox

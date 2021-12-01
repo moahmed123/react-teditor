@@ -35,7 +35,9 @@ const translationStrings = new LocalizedStrings({
         Select: 'select',
         EnterpriseParagraph: "Get a store manager to help you run your store",
         UltimateParagraph:"Relax and let us launch your store for you!",
-        btnUpgrade: "upgrade now"
+        btnUpgrade: "upgrade now",
+        updateImage: "To update the image ",
+        Change:"Change"
     },
     ar: {
         Browse: "تحميل",
@@ -72,7 +74,9 @@ const translationStrings = new LocalizedStrings({
         Select: 'اختار',
         EnterpriseParagraph: "احصل على مدير لمتجرك ليقوم بمساعدتك في كل تفاصيل المتجر ",
         UltimateParagraph: "إسترخ ودعنا نعد متجرك بدلا عنك!",
-        btnUpgrade: "تحديث الآن"
+        btnUpgrade: "تحديث الآن",
+        updateImage: "لتحديث الصورة ",
+        Change:"تغير"
     }
 });
 export default translationStrings;

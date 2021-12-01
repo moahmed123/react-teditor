@@ -765,8 +765,8 @@
                                     .checkmark{
                                         border-radius: 50%;                                        
                                         border: 1px solid #333;
-                                        height: 18px;
-                                        width: 18px;
+                                        height: 17px;
+                                        width: 17px;
                                         background: #fff;
                                     }
                                     .checkmark:after {
@@ -779,9 +779,26 @@
                                         border-width: 6px 6px 6px 6px;
                                         // transform: translate(-18%, 18%);
                                         @if $start == 'left'{
-                                            transform: translate(-18%, 14%);
+                                            // transform: translate(-18%, 14%);
+                                            // border-radius: 50%;
+                                            // background: #333;
+                                            // left: 2px;
+                                            // top: 2px;
+                                            // border: none;
+                                            // width: 11px;
+                                            // height: 11px;
+                                            left: 2px;
+                                            top: 10px;
+                                            border: none;
+                                            width: 11px;
+                                            height: 11px;
                                         } @else{
-                                            transform: translate(17%, 14%);
+                                            // transform: translate(17%, 14%);
+                                            right: 2px;
+                                            top: 10px;
+                                            border: none;
+                                            width: 11px;
+                                            height: 11px;
                                         }
                                         border-radius: 100%;
                                         background: #333;                              
@@ -929,7 +946,40 @@
                                 }
                             }
                     }
-                }                                            
+                } 
+                .setting--sidebar__message--Image{
+                    font-size: 14px;
+                    color: #707070 !important;
+                    .category-link,
+                    .category-link:hover
+                    .category-link:focus
+                    .category-link:active{
+                        font-size: 14px;
+                        background: transparent !important;
+                        border-color:transparent !important;
+                        background-color:transparent !important;
+                        color: #707070 !important;
+                        border: none;
+                        padding: 0 3px;
+                        margin: 0;
+                        text-decoration: underline !important;
+                        opacity: .4 !important;
+                        outline: none;
+                        svg {                            
+                            fill: #707070;
+                            @if $start == 'right'{
+                                transform: rotate(180deg) translate(2px, 0px);
+                            } 
+                            
+                        }
+                    }
+                    .category-link.not-image,
+                    .category-link.not-image:hover
+                    .category-link.not-image:focus
+                    .category-link.not-image:active{
+                        opacity: 1 !important;
+                    }
+                }                                                   
             }
             
             .accordion{
@@ -1338,9 +1388,42 @@
     }
 }
 .select__value-container--has-value{
+
     position: absolute !important;
-    top: 100%;
+    top: 100%;   
 }
+.position-relative{
+    .select__value-container--has-value{
+        position: relative !important;
+    }  
+    .select__multi-value__label  {
+        max-width: 145px;
+    }
+    .select__clear-indicator{
+        display: none;
+    }    
+}
+// .category-link,
+// .category-link:hover
+// .category-link:focus
+// .category-link:active{
+//     background: transparent !important;
+//     border-color:transparent !important;
+//     background-color:transparent !important;
+//     color: #707070 !important;
+//     border: none;
+//     padding: 0 3px;
+//     margin: 0;
+//     text-decoration: underline !important;
+//     opacity: .4 !important;
+//     outline: none;
+// }
+// .category-link.not-image,
+// .category-link.not-image:hover
+// .category-link.not-image:focus
+// .category-link.not-image:active{
+//     opacity: 1 !important;
+// }
 .select__indicators{
     position: absolute;
     
